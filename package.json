@@ -2,7 +2,7 @@
   "author": "wangzengdi <sunnyadi@163.com>",
   "name": "ramdacn",
   "description": "Only for translating ramda into Chinese.",
-  "version": "0.23.0",
+  "version": "0.23.0-alpha.2",
   "homepage": "http://ramdajs.com/",
   "license": "MIT",
   "repository": {
