@@ -5,10 +5,9 @@ var map = require('./map');
 
 
 /**
- * ap applies a list of functions to a list of values.
+ * ap 将一系列函数列表作用于一系列值上。
  *
- * Dispatches to the `ap` method of the second argument, if present. Also
- * treats curried functions as applicatives.
+ * 若第二个参数自身存在 `ap` 方法，则调用自身的 `ap` 方法。柯里化函数也被当做 applicative。
  *
  * @func
  * @memberOf R

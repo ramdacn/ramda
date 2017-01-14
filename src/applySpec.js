@@ -9,9 +9,7 @@ var values = require('./values');
 
 
 /**
- * Given a spec object recursively mapping properties to functions, creates a
- * function producing an object of the same structure, by mapping each property
- * to the result of calling its associated function with the supplied arguments.
+ * 给定一个能递归地将属性值映射到函数的特定规范的对象，来创建一个能生成相同结构对象的函数。该函数使用传入的参数调用对象的每个属性位对应的函数来生成相应属性的值。
  *
  * @func
  * @memberOf R
