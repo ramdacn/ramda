@@ -1067,7 +1067,7 @@
     /**
      * 若列表中至少有一个元素满足 predicate，则返回 `true`，否则返回 `false`。
      *
-     * 若第二个参数自身有 `any` 方法，则调用其自身的方法。
+     * 若第二个参数自身存在 `any` 方法，则调用其自身的 `any`。
      *
      * 若在列表位置中给出 transfomer，则用作 transducer 。
      *
@@ -1122,7 +1122,7 @@
     var aperture = _curry2(_dispatchable([], _xaperture, _aperture));
 
     /**
-     * 返回一个新列表，其中包含给定列表的内容，后面拼接一个给定的元素
+     * 返回一个新列表，前面为给定列表的内容，末尾拼接给定的元素
      *
      * @func
      * @memberOf R
@@ -1313,7 +1313,7 @@
     });
 
     /**
-     * 接受一个判断第一个元素是否小于第二个元素的函数，生成一个比较函数。
+     * 接受判断首个元素是否小于第二个元素的函数，返回比较函数。
      *
      * @func
      * @memberOf R
@@ -6950,12 +6950,7 @@
     }));
 
     /**
-     * Returns a function, `fn`, which encapsulates `if/else, if/else, ...` logic.
-     * `R.cond` takes a list of [predicate, transformer] pairs. All of the arguments
-     * to `fn` are applied to each of the predicates in turn until one returns a
-     * "truthy" value, at which point `fn` returns the result of applying its
-     * arguments to the corresponding transformer. If none of the predicates
-     * matches, `fn` returns undefined.
+     * 返回一个函数 `fn`，它封装了 `if / else，if / else, ...` 逻辑。 `R.cond` 接受列表元素为 [predicate，transformer] 对(pair) 的列表。 `fn` 的所有参数顺次作用于每个 predicate，直到有一个返回 "truthy" 值，此时相应 transformer 对参数处理，并作为 `fn` 的结果返回。 如果没有 predicate 匹配，则 `fn` 返回 undefined。
      *
      * @func
      * @memberOf R
@@ -6991,9 +6986,7 @@
     });
 
     /**
-     * Wraps a constructor function inside a curried function that can be called
-     * with the same arguments and returns the same type. The arity of the function
-     * returned is specified to allow using variadic constructor functions.
+     * 将构造函数封装在柯里化函数中，可以使用相同的参数调用并返回相同的类型。为了能够使用变参的构造函数，返回函数的元数需要明确指定。
      *
      * @func
      * @memberOf R
@@ -7061,11 +7054,7 @@
     });
 
     /**
-     * Accepts a converging function and a list of branching functions and returns
-     * a new function. When invoked, this new function is applied to some
-     * arguments, each branching function is applied to those same arguments. The
-     * results of each branching function are passed as arguments to the converging
-     * function to produce the return value.
+     * 接受一个 converging 函数和一个分支函数列表，并返回一个新函数。 当被调用时，新函数接受参数，并将这些参数转发给每个分支函数。然后将每个分支函数的计算结果作为参数传递给 converging 函数，converging 函数的结果作为新函数的返回值。
      *
      * @func
      * @memberOf R
@@ -7764,10 +7753,9 @@
     };
 
     /**
-     * Returns the right-to-left Kleisli composition of the provided functions,
-     * each of which must return a value of a type supported by [`chain`](#chain).
+     * 接受一系列函数，返回从右向左的 Kleisli 组合，每个函数必须返回支持 [`chain`](#chain) 操作的值。
      *
-     * `R.composeK(h, g, f)` is equivalent to `R.compose(R.chain(h), R.chain(g), R.chain(f))`.
+     * `R.composeK(h, g, f)` 等同于 `R.compose(R.chain(h)，R.chain(g)，R.chain(f))`。
      *
      * @func
      * @memberOf R
@@ -7803,9 +7791,7 @@
     };
 
     /**
-     * Performs right-to-left composition of one or more Promise-returning
-     * functions. The rightmost function may have any arity; the remaining
-     * functions must be unary.
+     * 从右向左执行返回 Promise 的函数的组合。 最右边的函数可以是任意元函数（参数个数不限）; 其余函数必须是一元函数。
      *
      * @func
      * @memberOf R
@@ -7844,8 +7830,7 @@
     };
 
     /**
-     * Wraps a constructor function inside a curried function that can be called
-     * with the same arguments and returns the same type.
+     * 将构造函数封装在柯里化函数中，输入参数与返回值类型跟被封装的构造函数的相同。
      *
      * @func
      * @memberOf R
@@ -7879,8 +7864,7 @@
     });
 
     /**
-     * Returns `true` if the specified value is equal, in `R.equals` terms, to at
-     * least one element of the given list; `false` otherwise.
+     * 若数组中至少存在一个元素等于指定的值（依据 `R.equals` 的方法判断），则返回 `true`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -8357,13 +8341,11 @@
     var complement = lift(not);
 
     /**
-     * Returns the result of concatenating the given lists or strings.
+     * 将给定的 lists 或 strings 串连接起来。
      *
-     * Note: `R.concat` expects both arguments to be of the same type,
-     * unlike the native `Array.prototype.concat` method. It will throw
-     * an error if you `concat` an Array with a non-Array value.
+     * 注意：不同于 [`Array.prototype.concat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat), `R.concat` 要求两个参数类型相同。 如果将 Array 与非 Array 连接，将抛出错误。
      *
-     * Dispatches to the `concat` method of the first argument, if present.
+     * 若第二个参数自身存在 `concat` 方法，则调用自身的 `concat`。
      *
      * @func
      * @memberOf R

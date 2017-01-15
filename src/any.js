@@ -6,7 +6,7 @@ var _xany = require('./internal/_xany');
 /**
  * 若列表中至少有一个元素满足 predicate，则返回 `true`，否则返回 `false`。
  *
- * 若第二个参数自身有 `any` 方法，则调用其自身的方法。
+ * 若第二个参数自身存在 `any` 方法，则调用其自身的 `any`。
  *
  * 若在列表位置中给出 transfomer，则用作 transducer 。
  *

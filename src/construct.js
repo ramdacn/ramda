@@ -3,8 +3,7 @@ var constructN = require('./constructN');
 
 
 /**
- * Wraps a constructor function inside a curried function that can be called
- * with the same arguments and returns the same type.
+ * 将构造函数封装在柯里化函数中，输入参数与返回值类型跟被封装的构造函数的相同。
  *
  * @func
  * @memberOf R

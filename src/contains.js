@@ -3,8 +3,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns `true` if the specified value is equal, in `R.equals` terms, to at
- * least one element of the given list; `false` otherwise.
+ * 若数组中至少存在一个元素等于指定的值（依据 `R.equals` 的方法判断），则返回 `true`；否则返回 `false`。
  *
  * @func
  * @memberOf R
