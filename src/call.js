@@ -2,10 +2,7 @@ var curry = require('./curry');
 
 
 /**
- * Returns the result of calling its first argument with the remaining
- * arguments. This is occasionally useful as a converging function for
- * `R.converge`: the left branch can produce a function while the right branch
- * produces a value to be passed to that function as an argument.
+ * 提取第一个参数作为函数，其余参数作为刚提取的函数的参数，调用该函数并将结果返回。这有时可以用作 `R.converge` 的 convergeing 函数：第一个分支函数可以产生一个函数，而其余分支函数产生一个系列值作为参数传递给该函数。（`R.converge` 第二个参数为一个分支函数列表）
  *
  * @func
  * @memberOf R

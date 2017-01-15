@@ -1,9 +1,9 @@
 var _curry3 = require('./internal/_curry3');
 
 /**
- * Restricts a number to be within a range.
+ * 将数字限制在某个范围内。
  *
- * Also works for other ordered types such as Strings and Dates.
+ * 也适用于其他有序类型，如字符串和日期。
  *
  * @func
  * @memberOf R

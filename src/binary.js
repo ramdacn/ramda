@@ -3,9 +3,7 @@ var nAry = require('./nAry');
 
 
 /**
- * Wraps a function of any arity (including nullary) in a function that accepts
- * exactly 2 parameters. Any extraneous parameters will not be passed to the
- * supplied function.
+ * 将任意元函数封装进二元函数（只接受2个参数）中。 任何额外的参数都不会传递给被包裹的函数。
  *
  * @func
  * @memberOf R
