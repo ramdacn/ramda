@@ -1338,20 +1338,16 @@
     });
 
     /**
-     * Returns a curried equivalent of the provided function, with the specified
-     * arity. The curried function has two unusual capabilities. First, its
-     * arguments needn't be provided one at a time. If `g` is `R.curryN(3, f)`, the
-     * following are equivalent:
+     * 对函数进行柯里化，并限制柯里化函数的元数。柯里化函数有两个很好的特性：
+     *
+     * 首先，参数不需要一次只传入一个。假设 `g` 由 `R.curryN(3, f)` 生成，则下列写法是等价的：
      *
      *   - `g(1)(2)(3)`
      *   - `g(1)(2, 3)`
      *   - `g(1, 2)(3)`
      *   - `g(1, 2, 3)`
      *
-     * Secondly, the special placeholder value `R.__` may be used to specify
-     * "gaps", allowing partial application of any combination of arguments,
-     * regardless of their positions. If `g` is as above and `_` is `R.__`, the
-     * following are equivalent:
+     * 其次，特殊的占位符值 `R.__` 可用于标记暂未传入的参数位置，允许部分应用于任何参数组合，而无需关心它们的位置和顺序。 假设 `g` 定义如前所示，且 `_` 代表 `R .__`，则下列写法是等价的：
      *
      *   - `g(1, 2, 3)`
      *   - `g(_, 2, 3)(1)`
@@ -1387,7 +1383,7 @@
     });
 
     /**
-     * Decrements its argument.
+     * 减1。
      *
      * @func
      * @memberOf R
@@ -1404,8 +1400,7 @@
     var dec = add(-1);
 
     /**
-     * Returns the second argument if it is not `null`, `undefined` or `NaN`
-     * otherwise the first argument is returned.
+     * 如果第二个参数不是 `null`、`undefined` 或 `NaN`，则返回第二个参数，否则返回第一个参数（默认值）。
      *
      * @func
      * @memberOf R
@@ -1430,8 +1425,7 @@
     });
 
     /**
-     * Makes a descending comparator function out of a function that returns a value
-     * that can be compared with `<` and `>`.
+     * 接受一个返回值可以与 `<` 和 `>` 比较的函数，返回一个降序比较器。
      *
      * @func
      * @memberOf R
@@ -1457,9 +1451,7 @@
     });
 
     /**
-     * Finds the set (i.e. no duplicates) of all elements in the first list not
-     * contained in the second list. Duplication is determined according to the
-     * value returned by applying the supplied predicate to two list elements.
+     * 查找第一个列表中未包含在第二个列表中的所有元素的集合（集合中没有重复元素）。两列表中的元素通过 predicate 判断相应元素是否同时 “包含在” 两列表中。
      *
      * @func
      * @memberOf R
@@ -1492,7 +1484,7 @@
     });
 
     /**
-     * Returns a new object that does not contain a `prop` property.
+     * 返回一个不包含给定 `prop` 属性的新对象。
      *
      * @func
      * @memberOf R
@@ -5038,7 +5030,7 @@
     });
 
     /**
-     * A function that always returns `false`. Any passed in parameters are ignored.
+     * 始终返回 `false` 的函数。 参数中传递的任何内容都将被忽略。
      *
      * @func
      * @memberOf R
@@ -5055,7 +5047,7 @@
     var F = always(false);
 
     /**
-     * A function that always returns `true`. Any passed in parameters are ignored.
+     * 始终返回 `true` 的函数。 参数中传递的任何内容都将被忽略。
      *
      * @func
      * @memberOf R
@@ -5451,20 +5443,16 @@
     });
 
     /**
-     * Returns a curried equivalent of the provided function. The curried function
-     * has two unusual capabilities. First, its arguments needn't be provided one
-     * at a time. If `f` is a ternary function and `g` is `R.curry(f)`, the
-     * following are equivalent:
+     * 对函数进行柯里化。柯里化函数有两个很好的特性：
+     *
+     * 首先，参数不需要一次只传入一个。如果 `f` 是三元函数，`g` 是 `R.curry(f)` ，则下列写法是等价的：
      *
      *   - `g(1)(2)(3)`
      *   - `g(1)(2, 3)`
      *   - `g(1, 2)(3)`
      *   - `g(1, 2, 3)`
      *
-     * Secondly, the special placeholder value `R.__` may be used to specify
-     * "gaps", allowing partial application of any combination of arguments,
-     * regardless of their positions. If `g` is as above and `_` is `R.__`, the
-     * following are equivalent:
+     * 其次，特殊的占位符值 `R.__` 可用于标记暂未传入的参数位置，允许部分应用于任何参数组合，而无需关心它们的位置和顺序。 假设 `g` 定义如前所示，且 `_` 代表 `R .__`，则下列写法是等价的：
      *
      *   - `g(1, 2, 3)`
      *   - `g(_, 2, 3)(1)`
@@ -5496,9 +5484,9 @@
     });
 
     /**
-     * Makes a shallow clone of an object, omitting the property at the given path.
-     * Note that this copies and flattens prototype properties onto the new object
-     * as well. All non-primitive properties are copied by reference.
+     * 对对象进行浅复制，忽略（除去）给定路径上的属性。
+     *
+     * 注意，这也会将 prototype 属性复制到新对象上并展开。所有非原始类型属性都通过引用复制。
      *
      * @func
      * @memberOf R
@@ -7882,9 +7870,7 @@
     var contains = _curry2(_contains);
 
     /**
-     * Finds the set (i.e. no duplicates) of all elements in the first list not
-     * contained in the second list. Objects and Arrays are compared are compared
-     * in terms of value equality, not reference equality.
+     * 查找第一个列表中未包含在第二个列表中的所有元素的集合。对象和数组需要比较数值相等，而非引用相等。
      *
      * @func
      * @memberOf R

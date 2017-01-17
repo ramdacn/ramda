@@ -3,9 +3,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Finds the set (i.e. no duplicates) of all elements in the first list not
- * contained in the second list. Objects and Arrays are compared are compared
- * in terms of value equality, not reference equality.
+ * 查找第一个列表中未包含在第二个列表中的所有元素的集合。对象和数组需要比较数值相等，而非引用相等。
  *
  * @func
  * @memberOf R

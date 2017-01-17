@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns a new object that does not contain a `prop` property.
+ * 返回一个不包含给定 `prop` 属性的新对象。
  *
  * @func
  * @memberOf R

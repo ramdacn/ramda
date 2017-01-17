@@ -6,6 +6,7 @@ chokidar.watch('./src', {ignored: /\.sw[op]$/}).on('change', (event, path) => {
   exec('npm run build', (error, stdout, stderr) => {
     if (error) {
       console.log(`exec error: ${error}`);
+      exec('npm run clean');
       return;
     }
     console.log(`stdout: ${stdout}`);
