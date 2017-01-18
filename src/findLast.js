@@ -4,7 +4,7 @@ var _xfindLast = require('./internal/_xfindLast');
 
 
 /**
- * 返回给定的列表中最后一个满足 `predicate` 方法的元素，如果没有任何元素满足条件则返回 `undefined` 。
+ * 返回给定的列表中最后一个满足 `predicate` 方法的元素，如果任何元素都不满足条件则返回 `undefined` 。
  *
  * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
  *

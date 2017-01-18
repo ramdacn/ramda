@@ -9,8 +9,8 @@ var _curry2 = require('./internal/_curry2');
  * @since v0.1.0
  * @category Math
  * @sig Number -> Number -> Number
- * @param {Number} a
- * @param {Number} b
+ * @param {Number} a The first value.
+ * @param {Number} b The second value.
  * @return {Number}
  * @see R.multiply
  * @example

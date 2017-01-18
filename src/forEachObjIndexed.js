@@ -3,7 +3,7 @@ var keys = require('./keys');
 
 
 /**
- * 遍历给定的 `object`，对 `object` 中的所有 `key` 和 `value` 执行给定的方法 `fn`。
+ * 遍历给定的 `object`，对 `object` 中的每对 `key` 和 `value` 执行给定的方法 `fn`。
  *
  * `fn` 接收三个参数: *(value, key, obj)*.
  *

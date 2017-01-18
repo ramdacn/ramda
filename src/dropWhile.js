@@ -5,7 +5,7 @@ var _xdropWhile = require('./internal/_xdropWhile');
 
 /**
  *
- * 返回一个新的list，这个list会舍弃所有满足 `predicate` 方法的头部元素。
+ * 返回一个新的 list，这个 list 会舍弃所有满足 `predicate` 方法的头部元素。
  *
  * 从左向右依次对list中的元素执行 `predicate` 方法，直至返回一个假值。`predicate` 方法需要作为第一个参数传入。
  *

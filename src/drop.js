@@ -5,8 +5,7 @@ var slice = require('./slice');
 
 
 /**
- * 返回给定参数去除前 `n` 个元素后的结果，该参数可以是list，string或者
- * transducer/transformer（或者具有drop方法的object）。
+ * 返回给定参数去除前 `n` 个元素后的结果，该参数可以是 list，string 或者 transducer/transformer （或者具有 drop 方法的 object）。
  *
  * 若第二个参数自身存在 `drop` 方法，则调用自身的 `drop` 方法。
  *

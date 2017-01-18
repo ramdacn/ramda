@@ -4,7 +4,7 @@ var _equals = require('./internal/_equals');
 
 /**
  *
- * 如果给定的参数是相等的则返回 `true` ，否则返回 `false` 。处理几乎所有JavaScript支持的数据结构。
+ * 如果给定的参数相等则返回 `true` ，否则返回 `false` 。处理几乎所有JavaScript支持的数据结构。
  *
  * 若两个参数自身存在 `equals` 方法，则对称地调用 `equals` 方法。
  *

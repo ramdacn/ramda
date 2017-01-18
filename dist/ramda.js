@@ -1541,8 +1541,8 @@
      * @since v0.1.0
      * @category Math
      * @sig Number -> Number -> Number
-     * @param {Number} a
-     * @param {Number} b
+     * @param {Number} a The first value.
+     * @param {Number} b The second value.
      * @return {Number}
      * @see R.multiply
      * @example
@@ -1561,7 +1561,7 @@
 
     /**
      *
-     * 返回一个新的list，这个list会舍弃所有满足 `predicate` 方法的头部元素。
+     * 返回一个新的 list，这个 list 会舍弃所有满足 `predicate` 方法的头部元素。
      *
      * 从左向右依次对list中的元素执行 `predicate` 方法，直至返回一个假值。`predicate` 方法需要作为第一个参数传入。
      *
@@ -1595,8 +1595,8 @@
 
     /**
      *
-     * 根据给定参数的类型返回其对应的空值。Ramda定义了Array (`[]`)，Object (`{}`)，String (`''`)，和 Arguments
-     * 的空值。其它类型的参数如果定义了 `<Type>.empty` 和/或者 `<Type>.prototype.empty` 也是被支持的。
+     * 根据给定参数的类型返回其对应的空值。Ramda 定义了各类型的空值如下：Array (`[]`)，Object (`{}`)，String (`''`)，和 Arguments。
+     * 其它类型的参数如果定义了 `<Type>.empty` 和/或者 `<Type>.prototype.empty` 也是被支持的。
      *
      * 若第一个参数自身存在 `empty` 方法，则调用自身的 `empty` 方法。
      *
@@ -1624,8 +1624,8 @@
 
     /**
      *
-     * 通过递归地对第二个参数 `object` 的浅复制进行变换来创建一个新的object，变换方式由第一个参数 `transformation` 来定义。
-     * 所有 `non-primitive` 属性都通过引用来复制。
+     * 递归地对第二个参数 `object` 的浅复制进行变换来创建一个新的object，变换方式由第一个参数 `transformation` 来定义。
+     * 所有非原始类型属性都通过引用来复制。
      *
      * 如果`transformation`中定义的方法关联的 `object` 属性并不存在，那么该方法将不会执行。
      *
@@ -1660,7 +1660,7 @@
     });
 
     /**
-     * 返回给定的列表中第一个满足 `predicate` 方法的元素，如果没有任何元素满足条件则返回 `undefined` 。
+     * 返回给定的列表中第一个满足 `predicate` 方法的元素，如果任何元素都不满足条件则返回 `undefined` 。
      *
      * 若第二个参数自身存在 `find` 方法，则调用自身的 `find` 方法。
      *
@@ -1694,7 +1694,7 @@
     }));
 
     /**
-     * 返回给定的列表中第一个满足 `predicate` 方法的元素的索引下标，如果没有任何元素满足条件则返回 `-1` 。
+     * 返回给定的列表中第一个满足 `predicate` 方法的元素的索引下标，如果任何元素都满足条件则返回 `-1` 。
      *
      * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -1727,7 +1727,7 @@
     }));
 
     /**
-     * 返回给定的列表中最后一个满足 `predicate` 方法的元素，如果没有任何元素满足条件则返回 `undefined` 。
+     * 返回给定的列表中最后一个满足 `predicate` 方法的元素，如果任何元素都不满足条件则返回 `undefined` 。
      *
      * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -1758,7 +1758,7 @@
     }));
 
     /**
-     * 返回给定的列表中最后一个满足 `predicate` 方法的元素的索引下标，如果没有任何元素满足条件则返回 `-1` 。
+     * 返回给定的列表中最后一个满足 `predicate` 方法的元素的索引下标，如果任何元素都不满足条件则返回 `-1` 。
      *
      * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -1832,8 +1832,7 @@
     }));
 
     /**
-     * 从一组只包含键值对元素的列表创建一个新的 `object`。如果一个 `key` 出现了
-     * 多次，最右边的键值对会被保留。
+     * 从一组只包含键值对元素的列表创建一个新的 `object`。如果一个 `key` 出现了多次，最右边的键值对会被保留。
      *
      * @func
      * @memberOf R
@@ -5547,8 +5546,7 @@
     });
 
     /**
-     * 返回给定参数去除前 `n` 个元素后的结果，该参数可以是list，string或者
-     * transducer/transformer（或者具有drop方法的object）。
+     * 返回给定参数去除前 `n` 个元素后的结果，该参数可以是 list，string 或者 transducer/transformer （或者具有 drop 方法的 object）。
      *
      * 若第二个参数自身存在 `drop` 方法，则调用自身的 `drop` 方法。
      *
@@ -5577,7 +5575,7 @@
     }));
 
     /**
-     * 返回给定list去除末尾 `n` 个元素后的结果
+     * 返回给定 list 去除末尾 `n` 个元素后的结果
      *
      * @func
      * @memberOf R
@@ -5600,9 +5598,9 @@
     var dropLast = _curry2(_dispatchable([], _xdropLast, _dropLast));
 
     /**
-     * 返回一个新的list，这个list会舍弃所有满足 `predicate` 方法的尾部元素。
+     * 返回一个新的 list，这个 list 会舍弃所有满足 `predicate` 方法的尾部元素。
      *
-     * 从右向左依次对list中的元素执行 `predicate` 方法，直至返回一个假值。`predicate` 方法需要作为第一个参数传入。
+     * 从右向左依次对list中的元素执行 `predicate` 方法，直至返回一个 `falsy` 值。`predicate` 方法需要作为第一个参数传入。
      *
      * @func
      * @memberOf R
@@ -5623,7 +5621,7 @@
 
     /**
      *
-     * 如果给定的参数是相等的则返回 `true` ，否则返回 `false` 。处理几乎所有JavaScript支持的数据结构。
+     * 如果给定的参数相等则返回 `true` ，否则返回 `false` 。处理几乎所有JavaScript支持的数据结构。
      *
      * 若两个参数自身存在 `equals` 方法，则对称地调用 `equals` 方法。
      *
@@ -5704,7 +5702,7 @@
     var flatten = _curry1(_makeFlat(true));
 
     /**
-     * 接受一个函数，返回一个新的函数，相比于原函数，新函数的前两个参数顺序做了交换。
+     * 交换函数前两个参数的位置。
      *
      * @func
      * @memberOf R
@@ -5732,7 +5730,7 @@
     });
 
     /**
-     * 遍历给定的 `object`，对 `object` 中的所有 `key` 和 `value` 执行给定的方法 `fn`。
+     * 遍历给定的 `object`，对 `object` 中的每对 `key` 和 `value` 执行给定的方法 `fn`。
      *
      * `fn` 接收三个参数: *(value, key, obj)*.
      *
@@ -7149,8 +7147,7 @@
 
     /**
      *
-     * 返回一个没有任何连续重复元素的list。第一个参数提供的 `predicate` 方法被用来检验list中相邻的两个元素是否相等。
-     * 一组相等元素中的第一个元素会被保留。
+     * 返回一个没有任何连续重复元素的 list。第一个参数提供的 `predicate` 方法被用来检验 list 中相邻的两个元素是否相等。一系列相等元素中的第一个元素会被保留。
      *
      * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -7186,7 +7183,7 @@
 
     /**
      *
-     * 接受一个函数和两个可以作为该函数参数的值，如果这两个值通过该函数的执行结果是相同的则返回 `true` ，否则返回 `false` 。
+     * 接受一个函数和两个可以作为该函数参数的值，如果这两个值通过该函数的执行结果相等则返回 `true` ，否则返回 `false` 。
      *
      * @func
      * @memberOf R
@@ -7207,7 +7204,7 @@
 
     /**
      *
-     * 借助于 `R.equals` 方法判断两个object的指定属性是否相等。当做一个柯里化的 `prediate` 方法是很有用的。
+     * 借助于 `R.equals` 方法判断两个object的指定属性是否相等。可以用作柯里化的 predicate 。
      *
      * @func
      * @memberOf R
@@ -7957,7 +7954,7 @@
     });
 
     /**
-     * 返回一个没有任何连续重复元素的list。借助 `R.equals` 来判断元素是否相等。
+     * 返回一个没有任何连续重复元素的 list。借助 `R.equals` 来判断元素是否相等。
      *
      * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -8423,8 +8420,8 @@
 
     /**
      *
-     * 返回由 `||` 运算符连接的两个函数的包装函数，如果两个函数中任一函数的执行结果为真值，则返回 `true` ，
-     * 否则，返回 `false` 。注意，这个是短路表达式，意味着如果第一个函数返回真值的话，第二个函数将不会执行。
+     * 返回由 `||` 运算符连接的两个函数的包装函数，如果两个函数中任一函数的执行结果为 `truth-y`，则返回其执行结果。
+     * 注意，这个是短路表达式，意味着如果第一个函数返回 `truth-y` 值的话，第二个函数将不会执行。
      *
      * 除了函数之外， `R.either` 也接受任何符合 `fantasy-land` 标准的 `applicative functor` 。
      *
