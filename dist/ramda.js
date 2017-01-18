@@ -3228,7 +3228,7 @@
     }();
 
     /**
-     * Takes two arguments, `fst` and `snd`, and returns `[fst, snd]`.
+     * 接收两个参数，fst 和 snd，返回数组[fst, snd]。
      *
      * @func
      * @memberOf R
@@ -3251,7 +3251,7 @@
     });
 
     /**
-     * Retrieve the value at a given path.
+     * 按照给出的路径，取出结果值
      *
      * @func
      * @memberOf R
@@ -3282,8 +3282,8 @@
     });
 
     /**
-     * If the given, non-null object has a value at the given path, returns the
-     * value at that path. Otherwise returns the provided default value.
+     * 如果给出的非空的对象在给出的路径上有值，返回这条路径上的值
+     * 否则返回给出的缺省值
      *
      * @func
      * @memberOf R
@@ -3305,8 +3305,8 @@
     });
 
     /**
-     * Returns `true` if the specified object property at given path satisfies the
-     * given predicate; `false` otherwise.
+     * 如果指定的对象属性在给定的路径下满足给出的predicate条件，
+     * 返回ture，否则返回false
      *
      * @func
      * @memberOf R
@@ -3328,8 +3328,8 @@
     });
 
     /**
-     * Returns a partial copy of an object containing only the keys specified. If
-     * the key does not exist, the property is ignored.
+     * 返回对象的部分副本，这个副本仅包含指定键对应的属性。
+     * 如果键不存在，则忽略这个属性
      *
      * @func
      * @memberOf R
@@ -3358,8 +3358,8 @@
     });
 
     /**
-     * Similar to `pick` except that this one includes a `key: undefined` pair for
-     * properties that don't exist.
+     * 与pick相似，不过pickAll会将不存在的属性以`key: undefined`
+     * 键值对的形式返回。
      *
      * @func
      * @memberOf R
@@ -3388,8 +3388,8 @@
     });
 
     /**
-     * Returns a partial copy of an object containing only the keys that satisfy
-     * the supplied predicate.
+     * 返回对象的部分副本，这个副本只包含key值满足
+     * 给出的预测条件的属性。
      *
      * @func
      * @memberOf R
@@ -3418,8 +3418,7 @@
     });
 
     /**
-     * Returns a new list with the given element at the front, followed by the
-     * contents of the list.
+     * 返回一个新的列表，最前面是给定的元素，后面是给出的list的内容。
      *
      * @func
      * @memberOf R
@@ -3944,7 +3943,7 @@
     });
 
     /**
-     * Splits a given list or string at a given index.
+     * 从给定的索引处拆分列表或者字符串
      *
      * @func
      * @memberOf R
@@ -5020,20 +5019,19 @@
     });
 
     /**
-     * Creates a new list out of the two supplied by applying the function to each
-     * equally-positioned pair in the lists. The returned list is truncated to the
-     * length of the shorter of the two input lists.
+     * 生成一个新的数组，该数组的值，是对两个输入数组中下标相同的元素调用函数所得。
+     * 新数组的长度与两个输入数组中长度较短的那个相同。
      *
      * @function
      * @memberOf R
      * @since v0.1.0
      * @category List
      * @sig (a,b -> c) -> [a] -> [b] -> [c]
-     * @param {Function} fn The function used to combine the two elements into one value.
-     * @param {Array} list1 The first array to consider.
-     * @param {Array} list2 The second array to consider.
-     * @return {Array} The list made by combining same-indexed elements of `list1` and `list2`
-     *         using `fn`.
+     * @param {Function} fn是用来组合两个元素使之成为一个值的函数。
+     * @param {Array} list1是第一个被操作的数组。
+     * @param {Array} list2是第二个被操作的数组。
+     * @return {Array} list1和list2中的下标相同的元素为参数，使用fn进行计算所得的新数组。
+     *
      * @example
      *
      *      var f = (x, y) => {
@@ -6188,9 +6186,9 @@
     });
 
     /**
-     * Takes a function `f` and a list of arguments, and returns a function `g`.
-     * When applied, `g` returns the result of applying `f` to the arguments
-     * provided initially followed by the arguments provided to `g`.
+     * 接收两个参数: 一个函数f，还有一个argument列表。返回新函数g。
+     * 当函数执行时，g返回的是f作用于初始argument和后来提供给g的参数的结果。
+     * 其中参数调用的顺序是：初始提供的argument，提供给g的arguments。
      *
      * @func
      * @memberOf R
@@ -6218,9 +6216,9 @@
     var partial = _createPartialApplicator(_concat);
 
     /**
-     * Takes a function `f` and a list of arguments, and returns a function `g`.
-     * When applied, `g` returns the result of applying `f` to the arguments
-     * provided to `g` followed by the arguments provided initially.
+     * 需要两个参数: 一个函数f，还有一个argument列表，返回新函数g。
+     * 当函数执行时，g返回的是f作用于初始argument和后来提供给g的参数的结果。
+     * 其中参数调用的顺序是：提供给g的arguments，初始提供的argument。
      *
      * @func
      * @memberOf R
@@ -6244,8 +6242,8 @@
     var partialRight = _createPartialApplicator(flip(_concat));
 
     /**
-     * Determines whether a nested path on an object has a specific value, in
-     * `R.equals` terms. Most likely used to filter a list.
+     * 确定对象的嵌套路径上是否有某个明确的value值, 结合R.path 和R.equals。
+     * 最常用的场景：过滤一个list。
      *
      * @func
      * @memberOf R
@@ -6272,8 +6270,7 @@
     });
 
     /**
-     * Returns a new list by plucking the same named property off all objects in
-     * the list supplied.
+     * 在给出的列表中的所有对象中，将命名相同的属性抽出来，组成一个新的列表。
      *
      * @func
      * @memberOf R
@@ -6296,7 +6293,7 @@
     });
 
     /**
-     * Reasonable analog to SQL `select` statement.
+     * 对SQL中的select语句的有效模拟。
      *
      * @func
      * @memberOf R
@@ -7544,9 +7541,9 @@
     });
 
     /**
-     * Takes a predicate and a list or other "filterable" object and returns the
-     * pair of filterable objects of the same type of elements which do and do not
-     * satisfy, the predicate, respectively.
+     * 接收一个predicate函数，和一个列表或者其他可过滤的对象，返回一对值。
+     * 这一对值中的元素分别是满足和不满足predicate条件的结果，
+     * 其类型与列表或者其他可过滤的对象中元素类型一致。
      *
      * @func
      * @memberOf R
@@ -7627,7 +7624,7 @@
     };
 
     /**
-     * Multiplies together all the elements of a list.
+     * 将列表中的所有元素相乘。
      *
      * @func
      * @memberOf R
@@ -8563,8 +8560,7 @@
     });
 
     /**
-     * Splits a string into an array of strings based on the given
-     * separator.
+     * 基于给定的分隔符将字符串拆分为字符串数组。
      *
      * @func
      * @memberOf R
