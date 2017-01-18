@@ -4,9 +4,9 @@ var reject = require('./reject');
 
 
 /**
- * Takes a predicate and a list or other "filterable" object and returns the
- * pair of filterable objects of the same type of elements which do and do not
- * satisfy, the predicate, respectively.
+ * 接收一个predicate函数，和一个列表或者其他可过滤的对象，返回一对值。
+ * 这一对值中的元素分别是满足和不满足predicate条件的结果，
+ * 其类型与列表或者其他可过滤的对象中元素类型一致。
  *
  * @func
  * @memberOf R

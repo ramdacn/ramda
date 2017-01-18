@@ -2,8 +2,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns a partial copy of an object containing only the keys that satisfy
- * the supplied predicate.
+ * 返回对象的部分副本，这个副本只包含key值满足
+ * 给出的预测条件的属性。
  *
  * @func
  * @memberOf R
