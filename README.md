@@ -1,7 +1,7 @@
 Ramda
 =============
 
-A practical functional library for JavaScript programmers.
+一款实用的 JavaScript 函数式编程库。
 
 [![Build Status](https://travis-ci.org/ramda/ramda.svg?branch=master)](https://travis-ci.org/ramda/ramda)
 [![npm module](https://badge.fury.io/js/ramda.svg)](https://www.npmjs.org/package/ramda)
@@ -15,28 +15,22 @@ Why Ramda?
 <img src="http://ramda.jcphillipps.com/logo/ramdaFilled_200x235.png" 
      width="170" height="190" align="right" hspace="12" />
 
-There are already several excellent libraries with a functional flavor. Typically, they are meant to be general-purpose toolkits, suitable for working in multiple paradigms. Ramda has a more focused goal. We wanted a library designed specifically for a functional programming style, one that makes it easy to create functional pipelines, one that never mutates user data. 
+目前已经存在许多优秀的函数式的库。通常，它们作为通用工具包，适合在多种范式下工作。Ramda 有一个更专注的目标。我们想要一个专门为函数式编程风格设计的库，一个更容易创建函数式 pipeline、且从不改变用户数据的库。
 
-
-What's Different?
+What's different?
 -----------------
 
-The primary distinguishing features of Ramda are:
+Ramda 主要的独特性质如下：
 
-* Ramda emphasizes a purer functional style. Immutability and side-effect free functions 
-  are at the heart of its design philosophy. This can help you get the job done with simple, 
-  elegant code.
+* Ramda 强调更加纯粹的函数式风格。数据不变性和函数无副作用是其设计理念的核心。这可以帮助你使用简洁、优雅的代码来完成工作。
 
-* Ramda functions are automatically curried. This allows you to easily build up new functions 
-  from old ones simply by not supplying the final parameters.
+* Ramda 函数本身都是自动柯里化的。这可以让你在只提供部分参数的情况下，轻松地在已有函数的基础上创建新函数。
 
-* The parameters to Ramda functions are arranged to make it convenient for currying. The data 
-  to be operated on is generally supplied last.
+* Ramda 函数的参数的排列更便于柯里化。通常最后提供要操作的数据。
 
-The last two points together make it very easy to build functions as sequences of simpler functions, each of which transforms the data and passes it along to the next. Ramda is designed to support this style of coding.
+* 最后两点一起，使得将多个函数构建为简单的函数序列变得非常容易，每个函数对数据进行变换并将结果传递给下一个函数。Ramda 的设计支持这种风格的编程。
 
-
-Introductions
+简介
 -------------
 
 * [Introducing Ramda](http://buzzdecafe.github.io/code/2014/05/16/introducing-ramda) by Buzz de Cafe
@@ -47,63 +41,53 @@ Introductions
 * [Thinking in Ramda](http://randycoulman.com/blog/categories/thinking-in-ramda) by Randy Coulman
 
 
-Philosophy
+理念
 ----------
-Using Ramda should feel much like just using JavaScript.
-It is practical, functional JavaScript. We're not introducing
-lambda expressions in strings, we're not borrowing consed 
-lists, we're not porting over all of the Clojure functions.
 
-Our basic data structures are plain JavaScript objects, and our
-usual collections are JavaScript arrays. We also keep other
-native features of JavaScript, such as functions as objects
-with properties.
+使用 Ramda 时，应该感觉像使用原生 JavaScript 一样，它是实用的且函数式的 JavaScript。Ramda 没有在字符串中引入 lambda 表达式，也没有借用 consed 列表，也不是要移植所有的 Clojure 函数。
 
-Functional programming is in good part about immutable objects and 
-side-effect free functions. While Ramda does not *enforce* this, it
-enables such style to be as frictionless as possible.
+Ramda 基本的数据结构都是原生 JavaScript 对象，我们常用的集合是 JavaScript 的数组。Ramda 还保留了许多其他原生 JavaScript 特性，例如，函数是具有属性的对象。
 
-We aim for an implementation both clean and elegant, but the API is king.
-We sacrifice a great deal of implementation elegance for even a slightly
-cleaner API.
+函数式编程很大一部分主题是关于对象不变性和函数无副作用两方面。虽然 Ramda 没有特别加强这方面实现，但它足以使这两方面在编程时尽可能自然、方便。
 
-Last but not least, Ramda strives for performance. A reliable and quick
-implementation wins over any notions of functional purity.
+Ramda 的目标是让实现（编程和 API 实现）简洁、优雅。但 API 为王。谓词我们牺牲了大量优雅、简洁的实现。
 
-Installation
+最后，Ramda 非常注重运行性能。可靠和快速的实现胜过强调函数式的纯度。（需要综合考虑性能和代码实现优雅性两方面。如 [Eweda](https://github.com/CrossEye/eweda) ，过于强调实现的简洁优雅，而失去了实用价值）
+
+安装
 ------------
 
-To use with node:
+使用 node：
 
 ```bash
 $ npm install ramda
 ```
 
-Then in the console:
+然后在 console 中使用：
 
 ```javascript
 var R = require('ramda');
 ```
 
-To use directly in the browser:
+直接在浏览器中使用：
 
 ```html
 <script src="path/to/yourCopyOf/ramda.js"></script>
 ```
 
-or the minified version:
+或使用最小化版本：
 
 ```html
 <script src="path/to/yourCopyOf/ramda.min.js"></script>
 ```
 
-or from a CDN, either cdnjs:
+或从 CDN 上获取：
 
 ```html
 <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.23.0/ramda.min.js"></script>
 ```
 
-or one of the below links from [jsDelivr](http://jsdelivr.com):
+或使用 [jsDelivr](http://jsdelivr.com) 的以下任意链接：
 
 ```html
 <script src="//cdn.jsdelivr.net/ramda/0.23.0/ramda.min.js"></script>
@@ -111,39 +95,34 @@ or one of the below links from [jsDelivr](http://jsdelivr.com):
 <script src="//cdn.jsdelivr.net/ramda/latest/ramda.min.js"></script>
 ```
 
-(note that using `latest` is taking a significant risk that ramda API changes could break your code.)
+（注意，使用 `最新` 的版本可能会带来很大的风险，ramda API 的更改可能会对以前代码造成破坏。）
 
-These script tags add the variable `R` on the browser's global scope.
+这些脚本标签在浏览器中添加一个全局变量 `R`。
 
-Or you can inject ramda into virtually any unsuspecting website using [the bookmarklet](https://github.com/ramda/ramda/blob/master/BOOKMARKLET.md).
+或者也可以借助 [the bookmarklet](https://github.com/ramda/ramda/blob/master/BOOKMARKLET.md)，将 ramda 注入到几乎任何不安全的网站。
 
-### Build
+### 构建库
 
-* on Unix-based platforms, `npm run build` updates __dist/ramda.js__ and __dist/ramda.min.js__
-* on Windows, write the output of `scripts/build --complete` to a temporary file, then rename the temporary file __dist/ramda.js__.
+* 在基于 Unix 的平台上，运行 `npm run build` 更新 __dist/ramda.js__ 和 __dist/ramda.min.js__
+* 在 Windows 上，将 `scripts/build --complete` 的运行结果输出到一个临时文件中，然后将该文件重命名为 __dist/ramda.js__.
 
-#### Partial Builds
+#### 部分构建库 
 
-It is possible to build Ramda with a subset of the functionality to reduce its file size. Ramda's build system supports this with command line flags. For example if you're using `R.compose`, `R.reduce`, and `R.filter` you can create a partial build with:
+可以生成一个 Ramda 的函数子集来减小库文件大小。Ramda 的构建系统通过命令行标志来支持部分构建。例如，如果要使用 `R.compose`, `R.reduce`, and `R.filter` ，可以创建一个部分构建：
 
     ./scripts/build -- src/compose.js src/reduce.js src/filter.js > dist/ramda.custom.js
 
-This requires having Node/io.js installed. 
+上述命令需要安装 Node/io.js。
 
-Documentation
+文档
 -------------
 
-Please review the [API documentation](http://ramdajs.com/docs/).
+请查看 [API 文档](http://ramdajs.com/docs/).
 
-The Name
+关于名字
 --------
 
-Ok, so we like sheep.  That's all.  It's a short name, not already 
-taken.  It could as easily have been `eweda`, but then we would be 
-forced to say _eweda lamb!_, and no one wants that.  For non-English 
-speakers, lambs are baby sheep, ewes are female sheep, and rams are male 
-sheep.  So perhaps ramda is a grown-up lambda... but probably not.
-
+好吧，因为我们喜欢羊，就是这样。名字要简洁、且未被占用。它可以是 `eweda`，然后我们被迫叫它 _eweda lamb!_，但没有想要这个名字。对于非英语国家的人，lambs 是羔羊，ewes 是母羊，rams 是公羊。所以 ramda 可能是一个成年的 lambda ...，也可能不是。（双关，既有 lambda 表示式的意思，也有羔羊的意思，愿 Ramda 发展壮大）
 
 
 
