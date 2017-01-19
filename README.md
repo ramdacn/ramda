@@ -17,6 +17,7 @@ Why Ramda?
 
 目前已经存在许多优秀的函数式的库。通常，它们作为通用工具包，适合在多种范式下工作。Ramda 有一个更专注的目标。我们想要一个专门为函数式编程风格设计的库，一个更容易创建函数式 pipeline、且从不改变用户数据的库。
 
+
 What's different?
 -----------------
 
@@ -29,6 +30,7 @@ Ramda 主要的独特性质如下：
 * Ramda 函数的参数的排列更便于柯里化。通常最后提供要操作的数据。
 
 * 最后两点一起，使得将多个函数构建为简单的函数序列变得非常容易，每个函数对数据进行变换并将结果传递给下一个函数。Ramda 的设计支持这种风格的编程。
+
 
 简介
 -------------
@@ -122,49 +124,44 @@ var R = require('ramda');
 关于名字
 --------
 
-好吧，因为我们喜欢羊，就是这样。名字要简洁、且未被占用。它可以是 `eweda`，然后我们被迫叫它 _eweda lamb!_，但没有想要这个名字。对于非英语国家的人，lambs 是羔羊，ewes 是母羊，rams 是公羊。所以 ramda 可能是一个成年的 lambda ...，也可能不是。（双关，既有 lambda 表示式的意思，也有羔羊的意思，愿 Ramda 发展壮大）
+好吧，因为我们喜欢羊，就是这样。名字要简洁、且未被占用。它可以是 `eweda`，然后我们被迫叫它 _eweda lamb!_ ，但没有想要这个名字。对于非英语国家的人，lambs 是羔羊，ewes 是母羊，rams 是公羊。所以 ramda 可能是一个成年的 lambda ...，也可能不是。（双关，既有 lambda 表示式的意思，也有羔羊的意思，愿 Ramda 发展壮大）
 
 
 
-Running The Test Suite
+
+运行测试套件
 ----------------------
 
-**Console:**
+**控制台（Console）:**
 
-To run the test suite from the console, you need to have `mocha` installed:
+要从控制台运行测试套件，需要安装 `mocha` ：
 
     npm install -g mocha
 
-Then from the root of the project, you can just call
+然后在项目根目录下，可以调用
 
     mocha
 
-Alternately, if you've installed the dependencies, via:
+或者，如果已通过下面命令安装依赖：
 
     npm install
 
-then you can run the tests (and get detailed output) by running:
+那么你可以通过下面命令运行测试（并获得详细的输出）：
 
     npm test
 
-**Browser:**
+**浏览器（Browser）:**
 
-To run the test suite in the browser, you can simply open `test/index.html`.
+在浏览器中运行测试套件，只需打开 `test/index.html`。
 
-Alternatively, you can use [testem](https://github.com/airportyh/testem) to
-test across different browsers (or even headlessly), with livereloading of
-tests too. Install testem (`npm install -g testem`) and run `testem`. Open the
-link provided in your browser and you will see the results in your terminal.
+或者，可以使用 [testem](https://github.com/airportyh/testem) 在不同的浏览器（甚至是无界面浏览器）上测试，也可以使用测试的实时重载特性。 安装 testem （`npm install -g testem`）并运行 testem。 打开浏览器中提供的链接，将会在终端中看到结果。
 
-If you have _PhantomJS_ installed, you can run `testem -l phantomjs` to run the
-tests completely headlessly.
+如果已安装 _PhantomJS_，则可以运行 `testem -l phantomjs`，以完全无界面方式地运行测试。
 
 
 
 
-Acknowledgements
+致谢
 -----------------
 
-Thanks to [J. C. Phillipps](http://www.jcphillipps.com) for the Ramda logo.
-Ramda logo artwork &copy; 2014 J. C. Phillipps. Licensed Creative Commons 
-[CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/).
+感谢 [J. C. Phillipps](http://www.jcphillipps.com) 为 Ramda 设计的标志。 Ramda 标志艺术品 &copy; 2014 J. C. Phillipps。 创作共享协议 [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/).
