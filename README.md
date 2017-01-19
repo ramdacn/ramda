@@ -27,7 +27,7 @@ Ramda 主要的独特性质如下：
 
 * Ramda 函数本身都是自动柯里化的。这可以让你在只提供部分参数的情况下，轻松地在已有函数的基础上创建新函数。
 
-* Ramda 函数的参数的排列更便于柯里化。通常最后提供要操作的数据。
+* Ramda 函数参数的排列顺序更便于柯里化。通常最后提供要操作的数据。
 
 * 最后两点一起，使得将多个函数构建为简单的函数序列变得非常容易，每个函数对数据进行变换并将结果传递给下一个函数。Ramda 的设计支持这种风格的编程。
 
@@ -46,15 +46,15 @@ Ramda 主要的独特性质如下：
 理念
 ----------
 
-使用 Ramda 时，应该感觉像使用原生 JavaScript 一样，它是实用的且函数式的 JavaScript。Ramda 没有在字符串中引入 lambda 表达式，也没有借用 consed 列表，也不是要移植所有的 Clojure 函数。
+使用 Ramda 时，应该感觉像使用原生 JavaScript 一样，它是实用且函数式的 JavaScript。Ramda 没有在字符串中引入 lambda 表达式，也没有借用 consed 列表，也不是要移植所有的 Clojure 函数。
 
 Ramda 基本的数据结构都是原生 JavaScript 对象，我们常用的集合是 JavaScript 的数组。Ramda 还保留了许多其他原生 JavaScript 特性，例如，函数是具有属性的对象。
 
-函数式编程很大一部分主题是关于对象不变性和函数无副作用两方面。虽然 Ramda 没有特别加强这方面实现，但它足以使这两方面在编程时尽可能自然、方便。
+函数式编程很大一部分主题是关于对象不变性和函数无副作用两方面。虽然 Ramda 没有特别加强这方面，但它足以使这两方面在编程时尽可能自然、方便。
 
-Ramda 的目标是让实现（编程和 API 实现）简洁、优雅。但 API 为王。谓词我们牺牲了大量优雅、简洁的实现。
+Ramda 的目标是让实现（编程和 API 实现）简洁、优雅。但 API 为王。为此我们牺牲了大量优雅、简洁的实现。
 
-最后，Ramda 非常注重运行性能。可靠和快速的实现胜过强调函数式的纯度。（需要综合考虑性能和代码实现优雅性两方面。如 [Eweda](https://github.com/CrossEye/eweda) ，过于强调实现的简洁优雅，而失去了实用价值）
+最后，Ramda 非常注重运行性能。可靠和快速的实现胜过过于强调函数式的纯度。（需要综合考虑性能和代码实现优雅性两方面。如 [Eweda](https://github.com/CrossEye/eweda) ，过于强调实现的简洁优雅，而失去了实用价值）
 
 安装
 ------------
@@ -99,18 +99,18 @@ var R = require('ramda');
 
 （注意，使用 `最新` 的版本可能会带来很大的风险，ramda API 的更改可能会对以前代码造成破坏。）
 
-这些脚本标签在浏览器中添加一个全局变量 `R`。
+这些脚本标签会在浏览器中添加一个全局变量 `R`。
 
 或者也可以借助 [the bookmarklet](https://github.com/ramda/ramda/blob/master/BOOKMARKLET.md)，将 ramda 注入到几乎任何不安全的网站。
 
 ### 构建库
 
-* 在基于 Unix 的平台上，运行 `npm run build` 更新 __dist/ramda.js__ 和 __dist/ramda.min.js__
+* 在基于 Unix 的平台上，运行 `npm run build` 来更新 __dist/ramda.js__ 和 __dist/ramda.min.js__
 * 在 Windows 上，将 `scripts/build --complete` 的运行结果输出到一个临时文件中，然后将该文件重命名为 __dist/ramda.js__.
 
 #### 部分构建库 
 
-可以生成一个 Ramda 的函数子集来减小库文件大小。Ramda 的构建系统通过命令行标志来支持部分构建。例如，如果要使用 `R.compose`, `R.reduce`, and `R.filter` ，可以创建一个部分构建：
+可以生成一个 Ramda 的函数子集来减小库文件大小。Ramda 的构建系统通过命令行标志来支持部分构建。例如，如果要使用 `R.compose`, `R.reduce`, and `R.filter` ，可以创建一个部分构建库：
 
     ./scripts/build -- src/compose.js src/reduce.js src/filter.js > dist/ramda.custom.js
 
@@ -124,7 +124,7 @@ var R = require('ramda');
 关于名字
 --------
 
-好吧，因为我们喜欢羊，就是这样。名字要简洁、且未被占用。它可以是 `eweda`，然后我们被迫叫它 _eweda lamb!_ ，但没有想要这个名字。对于非英语国家的人，lambs 是羔羊，ewes 是母羊，rams 是公羊。所以 ramda 可能是一个成年的 lambda ...，也可能不是。（双关，既有 lambda 表示式的意思，也有羔羊的意思，愿 Ramda 发展壮大）
+好吧，因为我们喜欢羊，就是这样。名字要简洁、且未被占用。它可以是 `eweda`，然后我们被迫叫它 _eweda lamb!_ ，但没有想要这个名字。对于非英语国家的人，lambs 是羔羊，ewes 是母羊，rams 是公羊。所以 ramda 可能是一个成年的 lambda ...，也可能不是。（双关，既有 lambda 表示式的意思，也有羔羊的意思。愿 Ramda 发展壮大）
 
 
 
@@ -156,7 +156,7 @@ var R = require('ramda');
 
 或者，可以使用 [testem](https://github.com/airportyh/testem) 在不同的浏览器（甚至是无界面浏览器）上测试，也可以使用测试的实时重载特性。 安装 testem （`npm install -g testem`）并运行 testem。 打开浏览器中提供的链接，将会在终端中看到结果。
 
-如果已安装 _PhantomJS_，则可以运行 `testem -l phantomjs`，以完全无界面方式地运行测试。
+如果已安装 _PhantomJS_，则可以运行 `testem -l phantomjs`，以完全无界面方式运行测试。
 
 
 
