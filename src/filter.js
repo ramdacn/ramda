@@ -8,8 +8,8 @@ var keys = require('./keys');
 
 
 /**
- * 接收一个 `predicate` 方法和一个 `filterable` 元素作为参数，返回一个新的相同类型的但
- * 是只包含满足 `predicate` 方法成员的 `filterable` 元素。
+ * 接收一个 `predicate` 和一个 `filterable` 元素作为参数，
+ * 返回一个新的相同类型的但是只包含满足 `predicate` 成员的 `filterable` 元素。
  *
  * 若第二个参数自身存在 `empty` 方法，则调用自身的 `empty` 方法。
  *

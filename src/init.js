@@ -2,7 +2,7 @@ var slice = require('./slice');
 
 
 /**
- * Returns all but the last element of the given list or string.
+ * 返回给定 list 或 string 去除最后一个元素后的结果。
  *
  * @func
  * @memberOf R

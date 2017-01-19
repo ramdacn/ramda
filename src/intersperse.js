@@ -3,9 +3,9 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Creates a new list with the separator interposed between elements.
+ * 创建一个新的列表，该列表会将给定的 separator 元素插入到列表每两个元素之间。
  *
- * Dispatches to the `intersperse` method of the second argument, if present.
+ * 若第二个参数自身存在 `intersperse` 方法，则调用自身的 `intersperse` 方法。
  *
  * @func
  * @memberOf R

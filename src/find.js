@@ -4,7 +4,7 @@ var _xfind = require('./internal/_xfind');
 
 
 /**
- * 返回给定的列表中第一个满足 `predicate` 方法的元素，如果任何元素都不满足条件则返回 `undefined` 。
+ * 返回给定的列表中第一个满足 `predicate` 的元素，如果任何元素都不满足条件则返回 `undefined` 。
  *
  * 若第二个参数自身存在 `find` 方法，则调用自身的 `find` 方法。
  *

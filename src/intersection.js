@@ -6,8 +6,7 @@ var uniq = require('./uniq');
 
 
 /**
- * Combines two lists into a set (i.e. no duplicates) composed of those
- * elements common to both lists.
+ * 返回由两个列表中相同元素组成的列表。
  *
  * @func
  * @memberOf R

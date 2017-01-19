@@ -2,9 +2,8 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * Inserts the supplied element into the list, at index `index`. _Note that
- * this is not destructive_: it returns a copy of the list with the changes.
- * <small>No lists have been harmed in the application of this function.</small>
+ * 将给定的元素插入到列表指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组的拷贝。
+ * <small>应用中的所有列表不会因为这个方法受到任何副作用影响。</small>
  *
  * @func
  * @memberOf R

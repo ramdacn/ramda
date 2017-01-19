@@ -1561,9 +1561,9 @@
 
     /**
      *
-     * 返回一个新的 list，这个 list 会舍弃所有满足 `predicate` 方法的头部元素。
+     * 返回一个新的 list，这个 list 会舍弃所有满足 `predicate` 的头部元素。
      *
-     * 从左向右依次对list中的元素执行 `predicate` 方法，直至返回一个假值。`predicate` 方法需要作为第一个参数传入。
+     * 从左向右依次对list中的元素执行 `predicate` ，直至返回一个假值。`predicate` 需要作为第一个参数传入。
      *
      * 若第二个参数自身存在 `dropWhile` 方法，则调用自身的 `dropWhile` 方法。
      *
@@ -1660,7 +1660,7 @@
     });
 
     /**
-     * 返回给定的列表中第一个满足 `predicate` 方法的元素，如果任何元素都不满足条件则返回 `undefined` 。
+     * 返回给定的列表中第一个满足 `predicate` 的元素，如果任何元素都不满足条件则返回 `undefined` 。
      *
      * 若第二个参数自身存在 `find` 方法，则调用自身的 `find` 方法。
      *
@@ -1694,7 +1694,7 @@
     }));
 
     /**
-     * 返回给定的列表中第一个满足 `predicate` 方法的元素的索引下标，如果任何元素都满足条件则返回 `-1` 。
+     * 返回给定的列表中第一个满足 `predicate` 的元素的索引下标，如果任何元素都不满足条件则返回 `-1` 。
      *
      * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -1727,7 +1727,7 @@
     }));
 
     /**
-     * 返回给定的列表中最后一个满足 `predicate` 方法的元素，如果任何元素都不满足条件则返回 `undefined` 。
+     * 返回给定的列表中最后一个满足 `predicate` 的元素，如果任何元素都不满足条件则返回 `undefined` 。
      *
      * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -1758,7 +1758,7 @@
     }));
 
     /**
-     * 返回给定的列表中最后一个满足 `predicate` 方法的元素的索引下标，如果任何元素都不满足条件则返回 `-1` 。
+     * 返回给定的列表中最后一个满足 `predicate` 的元素的索引下标，如果任何元素都不满足条件则返回 `-1` 。
      *
      * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -1832,7 +1832,7 @@
     }));
 
     /**
-     * 从一组只包含键值对元素的列表创建一个新的 `object`。如果一个 `key` 出现了多次，最右边的键值对会被保留。
+     * 从一系列只包含键值对元素的列表创建一个新的 `object`。如果一个 key 出现了多次，最右边的键值对会被保留。
      *
      * @func
      * @memberOf R
@@ -1857,8 +1857,7 @@
     });
 
     /**
-     * Takes a list and returns a list of lists where each sublist's elements are
-     * all "equal" according to the provided equality function.
+     * 接收一个列表，并返回一个包含一系列 `equal` 元素子列表的列表。`equal` 能力由给定的函数定义。
      *
      * @func
      * @memberOf R
@@ -1898,8 +1897,7 @@
     });
 
     /**
-     * Returns `true` if the first argument is greater than the second; `false`
-     * otherwise.
+     * 如果第一个参数大于第二个参数则返回 `true`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -1923,8 +1921,7 @@
     });
 
     /**
-     * Returns `true` if the first argument is greater than or equal to the second;
-     * `false` otherwise.
+     * 如果第一个参数大于或等于第二个参数则返回 `true`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -1948,7 +1945,7 @@
     });
 
     /**
-     * Returns whether or not an object has an own property with the specified name
+     * 如果一个对象具有指定的属性则返回 `true`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -1974,8 +1971,7 @@
     var has = _curry2(_has);
 
     /**
-     * Returns whether or not an object or its prototype chain has a property with
-     * the specified name
+     * 如果一个对象或其原型链具有指定的属性则返回 `true`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -2004,9 +2000,9 @@
     });
 
     /**
-     * Returns true if its arguments are identical, false otherwise. Values are
-     * identical if they reference the same memory. `NaN` is identical to `NaN`;
-     * `0` and `-0` are not identical.
+     * 如果给定的两个参数是完全相同的则返回 `true`，否则返回 `false`。
+     * 如果它们的引用指向相同的内存地址，那它们也是完全相同的。
+     * `NaN` 和 `NaN` 是完全相同的；`0` 和 `-0` 不是完全相同的。
      *
      * @func
      * @memberOf R
@@ -2043,8 +2039,7 @@
     });
 
     /**
-     * A function that does nothing but return the parameter supplied to it. Good
-     * as a default or placeholder function.
+     * 一个不做任何事情而只是把给定参数原封不动返回的方法。适合用作默认或者占位方法。
      *
      * @func
      * @memberOf R
@@ -2064,8 +2059,8 @@
     var identity = _curry1(_identity);
 
     /**
-     * Creates a function that will process either the `onTrue` or the `onFalse`
-     * function depending upon the result of the `condition` predicate.
+     * 接收 `condition`、`onTrue` 和 `onFalse` 三个函数作为参数；
+     * 类似条件表达式，如果 `condition` 函数返回的结果为 `true` 则执行 `onTrue` 函数；否则执行 `onFalse` 函数。
      *
      * @func
      * @memberOf R
@@ -2095,7 +2090,7 @@
     });
 
     /**
-     * Increments its argument.
+     * 返回参数加1的结果。
      *
      * @func
      * @memberOf R
@@ -2112,9 +2107,8 @@
     var inc = add(1);
 
     /**
-     * Inserts the supplied element into the list, at index `index`. _Note that
-     * this is not destructive_: it returns a copy of the list with the changes.
-     * <small>No lists have been harmed in the application of this function.</small>
+     * 将给定的元素插入到列表指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组的拷贝。
+     * <small>应用中的所有列表不会因为这个方法受到任何副作用影响。</small>
      *
      * @func
      * @memberOf R
@@ -2137,9 +2131,8 @@
     });
 
     /**
-     * Inserts the sub-list into the list, at index `index`. _Note that this is not
-     * destructive_: it returns a copy of the list with the changes.
-     * <small>No lists have been harmed in the application of this function.</small>
+     * 将给定的子列表插入到列表指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组的拷贝。
+     * <small>应用中的所有列表不会因为这个方法受到任何副作用影响。</small>
      *
      * @func
      * @memberOf R
@@ -2160,9 +2153,9 @@
     });
 
     /**
-     * Creates a new list with the separator interposed between elements.
+     * 创建一个新的列表，该列表会将给定的 separator 元素插入到列表每两个元素之间。
      *
-     * Dispatches to the `intersperse` method of the second argument, if present.
+     * 若第二个参数自身存在 `intersperse` 方法，则调用自身的 `intersperse` 方法。
      *
      * @func
      * @memberOf R
@@ -5546,7 +5539,7 @@
     });
 
     /**
-     * 返回给定参数去除前 `n` 个元素后的结果，该参数可以是 list，string 或者 transducer/transformer （或者具有 drop 方法的对象）。
+     * 返回给定参数去除前 `n` 个元素后的结果，该参数可以是 list，string 或者 transducer/transformer（或者具有 drop 方法的对象）。
      *
      * 若第二个参数自身存在 `drop` 方法，则调用自身的 `drop` 方法。
      *
@@ -5575,7 +5568,7 @@
     }));
 
     /**
-     * 返回给定 list 去除末尾 `n` 个元素后的结果
+     * 返回给定 list 去除末尾 `n` 个元素后的结果。
      *
      * @func
      * @memberOf R
@@ -5598,9 +5591,9 @@
     var dropLast = _curry2(_dispatchable([], _xdropLast, _dropLast));
 
     /**
-     * 返回一个新的 list，这个 list 会舍弃所有满足 `predicate` 方法的尾部元素。
+     * 返回一个新的 list，这个 list 会舍弃所有满足 `predicate` 的尾部元素。
      *
-     * 从右向左依次对list中的元素执行 `predicate` 方法，直至返回一个 `falsy` 值。`predicate` 方法需要作为第一个参数传入。
+     * 从右向左依次对list中的元素执行 `predicate`，直至返回一个 `falsy` 值。`predicate` 需要作为第一个参数传入。
      *
      * @func
      * @memberOf R
@@ -5648,8 +5641,8 @@
     });
 
     /**
-     * 接收一个 `predicate` 方法和一个 `filterable` 元素作为参数，返回一个新的相同类型的但
-     * 是只包含满足 `predicate` 方法成员的 `filterable` 元素。
+     * 接收一个 `predicate` 和一个 `filterable` 元素作为参数，
+     * 返回一个新的相同类型的但是只包含满足 `predicate` 成员的 `filterable` 元素。
      *
      * 若第二个参数自身存在 `empty` 方法，则调用自身的 `empty` 方法。
      *
@@ -5762,8 +5755,7 @@
     });
 
     /**
-     * Returns the first element of the given list or string. In some libraries
-     * this function is named `first`.
+     * 返回给定的 list 或者 string 的第一个元素。在一些库中这个方法被称为 `first`。
      *
      * @func
      * @memberOf R
@@ -5785,7 +5777,7 @@
     var head = nth(0);
 
     /**
-     * Returns all but the last element of the given list or string.
+     * 返回给定 list 或 string 去除最后一个元素后的结果。
      *
      * @func
      * @memberOf R
@@ -5811,9 +5803,7 @@
     var init = slice(0, -1);
 
     /**
-     * Combines two lists into a set (i.e. no duplicates) composed of those
-     * elements common to both lists. Duplication is determined according to the
-     * value returned by applying the supplied predicate to two list elements.
+     * 返回由两个列表中相同元素组成的列表。判断元素是否相同由给定的 `predicate` 来定义。
      *
      * @func
      * @memberOf R
@@ -5907,8 +5897,7 @@
     });
 
     /**
-     * Same as R.invertObj, however this accounts for objects with duplicate values
-     * by putting the values into an array.
+     * 和 R.invertObj 等同，但是对于具有多个相同值的 object 的情况，该方法会将这些值对应键存到一个数组中。
      *
      * @func
      * @memberOf R
@@ -5944,9 +5933,7 @@
     });
 
     /**
-     * Returns a new object with the keys of the given object as values, and the
-     * values of the given object, which are coerced to strings, as keys. Note
-     * that the last key found is preferred when handling the same value.
+     * 返回一个键值交换后的新的 object，交换后的键会被强制转换为 string。注意，如果原 object 存在多个相同的值那么最后一个会被保留。
      *
      * @func
      * @memberOf R
@@ -7147,7 +7134,7 @@
 
     /**
      *
-     * 返回一个没有任何连续重复元素的 list。第一个参数提供的 `predicate` 方法被用来检验 list 中相邻的两个元素是否相等。一系列相等元素中的第一个元素会被保留。
+     * 返回一个没有任何连续重复元素的 list。第一个参数提供的 `predicate` 被用来检验 list 中相邻的两个元素是否相等。一系列相等元素中的第一个元素会被保留。
      *
      * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -7204,7 +7191,7 @@
 
     /**
      *
-     * 借助于 `R.equals` 方法判断两个object的指定属性是否相等。可以用作柯里化的 predicate 。
+     * 借助于 `R.equals` 方法判断两个object的指定属性是否相等。可以用作柯里化的 `predicate` 。
      *
      * @func
      * @memberOf R
@@ -7228,13 +7215,12 @@
     });
 
     /**
-     * Splits a list into sub-lists stored in an object, based on the result of
-     * calling a String-returning function on each element, and grouping the
-     * results according to values returned.
+     * 接收一个返回值为字符串的函数和一个列表作为参数，对列表中的所有元素执行该函数，
+     * 然后根据函数返回值来聚合列表中的子元素。最终将一个列表分割成一系列的子列表然后存放到一个对象中。
      *
-     * Dispatches to the `groupBy` method of the second argument, if present.
+     * 若第二个参数自身存在 `groupBy` 方法，则调用自身的 `groupBy` 方法。
      *
-     * Acts as a transducer if a transformer is given in list position.
+     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -7276,12 +7262,10 @@
     }, null)));
 
     /**
-     * Given a function that generates a key, turns a list of objects into an
-     * object indexing the objects by the given key. Note that if multiple
-     * objects generate the same value for the indexing key only the last value
-     * will be included in the generated object.
+     * 根据给定函数生成的键，将一个包含多个对象的列表转换为一个包含多个以该键对应值为索引对象的新对象。
+     * 注意如果列表中多个对象根据该键索引的值相同，那么只有最后一个对象会被保留。
      *
-     * Acts as a transducer if a transformer is given in list position.
+     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -7302,9 +7286,7 @@
     }, null);
 
     /**
-     * Returns the position of the first occurrence of an item in an array, or -1
-     * if the item is not included in the array. `R.equals` is used to determine
-     * equality.
+     * 返回数组中第一次出现目标元素的索引下标，如果目标元素不存在于数组中，则返回 `-1`。借助 `R.equals` 来判断元素是否相等。
      *
      * @func
      * @memberOf R
@@ -8724,8 +8706,7 @@
     var uniq = uniqBy(identity);
 
     /**
-     * Combines two lists into a set (i.e. no duplicates) composed of those
-     * elements common to both lists.
+     * 返回由两个列表中相同元素组成的列表。
      *
      * @func
      * @memberOf R

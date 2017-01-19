@@ -2,12 +2,10 @@ var reduceBy = require('./reduceBy');
 
 
 /**
- * Given a function that generates a key, turns a list of objects into an
- * object indexing the objects by the given key. Note that if multiple
- * objects generate the same value for the indexing key only the last value
- * will be included in the generated object.
+ * 根据给定函数生成的键，将一个包含多个对象的列表转换为一个包含多个以该键对应值为索引对象的新对象。
+ * 注意如果列表中多个对象根据该键索引的值相同，那么只有最后一个对象会被保留。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
  *
  * @func
  * @memberOf R

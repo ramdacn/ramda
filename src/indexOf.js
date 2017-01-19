@@ -4,9 +4,7 @@ var _isArray = require('./internal/_isArray');
 
 
 /**
- * Returns the position of the first occurrence of an item in an array, or -1
- * if the item is not included in the array. `R.equals` is used to determine
- * equality.
+ * 返回数组中第一次出现目标元素的索引下标，如果目标元素不存在于数组中，则返回 `-1`。借助 `R.equals` 来判断元素是否相等。
  *
  * @func
  * @memberOf R
