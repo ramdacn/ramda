@@ -5,19 +5,19 @@ var reject = require('./reject');
 
 
 /**
- * Returns a new list without values in the first argument.
- * `R.equals` is used to determine equality.
+ * 返回一个集合，其元素都不在第1个输入集合中。
+ * 比较函数是`R.equals`。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 如果输入是 transformer ，那么按照 transducer 的方式执行。
  *
  * @func
  * @memberOf R
  * @since v0.19.0
  * @category List
  * @sig [a] -> [a] -> [a]
- * @param {Array} list1 The values to be removed from `list2`.
- * @param {Array} list2 The array to remove values from.
- * @return {Array} The new array without values in `list1`.
+ * @param {Array} list1 需要从`list2`中移除的值
+ * @param {Array} list2 带移除的集合
+ * @return {Array} 没有`list1`中元素的集合
  * @see R.transduce
  * @example
  *

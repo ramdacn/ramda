@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 对一个对象执行一个函数，然后返回这个对象。
+ * 对一个输入执行一个函数，然后返回这个输入。
  *
  * @func
  * @memberOf R

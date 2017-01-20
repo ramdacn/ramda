@@ -11,7 +11,7 @@ var _curry3 = require('./internal/_curry3');
  * @category Logic
  * @sig (a -> Boolean) -> (a -> a) -> a -> a
  * @param {Function} pred 条件函数
- * @param {Function} whenFalseFn 当`pred`返回结果为 false 时执行的函数
+ * @param {Function} whenFalseFn 当`pred`返回结果为 false 时调用的函数
  * @param {*} x 作为参数传入`pred`用于判断，如果需要作为参数传入`whenFalseFn`
  * @return {*} `x`或者`whenFalseFn`的执行结果
  * @see R.ifElse, R.when

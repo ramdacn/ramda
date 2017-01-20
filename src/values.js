@@ -3,17 +3,17 @@ var keys = require('./keys');
 
 
 /**
- * Returns a list of all the enumerable own properties of the supplied object.
- * Note that the order of the output array is not guaranteed across different
- * JS platforms.
+ * 输入一个对象，返回所有可枚举的属性值。
+ *
+ * 注意：在不同的JS运行环境输出数组的顺序可能不一致。
  *
  * @func
  * @memberOf R
  * @since v0.1.0
  * @category Object
  * @sig {k: v} -> [v]
- * @param {Object} obj The object to extract values from
- * @return {Array} An array of the values of the object's own properties.
+ * @param {Object} obj 需要展开的对象
+ * @return {Array} 对象可枚举属性的值的数组
  * @example
  *
  *      R.values({a: 1, b: 2, c: 3}); //=> [1, 2, 3]

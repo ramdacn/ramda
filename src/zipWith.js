@@ -2,20 +2,18 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * Creates a new list out of the two supplied by applying the function to each
- * equally-positioned pair in the lists. The returned list is truncated to the
- * length of the shorter of the two input lists.
+ * 两个集合对应位置元素通过一个函数处理，生成一个新的元素的集合。
+ * 生成的集合长度取较短的输入集合的长度。
  *
  * @function
  * @memberOf R
  * @since v0.1.0
  * @category List
  * @sig (a,b -> c) -> [a] -> [b] -> [c]
- * @param {Function} fn The function used to combine the two elements into one value.
- * @param {Array} list1 The first array to consider.
- * @param {Array} list2 The second array to consider.
- * @return {Array} The list made by combining same-indexed elements of `list1` and `list2`
- *         using `fn`.
+ * @param {Function} fn 把两个元素合并成一个值的函数
+ * @param {Array} list1 第1个的集合
+ * @param {Array} list2 第2个的集合
+ * @return {Array} `list1` 和 `list2` 对应位置的元素对通过`fn`处理后的集合
  * @example
  *
  *      var f = (x, y) => {

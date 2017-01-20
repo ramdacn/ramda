@@ -5,12 +5,10 @@ var where = require('./where');
 
 
 /**
- * Takes a spec object and a test object; returns true if the test satisfies
- * the spec, false otherwise. An object satisfies the spec if, for each of the
- * spec's own properties, accessing that property of the object gives the same
- * value (in `R.equals` terms) as accessing that property of the spec.
+ * 输入参考对象和待检测对象，如果满足参考值则返回 true，否则返回 false。
+ * 如果待检测对象的每个属性值都等于（使用`R.equals`来判断）参考对象对应的属性值，那么这个对象就满足参考对象。
  *
- * `whereEq` is a specialization of [`where`](#where).
+ * `whereEq`是[`where`](#where)的一个特殊形式。
  *
  * @func
  * @memberOf R
