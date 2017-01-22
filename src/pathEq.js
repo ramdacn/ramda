@@ -4,7 +4,7 @@ var path = require('./path');
 
 
 /**
- * 确定对象的嵌套路径上是否有某个明确的value值，结合 R.path 和 R.equals。
+ * 确定对象的嵌套路径上是否有某个明确的 value 值，结合 R.path 和 R.equals。
  * 最常用的场景：过滤一个 list。
  *
  * @func

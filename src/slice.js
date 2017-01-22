@@ -4,9 +4,9 @@ var _curry3 = require('./internal/_curry3');
 
 /**
  * 对于给出的列表或者字符串（或者带有 `slice` 方法的对象），返回
- * 从`fromIndex`（包括）到 `toIndex`（不包括）的元素
+ * 从 `fromIndex`（包括）到 `toIndex`（不包括）的元素
  *
- * 如果第三个参数存在`slice`方法，则调用其自身的 `slice`。
+ * 如果第三个参数存在 `slice` 方法，则调用其自身的 `slice`。
  *
  * @func
  * @memberOf R
