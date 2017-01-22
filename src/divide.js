@@ -11,7 +11,7 @@ var _curry2 = require('./internal/_curry2');
  * @sig Number -> Number -> Number
  * @param {Number} a The first value.
  * @param {Number} b The second value.
- * @return {Number}
+ * @return {Number} The result of `a / b`.
  * @see R.multiply
  * @example
  *

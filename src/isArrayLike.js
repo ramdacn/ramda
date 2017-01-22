@@ -4,7 +4,7 @@ var _isString = require('./internal/_isString');
 
 
 /**
- * Tests whether or not an object is similar to an array.
+ * 检测一个对象是否是一个类数组的元素。
  *
  * @func
  * @memberOf R

@@ -7,7 +7,7 @@ var _curry2 = require('./internal/_curry2');
  *
  * `fn` 接收一个参数： *(value)*。
  *
- * 注意: `R.forEach` 并不会跳过已删除的或者未赋值的下标（sparse arrays），这一点和原生的
+ * 注意: `R.forEach` 并不会跳过已删除的或者未赋值的索引（sparse arrays），这一点和原生的
  *  `Array.prototype.forEach` 方法不用. 获取更多相关信息, 请查阅:
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Description
  *
