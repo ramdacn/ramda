@@ -7,9 +7,7 @@ var _curry2 = require('./internal/_curry2');
  *
  * `fn` 接收一个参数： *(value)*。
  *
- * 注意: `R.forEach` 并不会跳过已删除的或者未赋值的索引（sparse arrays），这一点和原生的
- *  `Array.prototype.forEach` 方法不同. 获取更多相关信息, 请查阅:
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Description
+ * 注意: `R.forEach` 并不会跳过已删除的或者未赋值的索引（sparse arrays），这一点和原生的 `Array.prototype.forEach` 方法不同. 获取更多相关信息, 请查阅: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Description
  *
  * 同样要注意, 不同于 `Array.prototype.forEach`，Ramda的 `forEach`返回一个新的数组。
  * 在其他一些类库中该方法被命名为 `each`.

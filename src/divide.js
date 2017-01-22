@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 两数相除. 等同于 `a / b`.
+ * 两数相除. 等价于 `a / b`.
  *
  * @func
  * @memberOf R

@@ -1534,7 +1534,7 @@
     });
 
     /**
-     * 两数相除. 等同于 `a / b`.
+     * 两数相除. 等价于 `a / b`.
      *
      * @func
      * @memberOf R
@@ -1794,9 +1794,7 @@
      *
      * `fn` 接收一个参数： *(value)*。
      *
-     * 注意: `R.forEach` 并不会跳过已删除的或者未赋值的索引（sparse arrays），这一点和原生的
-     *  `Array.prototype.forEach` 方法不同. 获取更多相关信息, 请查阅:
-     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Description
+     * 注意: `R.forEach` 并不会跳过已删除的或者未赋值的索引（sparse arrays），这一点和原生的 `Array.prototype.forEach` 方法不同. 获取更多相关信息, 请查阅: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Description
      *
      * 同样要注意, 不同于 `Array.prototype.forEach`，Ramda的 `forEach`返回一个新的数组。
      * 在其他一些类库中该方法被命名为 `each`.
@@ -2107,7 +2105,7 @@
     var inc = add(1);
 
     /**
-     * 将给定的元素插入到列表指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组的拷贝。
+     * 将给定的元素插入到列表指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组拷贝。
      * <small>应用中的所有列表不会因为这个方法受到任何副作用影响。</small>
      *
      * @func
@@ -2131,7 +2129,7 @@
     });
 
     /**
-     * 将给定的子列表插入到列表指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组的拷贝。
+     * 将给定的子列表插入到列表指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组拷贝。
      * <small>应用中的所有列表不会因为这个方法受到任何副作用影响。</small>
      *
      * @func
@@ -7185,7 +7183,7 @@
 
     /**
      *
-     * 借助于 `R.equals` 方法判断两个object的指定属性是否相等。可以用作柯里化的 `predicate` 。
+     * 借助于 `R.equals` 方法判断两个 object 的指定属性是否相等。可以用作柯里化的 `predicate` 。
      *
      * @func
      * @memberOf R
