@@ -40,3 +40,21 @@
 5. 如果遇到原文错误，可以直接给ramda仓库提pr
 
 6. 反引号 "`" 包裹的内容，与其他元素之间空格隔开。
+
+7. takes 统一为 “接受” ？
+
+8. filterable ***able 等是翻译，还是保留？
+
+9. given 统一为 “给定” ， specified -> 特定 ?
+
+10. default -> 缺省 or 默认 ？
+
+11. otherwise -> 否则，并且否则前面用 分号 ；隔开
+
+12. copy 拷贝？复制？
+
+13. 每段话如无特殊情况以句号结尾，检查一下，（也有可能是冒号：，然后下面是解释）
+
+14. is equivalent to -> 等价于 or 相当于
+
+15. left-to-right -> 从左往（到、向）右，right-to-left
