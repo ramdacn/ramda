@@ -2,8 +2,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Acts as multiple `prop`: array of keys in, array of values out. Preserves
- * order.
+ * 多个 `prop`：输入为 key 的数组，输出为 value 的数组。
+ * 输出的值顺序为相应的 key 的顺序。
  *
  * @func
  * @memberOf R

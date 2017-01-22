@@ -2,11 +2,11 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Takes a list and a predicate and returns a pair of lists with the following properties:
+ * 接收一个列表，和一个 predicate ，返回一对列表，且有以下特征：
  *
- *  - the result of concatenating the two output lists is equivalent to the input list;
- *  - none of the elements of the first output list satisfies the predicate; and
- *  - if the second output list is non-empty, its first element satisfies the predicate.
+ *  - 两个输出的 list 拼接起来与输入的 list 相同。
+ *  - 第一个输出的 list 中的元素都不满足 predicate；
+ *  - 如果第二个输出的 list 是非空的，则它的第一个元素满足 predicate。
  *
  * @func
  * @memberOf R

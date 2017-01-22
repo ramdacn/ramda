@@ -3,8 +3,7 @@ var _isString = require('./internal/_isString');
 
 
 /**
- * Returns a new list or string with the elements or characters in reverse
- * order.
+ * 返回一个新的列表或者字符串，元素或者字符顺序与原来相反。
  *
  * @func
  * @memberOf R

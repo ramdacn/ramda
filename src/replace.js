@@ -2,7 +2,7 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * Replace a substring or regex match in a string with a replacement.
+ * 用replacement替换一个字符串的子字符串或者正则匹配。
  *
  * @func
  * @memberOf R

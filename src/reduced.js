@@ -2,12 +2,10 @@ var _curry1 = require('./internal/_curry1');
 var _reduced = require('./internal/_reduced');
 
 /**
- * Returns a value wrapped to indicate that it is the final value of the reduce
- * and transduce functions. The returned value should be considered a black
- * box: the internal structure is not guaranteed to be stable.
+ * 返回一个封装的值，这个值是 reduce 操作和 transduce 函数执行后的最终值。
+ * 返回的值应该是一个黑盒子：内部结构不能保证是稳定的。
  *
- * Note: this optimization is unavailable to functions not explicitly listed
- * above. For instance, it is not currently supported by reduceRight.
+ * 注意：这个优化不能用于上面没有明确列出的函数。例如，现在还不支持 reduceRight 。
  *
  * @func
  * @memberOf R

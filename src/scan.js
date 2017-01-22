@@ -2,8 +2,7 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * Scan is similar to reduce, but returns a list of successively reduced values
- * from the left
+ * Scan 与 reduce 相似，但是, 返回从左开始执行的 reduced 值组成的列表
  *
  * @func
  * @memberOf R

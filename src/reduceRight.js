@@ -2,20 +2,16 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * Returns a single item by iterating through the list, successively calling
- * the iterator function and passing it an accumulator value and the current
- * value from the array, and then passing the result to the next call.
+ * 通过对列表元素的迭代计算，返回单一的累积值。计算过程是遍历数组对象，每次都将累积值和数组中的一项赋给迭代器函数进行计算，
+ * 并把结果作为下一次的累积值。
  *
- * Similar to `reduce`, except moves through the input list from the right to
- * the left.
+ * 与 `reduce` 相似，只是遍历list的顺序是从右向左。
  *
- * The iterator function receives two values: *(value, acc)*, while the arguments'
- * order of `reduce`'s iterator function is *(acc, value)*.
+ * 迭代器函数接收两个值：*(value, acc)*，然而，赋给`reduce`的迭代器函数的参数顺序是：*(acc, value)*.
  *
- * Note: `R.reduceRight` does not skip deleted or unassigned indices (sparse
- * arrays), unlike the native `Array.prototype.reduce` method. For more details
- * on this behavior, see:
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight#Description
+ * 注意：`R.reduce` 与原生的 `Array.prototype.reduce` 方法不同，它不跳过删除项或者未分配索引项（稀疏数组）
+ * 更多关于原生reduce的细节，请参考：
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
  *
  * @func
  * @memberOf R

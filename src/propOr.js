@@ -3,9 +3,8 @@ var _has = require('./internal/_has');
 
 
 /**
- * If the given, non-null object has an own property with the specified name,
- * returns the value of that property. Otherwise returns the provided default
- * value.
+ * 对于给出的非空对象，如果有指定的属性存在，则返回那个属性值；
+ * 否则返回给出的缺省值。
  *
  * @func
  * @memberOf R

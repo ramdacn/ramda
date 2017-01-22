@@ -2,8 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 与pick相似，不过pickAll会将不存在的属性以`key: undefined`
- * 键值对的形式返回。
+ * 与 pick 相似，不过 pickAll 会将不存在的属性以`key: undefined`键值对的形式返回。
  *
  * @func
  * @memberOf R

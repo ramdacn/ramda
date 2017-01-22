@@ -4,9 +4,9 @@ var filter = require('./filter');
 
 
 /**
- * The complement of `filter`.
+ * 与`filter`相反。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在列表位置给出 transformer，则用做 transducer。
  *
  * @func
  * @memberOf R
