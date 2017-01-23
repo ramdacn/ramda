@@ -2,22 +2,18 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * Tests the final argument by passing it to the given predicate function. If
- * the predicate is satisfied, the function will return the result of calling
- * the `whenTrueFn` function with the same argument. If the predicate is not
- * satisfied, the argument is returned as is.
+ * 最后一个输入`x`作为参数传给条件函数做判断，
+ * 如果不满足则将`x`作为参数传给`whenTrueFn`返回结果，否则返回`x`。
  *
  * @func
  * @memberOf R
  * @since v0.18.0
  * @category Logic
  * @sig (a -> Boolean) -> (a -> a) -> a -> a
- * @param {Function} pred       A predicate function
- * @param {Function} whenTrueFn A function to invoke when the `condition`
- *                              evaluates to a truthy value.
- * @param {*}        x          An object to test with the `pred` function and
- *                              pass to `whenTrueFn` if necessary.
- * @return {*} Either `x` or the result of applying `x` to `whenTrueFn`.
+ * @param {Function} pred 条件函数
+ * @param {Function} whenTrueFn 当`pred`函数返回为 false 时候调用的函数
+ * @param {*} x 作为参数传入`pred`用于判断，如果需要作为参数传入`whenTrueFn`
+ * @return {*} `x`或者`whenTrueFn`的执行结果
  * @see R.ifElse, R.unless
  * @example
  *

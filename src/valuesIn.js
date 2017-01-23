@@ -2,10 +2,9 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * Returns a list of all the properties, including prototype properties, of the
- * supplied object.
- * Note that the order of the output array is not guaranteed to be consistent
- * across different JS platforms.
+ * 输入一个对象，返回所有的属性值，包括原型链上的属性。
+ *
+ * 注意：在不同的JS运行环境输出数组的顺序可能不一致。
  *
  * @func
  * @memberOf R
