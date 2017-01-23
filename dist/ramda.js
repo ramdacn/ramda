@@ -2229,7 +2229,7 @@
     });
 
     /**
-     * Checks if the input value is `null` or `undefined`.
+     * 检查输入值是否为`null`或`undefined`。
      *
      * @func
      * @memberOf R
@@ -2254,6 +2254,8 @@
      * the supplied object.
      * Note that the order of the output array is not guaranteed to be consistent
      * across different JS platforms.
+     * 返回一个包含提供的对象全部可枚举的自属性名的列表
+     * 注意通过不同的JS平台输出数组的顺序并不能保证是相同的
      *
      * @func
      * @memberOf R
@@ -2353,7 +2355,7 @@
     });
 
     /**
-     * Returns the number of elements in the array by returning `list.length`.
+     * 通过返回`list.length`返回数组中元素的数量。
      *
      * @func
      * @memberOf R
@@ -2372,8 +2374,7 @@
     });
 
     /**
-     * Returns `true` if the first argument is less than the second; `false`
-     * otherwise.
+     * 如果第一个参数比第二个小，则返回`true`；否则返回`false`。
      *
      * @func
      * @memberOf R
@@ -2397,8 +2398,7 @@
     });
 
     /**
-     * Returns `true` if the first argument is less than or equal to the second;
-     * `false` otherwise.
+     * 如果第一个参数比第二个小或者等于第二个参数，则返回`true`；否则返回`false`。
      *
      * @func
      * @memberOf R
@@ -2524,10 +2524,9 @@
     });
 
     /**
-     * Tests a regular expression against a String. Note that this function will
-     * return an empty array when there are no matches. This differs from
+     * 对一个字符串测试正则表达式。注意当没有匹配项时这个函数会返回一个空数组。这一点和
      * [`String.prototype.match`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match)
-     * which returns `null` when there are no matches.
+     * 有所不同，后者在没有匹配项时会返回`null`。
      *
      * @func
      * @memberOf R
@@ -2553,6 +2552,7 @@
      * `%` operator (and by extension, R.modulo). So while "-17 % 5" is -2,
      * mathMod(-17, 5) is 3. mathMod requires Integer arguments, and returns NaN
      * when the modulus is zero or negative.
+     * mathMod和取模操作类似
      *
      * @func
      * @memberOf R
@@ -2591,7 +2591,7 @@
     });
 
     /**
-     * Returns the larger of its two arguments.
+     * 返回两个参数中的较大者。
      *
      * @func
      * @memberOf R
@@ -2612,8 +2612,7 @@
     });
 
     /**
-     * Takes a function and two values, and returns whichever value produces the
-     * larger result when passed to the provided function.
+     * 接收一个函数和两个值，并返回使得函数执行之后结果更大的值。
      *
      * @func
      * @memberOf R
@@ -2731,7 +2730,7 @@
     });
 
     /**
-     * Returns the smaller of its two arguments.
+     * 返回两个参数中的较小者。
      *
      * @func
      * @memberOf R
@@ -2752,8 +2751,7 @@
     });
 
     /**
-     * Takes a function and two values, and returns whichever value produces the
-     * smaller result when passed to the provided function.
+     * 接收一个函数和两个值，并返回使得函数执行之后结果更小的值。
      *
      * @func
      * @memberOf R
@@ -2783,6 +2781,7 @@
      * Divides the first parameter by the second and returns the remainder. Note
      * that this function preserves the JavaScript-style behavior for modulo. For
      * mathematical modulo see `mathMod`.
+     * 用第一个参数除以第二个参数，返回余数。
      *
      * @func
      * @memberOf R
@@ -2810,6 +2809,7 @@
 
     /**
      * Multiplies two numbers. Equivalent to `a * b` but curried.
+     * 将两个数字相乘。结果等于`a * b`，但是柯里化的。
      *
      * @func
      * @memberOf R
@@ -2913,7 +2913,8 @@
     });
 
     /**
-     * Negates its argument.
+     * 对参数取负值。
+     *
      *
      * @func
      * @memberOf R
@@ -2931,10 +2932,9 @@
     });
 
     /**
-     * Returns `true` if no elements of the list match the predicate, `false`
-     * otherwise.
+     * 如果列表中的元素都不满足断言，则返回`true`，否则返回`false`。
      *
-     * Dispatches to the `any` method of the second argument, if present.
+     * 如果提供了第二个参数，则将其分派到`any`方法。
      *
      * @func
      * @memberOf R
@@ -2955,8 +2955,7 @@
     var none = _curry2(_complement(_dispatchable(['any'], _xany, any)));
 
     /**
-     * A function that returns the `!` of its argument. It will return `true` when
-     * passed false-y value, and `false` when passed a truth-y one.
+     * 一个返回参数`!`运算值得函数。当传入参数为false时返回`true`，传入参数为true时返回`false`。
      *
      * @func
      * @memberOf R
@@ -2978,8 +2977,7 @@
     });
 
     /**
-     * Returns the nth element of the given list or string. If n is negative the
-     * element at index length + n is returned.
+     * 返回给定列表或字符串的第n个元素。如果n为负数，则返回索引为length + n的元素。
      *
      * @func
      * @memberOf R
@@ -3009,7 +3007,7 @@
     });
 
     /**
-     * Returns a function which returns its nth argument.
+     * 返回一个函数，该函数返回它的第n个参数。
      *
      * @func
      * @memberOf R
@@ -3034,7 +3032,7 @@
     });
 
     /**
-     * Creates an object containing a single key:value pair.
+     * 创建一个包含单个键值对的对象。
      *
      * @func
      * @memberOf R
@@ -3060,9 +3058,9 @@
     });
 
     /**
-     * Returns a singleton array containing the value provided.
+     * 返回包含所提供值的一个单例数组。
      *
-     * Note this `of` is different from the ES6 `of`; See
+     * 注意这里的`of`和ES6中的`of`是不同的；详见
      * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of
      *
      * @func
@@ -3084,6 +3082,7 @@
      * `fn` such that `fn` can only ever be called once, no matter how many times
      * the returned function is invoked. The first value calculated is returned in
      * subsequent invocations.
+     * 接收一个函数`fn`，并返回一个守护`fn`调用的函数，使得`fn`只能够被调用一次，不管返回函数被调用多少次。第一个计算得到的值在后续调用用被返回。
      *
      * @func
      * @memberOf R
@@ -3112,8 +3111,7 @@
     });
 
     /**
-     * Returns `true` if one or both of its arguments are `true`. Returns `false`
-     * if both arguments are `false`.
+     * 如果一个参数为`true`或全部参数均为`true`，则返回`true`。如果参数均为`false`，则返回`false`。
      *
      * @func
      * @memberOf R
@@ -5862,8 +5860,7 @@
     });
 
     /**
-     * Returns `true` if the given value is its type's empty value; `false`
-     * otherwise.
+     * 如果给定的值为空，返回`true`，否则返回`false`。
      *
      * @func
      * @memberOf R
@@ -5887,7 +5884,7 @@
     });
 
     /**
-     * Returns the last element of the given list or string.
+     * 返回给定列表或字符串的最后一个元素。
      *
      * @func
      * @memberOf R
@@ -5909,9 +5906,8 @@
     var last = nth(-1);
 
     /**
-     * Returns the position of the last occurrence of an item in an array, or -1 if
-     * the item is not included in the array. `R.equals` is used to determine
-     * equality.
+     * 返回数组中某一项最后一次出现的位置，如果数组中不包含该项则返回-1。
+     * `R.equals`用来判定相等性。
      *
      * @func
      * @memberOf R
@@ -5948,8 +5944,7 @@
      * applies the function to each of the functor's values, and returns
      * a functor of the same shape.
      *
-     * Ramda provides suitable `map` implementations for `Array` and `Object`,
-     * so this function may be applied to `[1, 2, 3]` or `{x: 1, y: 2, z: 3}`.
+     * Ramda为`数组`和`对象`都提供了合适的`map`实现，因此这个函数可以适用于`[1, 2, 3]`或`{x: 1, y: 2, z: 3}`
      *
      * Dispatches to the `map` method of the second argument, if present.
      *
@@ -7158,7 +7153,7 @@
     });
 
     /**
-     * juxt applies a list of functions to a list of values.
+     * juxt将一个函数列表应用到一个值列表。
      *
      * @func
      * @memberOf R
@@ -7314,7 +7309,7 @@
     });
 
     /**
-     * Returns the mean of the given list of numbers.
+     * 返回给定数字列表的平均值。
      *
      * @func
      * @memberOf R
@@ -7333,7 +7328,7 @@
     });
 
     /**
-     * Returns the median of the given list of numbers.
+     * 返回给定数字列表的中位数。
      *
      * @func
      * @memberOf R
@@ -7821,7 +7816,7 @@
     });
 
     /**
-     * Returns a partial copy of an object omitting the keys specified.
+     * 返回一个对象除去指定键值以外的部分拷贝。
      *
      * @func
      * @memberOf R
@@ -8293,8 +8288,7 @@
     });
 
     /**
-     * Returns a string made by inserting the `separator` between each element and
-     * concatenating all the elements into a single string.
+     * 返回一个字符串，通过在每个元素之间插入`分隔符`，然后将所有元素合并为一个字符串。
      *
      * @func
      * @memberOf R
