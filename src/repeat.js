@@ -4,7 +4,7 @@ var times = require('./times');
 
 
 /**
- * Returns a fixed list of size `n` containing a specified identical value.
+ * 返回包含指定的相同值且长度为 `n` 的固定列表。
  *
  * @func
  * @memberOf R

@@ -2,8 +2,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns a partial copy of an object containing only the keys specified. If
- * the key does not exist, the property is ignored.
+ * 返回对象的部分副本，这个副本仅包含指定键对应的属性。
+ * 如果键不存在，则忽略这个属性
  *
  * @func
  * @memberOf R

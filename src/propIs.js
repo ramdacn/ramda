@@ -3,8 +3,7 @@ var is = require('./is');
 
 
 /**
- * Returns `true` if the specified object property is of the given type;
- * `false` otherwise.
+ * 如果被指定的对象属性与给出的类型相符，返回 `true` ；否则返回 `false`。
  *
  * @func
  * @memberOf R

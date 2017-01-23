@@ -2,8 +2,7 @@ var invoker = require('./invoker');
 
 
 /**
- * Splits a string into an array of strings based on the given
- * separator.
+ * 基于给定的分隔符将字符串拆分为字符串数组。
  *
  * @func
  * @memberOf R

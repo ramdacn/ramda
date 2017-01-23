@@ -2,10 +2,9 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * Removes the sub-list of `list` starting at index `start` and containing
- * `count` elements. _Note that this is not destructive_: it returns a copy of
- * the list with the changes.
- * <small>No lists have been harmed in the application of this function.</small>
+ * 在 `list` 中移除子列表，这个子列表是从 `start` 开始，包含 `count` 个元素。
+ * _注意这个操作不改变原有列表_：它返回改变的列表的副本。
+ * <small>在使用此功能时，不会有list受到损害。</small>
  *
  * @func
  * @memberOf R

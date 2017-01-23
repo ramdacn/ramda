@@ -6,13 +6,11 @@ var _xreduceBy = require('./internal/_xreduceBy');
 
 
 /**
- * Groups the elements of the list according to the result of calling
- * the String-returning function `keyFn` on each element and reduces the elements
- * of each group to a single value via the reducer function `valueFn`.
+ * 通过对 list 的每个元素调用返回字符串的函数 `keyFn` ，将 element 进行分组。然后调用 reducer 函数 `valueFn`，对分出的组内的元素进行 reduces。
  *
- * This function is basically a more general `groupBy` function.
+ * 从根本上讲，该函数是更通用的 `groupBy` 函数。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 如果列表的位置有 transformer ，则把它视为 transducer 来执行代码。
  *
  * @func
  * @memberOf R

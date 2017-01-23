@@ -3,21 +3,19 @@ var _reduce = require('./internal/_reduce');
 
 
 /**
- * Returns a single item by iterating through the list, successively calling
- * the iterator function and passing it an accumulator value and the current
- * value from the array, and then passing the result to the next call.
+ * 通过对列表元素的迭代计算，返回单一的累积值。计算过程是遍历数组对象，每次都将累积值和数组中的一项赋给迭代器函数进行计算，
+ * 并把结果作为下一次的累积值。
  *
- * The iterator function receives two values: *(acc, value)*. It may use
- * `R.reduced` to shortcut the iteration.
+ * 迭代器函数接收两个值：*(acc, value)*。
+ * `R.reduced` 可以用来缩短迭代。
  *
- * The arguments' order of `reduceRight`'s iterator function is *(value, acc)*.
+ * `reduceRight` 迭代器函数的参数顺序是 *(value, acc)*。
  *
- * Note: `R.reduce` does not skip deleted or unassigned indices (sparse
- * arrays), unlike the native `Array.prototype.reduce` method. For more details
- * on this behavior, see:
+ * 注意: `R.reduce` 与原生的 `Array.prototype.reduce` 方法不同，它不跳过删除项或者未分配索引项（稀疏数组）
+ * 更多关于原生reduce的细节，请参考：
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
  *
- * Dispatches to the `reduce` method of the third argument, if present.
+ * 如果第三个参数有 `reduce` 方法，则调用其本身的 reduce 方法。
  *
  * @func
  * @memberOf R

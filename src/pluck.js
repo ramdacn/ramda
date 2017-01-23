@@ -4,8 +4,7 @@ var prop = require('./prop');
 
 
 /**
- * Returns a new list by plucking the same named property off all objects in
- * the list supplied.
+ * 在给出的列表中的所有对象中，将命名相同的属性抽出来，组成一个新的列表。
  *
  * @func
  * @memberOf R

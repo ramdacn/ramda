@@ -2,8 +2,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns a function that when supplied an object returns the indicated
- * property of that object, if it exists.
+ * 当作用在一个对象上时，如果指定的属性存在，则返回该属性的值
+ * 否则返回 `undefined`。
  *
  * @func
  * @memberOf R

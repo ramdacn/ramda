@@ -3,9 +3,9 @@ var _createPartialApplicator = require('./internal/_createPartialApplicator');
 
 
 /**
- * Takes a function `f` and a list of arguments, and returns a function `g`.
- * When applied, `g` returns the result of applying `f` to the arguments
- * provided initially followed by the arguments provided to `g`.
+ * 接收两个参数： 一个函数 f，还有一个 argument列表。返回新函数 g。
+ * 当函数执行时，g 返回的是 f 作用于初始 argument 和后来提供给 g 的参数的结果。
+ * 其中参数调用的顺序是：初始提供的 argument，提供给 g 的 arguments。
  *
  * @func
  * @memberOf R

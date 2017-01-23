@@ -6,11 +6,11 @@ var reduceRight = require('./reduceRight');
 
 
 /**
- * Transforms a [Traversable](https://github.com/fantasyland/fantasy-land#traversable)
- * of [Applicative](https://github.com/fantasyland/fantasy-land#applicative) into an
- * Applicative of Traversable.
+ * 将一个[Applicative](https://github.com/fantasyland/fantasy-land#applicative)的
+ * [Traversable](https://github.com/fantasyland/fantasy-land#traversable)
+ * 转换成一个 Traversable 类型的 Applicative。
  *
- * Dispatches to the `sequence` method of the second argument, if present.
+ * 如果第二个参数带有 `sequence` 方法，则调用其自身的 `sequence`。
  *
  * @func
  * @memberOf R

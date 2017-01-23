@@ -3,7 +3,7 @@ var _isNumber = require('./internal/_isNumber');
 
 
 /**
- * Returns a list of numbers from `from` (inclusive) to `to` (exclusive).
+ * 返回从 from 到 to 的数字类型列表，包括`from`，不包括`to`。
  *
  * @func
  * @memberOf R
