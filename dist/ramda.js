@@ -1563,7 +1563,7 @@
      *
      * 返回一个新的 list，这个 list 会舍弃所有满足 `predicate` 的头部元素。
      *
-     * 从左向右依次对list中的元素执行 `predicate` ，直至返回一个假值。`predicate` 需要作为第一个参数传入。
+     * 从左往右依次对 list 中的元素执行 `predicate` ，直至返回一个假值。`predicate` 需要作为第一个参数传入。
      *
      * 若第二个参数自身存在 `dropWhile` 方法，则调用自身的 `dropWhile` 方法。
      *
@@ -1627,7 +1627,7 @@
      * 递归地对第二个参数 `object` 的浅复制进行变换来创建一个新的object，变换方式由第一个参数 `transformation` 来定义。
      * 所有非原始类型属性都通过引用来复制。
      *
-     * 如果`transformation`中定义的方法关联的 `object` 属性并不存在，那么该方法将不会执行。
+     * 如果 `transformation` 中定义的方法关联的 `object` 属性并不存在，那么该方法将不会执行。
      *
      * @func
      * @memberOf R
@@ -5590,7 +5590,7 @@
     /**
      * 返回一个新的 list，这个 list 会舍弃所有满足 `predicate` 的尾部元素。
      *
-     * 从右向左依次对list中的元素执行 `predicate`，直至返回一个 `falsy` 值。`predicate` 需要作为第一个参数传入。
+     * 从右往左依次对 list 中的元素执行 `predicate`，直至返回一个 `falsy` 值。`predicate` 需要作为第一个参数传入。
      *
      * @func
      * @memberOf R
@@ -5611,7 +5611,7 @@
 
     /**
      *
-     * 如果给定的参数相等则返回 `true` ，否则返回 `false` 。处理几乎所有JavaScript支持的数据结构。
+     * 如果给定的参数相等则返回 `true` ，否则返回 `false`。处理几乎所有JavaScript支持的数据结构。
      *
      * 若两个参数自身存在 `equals` 方法，则对称地调用 `equals` 方法。
      *
@@ -5855,7 +5855,7 @@
     /**
      * 根据给定的 transducer 对列表中的元素进行转换，然后使用基于 accumulator 类型的迭代器将转换后的元素依次添加到 accumulator 中。
      *
-     * 该 accumulator 可以是以下数据类型：array、string、object 或者 transformer。
+     * 该 accumulator 可以是以下数据类型：array、string、object 或者 transformer 。
      * 如果 accumulator 类型是数组或者字符串，则迭代元素将会被附加到数组中或者连接到字符串上。如果是对象，迭代元素将会被直接合并，
      * 如果是二元数组，迭代元素则将会根据键值对进行合并。
      *
@@ -7183,7 +7183,7 @@
 
     /**
      *
-     * 借助于 `R.equals` 方法判断两个 object 的指定属性是否相等。可以用作柯里化的 `predicate` 。
+     * 通过 `R.equals` 函数对两个 object 的指定属性进行相等性判断。可以用作柯里化的 `predicate` 。
      *
      * @func
      * @memberOf R
@@ -7928,7 +7928,7 @@
     });
 
     /**
-     * 返回一个没有任何连续重复元素的 list。借助 `R.equals` 来判断元素是否相等。
+     * 返回一个没有任何连续重复元素的 list。通过 `R.equals` 函数进行相等性判断。
      *
      * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -8423,11 +8423,9 @@
     });
 
     /**
-     * Turns a named method with a specified arity into a function that can be
-     * called directly supplied with arguments and a target object.
+     * 将一个带有特定 arity 的具名函数转换为一个可以对给定参数和目标对象直接执行的函数。
      *
-     * The returned function is curried and accepts `arity + 1` parameters where
-     * the final parameter is the target object.
+     * 返回的函数是柯里化的，它接收 `arity + 1` 个参数，其中最后一个参数是目标对象。
      *
      * @func
      * @memberOf R

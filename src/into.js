@@ -8,7 +8,7 @@ var _stepCat = require('./internal/_stepCat');
 /**
  * 根据给定的 transducer 对列表中的元素进行转换，然后使用基于 accumulator 类型的迭代器将转换后的元素依次添加到 accumulator 中。
  *
- * 该 accumulator 可以是以下数据类型：array、string、object 或者 transformer。
+ * 该 accumulator 可以是以下数据类型：array、string、object 或者 transformer 。
  * 如果 accumulator 类型是数组或者字符串，则迭代元素将会被附加到数组中或者连接到字符串上。如果是对象，迭代元素将会被直接合并，
  * 如果是二元数组，迭代元素则将会根据键值对进行合并。
  *
