@@ -3,7 +3,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 遍历给定的 `list`，对列表中的所有元素执行给定的方法 `fn`。
+ * 遍历给定的 `list`，对 list 中的所有元素执行给定的方法 `fn`。
  *
  * `fn` 接收一个参数： *(value)*。
  *

@@ -11,7 +11,7 @@ var _xdropWhile = require('./internal/_xdropWhile');
  *
  * 若第二个参数自身存在 `dropWhile` 方法，则调用自身的 `dropWhile` 方法。
  *
- * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *
  * @func
  * @memberOf R

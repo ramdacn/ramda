@@ -8,7 +8,7 @@ var equals = require('./equals');
 /**
  * 返回一个没有任何连续重复元素的 list。通过 `R.equals` 函数进行相等性判断。
  *
- * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *
  * @func
  * @memberOf R

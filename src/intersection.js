@@ -6,7 +6,7 @@ var uniq = require('./uniq');
 
 
 /**
- * 返回由两个列表中相同元素组成的列表。
+ * 返回由两个 list 中相同元素组成的 list 。
  *
  * @func
  * @memberOf R

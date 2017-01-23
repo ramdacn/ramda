@@ -1567,7 +1567,7 @@
      *
      * 若第二个参数自身存在 `dropWhile` 方法，则调用自身的 `dropWhile` 方法。
      *
-     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+     * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -1660,11 +1660,11 @@
     });
 
     /**
-     * 返回给定的列表中第一个满足 `predicate` 的元素，如果任何元素都不满足条件则返回 `undefined` 。
+     * 返回给定的 list 中第一个满足 `predicate` 的元素，如果任何元素都不满足条件则返回 `undefined` 。
      *
      * 若第二个参数自身存在 `find` 方法，则调用自身的 `find` 方法。
      *
-     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+     * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -1694,9 +1694,9 @@
     }));
 
     /**
-     * 返回给定的列表中第一个满足 `predicate` 的元素的索引，如果任何元素都不满足条件则返回 `-1` 。
+     * 返回给定的 list 中第一个满足 `predicate` 的元素的索引，如果任何元素都不满足条件则返回 `-1` 。
      *
-     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+     * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -1727,9 +1727,9 @@
     }));
 
     /**
-     * 返回给定的列表中最后一个满足 `predicate` 的元素，如果任何元素都不满足条件则返回 `undefined` 。
+     * 返回给定的 list 中最后一个满足 `predicate` 的元素，如果任何元素都不满足条件则返回 `undefined` 。
      *
-     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+     * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -1758,9 +1758,9 @@
     }));
 
     /**
-     * 返回给定的列表中最后一个满足 `predicate` 的元素的索引，如果任何元素都不满足条件则返回 `-1` 。
+     * 返回给定的 list 中最后一个满足 `predicate` 的元素的索引，如果任何元素都不满足条件则返回 `-1` 。
      *
-     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+     * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -1790,7 +1790,7 @@
     }));
 
     /**
-     * 遍历给定的 `list`，对列表中的所有元素执行给定的方法 `fn`。
+     * 遍历给定的 `list`，对 list 中的所有元素执行给定的方法 `fn`。
      *
      * `fn` 接收一个参数： *(value)*。
      *
@@ -1830,7 +1830,7 @@
     }));
 
     /**
-     * 从一系列只包含键值对元素的列表创建一个新的 `object`。如果一个 key 出现了多次，最右边的键值对会被保留。
+     * 从一系列只包含键值对元素的 list 创建一个新的 `object`。如果一个 key 出现了多次，最右边的键值对会被保留。
      *
      * @func
      * @memberOf R
@@ -1855,7 +1855,7 @@
     });
 
     /**
-     * 接收一个列表，并返回一个包含一系列 `equal` 元素子列表的列表。`equal` 能力由给定的函数定义。
+     * 接收一个 list ，并返回一个包含一系列 `equal` 元素子 list 的 list 。`equal` 能力由给定的函数定义。
      *
      * @func
      * @memberOf R
@@ -2105,8 +2105,8 @@
     var inc = add(1);
 
     /**
-     * 将给定的元素插入到列表指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组拷贝。
-     * <small>应用中的所有列表不会因为这个方法受到任何副作用影响。</small>
+     * 将给定的元素插入到 list 指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组拷贝。
+     * <small>应用中的所有 list 不会因为这个方法受到任何副作用影响。</small>
      *
      * @func
      * @memberOf R
@@ -2129,8 +2129,8 @@
     });
 
     /**
-     * 将给定的子列表插入到列表指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组拷贝。
-     * <small>应用中的所有列表不会因为这个方法受到任何副作用影响。</small>
+     * 将给定的子 list 插入到 list 指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组拷贝。
+     * <small>应用中的所有 list 不会因为这个方法受到任何副作用影响。</small>
      *
      * @func
      * @memberOf R
@@ -2151,7 +2151,7 @@
     });
 
     /**
-     * 创建一个新的列表，该列表会将给定的 separator 元素插入到列表每两个元素之间。
+     * 创建一个新的 list ，该 list 会将给定的 separator 元素插入到 list 每两个元素之间。
      *
      * 若第二个参数自身存在 `intersperse` 方法，则调用自身的 `intersperse` 方法。
      *
@@ -5360,9 +5360,9 @@
     }();
 
     /**
-     * 对已有迭代函数的回调函数添加两个新的参数：当前索引、整个列表，创建出一个新的列表迭代函数
+     * 对已有迭代函数的回调函数添加两个新的参数：当前索引、整个 list ，创建出一个新的 list 迭代函数
      *
-     * 例如，这将把 Ramda 中简单的 `map` 函数变成更接近于 `Array.prototype.map` 形式的函数。注意，只有满足下面条件的函数才能正常工作：迭代回调函数是其首个参数;列表是回调函数的最后一个参数。（如果列表参数没有用到，后一个条件可以忽略）
+     * 例如，这将把 Ramda 中简单的 `map` 函数变成更接近于 `Array.prototype.map` 形式的函数。注意，只有满足下面条件的函数才能正常工作：迭代回调函数是其首个参数; list 是回调函数的最后一个参数。（如果 list 参数没有用到，后一个条件可以忽略）
      *
      * @func
      * @memberOf R
@@ -5540,7 +5540,7 @@
      *
      * 若第二个参数自身存在 `drop` 方法，则调用自身的 `drop` 方法。
      *
-     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+     * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -5643,7 +5643,7 @@
      *
      * 若第二个参数自身存在 `empty` 方法，则调用自身的 `empty` 方法。
      *
-     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+     * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -5674,7 +5674,7 @@
     }));
 
     /**
-     * 获取给定列表中的所有元素（包含所有子数组），然后生成一个由这些元素组成的一个新的数组。深度优先。
+     * 获取给定 list 中的所有元素（包含所有子数组），然后生成一个由这些元素组成的一个新的数组。深度优先。
      *
      * @func
      * @memberOf R
@@ -5800,7 +5800,7 @@
     var init = slice(0, -1);
 
     /**
-     * 返回由两个列表中相同元素组成的列表。判断元素是否相同由给定的 `predicate` 来定义。
+     * 返回由两个 list 中相同元素组成的 list 。判断元素是否相同由给定的 `predicate` 来定义。
      *
      * @func
      * @memberOf R
@@ -5853,7 +5853,7 @@
     });
 
     /**
-     * 根据给定的 transducer 对列表中的元素进行转换，然后使用基于 accumulator 类型的迭代器将转换后的元素依次添加到 accumulator 中。
+     * 根据给定的 transducer 对 list 中的元素进行转换，然后使用基于 accumulator 类型的迭代器将转换后的元素依次添加到 accumulator 中。
      *
      * 该 accumulator 可以是以下数据类型：array、string、object 或者 transformer 。
      * 如果 accumulator 类型是数组或者字符串，则迭代元素将会被附加到数组中或者连接到字符串上。如果是对象，迭代元素将会被直接合并，
@@ -7128,7 +7128,7 @@
      *
      * 返回一个没有任何连续重复元素的 list。第一个参数提供的 `predicate` 被用来检验 list 中相邻的两个元素是否相等。一系列相等元素中的第一个元素会被保留。
      *
-     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+     * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -7207,12 +7207,12 @@
     });
 
     /**
-     * 接收一个返回值为字符串的函数和一个列表作为参数，对列表中的所有元素执行该函数，
-     * 然后根据函数返回值来聚合列表中的子元素。最终将一个列表分割成一系列的子列表然后存放到一个对象中。
+     * 接收一个返回值为字符串的函数和一个 list 作为参数，对 list 中的所有元素执行该函数，
+     * 然后根据函数返回值来聚合 list 中的子元素。最终将一个 list 分割成一系列的子 list 然后存放到一个对象中。
      *
      * 若第二个参数自身存在 `groupBy` 方法，则调用自身的 `groupBy` 方法。
      *
-     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+     * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -7254,10 +7254,10 @@
     }, null)));
 
     /**
-     * 根据给定函数生成的键，将一个包含多个对象的列表转换为一个包含多个以该键对应值为索引对象的新对象。
-     * 注意如果列表中多个对象根据该键索引的值相同，那么只有最后一个对象会被保留。
+     * 根据给定函数生成的键，将一个包含多个对象的 list 转换为一个包含多个以该键对应值为索引对象的新对象。
+     * 注意如果 list 中多个对象根据该键索引的值相同，那么只有最后一个对象会被保留。
      *
-     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+     * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -7930,7 +7930,7 @@
     /**
      * 返回一个没有任何连续重复元素的 list。通过 `R.equals` 函数进行相等性判断。
      *
-     * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+     * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
      * @func
      * @memberOf R
@@ -8696,7 +8696,7 @@
     var uniq = uniqBy(identity);
 
     /**
-     * 返回由两个列表中相同元素组成的列表。
+     * 返回由两个 list 中相同元素组成的 list 。
      *
      * @func
      * @memberOf R

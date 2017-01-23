@@ -4,7 +4,7 @@ var uniqWith = require('./uniqWith');
 
 
 /**
- * 返回由两个列表中相同元素组成的列表。判断元素是否相同由给定的 `predicate` 来定义。
+ * 返回由两个 list 中相同元素组成的 list 。判断元素是否相同由给定的 `predicate` 来定义。
  *
  * @func
  * @memberOf R

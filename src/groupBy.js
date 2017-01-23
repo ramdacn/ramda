@@ -3,12 +3,12 @@ var _curry2 = require('./internal/_curry2');
 var reduceBy = require('./reduceBy');
 
 /**
- * 接收一个返回值为字符串的函数和一个列表作为参数，对列表中的所有元素执行该函数，
- * 然后根据函数返回值来聚合列表中的子元素。最终将一个列表分割成一系列的子列表然后存放到一个对象中。
+ * 接收一个返回值为字符串的函数和一个 list 作为参数，对 list 中的所有元素执行该函数，
+ * 然后根据函数返回值来聚合 list 中的子元素。最终将一个 list 分割成一系列的子 list 然后存放到一个对象中。
  *
  * 若第二个参数自身存在 `groupBy` 方法，则调用自身的 `groupBy` 方法。
  *
- * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *
  * @func
  * @memberOf R

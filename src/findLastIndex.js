@@ -4,9 +4,9 @@ var _xfindLastIndex = require('./internal/_xfindLastIndex');
 
 
 /**
- * 返回给定的列表中最后一个满足 `predicate` 的元素的索引，如果任何元素都不满足条件则返回 `-1` 。
+ * 返回给定的 list 中最后一个满足 `predicate` 的元素的索引，如果任何元素都不满足条件则返回 `-1` 。
  *
- * 若在列表位置中给出 `transfomer` ，则用作 `transducer` 。
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *
  * @func
  * @memberOf R
