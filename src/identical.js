@@ -2,9 +2,9 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns true if its arguments are identical, false otherwise. Values are
- * identical if they reference the same memory. `NaN` is identical to `NaN`;
- * `0` and `-0` are not identical.
+ * 如果给定的两个参数是完全相同的则返回 `true`，否则返回 `false`。
+ * 如果它们的引用指向相同的内存地址，那它们也是完全相同的。
+ * `NaN` 和 `NaN` 是完全相同的；`0` 和 `-0` 不是完全相同的。
  *
  * @func
  * @memberOf R

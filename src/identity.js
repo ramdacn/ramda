@@ -3,8 +3,7 @@ var _identity = require('./internal/_identity');
 
 
 /**
- * A function that does nothing but return the parameter supplied to it. Good
- * as a default or placeholder function.
+ * 一个不做任何事情而只是把给定参数原封不动返回的方法。适合用作默认或者占位方法。
  *
  * @func
  * @memberOf R

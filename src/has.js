@@ -3,7 +3,7 @@ var _has = require('./internal/_has');
 
 
 /**
- * Returns whether or not an object has an own property with the specified name
+ * 如果一个对象具有指定的属性则返回 `true`；否则返回 `false`。
  *
  * @func
  * @memberOf R

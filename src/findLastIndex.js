@@ -4,10 +4,9 @@ var _xfindLastIndex = require('./internal/_xfindLastIndex');
 
 
 /**
- * Returns the index of the last element of the list which matches the
- * predicate, or `-1` if no element matches.
+ * 返回给定的 list 中最后一个满足 `predicate` 的元素的索引，如果任何元素都不满足条件则返回 `-1` 。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *
  * @func
  * @memberOf R

@@ -5,10 +5,11 @@ var slice = require('./slice');
 
 
 /**
- * Returns all but the first `n` elements of the given list, string, or
- * transducer/transformer (or object with a `drop` method).
+ * 返回给定参数去除前 `n` 个元素后的结果，该参数可以是 list，string 或者 transducer/transformer（或者具有 drop 方法的对象）。
  *
- * Dispatches to the `drop` method of the second argument, if present.
+ * 若第二个参数自身存在 `drop` 方法，则调用自身的 `drop` 方法。
+ *
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *
  * @func
  * @memberOf R

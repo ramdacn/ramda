@@ -5,11 +5,10 @@ var last = require('./last');
 
 
 /**
- * Returns a new list without any consecutively repeating elements. Equality is
- * determined by applying the supplied predicate to each pair of consecutive elements. The
- * first element in a series of equal elements will be preserved.
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 返回一个没有任何连续重复元素的 list。第一个参数提供的 `predicate` 被用来检验 list 中相邻的两个元素是否相等。一系列相等元素中的第一个元素会被保留。
+ *
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *
  * @func
  * @memberOf R
@@ -40,4 +39,3 @@ module.exports = _curry2(_dispatchable([], _xdropRepeatsWith, function dropRepea
   }
   return result;
 }));
-
