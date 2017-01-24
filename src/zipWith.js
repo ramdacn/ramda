@@ -16,7 +16,6 @@ var _curry3 = require('./internal/_curry3');
  * @param {Array} list2 The second array to consider.
  * @return {Array} The list made by combining same-indexed elements of `list1` and `list2`
  *         using `fn`.
- *
  * @example
  *
  *      var f = (x, y) => {
