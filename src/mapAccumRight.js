@@ -2,16 +2,13 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * The mapAccumRight function behaves like a combination of map and reduce; it
- * applies a function to each element of a list, passing an accumulating
- * parameter from right to left, and returning a final value of this
- * accumulator together with the new list.
+ * mapAccumRight 函数表现得很像 map 和 reduce 的结合；
+ * 它将一个函数应用到一个列表中的每一个元素，从右往左传递一个累积的参数，
+ * 并将这个累积器最后的值和新列表一并返回。
  *
- * Similar to `mapAccum`, except moves through the input list from the right to
- * the left.
+ * 除了输入列表是从右往左移动，其他和 `mapAccum` 类似。
  *
- * The iterator function receives two arguments, *value* and *acc*, and should
- * return a tuple *[value, acc]*.
+ * 迭代器函数接收两个参数，acc 和 value， 并且应该返回一个元组 [acc, value]。
  *
  * @func
  * @memberOf R

@@ -4,12 +4,8 @@ var _isArguments = require('./internal/_isArguments');
 
 
 /**
- * Returns a list containing the names of all the enumerable own properties of
- * the supplied object.
- * Note that the order of the output array is not guaranteed to be consistent
- * across different JS platforms.
- * 返回一个包含提供的对象全部可枚举的自属性名的列表
- * 注意通过不同的JS平台输出数组的顺序并不能保证是相同的
+ * 返回一个列表，其中包含给定对象的所有可枚举自属性的 key。
+ * 注意，通过不同 JS 平台输出数组的顺序不保证是相同的。
  *
  * @func
  * @memberOf R

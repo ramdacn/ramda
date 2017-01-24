@@ -8,18 +8,17 @@ var keys = require('./keys');
 
 
 /**
- * Takes a function and
- * a [functor](https://github.com/fantasyland/fantasy-land#functor),
- * applies the function to each of the functor's values, and returns
- * a functor of the same shape.
+ * 接收一个函数和一个
+ * [functor](https://github.com/fantasyland/fantasy-land#functor),
+ * 将这个函数应用到 functor 的每个值上，并且返回一个具有相同形态的 functor。
  *
- * Ramda为`数组`和`对象`都提供了合适的`map`实现，因此这个函数可以适用于`[1, 2, 3]`或`{x: 1, y: 2, z: 3}`
+ * Ramda 为 `数组` 和 `对象` 都提供了合适的 `map` 实现，因此这个函数可以适用于 `[1, 2, 3]` 或 `{x: 1, y: 2, z: 3}`。
  *
- * Dispatches to the `map` method of the second argument, if present.
+ * 如果提供了第二个参数，将其分派给 `map` 方法。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 如果在列表位置给定了 transformer，则充当为 transducer。
  *
- * Also treats functions as functors and will compose them together.
+ * 同样将函数视作为functors，并且会将它们组合在一起。
  *
  * @func
  * @memberOf R

@@ -6,8 +6,9 @@ var map = require('./map');
 
 
 /**
- * "lifts" a function to be the specified arity, so that it may "map over" that
- * many lists, Functions or other objects that satisfy the [FantasyLand Apply spec](https://github.com/fantasyland/fantasy-land#apply).
+ * 将一个函数提升为指定的 N 元函数，使之能映射到 N 个列表、函数或其他符合
+ * [FantasyLand Apply spec](https://github.com/fantasyland/fantasy-land#apply)
+ * 规范的对象上。
  *
  * @func
  * @memberOf R

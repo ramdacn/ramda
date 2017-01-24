@@ -3,7 +3,7 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * Merges a list of objects together into one object.
+ * 将一个对象列表融合到一个对象中。
  *
  * @func
  * @memberOf R

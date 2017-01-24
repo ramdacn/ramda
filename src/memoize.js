@@ -5,11 +5,9 @@ var toString = require('./toString');
 
 
 /**
- * Creates a new function that, when invoked, caches the result of calling `fn`
- * for a given argument set and returns the result. Subsequent calls to the
- * memoized `fn` with the same argument set will not result in an additional
- * call to `fn`; instead, the cached result for that set of arguments will be
- * returned.
+ * 创建一个新函数，当这个函数被调用时，缓存为一个指定参数集合调用 `fn` 结果，并返回该结果。
+ * 随后用相同的参数集合去调用被 memoized 的 `fn` 时，不会导致额外调用 `fn`；
+ * 而是直接返回为这个参数集合缓存的结果。
  *
  * @func
  * @memberOf R

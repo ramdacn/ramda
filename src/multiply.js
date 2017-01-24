@@ -2,8 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Multiplies two numbers. Equivalent to `a * b` but curried.
- * 将两个数字相乘。结果等于`a * b`，但是柯里化的。
+ * 将两个数字相乘。等价于 `a * b`，但是柯里化的。
  *
  * @func
  * @memberOf R
