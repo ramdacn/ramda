@@ -3228,7 +3228,7 @@
     }();
 
     /**
-     * 接收两个参数，`fst` 和 `snd`，返回数组[fst, snd]。
+     * 接收两个参数，`fst` 和 `snd`，返回数组 `[fst, snd]`。
      *
      * @func
      * @memberOf R
@@ -3251,7 +3251,7 @@
     });
 
     /**
-     * 按照给出的路径，取出结果值。
+     * 按照给定的路径，取出结果值。
      *
      * @func
      * @memberOf R
@@ -3282,8 +3282,7 @@
     });
 
     /**
-     * 如果给出的非空的对象在给出的路径上有值，返回这条路径上的值
-     * 否则返回给出的缺省值
+     * 如果给定的非空对象在给定路径上存在值，则将该值返回；否则返回给定的默认值。
      *
      * @func
      * @memberOf R
@@ -3305,8 +3304,7 @@
     });
 
     /**
-     * 如果指定的对象属性在给定的路径下满足给出的 predicate 条件，
-     * 返回 `ture`，否则返回 `false`。
+     * 如果给定路径下的对象的属性满足 predicate，返回 `ture`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -3328,8 +3326,7 @@
     });
 
     /**
-     * 返回对象的部分副本，这个副本仅包含指定键对应的属性。
-     * 如果键不存在，则忽略这个属性
+     * 返回对象的部分拷贝，这个拷贝仅包含指定键对应的属性。如果某个键不存在，则忽略该属性。
      *
      * @func
      * @memberOf R
@@ -3358,7 +3355,7 @@
     });
 
     /**
-     * 与 pick 相似，不过 pickAll 会将不存在的属性以 `key: undefined` 键值对的形式返回。
+     * 与 `pick` 相似，不过 pickAll 会将不存在的属性以 `key: undefined` 键值对的形式返回。
      *
      * @func
      * @memberOf R
@@ -3387,7 +3384,7 @@
     });
 
     /**
-     * 返回对象的部分副本，这个副本只包含 key 值满足给出的预测条件的属性。
+     * 返回对象的部分拷贝，其中仅包含键值满足 predicate 的属性。
      *
      * @func
      * @memberOf R
@@ -3416,7 +3413,7 @@
     });
 
     /**
-     * 返回一个新列表，最前面是给定的元素，末尾拼接给出的 list 的内容。
+     * 返回一个新列表，首位是给定的元素，末尾拼接 list 的内容。
      *
      * @func
      * @memberOf R
@@ -3436,8 +3433,7 @@
     });
 
     /**
-     * 当作用在一个对象上时，如果指定的属性存在，则返回该属性的值
-     * 否则返回 `undefined`。
+     * 当作用在一个对象上时，如果指定的属性存在，则返回该属性的值，否则返回 `undefined`。
      *
      * @func
      * @memberOf R
@@ -3458,7 +3454,7 @@
     });
 
     /**
-     * 如果被指定的对象属性与给出的类型相符，返回 `true` ；否则返回 `false`。
+     * 如果指定的对象属性与给定的类型相符，返回 `true` ；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -3481,7 +3477,7 @@
     });
 
     /**
-     * 对于给出的非空对象，如果有指定的属性存在，则返回那个属性值；否则返回给出的缺省值。
+     * 对于给定的非空对象，如果指定属性存在，则返回该属性值；否则返回给出的默认值。
      *
      * @func
      * @memberOf R
@@ -3509,7 +3505,7 @@
     });
 
     /**
-     * 如果指定的对象属性满足给定的 predicate，返回 `true`；否则，返回 `false`。
+     * 如果指定的对象属性满足给定的 predicate，返回 `true`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -3530,8 +3526,8 @@
     });
 
     /**
-     * 多个 `prop`：输入为 key 的数组，输出为 value 的数组。
-     * 输出的值顺序为相应的 key 的顺序。
+     * 多个 `prop`：输入为键的数组，输出为值的数组。
+     * 输出值的顺序为相应的 key 的顺序。
      *
      * @func
      * @memberOf R
@@ -3561,7 +3557,7 @@
     });
 
     /**
-     * 返回从 from 到 to 的数字类型列表，包括`from`，不包括`to`。
+     * 返回从 from 到 to 的数字类型列表，包括 `from`，不包括 `to`。
      *
      * @func
      * @memberOf R
@@ -3661,8 +3657,8 @@
 
     /**
      * 在 `list` 中移除子列表，这个子列表是从 `start` 开始，包含 `count` 个元素。
-     * _注意这个操作不改变原有列表_：它返回改变的列表的副本。
-     * <small>在使用此功能时，不会有list受到损害。</small>
+     * _注意这个操作不改变原有列表_：它返回改变的列表的拷贝。
+     * <small>在使用此功能时，不会有list被改变。</small>
      *
      * @func
      * @memberOf R
@@ -3708,7 +3704,7 @@
     });
 
     /**
-     * 返回一个新的列表或者字符串，元素或者字符顺序与原来相反。
+     * 返回元素或者字符顺序与原来相反的新列表或者新字符串。
      *
      * @func
      * @memberOf R
@@ -3735,7 +3731,7 @@
     });
 
     /**
-     * Scan 与 reduce 相似，但是, 返回从左开始执行的 reduced 值组成的列表
+     * Scan 与 reduce 相似，但是返回的是从左开始执行的 reduced 值组成的列表
      *
      * @func
      * @memberOf R
@@ -3791,8 +3787,7 @@
     });
 
     /**
-     * 对于给出的列表或者字符串（或者带有 `slice` 方法的对象），返回
-     * 从 `fromIndex`（包括）到 `toIndex`（不包括）的元素
+     * 对于给定的列表或者字符串（或者带有 `slice` 方法的对象），返回从 `fromIndex`（包括）到 `toIndex`（不包括）的元素
      *
      * 如果第三个参数存在 `slice` 方法，则调用其自身的 `slice`。
      *
@@ -3819,9 +3814,9 @@
     }));
 
     /**
-     * 返回列表的副本，并根据 comparator 函数进行排序。这个函数应该同时接受两个值，
+     * 返回列表的拷贝，并根据 comparator 函数进行排序。该函数同时接收两个值，
      * 如果第一个值比较小，则返回一个负数，如果第一个值较大，则返回一个正数，如果两数相等，返回零。
-     * 请注意，返回是一个列表的 **副本** ，并没有修改原始列表。
+     * 请注意，返回是一个列表的 **拷贝** ，并没有修改原始列表。
      *
      * @func
      * @memberOf R
@@ -3841,7 +3836,7 @@
     });
 
     /**
-     * 根据给出的函数对列表进行排序。
+     * 根据给定的函数对列表进行排序。
      *
      * @func
      * @memberOf R
@@ -5001,18 +4996,20 @@
     });
 
     /**
-     * 生成一个新的数组，该数组的值，是对两个输入数组中下标相同的元素调用函数所得。
-     * 新数组的长度与两个输入数组中长度较短的那个相同。
+     * Creates a new list out of the two supplied by applying the function to each
+     * equally-positioned pair in the lists. The returned list is truncated to the
+     * length of the shorter of the two input lists.
      *
      * @function
      * @memberOf R
      * @since v0.1.0
      * @category List
      * @sig (a,b -> c) -> [a] -> [b] -> [c]
-     * @param {Function} fn是用来组合两个元素使之成为一个值的函数。
-     * @param {Array} list1是第一个被操作的数组。
-     * @param {Array} list2是第二个被操作的数组。
-     * @return {Array} list1和list2中的下标相同的元素为参数，使用fn进行计算所得的新数组。
+     * @param {Function} fn The function used to combine the two elements into one value.
+     * @param {Array} list1 The first array to consider.
+     * @param {Array} list2 The second array to consider.
+     * @return {Array} The list made by combining same-indexed elements of `list1` and `list2`
+     *         using `fn`.
      *
      * @example
      *
@@ -6168,9 +6165,8 @@
     });
 
     /**
-     * 接收两个参数： 一个函数 f，还有一个 argument列表。返回新函数 g。
-     * 当函数执行时，g 返回的是 f 作用于初始 argument 和后来提供给 g 的参数的结果。
-     * 其中参数调用的顺序是：初始提供的 argument，提供给 g 的 arguments。
+     * 接收两个参数： 一个函数 `f`，还有一个参数列表。返回新函数 `g`。
+     * 当函数执行时，`g` 返回的是 `f` 作用于初始参数和后来提供给 `g` 的参数的结果。其中参数调用的顺序是：初始提供的参数，提供给 `g` 的参数。
      *
      * @func
      * @memberOf R
@@ -6198,9 +6194,8 @@
     var partial = _createPartialApplicator(_concat);
 
     /**
-     * 需要两个参数：一个函数f，还有一个argument列表，返回新函数g。
-     * 当函数执行时，g返回的是f作用于初始argument和后来提供给g的参数的结果。
-     * 其中参数调用的顺序是：提供给g的arguments，初始提供的argument。
+     * 接收两个参数：一个函数 `f`，还有一个参数列表，返回新函数 `g`。
+     * 当函数执行时，`g` 返回的是 `f` 作用于初始参数和后来提供给 `g` 的参数的结果。其中参数调用的顺序是：提供给 `g` 的参数，初始提供的参数。
      *
      * @func
      * @memberOf R
@@ -6224,8 +6219,8 @@
     var partialRight = _createPartialApplicator(flip(_concat));
 
     /**
-     * 确定对象的嵌套路径上是否有某个明确的 value 值，结合 R.path 和 R.equals。
-     * 最常用的场景：过滤一个 list。
+     * 判断对象的嵌套路径上是否有某个特定值，通过 ` R.equals` 函数进行相等性判断。
+     * 常用于列表过滤。
      *
      * @func
      * @memberOf R
@@ -6252,7 +6247,7 @@
     });
 
     /**
-     * 在给出的列表中的所有对象中，将命名相同的属性抽出来，组成一个新的列表。
+     * 从列表内的每个对象中取出特定名称的属性，组成一个新的列表。
      *
      * @func
      * @memberOf R
@@ -6275,7 +6270,7 @@
     });
 
     /**
-     * 对 SQL 中的 select 语句的有效模拟。
+     * 对 SQL 中的 `select` 语句的有效模拟。
      *
      * @func
      * @memberOf R
@@ -6300,7 +6295,7 @@
     ]);
 
     /**
-     * 如果指定的对象属性值用 `R.equals` 判定与给出的值相同，则返回 `true`；否则返回 `false` 。
+     * 如果指定的对象属性值用 `R.equals` 判定与给出的值相同，则返回 `true`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -6452,7 +6447,7 @@
     });
 
     /**
-     * 与`filter`相反。
+     * 与 `filter` 相反。
      *
      * 若在列表位置给出 transformer，则用做 transducer。
      *
@@ -6478,7 +6473,7 @@
     });
 
     /**
-     * 返回包含指定的相同值且长度为 `n` 的固定列表。
+     * 返回长度为 `n` 的包含同一指定值的列表。
      *
      * @func
      * @memberOf R
@@ -7515,9 +7510,9 @@
     });
 
     /**
-     * 接收一个 predicate 函数，和一个列表或者其他可过滤的对象，返回一对值。
-     * 这一对值中的元素分别是满足和不满足 predicate 条件的结果，
-     * 其类型与列表或者其他可过滤的对象中元素类型一致。
+     * 接收一个 predicate，和一个列表或者其他 "filterable" （可过滤的）的对象，返回一对值。
+     * 这一对值中的元素分别是满足和不满足 predicate 条件的结果，结果类型与列表或者其他可过滤的对象中元素类型一致。
+     * 意译：通过 predicate 将列表或 "filterable" （可过滤的）对象分成两部分，分别为满足 predicate 和不满足 predicate 的元素。元素类型保持不变。
      *
      * @func
      * @memberOf R
@@ -7543,11 +7538,10 @@
     ]);
 
     /**
-     * 从左往右执行函数组合。最左边的函数可以是任意元函数（参数个数不限）
-     * 其余函数必须是一元函数
+     * 从左往右执行函数组合。最左边的函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
      * 在一些库中，这个函数叫做 `sequence`。
      *
-     * ** 注意：** pipe函数的结果不是自动柯里化的
+     * ** 注意：** `pipe` 函数的结果不是自动柯里化的
      *
      * @func
      * @memberOf R
@@ -7572,8 +7566,7 @@
     };
 
     /**
-     * 从左到右执行返回 Promise 的函数的组合。
-     * 最左边的函数可以是任意元函数（参数个数不限）； 其余函数必须是一元函数。
+     * 从左往右执行返回 Promise 的函数的组合。最左边的函数可以是任意元函数（参数个数不限）；其余函数必须是一元函数。
      *
      * @func
      * @memberOf R
@@ -8011,10 +8004,9 @@
     });
 
     /**
-     * 将给出的一系列函数，转换成从左到右的 Kleisli 组合，
-     * 每个函数必须返回支持[`chain`](#chain)操作的值。
+     * 将一系列函数，转换成从左到右的 Kleisli 组合，每个函数必须返回支持[`chain`](#chain)操作的值。
      *
-     * `R.pipeK(f, g, h)` 相当于 `R.pipe(R.chain(f), R.chain(g), R.chain(h))`。
+     * `R.pipeK(f, g, h)` 等价于 `R.pipe(R.chain(f), R.chain(g), R.chain(h))`。
      *
      * @func
      * @memberOf R
