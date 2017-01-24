@@ -2,8 +2,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 多个 `prop`：输入为 key 的数组，输出为 value 的数组。
- * 输出的值顺序为相应的 key 的顺序。
+ * 多个 `prop`：输入为键的数组，输出为值的数组。
+ * 输出值的顺序为相应的 key 的顺序。
  *
  * @func
  * @memberOf R

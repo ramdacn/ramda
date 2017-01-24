@@ -4,7 +4,7 @@ var filter = require('./filter');
 
 
 /**
- * 与`filter`相反。
+ * 与 `filter` 相反。
  *
  * 若在列表位置给出 transformer，则用做 transducer。
  *

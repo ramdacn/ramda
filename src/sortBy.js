@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 根据给出的函数对列表进行排序。
+ * 根据给定的函数对列表进行排序。
  *
  * @func
  * @memberOf R

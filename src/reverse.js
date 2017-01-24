@@ -3,7 +3,7 @@ var _isString = require('./internal/_isString');
 
 
 /**
- * 返回一个新的列表或者字符串，元素或者字符顺序与原来相反。
+ * 返回元素或者字符顺序与原来相反的新列表或者新字符串。
  *
  * @func
  * @memberOf R

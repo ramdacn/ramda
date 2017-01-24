@@ -5,7 +5,7 @@ var useWith = require('./useWith');
 
 
 /**
- * 对 SQL 中的 select 语句的有效模拟。
+ * 对 SQL 中的 `select` 语句的有效模拟。
  *
  * @func
  * @memberOf R
