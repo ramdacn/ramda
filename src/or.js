@@ -2,7 +2,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 如果一个参数为 `true` 或全部参数均为 `true`，则返回 `true`。如果参数均为 `false`，则返回 `false`。
+ * 逻辑或操作，
+ * 只要有一个参数为 `truth-y`， 则返回 `true`；如果两个参数均为 `false-y`，则返回 `false`。
  *
  * @func
  * @memberOf R

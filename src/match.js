@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 用正则表达式测试一个字符串。
+ * 对一个字符串进行正则判断，
  * 注意，当没有匹配项时这个函数会返回一个空数组。
  * 这一点和
  * [`String.prototype.match`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match)
