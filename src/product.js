@@ -3,7 +3,7 @@ var reduce = require('./reduce');
 
 
 /**
- * Multiplies together all the elements of a list.
+ * 将列表中的所有元素相乘。
  *
  * @func
  * @memberOf R

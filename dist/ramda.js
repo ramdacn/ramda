@@ -3228,7 +3228,7 @@
     }();
 
     /**
-     * Takes two arguments, `fst` and `snd`, and returns `[fst, snd]`.
+     * 接收两个参数，`fst` 和 `snd`，返回数组 `[fst, snd]`。
      *
      * @func
      * @memberOf R
@@ -3251,7 +3251,7 @@
     });
 
     /**
-     * Retrieve the value at a given path.
+     * 取出给定路径上的值。
      *
      * @func
      * @memberOf R
@@ -3282,8 +3282,7 @@
     });
 
     /**
-     * If the given, non-null object has a value at the given path, returns the
-     * value at that path. Otherwise returns the provided default value.
+     * 如果非空对象在给定路径上存在值，则将该值返回；否则返回给定的默认值。
      *
      * @func
      * @memberOf R
@@ -3305,8 +3304,7 @@
     });
 
     /**
-     * Returns `true` if the specified object property at given path satisfies the
-     * given predicate; `false` otherwise.
+     * 如果给定路径下的对象属性满足 predicate，返回 `ture`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -3328,8 +3326,7 @@
     });
 
     /**
-     * Returns a partial copy of an object containing only the keys specified. If
-     * the key does not exist, the property is ignored.
+     * 返回对象的部分拷贝，其仅包含指定键对应的属性。如果某个键不存在，则忽略该属性。
      *
      * @func
      * @memberOf R
@@ -3358,8 +3355,7 @@
     });
 
     /**
-     * Similar to `pick` except that this one includes a `key: undefined` pair for
-     * properties that don't exist.
+     * 与 `pick` 相似，但 `pickAll` 会将不存在的属性以 `key: undefined` 键值对的形式返回。
      *
      * @func
      * @memberOf R
@@ -3388,8 +3384,7 @@
     });
 
     /**
-     * Returns a partial copy of an object containing only the keys that satisfy
-     * the supplied predicate.
+     * 返回对象的部分拷贝，其中仅包含 key 满足 predicate 的属性。
      *
      * @func
      * @memberOf R
@@ -3418,8 +3413,7 @@
     });
 
     /**
-     * Returns a new list with the given element at the front, followed by the
-     * contents of the list.
+     * 返回一个新列表，首位是给定的元素，后面拼接给定列表的内容。
      *
      * @func
      * @memberOf R
@@ -3439,8 +3433,7 @@
     });
 
     /**
-     * Returns a function that when supplied an object returns the indicated
-     * property of that object, if it exists.
+     * 取出对象中指定属性的值，如果不存在，则返回 undefined。
      *
      * @func
      * @memberOf R
@@ -3461,8 +3454,7 @@
     });
 
     /**
-     * Returns `true` if the specified object property is of the given type;
-     * `false` otherwise.
+     * 判断指定对象的属性是否为给定的数据类型，是则返回 `true` ；否则返回 `false` 。
      *
      * @func
      * @memberOf R
@@ -3485,9 +3477,7 @@
     });
 
     /**
-     * If the given, non-null object has an own property with the specified name,
-     * returns the value of that property. Otherwise returns the provided default
-     * value.
+     * 对于给定的非空对象，如果指定属性存在，则返回该属性值；否则返回给定的默认值。
      *
      * @func
      * @memberOf R
@@ -3515,8 +3505,7 @@
     });
 
     /**
-     * Returns `true` if the specified object property satisfies the given
-     * predicate; `false` otherwise.
+     * 如果指定的对象属性满足给定的 predicate，返回 `true`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -3537,8 +3526,7 @@
     });
 
     /**
-     * Acts as multiple `prop`: array of keys in, array of values out. Preserves
-     * order.
+     * 返回 `prop` 的数组：输入为 keys 数组，输出为对应的 values 数组。values 数组顺序与 keys 的相同。
      *
      * @func
      * @memberOf R
@@ -3568,7 +3556,7 @@
     });
 
     /**
-     * Returns a list of numbers from `from` (inclusive) to `to` (exclusive).
+     * 返回从 `from` 到 `to` 之间的所有数的升序列表。左闭右开（包含 `from`，不包含 `to`）。
      *
      * @func
      * @memberOf R
@@ -3597,20 +3585,15 @@
     });
 
     /**
-     * Returns a single item by iterating through the list, successively calling
-     * the iterator function and passing it an accumulator value and the current
-     * value from the array, and then passing the result to the next call.
+     * 右折叠操作。
      *
-     * Similar to `reduce`, except moves through the input list from the right to
-     * the left.
+     * 遍历列表，相继调用二元迭代函数：一个累积值和从数组中取出的当前元素，将本次迭代结果作为下次迭代的累积值。返回最终累积值。
      *
-     * The iterator function receives two values: *(value, acc)*, while the arguments'
-     * order of `reduce`'s iterator function is *(acc, value)*.
+     * 可以用`R.reduced` 提前终止遍历操作。
      *
-     * Note: `R.reduceRight` does not skip deleted or unassigned indices (sparse
-     * arrays), unlike the native `Array.prototype.reduce` method. For more details
-     * on this behavior, see:
-     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight#Description
+     * `reduceRight` 的迭代函数接收两个参数 *(acc, value)*。与之对应的，`reduce` 的迭代函数的参数顺序为 *(value, acc)*
+     *
+     * 注意：`R.reduceRight` 与原生 `Array.prototype.reduce` 方法不同，它不会跳过删除或未分配的索引项（稀疏矩阵）。更多关于原生 reduce 的行为，请参考：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
      *
      * @func
      * @memberOf R
@@ -3648,12 +3631,11 @@
     });
 
     /**
-     * Returns a value wrapped to indicate that it is the final value of the reduce
-     * and transduce functions. The returned value should be considered a black
-     * box: the internal structure is not guaranteed to be stable.
+     * 返回一个封装的值，该值代表 `reduce` 或 `transduce` 操作的最终结果。
      *
-     * Note: this optimization is unavailable to functions not explicitly listed
-     * above. For instance, it is not currently supported by reduceRight.
+     * 返回值是一个黑盒：不能保证其内部结构的稳定性。
+     *
+     * 注意：这个优化不适用于上面未明确列出的函数。例如，现在还不支持 `reduceRight`。
      *
      * @func
      * @memberOf R
@@ -3673,10 +3655,7 @@
     var reduced = _curry1(_reduced);
 
     /**
-     * Removes the sub-list of `list` starting at index `start` and containing
-     * `count` elements. _Note that this is not destructive_: it returns a copy of
-     * the list with the changes.
-     * <small>No lists have been harmed in the application of this function.</small>
+     * 移除列表中从 `start` 开始的 `count` 个元素。_ 注意，该操作是非破坏性的：不改变原列表，返回处理后列表的拷贝。_
      *
      * @func
      * @memberOf R
@@ -3698,7 +3677,7 @@
     });
 
     /**
-     * Replace a substring or regex match in a string with a replacement.
+     * 用代替值替换字符串的子串或正则匹配到的值。
      *
      * @func
      * @memberOf R
@@ -3722,8 +3701,7 @@
     });
 
     /**
-     * Returns a new list or string with the elements or characters in reverse
-     * order.
+     * 对列表或字符串的排列顺序取反。
      *
      * @func
      * @memberOf R
@@ -3750,8 +3728,7 @@
     });
 
     /**
-     * Scan is similar to reduce, but returns a list of successively reduced values
-     * from the left
+     * Scan 与 reduce 类似。但会将每次迭代计算的累积值记录下来，组成一个列表返回。
      *
      * @func
      * @memberOf R
@@ -3782,8 +3759,7 @@
     });
 
     /**
-     * Returns the result of "setting" the portion of the given data structure
-     * focused by the given lens to the given value.
+     * 通过 lens 对数据结构聚焦的部分进行设置。
      *
      * @func
      * @memberOf R
@@ -3808,10 +3784,9 @@
     });
 
     /**
-     * Returns the elements of the given list or string (or object with a `slice`
-     * method) from `fromIndex` (inclusive) to `toIndex` (exclusive).
+     * 对于给定的列表或字符串（或带有 `slice` 方法的对象），返回从 `fromIndex`（包括）到 `toIndex`（不包括）的元素
      *
-     * Dispatches to the `slice` method of the third argument, if present.
+     * 如果第三个参数存在 `slice` 方法，则调用其自身的 `slice`。
      *
      * @func
      * @memberOf R
@@ -3836,11 +3811,7 @@
     }));
 
     /**
-     * Returns a copy of the list, sorted according to the comparator function,
-     * which should accept two values at a time and return a negative number if the
-     * first value is smaller, a positive number if it's larger, and zero if they
-     * are equal. Please note that this is a **copy** of the list. It does not
-     * modify the original.
+     * 根据 comparator 对列表进行排序。comparator 函数每次接受两个参数，如果第一个值较小，则返回负数；如果第一个值较大，则返回正数；如果两值相等，返回零。注意，返回的是列表的 ** 拷贝 ** ，不会修改原列表。
      *
      * @func
      * @memberOf R
@@ -3860,7 +3831,7 @@
     });
 
     /**
-     * Sorts the list according to the supplied function.
+     * 根据给定的函数对列表进行排序。
      *
      * @func
      * @memberOf R
@@ -3900,7 +3871,7 @@
     });
 
     /**
-     * Sorts a list according to a list of comparators.
+     * 依据 comparators 列表对原列表进行排序。
      *
      * @func
      * @memberOf R
@@ -3944,7 +3915,7 @@
     });
 
     /**
-     * Splits a given list or string at a given index.
+     * 在给定的索引位置拆分列表或者字符串
      *
      * @func
      * @memberOf R
@@ -3969,7 +3940,7 @@
     });
 
     /**
-     * Splits a collection into slices of the specified length.
+     * 将 collection 拆分成指定长度的子 collection 列表。
      *
      * @func
      * @memberOf R
@@ -3998,11 +3969,7 @@
     });
 
     /**
-     * Takes a list and a predicate and returns a pair of lists with the following properties:
-     *
-     *  - the result of concatenating the two output lists is equivalent to the input list;
-     *  - none of the elements of the first output list satisfies the predicate; and
-     *  - if the second output list is non-empty, its first element satisfies the predicate.
+     * 遍历列表，在第一个符合 predicate 的元素的位置，将列表拆分为两部分。第一个符合 predicate 的元素包含在后一部分中。
      *
      * @func
      * @memberOf R
@@ -6188,9 +6155,9 @@
     });
 
     /**
-     * Takes a function `f` and a list of arguments, and returns a function `g`.
-     * When applied, `g` returns the result of applying `f` to the arguments
-     * provided initially followed by the arguments provided to `g`.
+     * 部分应用。
+     *
+     * 接收两个参数：函数 `f` 和 参数列表，返回函数 `g`。当调用 `g` 时，将初始参数和 `g` 的参数顺次传给 `f`，并返回 `f` 的执行结果。
      *
      * @func
      * @memberOf R
@@ -6218,9 +6185,9 @@
     var partial = _createPartialApplicator(_concat);
 
     /**
-     * Takes a function `f` and a list of arguments, and returns a function `g`.
-     * When applied, `g` returns the result of applying `f` to the arguments
-     * provided to `g` followed by the arguments provided initially.
+     * 部分应用。
+     *
+     * 接收两个参数：函数 `f` 和 参数列表，返回函数 `g`。当调用 `g` 时，将 `g` 的参数和初始参数顺序传给 `f`，并返回 `f` 的执行结果。
      *
      * @func
      * @memberOf R
@@ -6244,8 +6211,7 @@
     var partialRight = _createPartialApplicator(flip(_concat));
 
     /**
-     * Determines whether a nested path on an object has a specific value, in
-     * `R.equals` terms. Most likely used to filter a list.
+     * 判断对象的嵌套路径上是否有某个特定值，通过 ` R.equals` 函数进行相等性判断。常用于列表过滤。
      *
      * @func
      * @memberOf R
@@ -6272,8 +6238,7 @@
     });
 
     /**
-     * Returns a new list by plucking the same named property off all objects in
-     * the list supplied.
+     * 从列表内的每个对象中取出特定名称的属性，组成一个新的列表。
      *
      * @func
      * @memberOf R
@@ -6296,7 +6261,7 @@
     });
 
     /**
-     * Reasonable analog to SQL `select` statement.
+     * 模拟 SQL 中的 `select` 语句。
      *
      * @func
      * @memberOf R
@@ -6321,8 +6286,7 @@
     ]);
 
     /**
-     * Returns `true` if the specified object property is equal, in `R.equals`
-     * terms, to the given value; `false` otherwise.
+     * 如果指定对象属性与给定的值相等，则返回 `true` ；否则返回 `false` 。通过 `R.equals` 函数进行相等性判断。
      *
      * @func
      * @memberOf R
@@ -6349,21 +6313,17 @@
     });
 
     /**
-     * Returns a single item by iterating through the list, successively calling
-     * the iterator function and passing it an accumulator value and the current
-     * value from the array, and then passing the result to the next call.
+     * 左折叠操作。
      *
-     * The iterator function receives two values: *(acc, value)*. It may use
-     * `R.reduced` to shortcut the iteration.
+     * 遍历列表，相继调用二元迭代函数：一个累积值和从数组中取出的当前元素，将本次迭代结果作为下次迭代的累积值。返回最终累积值。
      *
-     * The arguments' order of `reduceRight`'s iterator function is *(value, acc)*.
+     * 可以用`R.reduced` 提前终止遍历操作。
      *
-     * Note: `R.reduce` does not skip deleted or unassigned indices (sparse
-     * arrays), unlike the native `Array.prototype.reduce` method. For more details
-     * on this behavior, see:
-     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
+     * `reduce` 的迭代函数接收两个参数 *(acc, value)*，`reduceRight` 的迭代函数的参数顺序为 *(value, acc)*
      *
-     * Dispatches to the `reduce` method of the third argument, if present.
+     * 注意：`R.reduce` 与原生 `Array.prototype.reduce` 方法不同，它不会跳过删除或未分配的索引项（稀疏矩阵）。更多关于原生 reduce 的行为，请参考：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
+     *
+     * 如果第三个参数自身有 `reduce` 方法，则调用自身的 `reduce` 方法。
      *
      * @func
      * @memberOf R
@@ -6394,13 +6354,11 @@
     var reduce = _curry3(_reduce);
 
     /**
-     * Groups the elements of the list according to the result of calling
-     * the String-returning function `keyFn` on each element and reduces the elements
-     * of each group to a single value via the reducer function `valueFn`.
+     * 首先对列表中的每个元素调用返回字符串的函数 `keyFn` ，根据返回的字符串对元素进行分组。然后调用 reducer 函数 `valueFn`，对组内的元素进行折叠操作。
      *
-     * This function is basically a more general `groupBy` function.
+     * 该函数相当于更通用的 `groupBy` 函数。
      *
-     * Acts as a transducer if a transformer is given in list position.
+     * 若在列表位置给出 transformer，则用做 transducer
      *
      * @func
      * @memberOf R
@@ -6446,11 +6404,7 @@
     }));
 
     /**
-     * Like `reduce`, `reduceWhile` returns a single item by iterating through
-     * the list, successively calling the iterator function. `reduceWhile` also
-     * takes a predicate that is evaluated before each step. If the predicate returns
-     * `false`, it "short-circuits" the iteration and returns the current value
-     * of the accumulator.
+     * 与 `reduce` 类似， `reduceWhile` 会遍历列表，相继调用二元迭代函数，并返回最终累积值。 `reduceWhile` 在每次迭代前使用 predicate 进行判断。如果 predicate 返回 `false` ，则提前终止遍历操作，并返回当前累积值。
      *
      * @func
      * @memberOf R
@@ -6481,9 +6435,9 @@
     });
 
     /**
-     * The complement of `filter`.
+     * `filter` 的补操作。返回结果为 `R.filter` 操作结果的补集。
      *
-     * Acts as a transducer if a transformer is given in list position.
+     * 若在列表位置给出 transformer，则用作 transducer。
      *
      * @func
      * @memberOf R
@@ -6507,7 +6461,7 @@
     });
 
     /**
-     * Returns a fixed list of size `n` containing a specified identical value.
+     * 生成包含 `n` 个同一元素的数组。
      *
      * @func
      * @memberOf R
@@ -7544,9 +7498,7 @@
     });
 
     /**
-     * Takes a predicate and a list or other "filterable" object and returns the
-     * pair of filterable objects of the same type of elements which do and do not
-     * satisfy, the predicate, respectively.
+     * 通过 predicate 将列表或 "filterable" （可过滤的）对象分成两部分，分别为满足 predicate 的元素和不满足 predicate 的元素。元素类型保持不变。
      *
      * @func
      * @memberOf R
@@ -7572,12 +7524,11 @@
     ]);
 
     /**
-     * Performs left-to-right function composition. The leftmost function may have
-     * any arity; the remaining functions must be unary.
+     * 从左往右执行函数组合。最左边的函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
      *
-     * In some libraries this function is named `sequence`.
+     * 在一些库中，此函数也被称为 `sequence`。
      *
-     * **Note:** The result of pipe is not automatically curried.
+     * ** 注意：** `pipe` 函数的结果不是自动柯里化的
      *
      * @func
      * @memberOf R
@@ -7602,9 +7553,7 @@
     };
 
     /**
-     * Performs left-to-right composition of one or more Promise-returning
-     * functions. The leftmost function may have any arity; the remaining functions
-     * must be unary.
+     * 从左往右执行返回 Promise 的函数的组合。最左边的函数可以是任意元函数（参数个数不限）；其余函数必须是一元函数。
      *
      * @func
      * @memberOf R
@@ -7627,7 +7576,7 @@
     };
 
     /**
-     * Multiplies together all the elements of a list.
+     * 将列表中的所有元素相乘。
      *
      * @func
      * @memberOf R
@@ -7644,11 +7593,9 @@
     var product = reduce(multiply, 1);
 
     /**
-     * Transforms a [Traversable](https://github.com/fantasyland/fantasy-land#traversable)
-     * of [Applicative](https://github.com/fantasyland/fantasy-land#applicative) into an
-     * Applicative of Traversable.
+     * 将一个 [Applicative](https://github.com/fantasyland/fantasy-land#applicative) 的 [Traversable](https://github.com/fantasyland/fantasy-land#traversable) 转换成一个 Traversable 类型的 Applicative。
      *
-     * Dispatches to the `sequence` method of the second argument, if present.
+     * 如果第二个参数带有 `sequence` 方法，则调用其自身的 `sequence`。
      *
      * @func
      * @memberOf R
@@ -8042,10 +7989,9 @@
     });
 
     /**
-     * Returns the left-to-right Kleisli composition of the provided functions,
-     * each of which must return a value of a type supported by [`chain`](#chain).
+     * 将一系列函数，转换成从左到右的 Kleisli 组合，每个函数必须返回支持[`chain`](#chain)操作的值。
      *
-     * `R.pipeK(f, g, h)` is equivalent to `R.pipe(R.chain(f), R.chain(g), R.chain(h))`.
+     * `R.pipeK(f, g, h)` 等价于 `R.pipe(R.chain(f), R.chain(g), R.chain(h))`。
      *
      * @func
      * @memberOf R
@@ -8563,8 +8509,7 @@
     });
 
     /**
-     * Splits a string into an array of strings based on the given
-     * separator.
+     * 根据给定的分隔符将字符串拆分为字符串数组。
      *
      * @func
      * @memberOf R

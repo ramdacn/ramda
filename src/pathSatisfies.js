@@ -3,8 +3,7 @@ var path = require('./path');
 
 
 /**
- * Returns `true` if the specified object property at given path satisfies the
- * given predicate; `false` otherwise.
+ * 如果给定路径下的对象属性满足 predicate，返回 `ture`；否则返回 `false`。
  *
  * @func
  * @memberOf R

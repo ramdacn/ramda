@@ -4,8 +4,7 @@ var path = require('./path');
 
 
 /**
- * Determines whether a nested path on an object has a specific value, in
- * `R.equals` terms. Most likely used to filter a list.
+ * 判断对象的嵌套路径上是否有某个特定值，通过 ` R.equals` 函数进行相等性判断。常用于列表过滤。
  *
  * @func
  * @memberOf R
