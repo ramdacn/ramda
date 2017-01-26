@@ -3,7 +3,7 @@ var _isString = require('./internal/_isString');
 
 
 /**
- * 返回元素或者字符顺序与原来相反的新列表或者新字符串。
+ * 对列表或字符串的排列顺序取反。
  *
  * @func
  * @memberOf R

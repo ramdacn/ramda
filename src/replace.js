@@ -2,7 +2,7 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 用 replacement 替换一个字符串的子字符串或者正则匹配。
+ * 用代替值替换字符串的子串或正则匹配到的值。
  *
  * @func
  * @memberOf R

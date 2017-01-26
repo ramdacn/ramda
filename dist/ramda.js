@@ -3251,7 +3251,7 @@
     });
 
     /**
-     * 按照给定的路径，取出结果值。
+     * 取出给定路径上的值。
      *
      * @func
      * @memberOf R
@@ -3282,7 +3282,7 @@
     });
 
     /**
-     * 如果给定的非空对象在给定路径上存在值，则将该值返回；否则返回给定的默认值。
+     * 如果非空对象在给定路径上存在值，则将该值返回；否则返回给定的默认值。
      *
      * @func
      * @memberOf R
@@ -3355,7 +3355,7 @@
     });
 
     /**
-     * 与 `pick` 相似，不过 pickAll 会将不存在的属性以 `key: undefined` 键值对的形式返回。
+     * 与 `pick` 相似，但 `pickAll` 会将不存在的属性以 `key: undefined` 键值对的形式返回。
      *
      * @func
      * @memberOf R
@@ -3384,7 +3384,7 @@
     });
 
     /**
-     * 返回对象的部分拷贝，其中仅包含键值满足 predicate 的属性。
+     * 返回对象的部分拷贝，其中仅包含 key 满足 predicate 的属性。
      *
      * @func
      * @memberOf R
@@ -3413,7 +3413,7 @@
     });
 
     /**
-     * 返回一个新列表，首位是给定的元素，末尾拼接 list 的内容。
+     * 返回一个新列表，首位是给定的元素，后面拼接给定列表的内容。
      *
      * @func
      * @memberOf R
@@ -3433,7 +3433,7 @@
     });
 
     /**
-     * 当作用在一个对象上时，如果指定的属性存在，则返回该属性的值，否则返回 `undefined`。
+     * 取出对象中指定属性的值，如果不存在，则返回 undefined。
      *
      * @func
      * @memberOf R
@@ -3454,7 +3454,7 @@
     });
 
     /**
-     * 如果指定的对象属性与给定的类型相符，返回 `true` ；否则返回 `false`。
+     * 判断指定对象的属性是否为给定的数据类型，是则返回 `true` ；否则返回 `false` 。
      *
      * @func
      * @memberOf R
@@ -3477,7 +3477,7 @@
     });
 
     /**
-     * 对于给定的非空对象，如果指定属性存在，则返回该属性值；否则返回给出的默认值。
+     * 对于给定的非空对象，如果指定属性存在，则返回该属性值；否则返回给定的默认值。
      *
      * @func
      * @memberOf R
@@ -3526,8 +3526,7 @@
     });
 
     /**
-     * 多个 `prop`：输入为键的数组，输出为值的数组。
-     * 输出值的顺序为相应的 key 的顺序。
+     * 返回 `prop` 的数组：输入为 keys 数组，输出为对应的 values 数组。values 数组顺序与 keys 的相同。
      *
      * @func
      * @memberOf R
@@ -3557,7 +3556,7 @@
     });
 
     /**
-     * 返回从 from 到 to 的数字类型列表，包括 `from`，不包括 `to`。
+     * 返回从 `from` 到 `to` 之间的所有数的升序列表。左闭右开（包含 `from`，不包含 `to`）。
      *
      * @func
      * @memberOf R
@@ -3586,16 +3585,15 @@
     });
 
     /**
-     * 通过对列表元素的迭代计算，返回单一的累积值。计算过程是遍历数组对象，每次都将累积值和数组中的一项赋给迭代器函数进行计算，
-     * 并把结果作为下一次的累积值。
+     * 右折叠操作。
      *
-     * 与 `reduce` 相似，只是遍历list的顺序是从右往左。
+     * 遍历列表，相继调用二元迭代函数：一个累积值和从数组中取出的当前元素，将本次迭代结果作为下次迭代的累积值。返回最终累积值。
      *
-     * 迭代器函数接收两个值：*(value, acc)*，然而，赋给`reduce`的迭代器函数的参数顺序是：*(acc, value)*.
+     * 可以用`R.reduced` 提前终止遍历操作。
      *
-     * 注意：`R.reduce` 与原生的 `Array.prototype.reduce` 方法不同，它不跳过删除项或者未分配索引项（稀疏数组）
-     * 更多关于原生reduce的细节，请参考：
-     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
+     * `reduceRight` 的迭代函数接收两个参数 *(acc, value)*。与之对应的，`reduce` 的迭代函数的参数顺序为 *(value, acc)*
+     *
+     * 注意：`R.reduceRight` 与原生 `Array.prototype.reduce` 方法不同，它不会跳过删除或未分配的索引项（稀疏矩阵）。更多关于原生 reduce 的行为，请参考：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
      *
      * @func
      * @memberOf R
@@ -3633,10 +3631,11 @@
     });
 
     /**
-     * 返回一个封装的值，这个值是 reduce 操作和 transduce 函数执行后的最终值。
-     * 返回的值应该是一个黑盒子：内部结构不能保证是稳定的。
+     * 返回一个封装的值，该值代表 `reduce` 或 `transduce` 操作的最终结果。
      *
-     * 注意：这个优化不能用于上面没有明确列出的函数。例如，现在还不支持 reduceRight 。
+     * 返回值是一个黑盒：不能保证其内部结构的稳定性。
+     *
+     * 注意：这个优化不适用于上面未明确列出的函数。例如，现在还不支持 `reduceRight`。
      *
      * @func
      * @memberOf R
@@ -3656,9 +3655,7 @@
     var reduced = _curry1(_reduced);
 
     /**
-     * 在 `list` 中移除子列表，这个子列表是从 `start` 开始，包含 `count` 个元素。
-     * _注意这个操作不改变原有列表_：它返回改变的列表的拷贝。
-     * <small>在使用此功能时，不会有list被改变。</small>
+     * 移除列表中从 `start` 开始的 `count` 个元素。_ 注意，该操作是非破坏性的：不改变原列表，返回处理后列表的拷贝。_
      *
      * @func
      * @memberOf R
@@ -3680,7 +3677,7 @@
     });
 
     /**
-     * 用 replacement 替换一个字符串的子字符串或者正则匹配。
+     * 用代替值替换字符串的子串或正则匹配到的值。
      *
      * @func
      * @memberOf R
@@ -3704,7 +3701,7 @@
     });
 
     /**
-     * 返回元素或者字符顺序与原来相反的新列表或者新字符串。
+     * 对列表或字符串的排列顺序取反。
      *
      * @func
      * @memberOf R
@@ -3731,7 +3728,7 @@
     });
 
     /**
-     * Scan 与 reduce 相似，但是返回的是从左开始执行的 reduced 值组成的列表
+     * Scan 与 reduce 类似。但会将每次迭代计算的累积值记录下来，组成一个列表返回。
      *
      * @func
      * @memberOf R
@@ -3762,7 +3759,7 @@
     });
 
     /**
-     * 给出 lens 和 value ，对给定的数据结构中 lens 聚焦的部分进行设置。
+     * 通过 lens 对数据结构聚焦的部分进行设置。
      *
      * @func
      * @memberOf R
@@ -3787,7 +3784,7 @@
     });
 
     /**
-     * 对于给定的列表或者字符串（或者带有 `slice` 方法的对象），返回从 `fromIndex`（包括）到 `toIndex`（不包括）的元素
+     * 对于给定的列表或字符串（或带有 `slice` 方法的对象），返回从 `fromIndex`（包括）到 `toIndex`（不包括）的元素
      *
      * 如果第三个参数存在 `slice` 方法，则调用其自身的 `slice`。
      *
@@ -3814,8 +3811,7 @@
     }));
 
     /**
-     * 返回列表的拷贝，并根据 comparator 函数进行排序。该函数同时接收两个值，如果第一个值较小，则返回负数，如果第一个值较大，则返回正数，如果两数相等，返回零。
-     * 请注意，返回是一个列表的 **拷贝** ，并没有修改原始列表。
+     * 根据 comparator 对列表进行排序。comparator 函数每次接受两个参数，如果第一个值较小，则返回负数；如果第一个值较大，则返回正数；如果两值相等，返回零。注意，返回的是列表的 ** 拷贝 ** ，不会修改原列表。
      *
      * @func
      * @memberOf R
@@ -3875,7 +3871,7 @@
     });
 
     /**
-     * 依据 comparator 列表对原列表进行排序。
+     * 依据 comparators 列表对原列表进行排序。
      *
      * @func
      * @memberOf R
@@ -3919,7 +3915,7 @@
     });
 
     /**
-     * 从给定的索引处拆分列表或者字符串
+     * 在给定的索引位置拆分列表或者字符串
      *
      * @func
      * @memberOf R
@@ -3944,7 +3940,7 @@
     });
 
     /**
-     * 将组合拆分成指定长度的 slices。
+     * 将 collection 拆分成指定长度的子 collection 列表。
      *
      * @func
      * @memberOf R
@@ -3973,11 +3969,7 @@
     });
 
     /**
-     * 接收一个列表，和一个 predicate ，返回有以下特征的一对列表：
-     *
-     *  - 两个输出的 list 拼接起来等价于输入的 list。
-     *  - 输出的第一个 list 中的元素都不满足 predicate；
-     *  - 如果输出的第二个 list 是非空的，则它的第一个元素满足 predicate。
+     * 遍历列表，在第一个符合 predicate 的元素的位置，将列表拆分为两部分。第一个符合 predicate 的元素包含在后一部分中。
      *
      * @func
      * @memberOf R
@@ -6163,8 +6155,9 @@
     });
 
     /**
-     * 接收两个参数： 一个函数 `f`，还有一个参数列表，返回新函数 `g`。
-     * 当函数执行时，`g` 返回的是 `f` 作用于初始参数和后来提供给 `g` 的参数的结果。参数调用顺序是：初始提供的参数，提供给 `g` 的参数。
+     * 部分应用。
+     *
+     * 接收两个参数：函数 `f` 和 参数列表，返回函数 `g`。当调用 `g` 时，将初始参数和 `g` 的参数顺次传给 `f`，并返回 `f` 的执行结果。
      *
      * @func
      * @memberOf R
@@ -6192,8 +6185,9 @@
     var partial = _createPartialApplicator(_concat);
 
     /**
-     * 接收两个参数：一个函数 `f`，还有一个参数列表，返回新函数 `g`。
-     * 当函数执行时，`g` 返回的是 `f` 作用于初始参数和后来提供给 `g` 的参数的结果。其中参数调用的顺序是：提供给 `g` 的参数，初始提供的参数。
+     * 部分应用。
+     *
+     * 接收两个参数：函数 `f` 和 参数列表，返回函数 `g`。当调用 `g` 时，将 `g` 的参数和初始参数顺序传给 `f`，并返回 `f` 的执行结果。
      *
      * @func
      * @memberOf R
@@ -6217,8 +6211,7 @@
     var partialRight = _createPartialApplicator(flip(_concat));
 
     /**
-     * 判断对象的嵌套路径上是否有某个特定值，通过 ` R.equals` 函数进行相等性判断。
-     * 常用于列表过滤。
+     * 判断对象的嵌套路径上是否有某个特定值，通过 ` R.equals` 函数进行相等性判断。常用于列表过滤。
      *
      * @func
      * @memberOf R
@@ -6293,7 +6286,7 @@
     ]);
 
     /**
-     * 如果指定的对象属性值用 `R.equals` 判定与给出的值相同，则返回 `true`；否则返回 `false`。
+     * 如果指定对象属性与给定的值相等，则返回 `true` ；否则返回 `false` 。通过 `R.equals` 函数进行相等性判断。
      *
      * @func
      * @memberOf R
@@ -6320,19 +6313,17 @@
     });
 
     /**
-     * 通过对列表元素的迭代计算，返回单一的累积值。计算过程是遍历数组对象，每次都将累积值和数组中的一项赋给迭代器函数进行计算，
-     * 并把结果作为下一次的累积值。
+     * 左折叠操作。
      *
-     * 迭代器函数接收两个值：*(acc, value)*。
-     * `R.reduced` 可以用来缩短迭代。
+     * 遍历列表，相继调用二元迭代函数：一个累积值和从数组中取出的当前元素，将本次迭代结果作为下次迭代的累积值。返回最终累积值。
      *
-     * `reduceRight` 迭代器函数的参数顺序是 *(value, acc)*。
+     * 可以用`R.reduced` 提前终止遍历操作。
      *
-     * 注意: `R.reduce` 与原生的 `Array.prototype.reduce` 方法不同，它不跳过删除项或者未分配索引项（稀疏数组）
-     * 更多关于原生reduce的细节，请参考：
-     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
+     * `reduce` 的迭代函数接收两个参数 *(acc, value)*，`reduceRight` 的迭代函数的参数顺序为 *(value, acc)*
      *
-     * 如果第三个参数有 `reduce` 方法，则调用其本身的 reduce 方法。
+     * 注意：`R.reduce` 与原生 `Array.prototype.reduce` 方法不同，它不会跳过删除或未分配的索引项（稀疏矩阵）。更多关于原生 reduce 的行为，请参考：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
+     *
+     * 如果第三个参数自身有 `reduce` 方法，则调用自身的 `reduce` 方法。
      *
      * @func
      * @memberOf R
@@ -6363,11 +6354,11 @@
     var reduce = _curry3(_reduce);
 
     /**
-     * 通过对 list 的每个元素调用返回字符串类型的函数 `keyFn` ，将元素进行分组。然后调用 reducer 函数 `valueFn`，对分出的组内的元素进行 reduces。
+     * 首先对列表中的每个元素调用返回字符串的函数 `keyFn` ，根据返回的字符串对元素进行分组。然后调用 reducer 函数 `valueFn`，对组内的元素进行折叠操作。
      *
-     * 从根本上讲，该函数是更通用的 `groupBy` 函数。
+     * 该函数相当于更通用的 `groupBy` 函数。
      *
-     * 如果列表的位置有 transformer ，则把它视为 transducer 来执行代码。
+     * 若在列表位置给出 transformer，则用做 transducer
      *
      * @func
      * @memberOf R
@@ -6413,8 +6404,7 @@
     }));
 
     /**
-     * 与 `reduce`，`reduceWhile` 相似，通过对列表连续的调用迭代函数，最终返回单一的项。`reduceWhile` 支持在每一次迭代前，
-     * 进行 predicate，如果 predicate 返回 `false`，它会切断当前的迭代，并返回当前的累积值。
+     * 与 `reduce` 类似， `reduceWhile` 会遍历列表，相继调用二元迭代函数，并返回最终累积值。 `reduceWhile` 在每次迭代前使用 predicate 进行判断。如果 predicate 返回 `false` ，则提前终止遍历操作，并返回当前累积值。
      *
      * @func
      * @memberOf R
@@ -6445,9 +6435,9 @@
     });
 
     /**
-     * 与 `filter` 相反。
+     * `filter` 的补操作。返回结果为 `R.filter` 操作结果的补集。
      *
-     * 若在列表位置给出 transformer，则用做 transducer。
+     * 若在列表位置给出 transformer，则用作 transducer。
      *
      * @func
      * @memberOf R
@@ -6471,7 +6461,7 @@
     });
 
     /**
-     * 返回长度为 `n` 的包含同一指定值的列表。
+     * 生成包含 `n` 个同一元素的数组。
      *
      * @func
      * @memberOf R
@@ -7508,9 +7498,7 @@
     });
 
     /**
-     * 接收一个 predicate，和一个列表或者其他 "filterable" （可过滤的）的对象，返回一对值。
-     * 这一对值中的元素分别是满足和不满足 predicate 的结果，结果类型与列表或者其他可过滤的对象中元素类型一致。
-     * 意译：通过 predicate 将列表或 "filterable" （可过滤的）对象分成两部分，分别为满足 predicate 和不满足 predicate 的元素。元素类型保持不变。
+     * 通过 predicate 将列表或 "filterable" （可过滤的）对象分成两部分，分别为满足 predicate 的元素和不满足 predicate 的元素。元素类型保持不变。
      *
      * @func
      * @memberOf R
@@ -7537,7 +7525,8 @@
 
     /**
      * 从左往右执行函数组合。最左边的函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
-     * 在一些库中，这个函数叫做 `sequence`。
+     *
+     * 在一些库中，此函数也被称为 `sequence`。
      *
      * ** 注意：** `pipe` 函数的结果不是自动柯里化的
      *
@@ -7604,9 +7593,7 @@
     var product = reduce(multiply, 1);
 
     /**
-     * 将一个[Applicative](https://github.com/fantasyland/fantasy-land#applicative)的
-     * [Traversable](https://github.com/fantasyland/fantasy-land#traversable)
-     * 转换成一个 Traversable 类型的 Applicative。
+     * 将一个 [Applicative](https://github.com/fantasyland/fantasy-land#applicative) 的 [Traversable](https://github.com/fantasyland/fantasy-land#traversable) 转换成一个 Traversable 类型的 Applicative。
      *
      * 如果第二个参数带有 `sequence` 方法，则调用其自身的 `sequence`。
      *
@@ -8522,7 +8509,7 @@
     });
 
     /**
-     * 基于给定的分隔符将字符串拆分为字符串数组。
+     * 根据给定的分隔符将字符串拆分为字符串数组。
      *
      * @func
      * @memberOf R

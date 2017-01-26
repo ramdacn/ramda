@@ -4,9 +4,7 @@ var reject = require('./reject');
 
 
 /**
- * 接收一个 predicate，和一个列表或者其他 "filterable" （可过滤的）的对象，返回一对值。
- * 这一对值中的元素分别是满足和不满足 predicate 的结果，结果类型与列表或者其他可过滤的对象中元素类型一致。
- * 意译：通过 predicate 将列表或 "filterable" （可过滤的）对象分成两部分，分别为满足 predicate 和不满足 predicate 的元素。元素类型保持不变。
+ * 通过 predicate 将列表或 "filterable" （可过滤的）对象分成两部分，分别为满足 predicate 的元素和不满足 predicate 的元素。元素类型保持不变。
  *
  * @func
  * @memberOf R

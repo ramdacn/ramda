@@ -2,10 +2,11 @@ var _curry1 = require('./internal/_curry1');
 var _reduced = require('./internal/_reduced');
 
 /**
- * 返回一个封装的值，这个值是 reduce 操作和 transduce 函数执行后的最终值。
- * 返回的值应该是一个黑盒子：内部结构不能保证是稳定的。
+ * 返回一个封装的值，该值代表 `reduce` 或 `transduce` 操作的最终结果。
  *
- * 注意：这个优化不能用于上面没有明确列出的函数。例如，现在还不支持 reduceRight 。
+ * 返回值是一个黑盒：不能保证其内部结构的稳定性。
+ *
+ * 注意：这个优化不适用于上面未明确列出的函数。例如，现在还不支持 `reduceRight`。
  *
  * @func
  * @memberOf R

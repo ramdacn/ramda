@@ -2,16 +2,15 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 通过对列表元素的迭代计算，返回单一的累积值。计算过程是遍历数组对象，每次都将累积值和数组中的一项赋给迭代器函数进行计算，
- * 并把结果作为下一次的累积值。
+ * 右折叠操作。
  *
- * 与 `reduce` 相似，只是遍历list的顺序是从右往左。
+ * 遍历列表，相继调用二元迭代函数：一个累积值和从数组中取出的当前元素，将本次迭代结果作为下次迭代的累积值。返回最终累积值。
  *
- * 迭代器函数接收两个值：*(value, acc)*，然而，赋给`reduce`的迭代器函数的参数顺序是：*(acc, value)*.
+ * 可以用`R.reduced` 提前终止遍历操作。
  *
- * 注意：`R.reduce` 与原生的 `Array.prototype.reduce` 方法不同，它不跳过删除项或者未分配索引项（稀疏数组）
- * 更多关于原生reduce的细节，请参考：
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
+ * `reduceRight` 的迭代函数接收两个参数 *(acc, value)*。与之对应的，`reduce` 的迭代函数的参数顺序为 *(value, acc)*
+ *
+ * 注意：`R.reduceRight` 与原生 `Array.prototype.reduce` 方法不同，它不会跳过删除或未分配的索引项（稀疏矩阵）。更多关于原生 reduce 的行为，请参考：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
  *
  * @func
  * @memberOf R
