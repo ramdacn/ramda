@@ -4,7 +4,7 @@ var over = require('./over');
 
 
 /**
- * 给出 lens 和 value ，对给定的数据结构中 lens 聚焦的部分进行设置。
+ * 通过 lens 对数据结构聚焦的部分进行设置。
  *
  * @func
  * @memberOf R

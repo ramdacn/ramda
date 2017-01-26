@@ -4,7 +4,7 @@ var times = require('./times');
 
 
 /**
- * 返回长度为 `n` 的包含同一指定值的列表。
+ * 生成包含 `n` 个同一元素的数组。
  *
  * @func
  * @memberOf R

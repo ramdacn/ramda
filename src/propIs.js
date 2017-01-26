@@ -3,7 +3,7 @@ var is = require('./is');
 
 
 /**
- * 如果指定的对象属性与给定的类型相符，返回 `true` ；否则返回 `false`。
+ * 判断指定对象的属性是否为给定的数据类型，是则返回 `true` ；否则返回 `false` 。
  *
  * @func
  * @memberOf R

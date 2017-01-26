@@ -3,8 +3,9 @@ var _createPartialApplicator = require('./internal/_createPartialApplicator');
 
 
 /**
- * 接收两个参数： 一个函数 `f`，还有一个参数列表，返回新函数 `g`。
- * 当函数执行时，`g` 返回的是 `f` 作用于初始参数和后来提供给 `g` 的参数的结果。参数调用顺序是：初始提供的参数，提供给 `g` 的参数。
+ * 部分应用。
+ *
+ * 接收两个参数：函数 `f` 和 参数列表，返回函数 `g`。当调用 `g` 时，将初始参数和 `g` 的参数顺次传给 `f`，并返回 `f` 的执行结果。
  *
  * @func
  * @memberOf R

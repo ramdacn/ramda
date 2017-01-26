@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 按照给定的路径，取出结果值。
+ * 取出给定路径上的值。
  *
  * @func
  * @memberOf R

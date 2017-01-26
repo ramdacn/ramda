@@ -4,9 +4,9 @@ var filter = require('./filter');
 
 
 /**
- * 与 `filter` 相反。
+ * `filter` 的补操作。返回结果为 `R.filter` 操作结果的补集。
  *
- * 若在列表位置给出 transformer，则用做 transducer。
+ * 若在列表位置给出 transformer，则用作 transducer。
  *
  * @func
  * @memberOf R

@@ -3,19 +3,17 @@ var _reduce = require('./internal/_reduce');
 
 
 /**
- * 通过对列表元素的迭代计算，返回单一的累积值。计算过程是遍历数组对象，每次都将累积值和数组中的一项赋给迭代器函数进行计算，
- * 并把结果作为下一次的累积值。
+ * 左折叠操作。
  *
- * 迭代器函数接收两个值：*(acc, value)*。
- * `R.reduced` 可以用来缩短迭代。
+ * 遍历列表，相继调用二元迭代函数：一个累积值和从数组中取出的当前元素，将本次迭代结果作为下次迭代的累积值。返回最终累积值。
  *
- * `reduceRight` 迭代器函数的参数顺序是 *(value, acc)*。
+ * 可以用`R.reduced` 提前终止遍历操作。
  *
- * 注意: `R.reduce` 与原生的 `Array.prototype.reduce` 方法不同，它不跳过删除项或者未分配索引项（稀疏数组）
- * 更多关于原生reduce的细节，请参考：
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
+ * `reduce` 的迭代函数接收两个参数 *(acc, value)*，`reduceRight` 的迭代函数的参数顺序为 *(value, acc)*
  *
- * 如果第三个参数有 `reduce` 方法，则调用其本身的 reduce 方法。
+ * 注意：`R.reduce` 与原生 `Array.prototype.reduce` 方法不同，它不会跳过删除或未分配的索引项（稀疏矩阵）。更多关于原生 reduce 的行为，请参考：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
+ *
+ * 如果第三个参数自身有 `reduce` 方法，则调用自身的 `reduce` 方法。
  *
  * @func
  * @memberOf R

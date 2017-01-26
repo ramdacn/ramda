@@ -3,7 +3,7 @@ var equals = require('./equals');
 
 
 /**
- * 如果指定的对象属性值用 `R.equals` 判定与给出的值相同，则返回 `true`；否则返回 `false`。
+ * 如果指定对象属性与给定的值相等，则返回 `true` ；否则返回 `false` 。通过 `R.equals` 函数进行相等性判断。
  *
  * @func
  * @memberOf R
