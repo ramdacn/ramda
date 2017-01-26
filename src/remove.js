@@ -3,8 +3,8 @@ var _curry3 = require('./internal/_curry3');
 
 /**
  * 在 `list` 中移除子列表，这个子列表是从 `start` 开始，包含 `count` 个元素。
- * _注意这个操作不改变原有列表_：它返回改变的列表的副本。
- * <small>在使用此功能时，不会有list受到损害。</small>
+ * _注意这个操作不改变原有列表_：它返回改变的列表的拷贝。
+ * <small>在使用此功能时，不会有list被改变。</small>
  *
  * @func
  * @memberOf R

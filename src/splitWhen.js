@@ -2,11 +2,11 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 接收一个列表，和一个 predicate ，返回一对列表，且有以下特征：
+ * 接收一个列表，和一个 predicate ，返回有以下特征的一对列表：
  *
- *  - 两个输出的 list 拼接起来与输入的 list 相同。
- *  - 第一个输出的 list 中的元素都不满足 predicate；
- *  - 如果第二个输出的 list 是非空的，则它的第一个元素满足 predicate。
+ *  - 两个输出的 list 拼接起来等价于输入的 list。
+ *  - 输出的第一个 list 中的元素都不满足 predicate；
+ *  - 如果输出的第二个 list 是非空的，则它的第一个元素满足 predicate。
  *
  * @func
  * @memberOf R

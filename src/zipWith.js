@@ -9,11 +9,19 @@ var _curry3 = require('./internal/_curry3');
  * @since v0.1.0
  * @category List
  * @sig (a,b -> c) -> [a] -> [b] -> [c]
+<<<<<<< HEAD
  * @param {Function} fn 用来组合两个元素使之成为一个值的函数。
  * @param {Array} list1 第一个被操作的数组。
  * @param {Array} list2 第二个被操作的数组。
  * @return {Array} list1 和 list2 中的下标相同的元素为参数，使用 fn 进行计算所得的新数组。
  *
+=======
+ * @param {Function} fn The function used to combine the two elements into one value.
+ * @param {Array} list1 The first array to consider.
+ * @param {Array} list2 The second array to consider.
+ * @return {Array} The list made by combining same-indexed elements of `list1` and `list2`
+ *         using `fn`.
+>>>>>>> zcx
  * @example
  *
  *      var f = (x, y) => {
