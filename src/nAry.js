@@ -2,9 +2,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Wraps a function of any arity (including nullary) in a function that accepts
- * exactly `n` parameters. Any extraneous parameters will not be passed to the
- * supplied function.
+ * 将一个任意元（包括零元）的函数包装成一个可以接收确定 `n` 个参数的函数。
+ * 任何无关的参数都不会传递到所提供的函数中。
  *
  * @func
  * @memberOf R

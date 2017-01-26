@@ -6,9 +6,9 @@ var any = require('./any');
 
 
 /**
- * 如果列表中的元素都不满足断言，则返回`true`，否则返回`false`。
+ * 如果列表中的元素都不满足 predicate，返回 `true`；否则返回 `false`。
  *
- * 如果提供了第二个参数，则将其分派到`any`方法。
+ * 若第二个参数自身存在 `any` 方法，则调用自身的 `any` 方法。
  *
  * @func
  * @memberOf R

@@ -3,9 +3,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Create a new object with the own properties of the first object merged with
- * the own properties of the second object. If a key exists in both objects,
- * the value from the second object will be used.
+ * 用第一个对象的自属性和第二个对象的自属性融合后去创建一个新对象。
+ * 如果两个对象中存在一个相同的 key，将会使用第二个对象中的值。
  *
  * @func
  * @memberOf R

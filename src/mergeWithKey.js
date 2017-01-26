@@ -3,12 +3,10 @@ var _has = require('./internal/_has');
 
 
 /**
- * Creates a new object with the own properties of the two provided objects. If
- * a key exists in both objects, the provided function is applied to the key
- * and the values associated with the key in each object, with the result being
- * used as the value associated with the key in the returned object. The key
- * will be excluded from the returned object if the resulting value is
- * `undefined`.
+ * 用所提供的两个对象的自属性去创建一个新对象。
+ * 如果两个对象中都存在同一个 key， 那么所提供的函数将被应用到该 key 在每个对象中所对应的 key 和 value 上，
+ * 结果就作为返回对象中该 key 所对应的值。
+ * 如果作用结果的值为 `undefined`， 那么这个 key 将在返回结果中被排除。
  *
  * @func
  * @memberOf R

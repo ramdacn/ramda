@@ -3,9 +3,9 @@ var map = require('./map');
 
 
 /**
- * Returns a lens for the given getter and setter functions. The getter "gets"
- * the value of the focus; the setter "sets" the value of the focus. The setter
- * should not mutate the data structure.
+ * 返回给定 getter 和 setter 方法的透镜。
+ * getter 和 setter 分别 “获取” 和 “设置” 被透镜聚焦的值。
+ * 但 setter 不应该改变被操作对象的数据结构。
  *
  * @func
  * @memberOf R
