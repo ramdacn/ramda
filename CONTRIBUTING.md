@@ -37,17 +37,17 @@
 
 4. 每一段文字是一行，段落之间空一行。
 
-5. 如果遇到原文错误，可以直接给ramda仓库提pr
+5. 如果遇到原文错误，可以直接给 ramda 仓库提 pr
 
 6. 反引号 "`" 包裹的内容，与其他元素之间空格隔开。
 
-7. takes 统一为 “接受” ？
+7. takes 统一为 “接收” ？
 
 8. filterable ***able 等是翻译，还是保留？
 
 9. given 统一为 “给定” ， specified -> 特定 ?
 
-10. default -> 缺省 or 默认 ？
+10. default -> 默认 ？
 
 11. otherwise -> 否则，并且否则前面用 分号 ；隔开
 
@@ -55,6 +55,8 @@
 
 13. 每段话如无特殊情况以句号结尾，检查一下，（也有可能是冒号：，然后下面是解释）
 
-14. is equivalent to -> 等价于 or 相当于
+14. is equivalent to -> 等价于
 
-15. left-to-right -> 从左往（到、向）右，right-to-left
+15. left-to-right -> 从左往右，right-to-left
+
+16. in `R.equals` terms -> 通过 ` R.equals` 函数进行相等性判断
