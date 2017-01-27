@@ -4,9 +4,9 @@ var slice = require('./slice');
 
 
 /**
- * 返回除第1个元素以外的元素（或者调用`tail`方法）。
+ * 返回除第1个元素以外的元素（或者调用 `tail` 方法）。
  *
- * 如果第1个参数有`slice`方法，则调用`slice`方法。
+ * 如果第1个参数有 `slice` 方法，则调用 `slice` 方法。
  *
  * @func
  * @memberOf R

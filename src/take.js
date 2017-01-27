@@ -7,7 +7,7 @@ var slice = require('./slice');
 /**
  * 返回集合的前`n`个元素、字符串的前`n`个字符或者进行 transducer/transform 。
  *
- * 如果第2个参数有`take`方法，则调用`take`方法。
+ * 如果第2个参数有 `take` 方法，则调用 `take` 方法。
  *
  * @func
  * @memberOf R

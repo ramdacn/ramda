@@ -4,13 +4,13 @@ var _xtakeWhile = require('./internal/_xtakeWhile');
 
 
 /**
- * 集合中从后往前每个元素都使用条件函数判断，直到条件函数返回`false`跳出，然后返回集合在迭代跳出时的后`n`个元素。
+ * 集合中从后往前每个元素都使用条件函数判断，直到条件函数返回 `false` 跳出，然后返回集合在迭代跳出时的后`n`个元素。
  * 除非条件函数在处理元素的时候报错。条件函数接收一个值：
- * *(value)*.
+ * *(value)*
  *
- * 如果第2个参数有`takeWhile`方法，则调用`takeWhile`方法。
+ * 如果第2个参数有 `takeWhile` 方法，则调用 `takeWhile` 方法。
  *
- * 如果第2个参数是 transformer ，则`takeWhile`作为一个 transducer 调用。
+ * 如果第2个参数是 transformer ，则 `takeWhile` 作为一个 transducer 调用。
  *
  * @func
  * @memberOf R

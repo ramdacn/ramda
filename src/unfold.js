@@ -6,7 +6,6 @@ var _curry2 = require('./internal/_curry2');
  * 否则返回一个数对，前者添加到结果集合中，后者用作种子(seed)传递给下一轮迭代。
  *
  * 迭代函数只接收一个参数： *(seed)*
- * The iterator function receives one argument: *(seed)*.
  *
  * @func
  * @memberOf R

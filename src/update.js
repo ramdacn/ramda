@@ -14,7 +14,7 @@ var always = require('./always');
  * @param {Number} idx 需要修改的位置
  * @param {*} x 在返回数组中修改时需要使用的值
  * @param {Array|Arguments} list 需要被修改的类数组对象
- * @return {Array} 第`index`个位置用`x`替换后的`list`的拷贝
+ * @return {Array} 第`index`个位置用`x` 替换后的 `list` 的拷贝
  * @see R.adjust
  * @example
  *

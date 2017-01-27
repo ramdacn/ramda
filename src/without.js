@@ -6,7 +6,7 @@ var reject = require('./reject');
 
 /**
  * 返回一个集合，其元素都不在第1个输入集合中。
- * 比较函数是`R.equals`。
+ * 比较函数是 `R.equals` 。
  *
  * 如果输入是 transformer ，那么按照 transducer 的方式执行。
  *
@@ -15,9 +15,9 @@ var reject = require('./reject');
  * @since v0.19.0
  * @category List
  * @sig [a] -> [a] -> [a]
- * @param {Array} list1 需要从`list2`中移除的值
+ * @param {Array} list1 需要从 `list2` 中移除的值
  * @param {Array} list2 带移除的集合
- * @return {Array} 没有`list1`中元素的集合
+ * @return {Array} 没有 `list1` 中元素的集合
  * @see R.transduce
  * @example
  *

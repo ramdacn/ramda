@@ -5,7 +5,7 @@ var _curry2 = require('./internal/_curry2');
 /**
  * 基于输入函数返回值来判断“重复”，返回一个没有重复元素的集合。
  * 如果出现重复元素，则保留第1次出现的元素。
- * 比较函数是`R.equals`。
+ * 比较函数是 `R.equals` 。
  *
  * @func
  * @memberOf R

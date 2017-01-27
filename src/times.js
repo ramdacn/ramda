@@ -4,7 +4,7 @@ var _curry2 = require('./internal/_curry2');
 /**
  * 执行一个函数`n`次，返回函数执行结果的数组。
  *
- * `fn`接收的参数是从`0`递增到`n-1`的值。
+ * `fn` 接收的参数是从 `0` 递增到 `n-1` 的值。
  *
  * @func
  * @memberOf R

@@ -4,7 +4,7 @@ var uniqBy = require('./uniqBy');
 
 /**
  * 返回不重复的元素集合。
- * 比较函数是`R.equals`。
+ * 比较函数是 `R.equals` 。
  *
  * @func
  * @memberOf R

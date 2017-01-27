@@ -5,7 +5,7 @@ var differenceWith = require('./differenceWith');
 
 /**
  * 寻找一个无重复元素的集合，其元素在且仅在输入集合中的一个里面出现。
- * “重复”由条件函数返回值决定。
+ * “重复”由条件函数的返回值决定。
  *
  * @func
  * @memberOf R

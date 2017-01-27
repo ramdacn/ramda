@@ -4,7 +4,7 @@ var drop = require('./drop');
 
 /**
  * 返回集合的后`n`个元素。
- * 如果`n > list.length`则返回`list.length`个元素的集合。
+ * 如果 `n > list.length` 则返回 `list.length` 个元素的集合。
  *
  * @func
  * @memberOf R

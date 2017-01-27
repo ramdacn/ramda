@@ -4,7 +4,7 @@ var _curry2 = require('./internal/_curry2');
 /**
  * 两个集合对应位置元素组合，生成一个新的元素对的集合。
  * 生成的集合长度取较短的输入集合的长度。
- * 注意，`zip`等价于`zipWith(function(a, b) { return [a, b] })`。
+ * 注意， `zip` 等价于 `zipWith(function(a, b) { return [a, b] })` 。
  *
  * @func
  * @memberOf R

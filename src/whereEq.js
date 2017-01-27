@@ -6,9 +6,9 @@ var where = require('./where');
 
 /**
  * 输入参考对象和待检测对象，如果满足参考值则返回 true，否则返回 false。
- * 如果待检测对象的每个属性值都等于（使用`R.equals`来判断）参考对象对应的属性值，那么这个对象就满足参考对象。
+ * 如果待检测对象的每个属性值都等于（使用 `R.equals` 来判断）参考对象对应的属性值，那么这个对象就满足参考对象。
  *
- * `whereEq`是[`where`](#where)的一个特殊形式。
+ * `whereEq` 是 [`where`](#where) 的一种特殊形式。
  *
  * @func
  * @memberOf R
