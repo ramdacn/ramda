@@ -2,9 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Applies function `fn` to the argument list `args`. This is useful for
- * creating a fixed-arity function from a variadic function. `fn` should be a
- * bound function if context is significant.
+ * 将函数 `fn` 作用于参数列表 `args`。这对于从变参函数创建为定参（参数个数确定）函数很有帮助。如果上下文很重要，则 `fn` 应该绑定其上下文。
  *
  * @func
  * @memberOf R

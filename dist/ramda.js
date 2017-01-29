@@ -12,7 +12,6 @@
      *
      * 假设 `g` 代表柯里化的三元函数，`_` 代表 `R.__`，下面几种写法是等价的：
      *
-     * haha
      *   - `g(1, 2, 3)`
      *   - `g(_, 2, 3)(1)`
      *   - `g(_, _, 3)(1)(2)`
@@ -952,7 +951,7 @@
     });
 
     /**
-     * 对数组中给定索引的值进行函数变换，返回一份新的数组拷贝，给定索引处的值被替换为函数变换的结果。
+     * 对数组中给定索引的值进行函数变换，返回一份新的数组拷贝，数组中给定索引处的值被替换为函数变换的结果。
      *
      * @func
      * @memberOf R
@@ -986,12 +985,11 @@
     });
 
     /**
-     * Returns `true` if all elements of the list match the predicate, `false` if
-     * there are any that don't.
+     * 如果列表中的所有元素都满足 predicate，则返回 `true`，如果有任意元素不满足，则返回 `false`。
      *
-     * Dispatches to the `all` method of the second argument, if present.
+     * 若第二个参数自身存在 `all` 方法，则调用自身的 `all` 方法。
      *
-     * Acts as a transducer if a transformer is given in list position.
+     * 若在列表位置中给出 transfomer，则用作 transducer 。
      *
      * @func
      * @memberOf R
@@ -1021,11 +1019,9 @@
     }));
 
     /**
-     * Returns a function that always returns the given value. Note that for
-     * non-primitives the value returned is a reference to the original value.
+     * 返回一个总是返回给定值的函数。注意，对于非原始值，返回的值是对原始值的引用。
      *
-     * This function is known as `const`, `constant`, or `K` (for K combinator) in
-     * other languages and libraries.
+     * 此函数在其他语言或库中被称作：`const`、`constant`、或 `K` (在 K combinator 中)
      *
      * @func
      * @memberOf R
@@ -1046,7 +1042,7 @@
     });
 
     /**
-     * Returns `true` if both arguments are `true`; `false` otherwise.
+     * 如果两个参数都是 `true`，则返回 `true`；否则为`false`。
      *
      * @func
      * @memberOf R
@@ -1069,12 +1065,11 @@
     });
 
     /**
-     * Returns `true` if at least one of elements of the list match the predicate,
-     * `false` otherwise.
+     * 若列表中至少有一个元素满足 predicate，则返回 `true`，否则返回 `false`。
      *
-     * Dispatches to the `any` method of the second argument, if present.
+     * 若第二个参数自身存在 `any` 方法，则调用其自身的 `any`。
      *
-     * Acts as a transducer if a transformer is given in list position.
+     * 若在列表位置中给出 transfomer，则用作 transducer 。
      *
      * @func
      * @memberOf R
@@ -1105,10 +1100,9 @@
     }));
 
     /**
-     * Returns a new list, composed of n-tuples of consecutive elements If `n` is
-     * greater than the length of the list, an empty list is returned.
+     * 返回一个新列表，由相邻元素组成的 n元组组成。如果 `n` 大于列表的长度，则返回空列表。
      *
-     * Acts as a transducer if a transformer is given in list position.
+     * 若在列表位置中给出 transfomer，则用作 transducer 。
      *
      * @func
      * @memberOf R
@@ -1128,8 +1122,7 @@
     var aperture = _curry2(_dispatchable([], _xaperture, _aperture));
 
     /**
-     * Returns a new list containing the contents of the given list, followed by
-     * the given element.
+     * 返回一个新列表，前面为给定列表的内容，末尾拼接给定的元素
      *
      * @func
      * @memberOf R
@@ -1152,9 +1145,7 @@
     });
 
     /**
-     * Applies function `fn` to the argument list `args`. This is useful for
-     * creating a fixed-arity function from a variadic function. `fn` should be a
-     * bound function if context is significant.
+     * 将函数 `fn` 作用于参数列表 `args`。这对于从变参函数创建为定参（参数个数确定）函数很有帮助。如果上下文很重要，则 `fn` 应该绑定其上下文。
      *
      * @func
      * @memberOf R
@@ -1176,8 +1167,7 @@
     });
 
     /**
-     * Makes an ascending comparator function out of a function that returns a value
-     * that can be compared with `<` and `>`.
+     * 接受一个返回值可以与 `<` 和 `>` 比较的函数，返回一个升序比较器。
      *
      * @func
      * @memberOf R
@@ -1203,10 +1193,7 @@
     });
 
     /**
-     * Makes a shallow clone of an object, setting or overriding the specified
-     * property with the given value. Note that this copies and flattens prototype
-     * properties onto the new object as well. All non-primitive properties are
-     * copied by reference.
+     * 将对象浅复制，并设置或覆盖指定的属性。注意，这也会将 prototype 属性复制和展开到新的对象中。所有非原始类型属性都通过引用复制。
      *
      * @func
      * @memberOf R
@@ -1232,10 +1219,7 @@
     });
 
     /**
-     * Makes a shallow clone of an object, setting or overriding the nodes required
-     * to create the given path, and placing the specific value at the tail end of
-     * that path. Note that this copies and flattens prototype properties onto the
-     * new object as well. All non-primitive properties are copied by reference.
+     * 将对象浅复制，设置或覆盖即将创建的给定路径所需的节点，并将特定值放在该路径的尾端。请注意，这也会将原型属性复制和展开到新对象上。所有非原始类型属性都通过引用复制。
      *
      * @func
      * @memberOf R
@@ -1274,9 +1258,9 @@
     });
 
     /**
-     * Creates a function that is bound to a context.
-     * Note: `R.bind` does not provide the additional argument-binding capabilities of
-     * [Function.prototype.bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
+     * 创建一个绑定了上下文的函数。
+     *
+     * 注意：与 [Function.prototype.bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) 不同，`R.bind` 不会绑定额外参数。
      *
      * @func
      * @memberOf R
@@ -1302,9 +1286,9 @@
     });
 
     /**
-     * Restricts a number to be within a range.
+     * 将数字限制在某个范围内。
      *
-     * Also works for other ordered types such as Strings and Dates.
+     * 也适用于其他有序类型，如字符串和日期。
      *
      * @func
      * @memberOf R
@@ -1329,8 +1313,7 @@
     });
 
     /**
-     * Makes a comparator function out of a function that reports whether the first
-     * element is less than the second.
+     * 接受判断首个元素是否小于第二个元素的函数，返回比较函数。
      *
      * @func
      * @memberOf R
@@ -1355,20 +1338,16 @@
     });
 
     /**
-     * Returns a curried equivalent of the provided function, with the specified
-     * arity. The curried function has two unusual capabilities. First, its
-     * arguments needn't be provided one at a time. If `g` is `R.curryN(3, f)`, the
-     * following are equivalent:
+     * 对函数进行柯里化，并限制柯里化函数的元数。柯里化函数有两个很好的特性：
+     *
+     * 首先，参数不需要一次只传入一个。假设 `g` 由 `R.curryN(3, f)` 生成，则下列写法是等价的：
      *
      *   - `g(1)(2)(3)`
      *   - `g(1)(2, 3)`
      *   - `g(1, 2)(3)`
      *   - `g(1, 2, 3)`
      *
-     * Secondly, the special placeholder value `R.__` may be used to specify
-     * "gaps", allowing partial application of any combination of arguments,
-     * regardless of their positions. If `g` is as above and `_` is `R.__`, the
-     * following are equivalent:
+     * 其次，特殊的占位符值 `R.__` 可用于标记暂未传入的参数位置，允许部分应用于任何参数组合，而无需关心它们的位置和顺序。 假设 `g` 定义如前所示，且 `_` 代表 `R .__`，则下列写法是等价的：
      *
      *   - `g(1, 2, 3)`
      *   - `g(_, 2, 3)(1)`
@@ -1404,7 +1383,7 @@
     });
 
     /**
-     * Decrements its argument.
+     * 减1。
      *
      * @func
      * @memberOf R
@@ -1421,8 +1400,7 @@
     var dec = add(-1);
 
     /**
-     * Returns the second argument if it is not `null`, `undefined` or `NaN`
-     * otherwise the first argument is returned.
+     * 如果第二个参数不是 `null`、`undefined` 或 `NaN`，则返回第二个参数，否则返回第一个参数（默认值）。
      *
      * @func
      * @memberOf R
@@ -1447,8 +1425,7 @@
     });
 
     /**
-     * Makes a descending comparator function out of a function that returns a value
-     * that can be compared with `<` and `>`.
+     * 接受一个返回值可以与 `<` 和 `>` 比较的函数，返回一个降序比较器。
      *
      * @func
      * @memberOf R
@@ -1474,9 +1451,7 @@
     });
 
     /**
-     * Finds the set (i.e. no duplicates) of all elements in the first list not
-     * contained in the second list. Duplication is determined according to the
-     * value returned by applying the supplied predicate to two list elements.
+     * 查找第一个列表中未包含在第二个列表中的所有元素的集合（集合中没有重复元素）。两列表中的元素通过 predicate 判断相应元素是否同时 “包含在” 两列表中。
      *
      * @func
      * @memberOf R
@@ -1509,7 +1484,7 @@
     });
 
     /**
-     * Returns a new object that does not contain a `prop` property.
+     * 返回一个不包含给定 `prop` 属性的新对象。
      *
      * @func
      * @memberOf R
@@ -5055,7 +5030,7 @@
     });
 
     /**
-     * A function that always returns `false`. Any passed in parameters are ignored.
+     * 始终返回 `false` 的函数。 参数中传递的任何内容都将被忽略。
      *
      * @func
      * @memberOf R
@@ -5072,7 +5047,7 @@
     var F = always(false);
 
     /**
-     * A function that always returns `true`. Any passed in parameters are ignored.
+     * 始终返回 `true` 的函数。 参数中传递的任何内容都将被忽略。
      *
      * @func
      * @memberOf R
@@ -5416,9 +5391,7 @@
     });
 
     /**
-     * Wraps a function of any arity (including nullary) in a function that accepts
-     * exactly 2 parameters. Any extraneous parameters will not be passed to the
-     * supplied function.
+     * 将任意元函数封装进二元函数（只接受2个参数）中。 任何额外的参数都不会传递给被包裹的函数。
      *
      * @func
      * @memberOf R
@@ -5447,11 +5420,9 @@
     });
 
     /**
-     * Creates a deep copy of the value which may contain (nested) `Array`s and
-     * `Object`s, `Number`s, `String`s, `Boolean`s and `Date`s. `Function`s are
-     * assigned by reference rather than copied
+     * 深复制。其值可能（嵌套）包含 `Array`、`Object`、`Number`、`String`、`Boolean`、`Date` 类型的数据。`Function` 进行引用复制。
      *
-     * Dispatches to a `clone` method if present.
+     * 若自身存在 `clone` 方法，则调用自身的 `clone` 方法。
      *
      * @func
      * @memberOf R
@@ -5472,20 +5443,16 @@
     });
 
     /**
-     * Returns a curried equivalent of the provided function. The curried function
-     * has two unusual capabilities. First, its arguments needn't be provided one
-     * at a time. If `f` is a ternary function and `g` is `R.curry(f)`, the
-     * following are equivalent:
+     * 对函数进行柯里化。柯里化函数有两个很好的特性：
+     *
+     * 首先，参数不需要一次只传入一个。如果 `f` 是三元函数，`g` 是 `R.curry(f)` ，则下列写法是等价的：
      *
      *   - `g(1)(2)(3)`
      *   - `g(1)(2, 3)`
      *   - `g(1, 2)(3)`
      *   - `g(1, 2, 3)`
      *
-     * Secondly, the special placeholder value `R.__` may be used to specify
-     * "gaps", allowing partial application of any combination of arguments,
-     * regardless of their positions. If `g` is as above and `_` is `R.__`, the
-     * following are equivalent:
+     * 其次，特殊的占位符值 `R.__` 可用于标记暂未传入的参数位置，允许部分应用于任何参数组合，而无需关心它们的位置和顺序。 假设 `g` 定义如前所示，且 `_` 代表 `R .__`，则下列写法是等价的：
      *
      *   - `g(1, 2, 3)`
      *   - `g(_, 2, 3)(1)`
@@ -5517,9 +5484,9 @@
     });
 
     /**
-     * Makes a shallow clone of an object, omitting the property at the given path.
-     * Note that this copies and flattens prototype properties onto the new object
-     * as well. All non-primitive properties are copied by reference.
+     * 对对象进行浅复制，忽略（除去）给定路径上的属性。
+     *
+     * 注意，这也会将 prototype 属性复制到新对象上并展开。所有非原始类型属性都通过引用复制。
      *
      * @func
      * @memberOf R
@@ -6772,12 +6739,9 @@
     });
 
     /**
-     * Takes a list of predicates and returns a predicate that returns true for a
-     * given list of arguments if every one of the provided predicates is satisfied
-     * by those arguments.
+     * 接受一个 predicates 列表，并返回一个满足下面条件的 predicate：如果给定的每个参数都满足所有的 predicates ，则返回 `true`。
      *
-     * The function returned is a curried function whose arity matches that of the
-     * highest-arity predicate.
+     * 该函数返回一个柯里化的函数，参数个数由参数最多的 predicate 决定。
      *
      * @func
      * @memberOf R
@@ -6811,12 +6775,9 @@
     });
 
     /**
-     * Takes a list of predicates and returns a predicate that returns true for a
-     * given list of arguments if at least one of the provided predicates is
-     * satisfied by those arguments.
+     * 接受一个 predicates 列表，并返回一个满足下面条件的 predicate：如果给定的参数满足至少一个 predicates ，则返回 `true`。
      *
-     * The function returned is a curried function whose arity matches that of the
-     * highest-arity predicate.
+     * 该函数返回一个柯里化的函数，参数个数由参数最多的 predicate 决定。
      *
      * @func
      * @memberOf R
@@ -6851,10 +6812,9 @@
     });
 
     /**
-     * ap applies a list of functions to a list of values.
+     * ap 将一系列函数列表作用于一系列值上。
      *
-     * Dispatches to the `ap` method of the second argument, if present. Also
-     * treats curried functions as applicatives.
+     * 若第二个参数自身存在 `ap` 方法，则调用自身的 `ap` 方法。柯里化函数也被当做 applicative。
      *
      * @func
      * @memberOf R
@@ -6882,9 +6842,7 @@
     });
 
     /**
-     * Given a spec object recursively mapping properties to functions, creates a
-     * function producing an object of the same structure, by mapping each property
-     * to the result of calling its associated function with the supplied arguments.
+     * 给定一个能递归地将属性值映射到函数的特定规范的对象，来创建一个能生成相同结构对象的函数。该函数使用传入的参数调用对象的每个属性位对应的函数来生成相应属性的值。
      *
      * @func
      * @memberOf R
@@ -6919,10 +6877,9 @@
     });
 
     /**
-     * Returns the result of calling its first argument with the remaining
-     * arguments. This is occasionally useful as a converging function for
-     * `R.converge`: the left branch can produce a function while the right branch
-     * produces a value to be passed to that function as an argument.
+     * 提取第一个参数作为函数，其余参数作为刚提取的函数的参数，调用该函数并将结果返回。
+     *
+     * `R.call `有时可以用作 `R.converge` 的 convergeing 函数：第一个分支函数生成一个函数，其余分支函数生成一系列值作为参数传递给该函数。（`R.converge` 第二个参数为一个分支函数列表）。
      *
      * @func
      * @memberOf R
@@ -6954,11 +6911,9 @@
     });
 
     /**
-     * `chain` maps a function over a list and concatenates the results. `chain`
-     * is also known as `flatMap` in some libraries
+     * `chain` 将函数映射到列表中每个元素，并将结果连接起来。 `chain` 在一些库中也称为 `flatMap`（先 map 再 flatten ）。
      *
-     * Dispatches to the `chain` method of the second argument, if present,
-     * according to the [FantasyLand Chain spec](https://github.com/fantasyland/fantasy-land#chain).
+     * 若第二个参数存在 `chain` 方法，则调用其自身的 `chain`方法。该参数需符合 [FantasyLand Chain 规范](https://github.com/fantasyland/fantasy-land#chain)。
      *
      * @func
      * @memberOf R
@@ -6985,12 +6940,7 @@
     }));
 
     /**
-     * Returns a function, `fn`, which encapsulates `if/else, if/else, ...` logic.
-     * `R.cond` takes a list of [predicate, transformer] pairs. All of the arguments
-     * to `fn` are applied to each of the predicates in turn until one returns a
-     * "truthy" value, at which point `fn` returns the result of applying its
-     * arguments to the corresponding transformer. If none of the predicates
-     * matches, `fn` returns undefined.
+     * 返回一个函数 `fn`，它封装了 `if / else，if / else, ...` 逻辑。 `R.cond` 接受列表元素为 [predicate，transformer] 对(pair) 的列表。 `fn` 的所有参数顺次作用于每个 predicate，直到有一个返回 "truthy" 值，此时相应 transformer 对参数处理，并作为 `fn` 的结果返回。 如果没有 predicate 匹配，则 `fn` 返回 undefined。
      *
      * @func
      * @memberOf R
@@ -7026,9 +6976,7 @@
     });
 
     /**
-     * Wraps a constructor function inside a curried function that can be called
-     * with the same arguments and returns the same type. The arity of the function
-     * returned is specified to allow using variadic constructor functions.
+     * 将构造函数封装在柯里化函数中，可以使用相同的参数调用并返回相同的类型。为了能够使用变参的构造函数，返回函数的元数需要明确指定。
      *
      * @func
      * @memberOf R
@@ -7096,11 +7044,7 @@
     });
 
     /**
-     * Accepts a converging function and a list of branching functions and returns
-     * a new function. When invoked, this new function is applied to some
-     * arguments, each branching function is applied to those same arguments. The
-     * results of each branching function are passed as arguments to the converging
-     * function to produce the return value.
+     * 接受一个 converging 函数和一个分支函数列表，并返回一个新函数。 当被调用时，新函数接受参数，并将这些参数转发给每个分支函数。然后将每个分支函数的计算结果作为参数传递给 converging 函数，converging 函数的结果作为新函数的返回值。
      *
      * @func
      * @memberOf R
@@ -7133,12 +7077,9 @@
     });
 
     /**
-     * Counts the elements of a list according to how many match each value of a
-     * key generated by the supplied function. Returns an object mapping the keys
-     * produced by `fn` to the number of occurrences in the list. Note that all
-     * keys are coerced to strings because of how JavaScript objects work.
+     * 根据给定函数提供的统计规则对列表中的元素进行分类计数。返回一个对象，其键值对为：`fn` 根据列表元素生成键，列表中通过 `fn` 映射为对应键的元素的个数作为值。注意，由于JavaScript对象的实现方式，所有键都被强制转换为字符串。
      *
-     * Acts as a transducer if a transformer is given in list position.
+     * 若在列表位置中给出 transfomer，则用作 transducer 。
      *
      * @func
      * @memberOf R
@@ -7769,10 +7710,9 @@
     };
 
     /**
-     * Performs right-to-left function composition. The rightmost function may have
-     * any arity; the remaining functions must be unary.
+     * 从右往左执行函数组合。最右边函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
      *
-     * **Note:** The result of compose is not automatically curried.
+     * **注意：**compose 输出的函数不会自动进行柯里化。
      *
      * @func
      * @memberOf R
@@ -7800,10 +7740,9 @@
     };
 
     /**
-     * Returns the right-to-left Kleisli composition of the provided functions,
-     * each of which must return a value of a type supported by [`chain`](#chain).
+     * 接受一系列函数，返回从右向左的 Kleisli 组合，每个函数必须返回支持 [`chain`](#chain) 操作的值。
      *
-     * `R.composeK(h, g, f)` is equivalent to `R.compose(R.chain(h), R.chain(g), R.chain(f))`.
+     * `R.composeK(h, g, f)` 等同于 `R.compose(R.chain(h)，R.chain(g)，R.chain(f))`。
      *
      * @func
      * @memberOf R
@@ -7839,9 +7778,7 @@
     };
 
     /**
-     * Performs right-to-left composition of one or more Promise-returning
-     * functions. The rightmost function may have any arity; the remaining
-     * functions must be unary.
+     * 从右向左执行返回 Promise 的函数的组合。 最右边的函数可以是任意元函数（参数个数不限）; 其余函数必须是一元函数。
      *
      * @func
      * @memberOf R
@@ -7880,8 +7817,7 @@
     };
 
     /**
-     * Wraps a constructor function inside a curried function that can be called
-     * with the same arguments and returns the same type.
+     * 将构造函数封装在柯里化函数中，输入参数与返回值类型跟被封装的构造函数的相同。
      *
      * @func
      * @memberOf R
@@ -7915,8 +7851,7 @@
     });
 
     /**
-     * Returns `true` if the specified value is equal, in `R.equals` terms, to at
-     * least one element of the given list; `false` otherwise.
+     * 若数组中至少存在一个元素等于指定的值（依据 `R.equals` 的方法判断），则返回 `true`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -7937,9 +7872,7 @@
     var contains = _curry2(_contains);
 
     /**
-     * Finds the set (i.e. no duplicates) of all elements in the first list not
-     * contained in the second list. Objects and Arrays are compared are compared
-     * in terms of value equality, not reference equality.
+     * 查找第一个列表中未包含在第二个列表中的所有元素的集合。对象和数组需要比较数值相等，而非引用相等。
      *
      * @func
      * @memberOf R
@@ -8342,15 +8275,9 @@
     }();
 
     /**
-     * A function which calls the two provided functions and returns the `&&`
-     * of the results.
-     * It returns the result of the first function if it is false-y and the result
-     * of the second function otherwise. Note that this is short-circuited,
-     * meaning that the second function will not be invoked if the first returns a
-     * false-y value.
+     * 该函数调用两个函数，并对两函数返回值进行`与操作`。若第一个函数结果为 false-y 的 (false, null, 0 等)，则返回该结果，否则返回第二个函数的结果。注意，`both` 为短路操作，即如果第一个函数返回 false-y 的值，则不会调用第二个函数。
      *
-     * In addition to functions, `R.both` also accepts any fantasy-land compatible
-     * applicative functor.
+     * 除了函数，`R.both` 还接受任何兼容 fantasy-land 的 applicative functor。
      *
      * @func
      * @memberOf R
@@ -8376,10 +8303,9 @@
     });
 
     /**
-     * Takes a function `f` and returns a function `g` such that if called with the same arguments
-     * when `f` returns a "truthy" value, `g` returns `false` and when `f` returns a "falsy" value `g` returns `true`.
+     * 对函数的返回值取反。接受一个函数 `f`，返回一个新函数 `g`：在输入参数相同的情况下，若 `f` 返回 'true-y' ，则 `g` 返回 `false-y` ，反之亦然。
      *
-     * `R.complement` may be applied to any functor
+     * 可以将 `R.complement` 应用于任何 functor。
      *
      * @func
      * @memberOf R
@@ -8400,13 +8326,11 @@
     var complement = lift(not);
 
     /**
-     * Returns the result of concatenating the given lists or strings.
+     * 将给定的 lists 或 strings 串连接起来。
      *
-     * Note: `R.concat` expects both arguments to be of the same type,
-     * unlike the native `Array.prototype.concat` method. It will throw
-     * an error if you `concat` an Array with a non-Array value.
+     * 注意：不同于 [`Array.prototype.concat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat), `R.concat` 要求两个参数类型相同。 如果将 Array 与非 Array 连接，将抛出错误。
      *
-     * Dispatches to the `concat` method of the first argument, if present.
+     * 若第二个参数自身存在 `concat` 方法，则调用自身的 `concat`。
      *
      * @func
      * @memberOf R

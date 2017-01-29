@@ -6,10 +6,7 @@ var assoc = require('./assoc');
 
 
 /**
- * Makes a shallow clone of an object, setting or overriding the nodes required
- * to create the given path, and placing the specific value at the tail end of
- * that path. Note that this copies and flattens prototype properties onto the
- * new object as well. All non-primitive properties are copied by reference.
+ * 将对象浅复制，设置或覆盖即将创建的给定路径所需的节点，并将特定值放在该路径的尾端。请注意，这也会将原型属性复制和展开到新对象上。所有非原始类型属性都通过引用复制。
  *
  * @func
  * @memberOf R

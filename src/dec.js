@@ -2,7 +2,7 @@ var add = require('./add');
 
 
 /**
- * Decrements its argument.
+ * 减1。
  *
  * @func
  * @memberOf R
