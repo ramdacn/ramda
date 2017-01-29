@@ -62,3 +62,5 @@
 16. in `R.equals` terms -> 通过 ` R.equals` 函数进行相等性判断
 
 17. list -> 列表
+
+18. Dispatches to the all method of the second argument, if present. 这个句式统一翻译如下：若第二个参数自身存在 `all` 方法，则调用自身的 `all` 方法。
