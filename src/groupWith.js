@@ -1,8 +1,7 @@
 var _curry2 = require('./internal/_curry2');
 
 /**
- * Takes a list and returns a list of lists where each sublist's elements are
- * all "equal" according to the provided equality function.
+ * 接收一个 list ，并返回一个包含一系列 `equal` 元素子 list 的 list 。`equal` 能力由给定的函数定义。
  *
  * @func
  * @memberOf R

@@ -5,11 +5,9 @@ var toString = require('./toString');
 
 
 /**
- * Turns a named method with a specified arity into a function that can be
- * called directly supplied with arguments and a target object.
+ * 将一个带有特定 arity 的具名函数转换为一个可以对给定参数和目标对象直接执行的函数。
  *
- * The returned function is curried and accepts `arity + 1` parameters where
- * the final parameter is the target object.
+ * 返回的函数是柯里化的，它接收 `arity + 1` 个参数，其中最后一个参数是目标对象。
  *
  * @func
  * @memberOf R

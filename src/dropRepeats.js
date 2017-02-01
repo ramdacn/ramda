@@ -6,10 +6,9 @@ var equals = require('./equals');
 
 
 /**
- * Returns a new list without any consecutively repeating elements. `R.equals`
- * is used to determine equality.
+ * 返回一个没有任何连续重复元素的 list。通过 `R.equals` 函数进行相等性判断。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *
  * @func
  * @memberOf R

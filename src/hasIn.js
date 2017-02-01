@@ -2,8 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns whether or not an object or its prototype chain has a property with
- * the specified name
+ * 如果一个对象或其原型链具有指定的属性则返回 `true`；否则返回 `false`。
  *
  * @func
  * @memberOf R

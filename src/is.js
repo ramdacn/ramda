@@ -2,8 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * See if an object (`val`) is an instance of the supplied constructor. This
- * function will check up the inheritance chain, if any.
+ * 检测一个对象（`val`）是否是给定构造函数的实例。这个方法会依次检测其原型链。
  *
  * @func
  * @memberOf R
