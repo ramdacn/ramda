@@ -2,7 +2,7 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 返回给定透镜聚焦的给定数据结构部分 “设置” 为给定函数应用到聚焦的值上的结果的结果。
+ * 对数据结构中 lens focus 的部分进行函数变换。
  *
  * @func
  * @memberOf R

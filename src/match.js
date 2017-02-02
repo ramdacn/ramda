@@ -2,11 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 对一个字符串进行正则判断，
- * 注意，当没有匹配项时这个函数会返回一个空数组。
- * 这一点和
- * [`String.prototype.match`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match)
- * 有所不同，后者在没有匹配项时会返回 `null`。
+ * 正则匹配字符串。注意，如果没有匹配项，则返回空数组。和 [`String.prototype.match`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) 不同，后者在没有匹配项时会返回 `null`。
  *
  * @func
  * @memberOf R

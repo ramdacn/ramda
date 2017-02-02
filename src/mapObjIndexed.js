@@ -4,9 +4,7 @@ var keys = require('./keys');
 
 
 /**
- * `map` 的一个对象指定版本。
- * 这个函数应用到三个参数：*(value, key, obj)*。
- * 如果 value 是有意义的，则使用 `map` 替代。
+ * `Object` 版本的 `map`。mapping function 接受三个参数： *(value, key, obj)* 。如果仅用到参数 *value*，则用 `map` 即可。
  *
  * @func
  * @memberOf R

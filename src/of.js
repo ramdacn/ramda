@@ -3,10 +3,9 @@ var _of = require('./internal/_of');
 
 
 /**
- * 返回包含所提供值的一个单例数组。
+ * 将给定值作为元素，封装成单元素数组。
  *
- * 注意这里的`of`和ES6中的`of`是不同的；详见
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of
+ * 注意，`R.of` 与 ES6 的 `of` 不同；详见 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of 。
  *
  * @func
  * @memberOf R

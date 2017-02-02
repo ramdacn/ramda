@@ -5,7 +5,7 @@ var prop = require('./prop');
 
 
 /**
- * 返回焦点为指定属性的镜头。
+ * 返回 focus 到指定属性的 lens。
  *
  * @func
  * @memberOf R

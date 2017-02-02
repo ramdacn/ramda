@@ -6,9 +6,7 @@ var map = require('./map');
 
 
 /**
- * 将一个函数提升为指定的 N 元函数，使之能映射到 N 个列表、函数或其他符合
- * [FantasyLand Apply spec](https://github.com/fantasyland/fantasy-land#apply)
- * 规范的对象上。
+ * 将一个函数提升为指定的 N 元函数，使之能映射到多个列表、函数或其他符合 [FantasyLand Apply spec](https://github.com/fantasyland/fantasy-land#apply) 规范的对象上。
  *
  * @func
  * @memberOf R

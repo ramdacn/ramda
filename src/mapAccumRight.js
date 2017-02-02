@@ -2,13 +2,11 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * mapAccumRight 函数表现得很像 map 和 reduce 的结合；
- * 它将一个函数应用到一个列表中的每一个元素，从右往左传递一个累积的参数，
- * 并将这个累积器最后的值和新列表一并返回。
+ * mapAccum 的行为类似于 map 和 reduce 的组合；它将迭代函数作用于列表中的每个元素，从左往右传递经迭代函数计算的累积值，并将最后的累积值和由所有中间的累积值组成的列表一起返回。
  *
- * 除了输入列表是从右往左移动，其他和 `mapAccum` 类似。
+ * 和 `mapAccum` 类似，除了输入列表是从右往左遍历。
  *
- * 迭代器函数接收两个参数，acc 和 value， 并且应该返回一个元组 [acc, value]。
+ * 迭代函数接收两个参数，*value* 和 *acc* ，返回一个元组 *[value, acc]*。
  *
  * @func
  * @memberOf R

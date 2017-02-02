@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 两数相乘，等价于 `a * b`。已被柯里化。
+ * 两数相乘，等价于柯里化的 `a * b` 。
  *
  * @func
  * @memberOf R

@@ -2,8 +2,7 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * 返回一个列表，其中包含给定对象的所有属性的 key，包括 prototype 属性的。
- * 注意，通过不同 JS 平台输出数组的顺序不保证是相同的。
+ * 返回由给定对象的所有属性（包括 prototype 属性）的属性名组成的列表。注意，通过不同 JS 平台输出数组的顺序不保证是相同的。
  *
  * @func
  * @memberOf R
