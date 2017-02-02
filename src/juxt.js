@@ -3,7 +3,7 @@ var converge = require('./converge');
 
 
 /**
- * juxt applies a list of functions to a list of values.
+ * `juxt` 将一系列函数作用于一系列值上面。
  *
  * @func
  * @memberOf R

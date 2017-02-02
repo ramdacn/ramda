@@ -2,8 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns `true` if the first argument is less than or equal to the second;
- * `false` otherwise.
+ * 如果第一个参数小于或等于第二个，返回 `true`；否则返回 `false`。
  *
  * @func
  * @memberOf R
