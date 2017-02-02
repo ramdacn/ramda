@@ -165,3 +165,11 @@ var R = require('ramda');
 -----------------
 
 感谢 [J. C. Phillipps](http://www.jcphillipps.com) 为 Ramda 设计的标志。 Ramda 标志艺术品 &copy; 2014 J. C. Phillipps 。 创作共享协议 [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)。
+
+中文翻译
+-----------------
+
+[增迪](https://github.com/adispring)，[聪杰](https://github.com/ZhangCongjie)，[春晓](https://github.com/MissSweety)，[申乾](https://github.com/csqian)，[雪勇](https://github.com/xuelangcxy)。
+
+如果发现翻译不恰当的地方，恳请指正。也欢迎加入我们，一起维护 Ramda 中文网站。
+
