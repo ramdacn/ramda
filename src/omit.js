@@ -3,7 +3,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 返回一个除去指定键值的对象的拷贝。
+ * 去除对象中给定的 keys 对应的属性。
  *
  * @func
  * @memberOf R

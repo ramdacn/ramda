@@ -2,8 +2,7 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * 对参数进行取反操作。
- *
+ * 取反操作。
  *
  * @func
  * @memberOf R
