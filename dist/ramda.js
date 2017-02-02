@@ -2273,7 +2273,7 @@
     });
 
     /**
-     * Checks if the input value is `null` or `undefined`.
+     * 检查输入值是否为 `null` 或 `undefined` 。
      *
      * @func
      * @memberOf R
@@ -2294,10 +2294,7 @@
     });
 
     /**
-     * Returns a list containing the names of all the enumerable own properties of
-     * the supplied object.
-     * Note that the order of the output array is not guaranteed to be consistent
-     * across different JS platforms.
+     * 返回由给定对象的所有可枚举自身属性的属性名组成的列表。注意，通过不同 JS 平台输出数组的顺序不保证是相同的。
      *
      * @func
      * @memberOf R
@@ -2368,10 +2365,7 @@
     }();
 
     /**
-     * Returns a list containing the names of all the properties of the supplied
-     * object, including prototype properties.
-     * Note that the order of the output array is not guaranteed to be consistent
-     * across different JS platforms.
+     * 返回由给定对象的所有属性（包括 prototype 属性）的属性名组成的列表。注意，通过不同 JS 平台输出数组的顺序不保证是相同的。
      *
      * @func
      * @memberOf R
@@ -2397,7 +2391,7 @@
     });
 
     /**
-     * Returns the number of elements in the array by returning `list.length`.
+     * 通过 `list.length`，返回数组的大小（数组中元素的数量）。
      *
      * @func
      * @memberOf R
@@ -2416,8 +2410,7 @@
     });
 
     /**
-     * Returns `true` if the first argument is less than the second; `false`
-     * otherwise.
+     * 如果第一个参数小于第二个，返回 `true`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -2441,8 +2434,7 @@
     });
 
     /**
-     * Returns `true` if the first argument is less than or equal to the second;
-     * `false` otherwise.
+     * 如果第一个参数小于或等于第二个，返回 `true`；否则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -2466,13 +2458,9 @@
     });
 
     /**
-     * The mapAccum function behaves like a combination of map and reduce; it
-     * applies a function to each element of a list, passing an accumulating
-     * parameter from left to right, and returning a final value of this
-     * accumulator together with the new list.
-     *
-     * The iterator function receives two arguments, *acc* and *value*, and should
-     * return a tuple *[acc, value]*.
+     * mapAccum 的行为类似于 map 和 reduce 的组合；它将迭代函数作用于列表中的每个元素，从左往右传递经迭代函数计算的累积值，并将最后的累积值和由所有中间的累积值组成的列表一起返回。
+
+     * 迭代函数接收两个参数，*acc* 和 *value*， 返回一个元组 *[acc, value]*。
      *
      * @func
      * @memberOf R
@@ -2516,16 +2504,11 @@
     });
 
     /**
-     * The mapAccumRight function behaves like a combination of map and reduce; it
-     * applies a function to each element of a list, passing an accumulating
-     * parameter from right to left, and returning a final value of this
-     * accumulator together with the new list.
+     * mapAccum 的行为类似于 map 和 reduce 的组合；它将迭代函数作用于列表中的每个元素，从左往右传递经迭代函数计算的累积值，并将最后的累积值和由所有中间的累积值组成的列表一起返回。
      *
-     * Similar to `mapAccum`, except moves through the input list from the right to
-     * the left.
+     * 和 `mapAccum` 类似，除了输入列表是从右往左遍历。
      *
-     * The iterator function receives two arguments, *value* and *acc*, and should
-     * return a tuple *[value, acc]*.
+     * 迭代函数接收两个参数，*value* 和 *acc* ，返回一个元组 *[value, acc]*。
      *
      * @func
      * @memberOf R
@@ -2568,10 +2551,7 @@
     });
 
     /**
-     * Tests a regular expression against a String. Note that this function will
-     * return an empty array when there are no matches. This differs from
-     * [`String.prototype.match`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match)
-     * which returns `null` when there are no matches.
+     * 正则匹配字符串。注意，如果没有匹配项，则返回空数组。和 [`String.prototype.match`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) 不同，后者在没有匹配项时会返回 `null`。
      *
      * @func
      * @memberOf R
@@ -2593,10 +2573,7 @@
     });
 
     /**
-     * mathMod behaves like the modulo operator should mathematically, unlike the
-     * `%` operator (and by extension, R.modulo). So while "-17 % 5" is -2,
-     * mathMod(-17, 5) is 3. mathMod requires Integer arguments, and returns NaN
-     * when the modulus is zero or negative.
+     * mathMod 和算术取模操作类似，而不像 `%` 操作符 （或 R.modulo）。所以 "-17 % 5" 等于 -2，而 mathMod(-17, 5) 等于 3。mathMod 要求参数为整型，并且当模数等于 0 或者负数时返回 NaN 。
      *
      * @func
      * @memberOf R
@@ -2635,7 +2612,7 @@
     });
 
     /**
-     * Returns the larger of its two arguments.
+     * 返回两个参数中的较大值。
      *
      * @func
      * @memberOf R
@@ -2656,8 +2633,7 @@
     });
 
     /**
-     * Takes a function and two values, and returns whichever value produces the
-     * larger result when passed to the provided function.
+     * 接收一个函数和两个值，返回使给定函数执行结果较大的值。
      *
      * @func
      * @memberOf R
@@ -2684,9 +2660,7 @@
     });
 
     /**
-     * Create a new object with the own properties of the first object merged with
-     * the own properties of the second object. If a key exists in both objects,
-     * the value from the second object will be used.
+     * 合并两个对象的自身属性（不包括 prototype 属性）。如果某个 key 在两个对象中都存在，使用后一个对象对应的属性。
      *
      * @func
      * @memberOf R
@@ -2711,7 +2685,7 @@
     });
 
     /**
-     * Merges a list of objects together into one object.
+     * 将一系列对象合并为一个对象。
      *
      * @func
      * @memberOf R
@@ -2732,12 +2706,9 @@
     });
 
     /**
-     * Creates a new object with the own properties of the two provided objects. If
-     * a key exists in both objects, the provided function is applied to the key
-     * and the values associated with the key in each object, with the result being
-     * used as the value associated with the key in the returned object. The key
-     * will be excluded from the returned object if the resulting value is
-     * `undefined`.
+     * 用给定的两个对象自身属性（不包括 prototype 属性）来创建一个新对象。
+     *
+     * 如果某个 key 在两个对象中都存在，则使用给定的函数对该 key 和每个对象该 key 对应的 value 进行处理，处理结果作为新对象该 key 对应的值。如果处理结果为 `undefined`，则去掉该 key（新对象中不含该 key 对应的属性）。
      *
      * @func
      * @memberOf R
@@ -2775,7 +2746,7 @@
     });
 
     /**
-     * Returns the smaller of its two arguments.
+     * 返回两个参数中的较小值。
      *
      * @func
      * @memberOf R
@@ -2796,8 +2767,7 @@
     });
 
     /**
-     * Takes a function and two values, and returns whichever value produces the
-     * smaller result when passed to the provided function.
+     * 接收一个函数和两个值，返回使给定函数执行结果较小的值。
      *
      * @func
      * @memberOf R
@@ -2824,9 +2794,7 @@
     });
 
     /**
-     * Divides the first parameter by the second and returns the remainder. Note
-     * that this function preserves the JavaScript-style behavior for modulo. For
-     * mathematical modulo see `mathMod`.
+     * 用第一个参数除以第二个参数，并返回余数。注意，该函数是 JavaScript-style 的求模操作。数学求模另见 `mathMod`。
      *
      * @func
      * @memberOf R
@@ -2853,7 +2821,7 @@
     });
 
     /**
-     * Multiplies two numbers. Equivalent to `a * b` but curried.
+     * 两数相乘，等价于柯里化的 `a * b` 。
      *
      * @func
      * @memberOf R
@@ -2877,9 +2845,7 @@
     });
 
     /**
-     * Wraps a function of any arity (including nullary) in a function that accepts
-     * exactly `n` parameters. Any extraneous parameters will not be passed to the
-     * supplied function.
+     * 将一个任意元（包括零元）的函数封装成一个接收确定 `n` 个参数的函数。任何多余的参数都不会传入被封装的函数。
      *
      * @func
      * @memberOf R
@@ -2957,7 +2923,7 @@
     });
 
     /**
-     * Negates its argument.
+     * 取反操作。
      *
      * @func
      * @memberOf R
@@ -2975,10 +2941,9 @@
     });
 
     /**
-     * Returns `true` if no elements of the list match the predicate, `false`
-     * otherwise.
+     * 如果列表中的元素都不满足 predicate，返回 `true`；否则返回 `false`。
      *
-     * Dispatches to the `any` method of the second argument, if present.
+     * 若第二个参数自身存在 `any` 方法，则调用自身的 `any` 方法。
      *
      * @func
      * @memberOf R
@@ -2999,8 +2964,9 @@
     var none = _curry2(_complement(_dispatchable(['any'], _xany, any)));
 
     /**
-     * A function that returns the `!` of its argument. It will return `true` when
-     * passed false-y value, and `false` when passed a truth-y one.
+     * 逻辑非运算。
+
+     * 当传入参数为 false-y 值时，返回 `true`；truth-y 值时，返回 `false`。
      *
      * @func
      * @memberOf R
@@ -3022,8 +2988,7 @@
     });
 
     /**
-     * Returns the nth element of the given list or string. If n is negative the
-     * element at index length + n is returned.
+     * 返回给定列表或字符串的第 n 个元素。如果 n 为负数，则返回索引为 length + n 的元素。
      *
      * @func
      * @memberOf R
@@ -3053,7 +3018,7 @@
     });
 
     /**
-     * Returns a function which returns its nth argument.
+     * 返回一个函数，该函数返回它的第 n 个参数。
      *
      * @func
      * @memberOf R
@@ -3078,7 +3043,7 @@
     });
 
     /**
-     * Creates an object containing a single key:value pair.
+     * 创建一个包含单个键值对的对象。
      *
      * @func
      * @memberOf R
@@ -3104,10 +3069,9 @@
     });
 
     /**
-     * Returns a singleton array containing the value provided.
+     * 将给定值作为元素，封装成单元素数组。
      *
-     * Note this `of` is different from the ES6 `of`; See
-     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of
+     * 注意，`R.of` 与 ES6 的 `of` 不同；详见 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of 。
      *
      * @func
      * @memberOf R
@@ -3124,10 +3088,9 @@
     var of = _curry1(_of);
 
     /**
-     * Accepts a function `fn` and returns a function that guards invocation of
-     * `fn` such that `fn` can only ever be called once, no matter how many times
-     * the returned function is invoked. The first value calculated is returned in
-     * subsequent invocations.
+     * 创建一个只能调用一次的函数。
+     *
+     * 将给定函数 `fn` 封装到新函数`fn'`中。`fn'` 确保 `fn` 只能调用一次。重复调用`fn'` ，只会返回第一次执行时的结果。
      *
      * @func
      * @memberOf R
@@ -3156,8 +3119,9 @@
     });
 
     /**
-     * Returns `true` if one or both of its arguments are `true`. Returns `false`
-     * if both arguments are `false`.
+     * 逻辑或运算，
+     *
+     * 只要有一个参数为 `truth-y`， 就返回 `true`；如果两个参数均为 `false-y`，则返回 `false`。
      *
      * @func
      * @memberOf R
@@ -3180,9 +3144,7 @@
     });
 
     /**
-     * Returns the result of "setting" the portion of the given data structure
-     * focused by the given lens to the result of applying the given function to
-     * the focused value.
+     * 对数据结构中 lens focus 的部分进行函数变换。
      *
      * @func
      * @memberOf R
@@ -5998,8 +5960,7 @@
     });
 
     /**
-     * Returns `true` if the given value is its type's empty value; `false`
-     * otherwise.
+     * 检查给定值是否为其所属类型的空值，若是则返回 `true` ；否则返回 `false` 。
      *
      * @func
      * @memberOf R
@@ -6023,7 +5984,7 @@
     });
 
     /**
-     * Returns the last element of the given list or string.
+     * 返回给定列表或字符串的最后一个元素。
      *
      * @func
      * @memberOf R
@@ -6045,9 +6006,8 @@
     var last = nth(-1);
 
     /**
-     * Returns the position of the last occurrence of an item in an array, or -1 if
-     * the item is not included in the array. `R.equals` is used to determine
-     * equality.
+     * 返回数组中某一项最后一次出现的位置，如果数组中不包含该项则返回 -1。
+     * 用 `R.equals` 来判定相等性。
      *
      * @func
      * @memberOf R
@@ -6079,19 +6039,15 @@
     });
 
     /**
-     * Takes a function and
-     * a [functor](https://github.com/fantasyland/fantasy-land#functor),
-     * applies the function to each of the functor's values, and returns
-     * a functor of the same shape.
+     * 接收一个函数和一个 [functor](https://github.com/fantasyland/fantasy-land#functor), 将这个函数应用到 functor 的每个值上，返回一个具有相同形态的 functor。
      *
-     * Ramda provides suitable `map` implementations for `Array` and `Object`,
-     * so this function may be applied to `[1, 2, 3]` or `{x: 1, y: 2, z: 3}`.
+     * Ramda 为 `Array` 和 `Object` 提供了合适的 `map` 实现，因此 `R.map` 适用于 `[1, 2, 3]` 或 `{x: 1, y: 2, z: 3}`。
      *
-     * Dispatches to the `map` method of the second argument, if present.
+     * 若第二个参数自身存在 `map` 方法，则调用自身的 `map` 方法。
      *
-     * Acts as a transducer if a transformer is given in list position.
+     * 若在列表位置中给出 transfomer，则用作 transducer 。
      *
-     * Also treats functions as functors and will compose them together.
+     * 函数也可以看作 functors，`map` 会将它们组合起来（相当于 `R.compose`）。
      *
      * @func
      * @memberOf R
@@ -6130,9 +6086,7 @@
     }));
 
     /**
-     * An Object-specific version of `map`. The function is applied to three
-     * arguments: *(value, key, obj)*. If only the value is significant, use
-     * `map` instead.
+     * `Object` 版本的 `map`。mapping function 接受三个参数： *(value, key, obj)* 。如果仅用到参数 *value*，则用 `map` 即可。
      *
      * @func
      * @memberOf R
@@ -6158,11 +6112,9 @@
     });
 
     /**
-     * Creates a new object with the own properties of the two provided objects. If
-     * a key exists in both objects, the provided function is applied to the values
-     * associated with the key in each object, with the result being used as the
-     * value associated with the key in the returned object. The key will be
-     * excluded from the returned object if the resulting value is `undefined`.
+     * 用给定的两个对象自身属性（不包括 prototype 属性）来创建一个新对象。
+     *
+     * 如果某个 key 在两个对象中都存在，则使用给定的函数对每个对象该 key 对应的 value 进行处理，处理结果作为新对象该 key 对应的值。如果处理结果为 `undefined`，则去掉该 key（新对象中不含该 key 对应的属性）。
      *
      * @func
      * @memberOf R
@@ -7341,7 +7293,7 @@
     });
 
     /**
-     * juxt applies a list of functions to a list of values.
+     * `juxt` 将一系列函数作用于一系列值上面。
      *
      * @func
      * @memberOf R
@@ -7364,9 +7316,7 @@
     });
 
     /**
-     * Returns a lens for the given getter and setter functions. The getter "gets"
-     * the value of the focus; the setter "sets" the value of the focus. The setter
-     * should not mutate the data structure.
+     * 返回封装了给定 getter 和 setter 方法的 lens 。 getter 和 setter 分别用于 “获取” 和 “设置” 被 `lens` focus 的值。但 setter 不会改变传入值。
      *
      * @func
      * @memberOf R
@@ -7397,7 +7347,7 @@
     });
 
     /**
-     * Returns a lens whose focus is the specified index.
+     * 返回 focus 到指定索引的 lens。
      *
      * @func
      * @memberOf R
@@ -7421,7 +7371,7 @@
     });
 
     /**
-     * Returns a lens whose focus is the specified path.
+     * 返回 focus 到指定路径的 lens。
      *
      * @func
      * @memberOf R
@@ -7449,7 +7399,7 @@
     });
 
     /**
-     * Returns a lens whose focus is the specified property.
+     * 返回 focus 到指定属性的 lens。
      *
      * @func
      * @memberOf R
@@ -7473,8 +7423,7 @@
     });
 
     /**
-     * "lifts" a function to be the specified arity, so that it may "map over" that
-     * many lists, Functions or other objects that satisfy the [FantasyLand Apply spec](https://github.com/fantasyland/fantasy-land#apply).
+     * 将一个函数提升为指定的 N 元函数，使之能映射到多个列表、函数或其他符合 [FantasyLand Apply spec](https://github.com/fantasyland/fantasy-land#apply) 规范的对象上。
      *
      * @func
      * @memberOf R
@@ -7497,7 +7446,7 @@
     });
 
     /**
-     * Returns the mean of the given list of numbers.
+     * 返回给定数字列表的平均值。
      *
      * @func
      * @memberOf R
@@ -7516,7 +7465,7 @@
     });
 
     /**
-     * Returns the median of the given list of numbers.
+     * 返回给定数字列表的中位数。
      *
      * @func
      * @memberOf R
@@ -7990,8 +7939,7 @@
     var dropRepeats = _curry1(_dispatchable([], _xdropRepeatsWith(equals), dropRepeatsWith(equals)));
 
     /**
-     * "lifts" a function of arity > 1 so that it may "map over" a list, Function or other
-     * object that satisfies the [FantasyLand Apply spec](https://github.com/fantasyland/fantasy-land#apply).
+     * 提升一个多元函数，使之能映射到列表、函数或其他符合 [FantasyLand Apply spec](https://github.com/fantasyland/fantasy-land#apply) 规范的对象上。
      *
      * @func
      * @memberOf R
@@ -8016,7 +7964,7 @@
     });
 
     /**
-     * Returns a partial copy of an object omitting the keys specified.
+     * 去除对象中给定的 keys 对应的属性。
      *
      * @func
      * @memberOf R
@@ -8505,8 +8453,7 @@
     });
 
     /**
-     * Returns a string made by inserting the `separator` between each element and
-     * concatenating all the elements into a single string.
+     * 将列表中所有元素通过 `分隔符` 串连为一个字符串。
      *
      * @func
      * @memberOf R
@@ -8526,11 +8473,9 @@
     var join = invoker(1, 'join');
 
     /**
-     * Creates a new function that, when invoked, caches the result of calling `fn`
-     * for a given argument set and returns the result. Subsequent calls to the
-     * memoized `fn` with the same argument set will not result in an additional
-     * call to `fn`; instead, the cached result for that set of arguments will be
-     * returned.
+     * `memoize` 方法可以缓存某函数的计算结果。
+     *
+     * 创建一个新函数，被调用时，缓存参数对应的经 `fn`计算的结果，并将结果返回。随后用相同的参数调用 memoized 的 `fn` 时，直接返回该参数对应的缓存结果，不必再调用 `fn`。
      *
      * @func
      * @memberOf R
