@@ -3,7 +3,7 @@ var curryN = require('./curryN');
 
 
 /**
- * 输入一个函数 `fn` 和一个 transformer 函数的集合，返回一个柯里化函数。
+ * 输入一个函数 `fn` 和一个 transformer 函数的列表，返回一个柯里化函数。
  * 调用返回的函数会对每个参数执行对应的 transformer 函数，然后作为新的参数传入 `fn` 执行。
  *
  * 如果传的参数数量比 transformer 函数的数量多，多出的参数会被直接传入 `fn` 。
@@ -14,9 +14,9 @@ var curryN = require('./curryN');
  * @since v0.1.0
  * @category Function
  * @sig (x1 -> x2 -> ... -> z) -> [(a -> x1), (b -> x2), ...] -> (a -> b -> ... -> z)
- * @param {Function} fn The function to wrap.
- * @param {Array} transformers A list of transformer functions
- * @return {Function} The wrapped function.
+ * @param {Function} fn 需要封装的函数
+ * @param {Array} transformers transformer 函数列表
+ * @return {Function} 封装后的函数
  * @see R.converge
  * @example
  *

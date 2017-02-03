@@ -4,7 +4,7 @@ var _xtakeWhile = require('./internal/_xtakeWhile');
 
 
 /**
- * 集合中从后往前每个元素都使用条件函数判断，直到条件函数返回 `false` 跳出，然后返回集合在迭代跳出时的满足条件的`n`个元素。
+ * 列表中从后往前每个元素都使用条件函数判断，直到条件函数返回 `false` 跳出，然后返回列表在迭代跳出时的满足条件的`n`个元素。
  * 除非条件函数在处理元素的时候报错。条件函数接收一个值：
  * *(value)*
  *
@@ -18,8 +18,8 @@ var _xtakeWhile = require('./internal/_xtakeWhile');
  * @category List
  * @sig (a -> Boolean) -> [a] -> [a]
  * @param {Function} fn 每次迭代调用的函数
- * @param {Array} list 用于迭代的集合
- * @return {Array} 一个新的集合
+ * @param {Array} list 用于迭代的列表
+ * @return {Array} 一个新的列表
  * @see R.dropWhile, R.transduce, R.addIndex
  * @example
  *

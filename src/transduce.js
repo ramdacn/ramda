@@ -4,7 +4,7 @@ var curryN = require('./curryN');
 
 
 /**
- * 用迭代函数来初始化一个 transducer ，为集合中每个元素执行迭代函数进行 transform
+ * 用迭代函数来初始化一个 transducer ，为列表中每个元素执行迭代函数进行 transform
  * ，将返回值传入加法器，然后把累加传入进行下一轮迭代。
  *
  * 迭代函数接收2个参数： *(acc, value)* ，然后被包装成 transformer 来初始化 transducer 。
@@ -27,7 +27,7 @@ var curryN = require('./curryN');
  * @param {Function} xf transducer 函数，接收 transformer 返回 transformer
  * @param {Function} fn 迭代函数，累加器和数组当前位置的元素，被包装成 transformer ，如果必要的话将用于 transducer 的初始化
  * @param {*} acc 累加器初始值
- * @param {Array} list 迭代集合
+ * @param {Array} list 迭代列表
  * @return {*} 累加器的最终结果
  * @see R.reduce, R.reduced, R.into
  * @example

@@ -4,7 +4,7 @@ var differenceWith = require('./differenceWith');
 
 
 /**
- * 寻找一个无重复元素的集合，其元素在且仅在输入集合中的一个里面出现。
+ * 寻找一个无重复元素的集合，其元素在且仅在输入列表中的一个里面出现。
  * “重复”由条件函数的返回值决定。
  *
  * @func
@@ -13,9 +13,9 @@ var differenceWith = require('./differenceWith');
  * @category Relation
  * @sig ((a, a) -> Boolean) -> [a] -> [a] -> [a]
  * @param {Function} pred 判断两个元素是否相等的条件函数
- * @param {Array} list1 第1个集合
- * @param {Array} list2 第2个集合
- * @return {Array} 元素仅在list1或list2中出现的集合
+ * @param {Array} list1 第1个列表
+ * @param {Array} list2 第2个列表
+ * @return {Array} 元素仅在list1或list2中出现的列表
  * @see R.symmetricDifference, R.difference, R.differenceWith
  * @example
  *

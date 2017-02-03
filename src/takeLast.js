@@ -3,8 +3,8 @@ var drop = require('./drop');
 
 
 /**
- * 返回集合的后`n`个元素。
- * 如果 `n > list.length` 则返回 `list.length` 个元素的集合。
+ * 返回列表的后`n`个元素。
+ * 如果 `n > list.length` 则返回 `list.length` 个元素的列表。
  *
  * @func
  * @memberOf R
@@ -13,7 +13,7 @@ var drop = require('./drop');
  * @sig Number -> [a] -> [a]
  * @sig Number -> String -> String
  * @param {Number} n 返回的元素个数
- * @param {Array} xs 输入的集合
+ * @param {Array} xs 输入的列表
  * @return {Array}
  * @see R.dropLast
  * @example
