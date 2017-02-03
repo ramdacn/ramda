@@ -2,7 +2,7 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * 用一个词来描述输入值的（本地）类型，返回诸如 Object 、 Number 、 Array 、 Null 之类的结果。
+ * 用一个词来描述输入值的（原生）类型，返回诸如 Object 、 Number 、 Array 、 Null 之类的结果。
  * 不区分用户自定义的类型，统一返回 Object 。
  *
  * @func

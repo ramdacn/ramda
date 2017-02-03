@@ -4,7 +4,7 @@ var _toString = require('./internal/_toString');
 
 /**
  * 返回一个值的字符串表现形式。
- * 输出的值执行 `eval` 结果等价于输入的值。原有的 `toString` 方法不满足这一要求。
+ * 输出的值执行 `eval` 的结果等价于输入的值。原生的 `toString` 方法不满足这一条件。
  *
  * 如果输入值是一个 `[object Object]` 对象，且有不同于 `Object.prototype.toString` 的方法，那么将不传递参数直接调用这个方法。
  * 换句话说，在构造函数中自定义的 `toString` 方法会满足这个条件，例如：
