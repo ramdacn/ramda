@@ -9,8 +9,8 @@ var _curry2 = require('./internal/_curry2');
  * @since v0.1.0
  * @category Math
  * @sig Number -> Number -> Number
- * @param {Number} a 第1个输入
- * @param {Number} b 第2个输入
+ * @param {Number} a 第1个参数
+ * @param {Number} b 第2个参数
  * @return {Number} `a - b`的计算结果
  * @see R.add
  * @example

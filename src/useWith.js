@@ -3,7 +3,7 @@ var curryN = require('./curryN');
 
 
 /**
- * 输入一个函数 `fn` 和一个 transformer 函数的列表，返回一个柯里化函数。
+ * 给定一个函数 `fn` 和一个 transformer 函数的列表，返回一个柯里化函数。
  * 调用返回的函数会对每个参数执行对应的 transformer 函数，然后作为新的参数传入 `fn` 执行。
  *
  * 如果传的参数数量比 transformer 函数的数量多，多出的参数会被直接传入 `fn` 。

@@ -5,7 +5,7 @@ var reject = require('./reject');
 
 
 /**
- * 返回一个列表，其元素都不在第1个输入列表中。
+ * 返回一个列表，其元素都不在给定的第1个列表中。
  * 比较函数是 `R.equals` 。
  *
  * 如果输入是 transformer ，那么按照 transducer 的方式执行。
