@@ -5,18 +5,16 @@ var uniq = require('./uniq');
 
 
 /**
- * Combines two lists into a set (i.e. no duplicates) composed of the elements
- * of each list.
+ * 集合并运算，合并两个列表作为一个新的列表（没有重复元素）。
  *
  * @func
  * @memberOf R
  * @since v0.1.0
  * @category Relation
  * @sig [*] -> [*] -> [*]
- * @param {Array} as The first list.
- * @param {Array} bs The second list.
- * @return {Array} The first and second lists concatenated, with
- *         duplicates removed.
+ * @param {Array} as 第1个列表
+ * @param {Array} bs 第2个列表
+ * @return {Array} 两个列表拼接后去重的列表
  * @example
  *
  *      R.union([1, 2, 3], [2, 3, 4]); //=> [1, 2, 3, 4]

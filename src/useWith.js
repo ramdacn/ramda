@@ -3,25 +3,20 @@ var curryN = require('./curryN');
 
 
 /**
- * Accepts a function `fn` and a list of transformer functions and returns a
- * new curried function. When the new function is invoked, it calls the
- * function `fn` with parameters consisting of the result of calling each
- * supplied handler on successive arguments to the new function.
+ * 给定一个函数 `fn` 和一个 transformer 函数的列表，返回一个柯里化函数。
+ * 调用返回的函数会对每个参数执行对应的 transformer 函数，然后作为新的参数传入 `fn` 执行。
  *
- * If more arguments are passed to the returned function than transformer
- * functions, those arguments are passed directly to `fn` as additional
- * parameters. If you expect additional arguments that don't need to be
- * transformed, although you can ignore them, it's best to pass an identity
- * function so that the new function reports the correct arity.
+ * 如果传的参数数量比 transformer 函数的数量多，多出的参数会被直接传入 `fn` 。
+ * 如果不需要处理多出的那部分参数，除了忽略之外，也可以用 identity 函数来作为 transformer ，以保证返回函数的参数数量是确定的。
  *
  * @func
  * @memberOf R
  * @since v0.1.0
  * @category Function
  * @sig (x1 -> x2 -> ... -> z) -> [(a -> x1), (b -> x2), ...] -> (a -> b -> ... -> z)
- * @param {Function} fn The function to wrap.
- * @param {Array} transformers A list of transformer functions
- * @return {Function} The wrapped function.
+ * @param {Function} fn 需要封装的函数
+ * @param {Array} transformers transformer 函数列表
+ * @return {Function} 封装后的函数
  * @see R.converge
  * @example
  *

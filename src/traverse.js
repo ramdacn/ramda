@@ -5,11 +5,11 @@ var sequence = require('./sequence');
 
 /**
  * Maps an [Applicative](https://github.com/fantasyland/fantasy-land#applicative)-returning
- * function over a [Traversable](https://github.com/fantasyland/fantasy-land#traversable),
- * then uses [`sequence`](#sequence) to transform the resulting Traversable of Applicative
- * into an Applicative of Traversable.
+ * 将 [Applicative](https://github.com/fantasyland/fantasy-land#applicative) 返回函数映射成为
+ * [Traversable](https://github.com/fantasyland/fantasy-land#traversable)
+ * ，然后把 Applicative 的 Traversable 映射结果对 [`sequence`](#sequence) 做转换。
  *
- * Dispatches to the `sequence` method of the third argument, if present.
+ * 如果第三个参数有 `sequence` 方法，则调用 `sequence` 方法。
  *
  * @func
  * @memberOf R

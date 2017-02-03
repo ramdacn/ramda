@@ -4,20 +4,18 @@ var uniqWith = require('./uniqWith');
 
 
 /**
- * Combines two lists into a set (i.e. no duplicates) composed of the elements
- * of each list. Duplication is determined according to the value returned by
- * applying the supplied predicate to two list elements.
+ * 集合并运算，合并两个列表作为一个新的列表（没有重复元素）。
+ * “重复”由条件函数的返回值决定。
  *
  * @func
  * @memberOf R
  * @since v0.1.0
  * @category Relation
  * @sig (a -> a -> Boolean) -> [*] -> [*] -> [*]
- * @param {Function} pred A predicate used to test whether two items are equal.
- * @param {Array} list1 The first list.
- * @param {Array} list2 The second list.
- * @return {Array} The first and second lists concatenated, with
- *         duplicates removed.
+ * @param {Function} pred 判断两个元素是否相等的条件函数
+ * @param {Array} list1 第1个列表
+ * @param {Array} list2 第2个列表
+ * @return {Array} 两个列表拼接后去重的列表
  * @see R.union
  * @example
  *

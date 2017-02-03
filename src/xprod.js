@@ -2,18 +2,16 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Creates a new list out of the two supplied by creating each possible pair
- * from the lists.
+ * 两个列表的元素两两组合，生成一个新的元素对的列表。
  *
  * @func
  * @memberOf R
  * @since v0.1.0
  * @category List
  * @sig [a] -> [b] -> [[a,b]]
- * @param {Array} as The first list.
- * @param {Array} bs The second list.
- * @return {Array} The list made by combining each possible pair from
- *         `as` and `bs` into pairs (`[a, b]`).
+ * @param {Array} as 第1个列表
+ * @param {Array} bs 第2个列表
+ * @return {Array} `as` 和 `bs` 中元素两两组合成元素对（`[a, b]`）的列表
  * @example
  *
  *      R.xprod([1, 2], ['a', 'b']); //=> [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]

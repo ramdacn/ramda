@@ -3,19 +3,17 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns a new list containing only one copy of each element in the original
- * list, based upon the value returned by applying the supplied predicate to
- * two list elements. Prefers the first item if two items compare equal based
- * on the predicate.
+ * 基于给定的条件函数做元素的两两比较来判断“重复“，返回一个没有重复元素的列表。
+ * 如果条件函数返回相等，则保留第1个元素。
  *
  * @func
  * @memberOf R
  * @since v0.2.0
  * @category List
  * @sig (a, a -> Boolean) -> [a] -> [a]
- * @param {Function} pred A predicate used to test whether two items are equal.
- * @param {Array} list The array to consider.
- * @return {Array} The list of unique items.
+ * @param {Function} pred 判断两个元素是否相等的条件函数
+ * @param {Array} list 待处理的列表
+ * @return {Array} 没有重复元素的列表
  * @example
  *
  *      var strEq = R.eqBy(String);
