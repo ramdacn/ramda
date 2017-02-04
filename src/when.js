@@ -2,8 +2,8 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 最后一个输入`x`作为参数传给条件函数做判断，
- * 如果不满足则将`x`作为参数传给`whenTrueFn`返回结果，否则返回`x`。
+ * 最后一个输入 `x` 作为参数传给条件函数做判断，
+ * 如果不满足则将 `x` 作为参数传给 `whenTrueFn` 返回结果，否则返回 `x` 。
  *
  * @func
  * @memberOf R

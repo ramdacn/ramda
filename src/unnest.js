@@ -3,7 +3,7 @@ var chain = require('./chain');
 
 
 /**
- * `R.chain(R.identity)`的快捷方式, 从[链式](https://github.com/fantasyland/fantasy-land#chain)消除一层嵌套.
+ * `R.chain(R.identity)` 的快捷方式, 从 [Chain](https://github.com/fantasyland/fantasy-land#chain) 数据结构中消除一层嵌套.
  *
  * @func
  * @memberOf R

@@ -2,18 +2,18 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 生成一个新的数组，该数组的值，是对两个输入数组中下标相同的元素调用函数所得。新数组的长度与两个输入数组中长度较短的那个相同。
+ * 两个列表对应位置元素通过一个函数处理，生成一个新的元素的列表。
+ * 生成的列表长度取较短的输入列表的长度。
  *
  * @function
  * @memberOf R
  * @since v0.1.0
  * @category List
  * @sig (a,b -> c) -> [a] -> [b] -> [c]
- * @param {Function} fn 用来组合两个元素使之成为一个值的函数。
- * @param {Array} list1 第一个被操作的数组。
- * @param {Array} list2 第二个被操作的数组。
- * @return {Array} list1 和 list2 中的下标相同的元素为参数，使用 fn 进行计算所得的新数组。
- *
+ * @param {Function} fn 把两个元素合并成一个值的函数
+ * @param {Array} list1 第1个列表
+ * @param {Array} list2 第2个列表
+ * @return {Array} `list1` 和 `list2` 对应位置的元素对通过`fn`处理后的列表
  * @example
  *
  *      var f = (x, y) => {

@@ -3,12 +3,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 基于输入的条件函数做元素的两两比较来判断“重复“，返回一个没有重复元素的集合。
+ * 基于给定的条件函数做元素的两两比较来判断“重复“，返回一个没有重复元素的列表。
  * 如果条件函数返回相等，则保留第1个元素。
- * Returns a new list containing only one copy of each element in the original
- * list, based upon the value returned by applying the supplied predicate to
- * two list elements. Prefers the first item if two items compare equal based
- * on the predicate.
  *
  * @func
  * @memberOf R
@@ -16,8 +12,8 @@ var _curry2 = require('./internal/_curry2');
  * @category List
  * @sig (a, a -> Boolean) -> [a] -> [a]
  * @param {Function} pred 判断两个元素是否相等的条件函数
- * @param {Array} list 待处理的集合
- * @return {Array} 没有重复元素的集合
+ * @param {Array} list 待处理的列表
+ * @return {Array} 没有重复元素的列表
  * @example
  *
  *      var strEq = R.eqBy(String);

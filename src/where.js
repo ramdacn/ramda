@@ -5,9 +5,9 @@ var _has = require('./internal/_has');
 /**
  * 输入参考标准和待检测对象，如果满足参考标准则返回 true，否则返回 false。
  * 参考标准的每个属性都要求是条件函数。
- * 每个条件函数对检测对象相应的属性值执行，如果都返回 true，则`where`返回 true，否则返回 false。
+ * 每个条件函数对检测对象相应的属性值执行，如果都返回 true，则 `where` 返回 true，否则返回 false。
  *
- * `where`适用于需要条件函数约束的地方，比如用于`filter`和`find`。
+ * `where` 适用于需要条件函数约束的地方，比如用于 `filter` 和 `find` 。
  *
  * @func
  * @memberOf R

@@ -4,16 +4,16 @@ var difference = require('./difference');
 
 
 /**
- * 寻找一个无重复元素的集合，其元素在且仅在输入集合中的一个里面出现。
+ * 寻找一个无重复元素的集合，其元素在且仅在给定列表中的一个里面出现。
  *
  * @func
  * @memberOf R
  * @since v0.19.0
  * @category Relation
  * @sig [*] -> [*] -> [*]
- * @param {Array} list1 第1个输入
- * @param {Array} list2 第2个输入
- * @return {Array} 元素仅在list1或list2中出现的集合
+ * @param {Array} list1 第1个列表
+ * @param {Array} list2 第2个列表
+ * @return {Array} 元素仅在list1或list2中出现的列表
  * @see R.symmetricDifferenceWith, R.difference, R.differenceWith
  * @example
  *

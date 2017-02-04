@@ -2,8 +2,8 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 最后一个输入`x`作为参数传给条件函数做判断，
- * 如果不满足则将`x`作为参数传给`whenFalseFn`返回结果，否则返回`x`。
+ * 最后一个输入 `x` 作为参数传给条件函数做判断，
+ * 如果不满足则将 `x` 作为参数传给 `whenFalseFn` 返回结果，否则返回 `x` 。
  *
  * @func
  * @memberOf R
@@ -11,9 +11,9 @@ var _curry3 = require('./internal/_curry3');
  * @category Logic
  * @sig (a -> Boolean) -> (a -> a) -> a -> a
  * @param {Function} pred 条件函数
- * @param {Function} whenFalseFn 当`pred`返回结果为 false 时调用的函数
- * @param {*} x 作为参数传入`pred`用于判断，如果需要作为参数传入`whenFalseFn`
- * @return {*} `x`或者`whenFalseFn`的执行结果
+ * @param {Function} whenFalseFn 当 `pred` 返回结果为 false 时调用的函数
+ * @param {*} x 作为参数传入 `pred` 用于判断，如果需要作为参数传入 `whenFalseFn`
+ * @return {*} `x` 或者 `whenFalseFn` 的执行结果
  * @see R.ifElse, R.when
  * @example
  *
