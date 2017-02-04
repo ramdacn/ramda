@@ -3923,8 +3923,8 @@
      * @since v0.1.0
      * @category Math
      * @sig Number -> Number -> Number
-     * @param {Number} a 第1个输入
-     * @param {Number} b 第2个输入
+     * @param {Number} a 第1个参数
+     * @param {Number} b 第2个参数
      * @return {Number} `a - b`的计算结果
      * @see R.add
      * @example
@@ -3943,9 +3943,9 @@
     });
 
     /**
-     * 返回除第1个元素以外的元素（或者调用`tail`方法）。
+     * 返回除第1个元素以外的元素（或者调用 `tail` 方法）。
      *
-     * 如果第1个参数有`slice`方法，则调用`slice`方法。
+     * 如果第1个参数有 `slice` 方法，则调用 `slice` 方法。
      *
      * @func
      * @memberOf R
@@ -3971,9 +3971,9 @@
     var tail = _curry1(_checkForMethod('tail', slice(1, Infinity)));
 
     /**
-     * 返回集合的前`n`个元素、字符串的前`n`个字符或者进行 transducer/transform 。
+     * 返回列表的前`n`个列表、字符串的前`n`个字符或者进行 transducer/transform 。
      *
-     * 如果第2个参数有`take`方法，则调用`take`方法。
+     * 如果第2个参数有 `take` 方法，则调用 `take` 方法。
      *
      * @func
      * @memberOf R
@@ -4017,9 +4017,9 @@
     }));
 
     /**
-     * 集合中从后往前每个元素都使用条件函数判断，直到条件函数返回`false`跳出，然后返回集合在迭代跳出时的后`n`个元素。
+     * 列表中从后往前每个元素都使用条件函数判断，直到条件函数返回 `false` 跳出，然后返回列表在迭代跳出时的满足条件的`n`个元素。
      * 除非条件函数在处理元素的时候报错。条件函数接收一个值：
-     * *(value)*.
+     * *(value)*
      *
      * @func
      * @memberOf R
@@ -4027,8 +4027,8 @@
      * @category List
      * @sig (a -> Boolean) -> [a] -> [a]
      * @param {Function} fn 每次迭代调用的函数
-     * @param {Array} list 用于迭代的集合
-     * @return {Array} 一个新的集合
+     * @param {Array} list 用于迭代的列表
+     * @return {Array} 一个新的列表
      * @see R.dropLastWhile, R.addIndex
      * @example
      *
@@ -4045,13 +4045,13 @@
     });
 
     /**
-     * 集合中从后往前每个元素都使用条件函数判断，直到条件函数返回`false`跳出，然后返回集合在迭代跳出时的后`n`个元素。
+     * 列表中从后往前每个元素都使用条件函数判断，直到条件函数返回 `false` 跳出，然后返回列表在迭代跳出时的满足条件的`n`个元素。
      * 除非条件函数在处理元素的时候报错。条件函数接收一个值：
-     * *(value)*.
+     * *(value)*
      *
-     * 如果第2个参数有`takeWhile`方法，则调用`takeWhile`方法。
+     * 如果第2个参数有 `takeWhile` 方法，则调用 `takeWhile` 方法。
      *
-     * 如果第2个参数是 transformer ，则`takeWhile`作为一个 transducer 调用。
+     * 如果第2个参数是 transformer ，则 `takeWhile` 作为一个 transducer 调用。
      *
      * @func
      * @memberOf R
@@ -4059,8 +4059,8 @@
      * @category List
      * @sig (a -> Boolean) -> [a] -> [a]
      * @param {Function} fn 每次迭代调用的函数
-     * @param {Array} list 用于迭代的集合
-     * @return {Array} 一个新的集合
+     * @param {Array} list 用于迭代的列表
+     * @return {Array} 一个新的列表
      * @see R.dropWhile, R.transduce, R.addIndex
      * @example
      *
@@ -4078,14 +4078,14 @@
     }));
 
     /**
-     * 对一个输入执行一个函数，然后返回这个输入。
+     * 对输入的值执行给定的函数，然后返回输入的值。
      *
      * @func
      * @memberOf R
      * @since v0.1.0
      * @category Function
      * @sig (a -> *) -> a -> a
-     * @param {Function} fn 调用`x`的函数。抛出`fn`的执行结果。
+     * @param {Function} fn 调用`x`的函数。抛弃`fn`的执行结果。
      * @param {*} x
      * @return {*} `x`
      * @example
@@ -4103,7 +4103,7 @@
     /**
      * 执行一个函数`n`次，返回函数执行结果的数组。
      *
-     * `fn`接收的参数是从`0`递增到`n-1`的值。
+     * `fn` 接收的参数是从 `0` 递增到 `n-1` 的值。
      *
      * @func
      * @memberOf R
@@ -4176,7 +4176,7 @@
      * @category Object
      * @sig {String: *} -> [[String,*]]
      * @param {Object} obj 需要转换的对象
-     * @return {Array} 对所有属性和原型链上属性转换后的·键值对数组
+     * @return {Array} 对所有属性和原型链上属性转换后的键值对数组
      * @example
      *
      *      var F = function() { this.x = 'X'; };
@@ -4197,7 +4197,7 @@
 
     /**
      * 二维数组行列转置。
-     * 输入`n`个长度为`x`的数组，输出`x`个长度为`n`的数组。
+     * 输入`n`个长度为 `x` 的数组，输出`x`个长度为 `n` 的数组。
      *
      *
      * @func
@@ -4270,9 +4270,9 @@
     }();
 
     /**
-     * `tryCatch`接收`tryer`函数和`catcher`函数，返回一个函数执行`tryer`，如果没有抛出异常则正常返回。
-     * 如果`tryer`抛出异常，重新执行`catcher`，然后返回结果。
-     * 注意，`tryer`和`catcher`都返回同样类型的结果可以提高效率。
+     * `tryCatch` 接收 `tryer` 函数和 `catcher` 函数，返回一个函数执行 `tryer` ，如果没有抛出异常则正常返回。
+     * 如果 `tryer` 抛出异常，重新执行 `catcher` ，然后返回结果。
+     * 注意，`tryer` 和 `catcher` 都返回同样类型的结果可以提高效率。
      *
      * @func
      * @memberOf R
@@ -4298,7 +4298,7 @@
     });
 
     /**
-     * 用一个词来描述输入值的（本地）类型，返回诸如 Object 、 Number 、 Array 、 Null 之类的结果。
+     * 用一个词来描述输入值的（原生）类型，返回诸如 Object 、 Number 、 Array 、 Null 之类的结果。
      * 不区分用户自定义的类型，统一返回 Object 。
      *
      * @func
@@ -4326,10 +4326,10 @@
      * 输入一个只接收一个数组的作为参数的函数，返回一个函数执行下列过程：
      *
      *   - 接收所有参数；
-     *   - 把参数作为数组传递给`fn`；
+     *   - 把参数作为数组传递给 `fn` ；
      *   - 返回执行结果。
      *
-     * 换言之，R.apply 输入一个只接收一个数组的作为参数的函数，返回一个不定参函数。R.unapply 是 R.apply 的逆函数。
+     * 换言之， R.apply 输入一个只接收一个数组的作为参数的函数，返回一个不定参函数。 R.unapply 是 R.apply 的逆函数。
      *
      * @func
      * @memberOf R
@@ -4351,7 +4351,7 @@
     });
 
     /**
-     * 把接收任意个（包括0个）参数的函数封装成只接收一个参数的函数，无关的参数不会被传入函数。
+     * 把接收任意个（包括0个）参数的函数封装成只接收一个参数的函数，无关的参数不会被作为参数传入函数。
      *
      * @func
      * @memberOf R
@@ -4379,7 +4379,7 @@
     });
 
     /**
-     * 输入一个柯里化的函数，返回一个`n`个参数的函数。
+     * 输入一个柯里化的函数，返回一个 `n` 个参数的函数。
      *
      * @func
      * @memberOf R
@@ -4414,11 +4414,10 @@
     });
 
     /**
-     * 通过种子(seed)建立一个集合。输入的迭代函数返回 false 停止迭代，
-     * 否则返回一个数对，前者添加到结果集合中，后者用作种子(seed)传递给下一轮迭代。
+     * 通过种子(seed)建立一个列表。给定的迭代函数返回 false 停止迭代，
+     * 否则返回一个数对，前者添加到结果列表中，后者用作种子(seed)传递给下一轮迭代。
      *
      * 迭代函数只接收一个参数： *(seed)*
-     * The iterator function receives one argument: *(seed)*.
      *
      * @func
      * @memberOf R
@@ -4426,10 +4425,10 @@
      * @category List
      * @sig (a -> [b]) -> * -> [b]
      * @param {Function} fn 迭代函数。接收一个参数`seed`，返回 false 退出迭代或者返回一个二元数组。
-     *        二元数组第1个元素被添加到结果集合中，
+     *        二元数组第1个元素被添加到结果列表中，
      *        二元数组第2个元素被作为参数传递给下一次调用`fn`。
      * @param {*} seed 种子值(seed)
-     * @return {Array} 结果集合
+     * @return {Array} 结果列表
      * @example
      *
      *      var f = n => n > 50 ? false : [-n, n + 10];
@@ -4447,12 +4446,8 @@
     });
 
     /**
-     * 基于输入的条件函数做元素的两两比较来判断“重复“，返回一个没有重复元素的集合。
+     * 基于给定的条件函数做元素的两两比较来判断“重复“，返回一个没有重复元素的列表。
      * 如果条件函数返回相等，则保留第1个元素。
-     * Returns a new list containing only one copy of each element in the original
-     * list, based upon the value returned by applying the supplied predicate to
-     * two list elements. Prefers the first item if two items compare equal based
-     * on the predicate.
      *
      * @func
      * @memberOf R
@@ -4460,8 +4455,8 @@
      * @category List
      * @sig (a, a -> Boolean) -> [a] -> [a]
      * @param {Function} pred 判断两个元素是否相等的条件函数
-     * @param {Array} list 待处理的集合
-     * @return {Array} 没有重复元素的集合
+     * @param {Array} list 待处理的列表
+     * @return {Array} 没有重复元素的列表
      * @example
      *
      *      var strEq = R.eqBy(String);
@@ -4486,8 +4481,8 @@
     });
 
     /**
-     * 最后一个输入`x`作为参数传给条件函数做判断，
-     * 如果不满足则将`x`作为参数传给`whenFalseFn`返回结果，否则返回`x`。
+     * 最后一个输入 `x` 作为参数传给条件函数做判断，
+     * 如果不满足则将 `x` 作为参数传给 `whenFalseFn` 返回结果，否则返回 `x` 。
      *
      * @func
      * @memberOf R
@@ -4495,9 +4490,9 @@
      * @category Logic
      * @sig (a -> Boolean) -> (a -> a) -> a -> a
      * @param {Function} pred 条件函数
-     * @param {Function} whenFalseFn 当`pred`返回结果为 false 时调用的函数
-     * @param {*} x 作为参数传入`pred`用于判断，如果需要作为参数传入`whenFalseFn`
-     * @return {*} `x`或者`whenFalseFn`的执行结果
+     * @param {Function} whenFalseFn 当 `pred` 返回结果为 false 时调用的函数
+     * @param {*} x 作为参数传入 `pred` 用于判断，如果需要作为参数传入 `whenFalseFn`
+     * @return {*} `x` 或者 `whenFalseFn` 的执行结果
      * @see R.ifElse, R.when
      * @example
      *
@@ -4546,7 +4541,7 @@
      * @param {Number} idx 需要修改的位置
      * @param {*} x 在返回数组中修改时需要使用的值
      * @param {Array|Arguments} list 需要被修改的类数组对象
-     * @return {Array} 第`index`个位置用`x`替换后的`list`的拷贝
+     * @return {Array} 第`index`个位置用`x` 替换后的 `list` 的拷贝
      * @see R.adjust
      * @example
      *
@@ -4561,10 +4556,10 @@
     });
 
     /**
-     * 输入一个函数`fn`和一个 transformer 函数的集合，返回一个柯里化函数。
+     * 给定一个函数 `fn` 和一个 transformer 函数的列表，返回一个柯里化函数。
      * 调用返回的函数会对每个参数执行对应的 transformer 函数，然后作为新的参数传入 `fn` 执行。
      *
-     * 如果传的参数数量比 transformer 函数的数量多，多出的参数会被直接传入`fn`。
+     * 如果传的参数数量比 transformer 函数的数量多，多出的参数会被直接传入 `fn` 。
      * 如果不需要处理多出的那部分参数，除了忽略之外，也可以用 identity 函数来作为 transformer ，以保证返回函数的参数数量是确定的。
      *
      * @func
@@ -4572,9 +4567,9 @@
      * @since v0.1.0
      * @category Function
      * @sig (x1 -> x2 -> ... -> z) -> [(a -> x1), (b -> x2), ...] -> (a -> b -> ... -> z)
-     * @param {Function} fn The function to wrap.
-     * @param {Array} transformers A list of transformer functions
-     * @return {Function} The wrapped function.
+     * @param {Function} fn 需要封装的函数
+     * @param {Array} transformers transformer 函数列表
+     * @return {Function} 封装后的函数
      * @see R.converge
      * @example
      *
@@ -4634,8 +4629,8 @@
      * @since v0.2.0
      * @category Object
      * @sig {k: v} -> [v]
-     * @param {Object} obj The object to extract values from
-     * @return {Array} An array of the values of the object's own and prototype properties.
+     * @param {Object} obj 需要展开的对象
+     * @return {Array} 对象可枚举属性和原型链上属性的值的数组
      * @example
      *
      *      var F = function() { this.x = 'X'; };
@@ -4693,8 +4688,8 @@
     }();
 
     /**
-     * 最后一个输入`x`作为参数传给条件函数做判断，
-     * 如果不满足则将`x`作为参数传给`whenTrueFn`返回结果，否则返回`x`。
+     * 最后一个输入 `x` 作为参数传给条件函数做判断，
+     * 如果不满足则将 `x` 作为参数传给 `whenTrueFn` 返回结果，否则返回 `x` 。
      *
      * @func
      * @memberOf R
@@ -4723,9 +4718,9 @@
     /**
      * 输入参考标准和待检测对象，如果满足参考标准则返回 true，否则返回 false。
      * 参考标准的每个属性都要求是条件函数。
-     * 每个条件函数对检测对象相应的属性值执行，如果都返回 true，则`where`返回 true，否则返回 false。
+     * 每个条件函数对检测对象相应的属性值执行，如果都返回 true，则 `where` 返回 true，否则返回 false。
      *
-     * `where`适用于需要条件函数约束的地方，比如用于`filter`和`find`。
+     * `where` 适用于需要条件函数约束的地方，比如用于 `filter` 和 `find` 。
      *
      * @func
      * @memberOf R
@@ -4761,16 +4756,16 @@
     });
 
     /**
-     * 两个集合元素两两组合，生成一个新的元素对的集合。
+     * 两个列表的元素两两组合，生成一个新的元素对的列表。
      *
      * @func
      * @memberOf R
      * @since v0.1.0
      * @category List
      * @sig [a] -> [b] -> [[a,b]]
-     * @param {Array} as 第1个集合
-     * @param {Array} bs 第2个集合
-     * @return {Array} `as` 和 `bs` 中元素两两组合成元素对（`[a, b]`）的集合
+     * @param {Array} as 第1个列表
+     * @param {Array} bs 第2个列表
+     * @return {Array} `as` 和 `bs` 中元素两两组合成元素对（`[a, b]`）的列表
      * @example
      *
      *      R.xprod([1, 2], ['a', 'b']); //=> [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
@@ -4799,18 +4794,18 @@
     });
 
     /**
-     * 两个集合对应位置元素组合，生成一个新的元素对的集合。
-     * 生成的集合长度取较短的输入集合的长度。
-     * 注意，`zip`等价于`zipWith(function(a, b) { return [a, b] })`。
+     * 两个列表对应位置元素组合，生成一个新的元素对的列表。
+     * 生成的列表长度取较短的输入列表的长度。
+     * 注意， `zip` 等价于 `zipWith(function(a, b) { return [a, b] })` 。
      *
      * @func
      * @memberOf R
      * @since v0.1.0
      * @category List
      * @sig [a] -> [b] -> [[a,b]]
-     * @param {Array} list1 第1个的集合
-     * @param {Array} list2 第2个的集合
-     * @return {Array} `list1` 和 `list2` 对应位置的元素对的集合
+     * @param {Array} list1 第1个列表
+     * @param {Array} list2 第2个列表
+     * @return {Array} `list1` 和 `list2` 对应位置的元素对的列表
      * @example
      *
      *      R.zip([1, 2, 3], ['a', 'b', 'c']); //=> [[1, 'a'], [2, 'b'], [3, 'c']]
@@ -4831,18 +4826,18 @@
     });
 
     /**
-     * 两个集合对应位置元素作为键值对组合，生成一个新的键值对的集合。
-     * 生成的集合长度取较短的输入集合的长度。
-     * 注意，`zip`等价于`pipe(zipWith(pair), fromPairs)`。
+     * 两个列表对应位置元素作为键值对组合，生成一个新的键值对的列表。
+     * 生成的列表长度取较短的输入列表的长度。
+     * 注意，`zip` 等价于 `pipe(zipWith(pair), fromPairs)` 。
      *
      * @func
      * @memberOf R
      * @since v0.3.0
      * @category List
      * @sig [String] -> [*] -> {String: *}
-     * @param {Array} keys 作为属性名的集合
-     * @param {Array} values 作为属性值的集合
-     * @return {Object} `list1` 和 `list2` 对应位置的键值对的集合
+     * @param {Array} keys 作为属性名的列表
+     * @param {Array} values 作为属性值的列表
+     * @return {Object} `list1` 和 `list2` 对应位置的键值对的列表
      * @example
      *
      *      R.zipObj(['a', 'b', 'c'], [1, 2, 3]); //=> {a: 1, b: 2, c: 3}
@@ -4859,18 +4854,18 @@
     });
 
     /**
-     * 生成一个新的数组，该数组的值，是对两个输入数组中下标相同的元素调用函数所得。新数组的长度与两个输入数组中长度较短的那个相同。
+     * 两个列表对应位置元素通过一个函数处理，生成一个新的元素的列表。
+     * 生成的列表长度取较短的输入列表的长度。
      *
      * @function
      * @memberOf R
      * @since v0.1.0
      * @category List
      * @sig (a,b -> c) -> [a] -> [b] -> [c]
-     * @param {Function} fn 用来组合两个元素使之成为一个值的函数。
-     * @param {Array} list1 第一个被操作的数组。
-     * @param {Array} list2 第二个被操作的数组。
-     * @return {Array} list1 和 list2 中的下标相同的元素为参数，使用 fn 进行计算所得的新数组。
-     *
+     * @param {Function} fn 把两个元素合并成一个值的函数
+     * @param {Array} list1 第1个列表
+     * @param {Array} list2 第2个列表
+     * @return {Array} `list1` 和 `list2` 对应位置的元素对通过`fn`处理后的列表
      * @example
      *
      *      var f = (x, y) => {
@@ -6339,8 +6334,8 @@
     var sum = reduce(add, 0);
 
     /**
-     * 返回集合的后`n`个元素。
-     * 如果`n > list.length`则返回`list.length`个元素的集合。
+     * 返回列表的后`n`个元素。
+     * 如果 `n > list.length` 则返回 `list.length` 个元素的列表。
      *
      * @func
      * @memberOf R
@@ -6349,7 +6344,7 @@
      * @sig Number -> [a] -> [a]
      * @sig Number -> String -> String
      * @param {Number} n 返回的元素个数
-     * @param {Array} xs 输入的集合
+     * @param {Array} xs 输入的列表
      * @return {Array}
      * @see R.dropLast
      * @example
@@ -6365,41 +6360,31 @@
     });
 
     /**
-     * Initializes a transducer using supplied iterator function. Returns a single
-     * item by iterating through the list, successively calling the transformed
-     * iterator function and passing it an accumulator value and the current value
-     * from the array, and then passing the result to the next call.
+     * 用迭代函数来初始化一个 transducer ，为列表中每个元素执行迭代函数进行 transform
+     * ，将返回值传入加法器，然后把累加传入进行下一轮迭代。
      *
-     * The iterator function receives two values: *(acc, value)*. It will be
-     * wrapped as a transformer to initialize the transducer. A transformer can be
-     * passed directly in place of an iterator function. In both cases, iteration
-     * may be stopped early with the `R.reduced` function.
+     * 迭代函数接收2个参数： *(acc, value)* ，然后被包装成 transformer 来初始化 transducer 。
+     * Transformer 能直接替代迭代函数。并且，打断 `R.transduce` 的迭代过程比 `R.reduced` 更容易。
      *
-     * A transducer is a function that accepts a transformer and returns a
-     * transformer and can be composed directly.
+     * Transducer 接收 transformer ，然后返回 transformer ，可以直接用于函数组合。
      *
-     * A transformer is an an object that provides a 2-arity reducing iterator
-     * function, step, 0-arity initial value function, init, and 1-arity result
-     * extraction function, result. The step function is used as the iterator
-     * function in reduce. The result function is used to convert the final
-     * accumulator into the return type and in most cases is R.identity. The init
-     * function can be used to provide an initial accumulator, but is ignored by
-     * transduce.
+     * Transformer 传入2个参数到迭代函数进行迭代，传入0个参数到初始化函数进行初始化，传入1个参数到累加函数作为结果。
+     * 迭代用于 reduce 的迭代；
+     * 累加函数作为累加器，用来计算返回值，通常使用 `R.identity` ；
+     * 初始化函数用来计算初始值，但在 transduce 里面被忽略。
      *
-     * The iteration is performed with R.reduce after initializing the transducer.
+     * 在 transduce 初始化之后，迭代方式和 `R.reduce` 一样。
      *
      * @func
      * @memberOf R
      * @since v0.12.0
      * @category List
      * @sig (c -> c) -> (a,b -> a) -> a -> [b] -> a
-     * @param {Function} xf The transducer function. Receives a transformer and returns a transformer.
-     * @param {Function} fn The iterator function. Receives two values, the accumulator and the
-     *        current element from the array. Wrapped as transformer, if necessary, and used to
-     *        initialize the transducer
-     * @param {*} acc The initial accumulator value.
-     * @param {Array} list The list to iterate over.
-     * @return {*} The final, accumulated value.
+     * @param {Function} xf transducer 函数，接收 transformer 返回 transformer
+     * @param {Function} fn 迭代函数，累加器和数组当前位置的元素，被包装成 transformer ，如果必要的话将用于 transducer 的初始化
+     * @param {*} acc 累加器初始值
+     * @param {Array} list 迭代列表
+     * @return {*} 累加器的最终结果
      * @see R.reduce, R.reduced, R.into
      * @example
      *
@@ -6413,7 +6398,7 @@
     });
 
     /**
-     * 集合并运算，合并两个集合作为一个新的集合（没有重复元素）。
+     * 集合并运算，合并两个列表作为一个新的列表（没有重复元素）。
      * “重复”由条件函数的返回值决定。
      *
      * @func
@@ -6422,9 +6407,9 @@
      * @category Relation
      * @sig (a -> a -> Boolean) -> [*] -> [*] -> [*]
      * @param {Function} pred 判断两个元素是否相等的条件函数
-     * @param {Array} list1 第1个集合
-     * @param {Array} list2 第2个集合
-     * @return {Array} 两个集合拼接后去重的集合
+     * @param {Array} list1 第1个列表
+     * @param {Array} list2 第2个列表
+     * @return {Array} 两个列表拼接后去重的列表
      * @see R.union
      * @example
      *
@@ -6438,9 +6423,9 @@
 
     /**
      * 输入参考对象和待检测对象，如果满足参考值则返回 true，否则返回 false。
-     * 如果待检测对象的每个属性值都等于（使用`R.equals`来判断）参考对象对应的属性值，那么这个对象就满足参考对象。
+     * 如果待检测对象的每个属性值都等于（使用 `R.equals` 来判断）参考对象对应的属性值，那么这个对象就满足参考对象。
      *
-     * `whereEq`是[`where`](#where)的一个特殊形式。
+     * `whereEq` 是 [`where`](#where) 的一种特殊形式。
      *
      * @func
      * @memberOf R
@@ -7418,11 +7403,11 @@
 
     /**
      * Maps an [Applicative](https://github.com/fantasyland/fantasy-land#applicative)-returning
-     * function over a [Traversable](https://github.com/fantasyland/fantasy-land#traversable),
-     * then uses [`sequence`](#sequence) to transform the resulting Traversable of Applicative
-     * into an Applicative of Traversable.
+     * 将 [Applicative](https://github.com/fantasyland/fantasy-land#applicative) 返回函数映射成为
+     * [Traversable](https://github.com/fantasyland/fantasy-land#traversable)
+     * ，然后把 Applicative 的 Traversable 映射结果对 [`sequence`](#sequence) 做转换。
      *
-     * Dispatches to the `sequence` method of the third argument, if present.
+     * 如果第三个参数有 `sequence` 方法，则调用 `sequence` 方法。
      *
      * @func
      * @memberOf R
@@ -7447,7 +7432,7 @@
     });
 
     /**
-     * `R.chain(R.identity)`的快捷方式, 从[链式](https://github.com/fantasyland/fantasy-land#chain)消除一层嵌套.
+     * `R.chain(R.identity)` 的快捷方式, 从 [Chain](https://github.com/fantasyland/fantasy-land#chain) 数据结构中消除一层嵌套.
      *
      * @func
      * @memberOf R
@@ -7815,10 +7800,10 @@
 
     /**
      * 返回一个值的字符串表现形式。
-     * 输出的值执行`eval`结果等价于输入的值。原有的`toString`方法不满足这一要求。
+     * 输出的值执行 `eval` 的结果等价于输入的值。原生的 `toString` 方法不满足这一条件。
      *
-     * 如果输入值是一个`[object Object]`对象，且有不同于`Object.prototype.toString`的`toString`方法，那么将再不传递参数的情况下调用这个方法。
-     * 换句话说，在构造函数中自定义的`toString`方法可以满足这个条件，例如：
+     * 如果输入值是一个 `[object Object]` 对象，且有不同于 `Object.prototype.toString` 的方法，那么将不传递参数直接调用这个方法。
+     * 换句话说，在构造函数中自定义的 `toString` 方法会满足这个条件，例如：
      *
      *     function Point(x, y) {
      *       this.x = x;
@@ -7851,8 +7836,8 @@
     });
 
     /**
-     * 返回一个集合，其元素都不在第1个输入集合中。
-     * 比较函数是`R.equals`。
+     * 返回一个列表，其元素都不在给定的第1个列表中。
+     * 比较函数是 `R.equals` 。
      *
      * 如果输入是 transformer ，那么按照 transducer 的方式执行。
      *
@@ -7861,9 +7846,9 @@
      * @since v0.19.0
      * @category List
      * @sig [a] -> [a] -> [a]
-     * @param {Array} list1 需要从`list2`中移除的值
-     * @param {Array} list2 带移除的集合
-     * @return {Array} 没有`list1`中元素的集合
+     * @param {Array} list1 需要从 `list2` 中移除的值
+     * @param {Array} list2 待移除的列表
+     * @return {Array} 没有 `list1` 中元素的列表
      * @see R.transduce
      * @example
      *
@@ -8295,16 +8280,16 @@
     var split = invoker(1, 'split');
 
     /**
-     * 寻找一个无重复元素的集合，其元素在且仅在输入集合中的一个里面出现。
+     * 寻找一个无重复元素的集合，其元素在且仅在给定列表中的一个里面出现。
      *
      * @func
      * @memberOf R
      * @since v0.19.0
      * @category Relation
      * @sig [*] -> [*] -> [*]
-     * @param {Array} list1 第1个输入
-     * @param {Array} list2 第2个输入
-     * @return {Array} 元素仅在list1或list2中出现的集合
+     * @param {Array} list1 第1个列表
+     * @param {Array} list2 第2个列表
+     * @return {Array} 元素仅在list1或list2中出现的列表
      * @see R.symmetricDifferenceWith, R.difference, R.differenceWith
      * @example
      *
@@ -8316,8 +8301,8 @@
     });
 
     /**
-     * 寻找一个无重复元素的集合，其元素在且仅在输入集合中的一个里面出现。
-     * “重复”由条件函数返回值决定。
+     * 寻找一个无重复元素的集合，其元素在且仅在给定列表中的一个里面出现。
+     * “重复”由条件函数的返回值决定。
      *
      * @func
      * @memberOf R
@@ -8325,9 +8310,9 @@
      * @category Relation
      * @sig ((a, a) -> Boolean) -> [a] -> [a] -> [a]
      * @param {Function} pred 判断两个元素是否相等的条件函数
-     * @param {Array} list1 第1个集合
-     * @param {Array} list2 第2个集合
-     * @return {Array} 元素仅在list1或list2中出现的集合
+     * @param {Array} list1 第1个列表
+     * @param {Array} list2 第2个列表
+     * @return {Array} 元素仅在list1或list2中出现的列表
      * @see R.symmetricDifference, R.difference, R.differenceWith
      * @example
      *
@@ -8399,9 +8384,9 @@
     var toUpper = invoker(0, 'toUpperCase');
 
     /**
-     * 基于输入函数返回值来判断“重复”，返回一个没有重复元素的集合。
+     * 基于给定函数返回值来判断“重复”，返回一个没有重复元素的列表。
      * 如果出现重复元素，则保留第1次出现的元素。
-     * 比较函数是`R.equals`。
+     * 比较函数是 `R.equals` 。
      *
      * @func
      * @memberOf R
@@ -8409,8 +8394,8 @@
      * @category List
      * @sig (a -> b) -> [a] -> [a]
      * @param {Function} fn 处理元素然后返回一个用于比较的值
-     * @param {Array} list 待处理的集合
-     * @return {Array} 不重复的元素集合
+     * @param {Array} list 待处理的列表
+     * @return {Array} 无重复元素的列表
      * @example
      *
      *      R.uniqBy(Math.abs, [-1, -5, 2, 10, 1, 2]); //=> [-1, -5, 2, 10]
@@ -8432,16 +8417,16 @@
     });
 
     /**
-     * 返回不重复的元素集合。
-     * 比较函数是`R.equals`。
+     * 返回无重复元素的列表。
+     * 比较函数是 `R.equals` 。
      *
      * @func
      * @memberOf R
      * @since v0.1.0
      * @category List
      * @sig [a] -> [a]
-     * @param {Array} list 待处理的集合
-     * @return {Array} 不重复元素的集合
+     * @param {Array} list 待处理的列表
+     * @return {Array} 无重复元素的列表
      * @example
      *
      *      R.uniq([1, 1, 2, 1]); //=> [1, 2]
@@ -8479,16 +8464,16 @@
     });
 
     /**
-     * 集合并运算，合并两个集合作为一个新的集合（没有重复元素）。
+     * 集合并运算，合并两个列表作为一个新的列表（没有重复元素）。
      *
      * @func
      * @memberOf R
      * @since v0.1.0
      * @category Relation
      * @sig [*] -> [*] -> [*]
-     * @param {Array} as 第1个集合
-     * @param {Array} bs 第2个集合
-     * @return {Array} 两个集合拼接后去重的集合
+     * @param {Array} as 第1个列表
+     * @param {Array} bs 第2个列表
+     * @return {Array} 两个列表拼接后去重的列表
      * @example
      *
      *      R.union([1, 2, 3], [2, 3, 4]); //=> [1, 2, 3, 4]
