@@ -1,4 +1,4 @@
-Ramda
+Ramda 中文
 =============
 
 一款实用的 JavaScript 函数式编程库。
