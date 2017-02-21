@@ -5,9 +5,9 @@ var map = require('./map');
 
 
 /**
- * ap 将一系列函数列表作用于一系列值上。
+ * ap 将函数列表作用于值列表上。
  *
- * 若第二个参数自身存在 `ap` 方法，则调用自身的 `ap` 方法。柯里化函数也被当做 applicative。
+ * 若第二个参数自身存在 `ap` 方法，则调用自身的 `ap` 方法。柯里化函数也可以作为 applicative。
  *
  * @func
  * @memberOf R

@@ -5,7 +5,7 @@ var _xaperture = require('./internal/_xaperture');
 
 
 /**
- * 返回一个新列表，由相邻元素组成的 n元组组成。如果 `n` 大于列表的长度，则返回空列表。
+ * 返回一个新列表，列表中的元素为由原列表相邻元素组成的 n 元组。如果 `n` 大于列表的长度，则返回空列表。
  *
  * 若在列表位置中给出 transfomer，则用作 transducer 。
  *
