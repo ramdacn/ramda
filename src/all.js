@@ -4,7 +4,7 @@ var _xall = require('./internal/_xall');
 
 
 /**
- * 如果列表中的所有元素都满足 predicate，则返回 `true`，如果有任意元素不满足，则返回 `false`。
+ * 如果列表中的所有元素都满足 predicate，则返回 `true`；否则，返回 `false`。
  *
  * 若第二个参数自身存在 `all` 方法，则调用自身的 `all` 方法。
  *

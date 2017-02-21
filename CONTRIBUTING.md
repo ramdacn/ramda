@@ -41,17 +41,17 @@
 
 6. 反引号 "`" 包裹的内容，与其他元素之间空格隔开。
 
-7. takes 统一为 “接收” ？
+7. takes 统一为 “接收” 
 
 8. filterable ***able 等是翻译，还是保留？
 
-9. given 统一为 “给定” ， specified -> 特定 ?
+9. given 统一为 “给定” ， specified -> 指定
 
-10. default -> 默认 ？
+10. default -> 默认
 
 11. otherwise -> 否则，并且否则前面用 分号 ；隔开
 
-12. copy 拷贝？复制？
+12. copy 拷贝
 
 13. 每段话如无特殊情况以句号结尾，检查一下，（也有可能是冒号：，然后下面是解释）
 
@@ -60,3 +60,7 @@
 15. left-to-right -> 从左往右，right-to-left
 
 16. in `R.equals` terms -> 通过 ` R.equals` 函数进行相等性判断
+
+17. list -> 列表
+
+18. Dispatches to the all method of the second argument, if present. 这个句式统一翻译如下：若第二个参数自身存在 `all` 方法，则调用自身的 `all` 方法。
