@@ -5,9 +5,9 @@ var _xdropWhile = require('./internal/_xdropWhile');
 
 /**
  *
- * 返回一个新的 list，这个 list 会舍弃所有满足 `predicate` 的头部元素。
+ * 对 list 从前向后删除满足 `predicate` 的头部元素，直到遇到第一个 `falsy` 值。
  *
- * 从左往右依次对 list 中的元素执行 `predicate` ，直至返回一个假值。`predicate` 需要作为第一个参数传入。
+ * `predicate` 需要作为第一个参数传入。
  *
  * 若第二个参数自身存在 `dropWhile` 方法，则调用自身的 `dropWhile` 方法。
  *

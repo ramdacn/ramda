@@ -5,7 +5,7 @@ var not = require('./not');
 /**
  * 对函数的返回值取反。接受一个函数 `f`，返回一个新函数 `g`：在输入参数相同的情况下，若 `f` 返回 'true-y' ，则 `g` 返回 `false-y` ，反之亦然。
  *
- * 可以将 `R.complement` 应用于任何 functor。
+ * `R.complement` 可用于任何 functor。
  *
  * @func
  * @memberOf R

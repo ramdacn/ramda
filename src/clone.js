@@ -3,7 +3,7 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * 深复制。其值可能（嵌套）包含 `Array`、`Object`、`Number`、`String`、`Boolean`、`Date` 类型的数据。`Function` 进行引用复制。
+ * 深复制。其值可能（嵌套）包含 `Array`、`Object`、`Number`、`String`、`Boolean`、`Date` 类型的数据。`Function` 通过引用复制。
  *
  * 若自身存在 `clone` 方法，则调用自身的 `clone` 方法。
  *

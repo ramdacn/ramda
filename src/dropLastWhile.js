@@ -5,9 +5,9 @@ var _xdropLastWhile = require('./internal/_xdropLastWhile');
 
 
 /**
- * 返回一个新的 list，这个 list 会舍弃所有满足 `predicate` 的尾部元素。
+ * 对 list 从后向前一直删除满足 `predicate` 的尾部元素，直到遇到第一个 `falsy` 值，此时停止删除操作。
  *
- * 从右往左依次对 list 中的元素执行 `predicate`，直至返回一个 `falsy` 值。`predicate` 需要作为第一个参数传入。
+ * `predicate` 需要作为第一个参数传入。
  *
  * @func
  * @memberOf R

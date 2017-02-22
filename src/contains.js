@@ -3,7 +3,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 若数组中至少存在一个元素等于指定的值（依据 `R.equals` 的方法判断），则返回 `true`；否则返回 `false`。
+ * 只要列表中有一个元素等于指定值，则返回 `true`；否则返回 `false`。通过 `R.equals` 函数进行相等性判断。
  *
  * @func
  * @memberOf R

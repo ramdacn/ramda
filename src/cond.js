@@ -6,7 +6,7 @@ var reduce = require('./reduce');
 
 
 /**
- * 返回一个函数 `fn`，它封装了 `if / else，if / else, ...` 逻辑。 `R.cond` 接受列表元素为 [predicate，transformer] 对(pair) 的列表。 `fn` 的所有参数顺次作用于每个 predicate，直到有一个返回 "truthy" 值，此时相应 transformer 对参数处理，并作为 `fn` 的结果返回。 如果没有 predicate 匹配，则 `fn` 返回 undefined。
+ * 返回一个封装了 `if / else，if / else, ...` 逻辑的函数 `fn`。 `R.cond` 接受列表元素为 [predicate，transformer] 的列表。 `fn` 的所有参数顺次作用于每个 predicate，直到有一个返回 "truthy" 值，此时相应 transformer 对参数处理，并作为 `fn` 的结果返回。 如果没有 predicate 匹配，则 `fn` 返回 undefined。
  *
  * @func
  * @memberOf R

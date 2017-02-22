@@ -6,7 +6,7 @@ var last = require('./last');
 
 /**
  *
- * 返回一个没有任何连续重复元素的 list。第一个参数提供的 `predicate` 被用来检验 list 中相邻的两个元素是否相等。一系列相等元素中的第一个元素会被保留。
+ * 返回一个没有连续重复元素的 list。首个参数提供的 `predicate` 用于检测 list 中相邻的两个元素是否相等。一系列相等元素中的首个元素会被保留。
  *
  * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *

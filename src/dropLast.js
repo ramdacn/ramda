@@ -5,7 +5,7 @@ var _xdropLast = require('./internal/_xdropLast');
 
 
 /**
- * 返回给定 list 去除末尾 `n` 个元素后的结果。
+ * 删除 "list" 末尾的 `n` 个元素。
  *
  * @func
  * @memberOf R

@@ -5,11 +5,11 @@ var toString = require('./toString');
 
 
 /**
- * 将给定的 lists 或 strings 串连接起来。
+ * 连接列表或字符串。
  *
  * 注意：不同于 [`Array.prototype.concat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat), `R.concat` 要求两个参数类型相同。 如果将 Array 与非 Array 连接，将抛出错误。
  *
- * 若第二个参数自身存在 `concat` 方法，则调用自身的 `concat`。
+ * 若第一个参数自身存在 `concat` 方法，则调用自身的 `concat`。
  *
  * @func
  * @memberOf R
