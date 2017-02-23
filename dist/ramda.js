@@ -1574,8 +1574,7 @@
 
     /**
      *
-     * 根据给定参数的类型返回其对应的空值。Ramda 定义了各类型的空值如下：Array (`[]`)，Object (`{}`)，String (`''`)，和 Arguments。
-     * 其它类型的参数如果定义了 `<Type>.empty` 和/或者 `<Type>.prototype.empty` 也是被支持的。
+     * 根据传入参数的类型返回其对应的空值。Ramda 定义了各类型的空值如下：Array (`[]`)，Object (`{}`)，String (`''`)，和 Arguments。`empty` 还支持其它定义了 `<Type>.empty` 和/或 `<Type>.prototype.empty` 的类型。
      *
      * 若第一个参数自身存在 `empty` 方法，则调用自身的 `empty` 方法。
      *
@@ -1603,10 +1602,9 @@
 
     /**
      *
-     * 递归地对第二个参数 `object` 的浅复制进行变换来创建一个新的object，变换方式由第一个参数 `transformation` 来定义。
-     * 所有非原始类型属性都通过引用来复制。
+     * 递归地对 `object` 的属性进行变换，变换方式由 `transformation` 函数定义。所有非原始类型属性都通过引用来复制。
      *
-     * 如果 `transformation` 中定义的方法关联的 `object` 属性并不存在，那么该方法将不会执行。
+     * 如果某个 `transformation` 函数对应的键在被变换的 `object` 中不存在，那么该方法将不会执行。
      *
      * @func
      * @memberOf R
@@ -4891,7 +4889,7 @@
     });
 
     /**
-     * 一个恒定返回 `false` 的函数。所有输入的参数都会被忽略。
+     * 恒定返回 `false` 的函数。所有输入的参数都会被忽略。
      *
      * @func
      * @memberOf R
@@ -5458,9 +5456,9 @@
 
     /**
      *
-     * 如果给定的参数相等则返回 `true` ，否则返回 `false`。处理几乎所有JavaScript支持的数据结构。
+     * 如果传入的参数相等，返回 `true`；否则返回 `false`。可以处理几乎所有 JavaScript 支持的数据结构。
      *
-     * 若两个参数自身存在 `equals` 方法，则对称地调用 `equals` 方法。
+     * 若两个参数自身存在 `equals` 方法，则对称地调用自身的 `equals` 方法。
      *
      * @func
      * @memberOf R
@@ -5485,10 +5483,9 @@
     });
 
     /**
-     * 接收一个 `predicate` 和一个 `filterable` 元素作为参数，
-     * 返回一个新的相同类型的但是只包含满足 `predicate` 成员的 `filterable` 元素。
+     * 使用 `predicate` 遍历传入的 `filterable`，返回满足 `predicate` 的所有元素的新的 `filterable`。新 `filterable` 与原先的类型相同。
      *
-     * 若第二个参数自身存在 `empty` 方法，则调用自身的 `empty` 方法。
+     * 若第二个参数自身存在 `filter` 方法，则调用自身的 `filter` 方法。
      *
      * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -6946,7 +6943,9 @@
 
     /**
      *
-     * 接受一个函数和两个可以作为该函数参数的值，如果这两个值通过该函数的执行结果相等则返回 `true` ，否则返回 `false` 。
+     * 接受一个函数和两个值，通过传入函数对两个值进行相等性判断。
+     *
+     * 如果两个值通过传入函数的计算后相等，则返回 `true` ；否则返回 `false` 。
      *
      * @func
      * @memberOf R
@@ -6967,7 +6966,7 @@
 
     /**
      *
-     * 通过 `R.equals` 函数对两个 object 的指定属性进行相等性判断。可以用作柯里化的 `predicate` 。
+     * 判断两个对象指定的属性值是否相等。通过 ` R.equals` 函数进行相等性判断。可用作柯里化的 `predicate` 。
      *
      * @func
      * @memberOf R
@@ -8145,7 +8144,7 @@
 
     /**
      *
-     * 返回由 `||` 运算符连接的两个函数的包装函数，如果两个函数中任一函数的执行结果为 `truth-y`，则返回其执行结果。
+     * 返回由 `||` 运算符连接的两个函数的包装函数。如果两个函数中任一函数的执行结果为 `truth-y`，则返回其执行结果。
      * 注意，这个是短路表达式，意味着如果第一个函数返回 `truth-y` 值的话，第二个函数将不会执行。
      *
      * 除了函数之外， `R.either` 也接受任何符合 `fantasy-land` 标准的 `applicative functor` 。

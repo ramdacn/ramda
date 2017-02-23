@@ -4,7 +4,7 @@ var equals = require('./equals');
 
 /**
  *
- * 通过 `R.equals` 函数对两个 object 的指定属性进行相等性判断。可以用作柯里化的 `predicate` 。
+ * 判断两个对象指定的属性值是否相等。通过 ` R.equals` 函数进行相等性判断。可用作柯里化的 `predicate` 。
  *
  * @func
  * @memberOf R

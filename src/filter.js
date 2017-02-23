@@ -8,10 +8,9 @@ var keys = require('./keys');
 
 
 /**
- * 接收一个 `predicate` 和一个 `filterable` 元素作为参数，
- * 返回一个新的相同类型的但是只包含满足 `predicate` 成员的 `filterable` 元素。
+ * 使用 `predicate` 遍历传入的 `filterable`，返回满足 `predicate` 的所有元素的新的 `filterable`。新 `filterable` 与原先的类型相同。
  *
- * 若第二个参数自身存在 `empty` 方法，则调用自身的 `empty` 方法。
+ * 若第二个参数自身存在 `filter` 方法，则调用自身的 `filter` 方法。
  *
  * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *

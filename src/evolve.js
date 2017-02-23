@@ -3,10 +3,9 @@ var _curry2 = require('./internal/_curry2');
 
 /**
  *
- * 递归地对第二个参数 `object` 的浅复制进行变换来创建一个新的object，变换方式由第一个参数 `transformation` 来定义。
- * 所有非原始类型属性都通过引用来复制。
+ * 递归地对 `object` 的属性进行变换，变换方式由 `transformation` 函数定义。所有非原始类型属性都通过引用来复制。
  *
- * 如果 `transformation` 中定义的方法关联的 `object` 属性并不存在，那么该方法将不会执行。
+ * 如果某个 `transformation` 函数对应的键在被变换的 `object` 中不存在，那么该方法将不会执行。
  *
  * @func
  * @memberOf R
