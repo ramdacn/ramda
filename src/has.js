@@ -3,7 +3,7 @@ var _has = require('./internal/_has');
 
 
 /**
- * 如果一个对象具有指定的属性则返回 `true`；否则返回 `false`。
+ * 如果对象自身含有指定的属性，则返回 `true`；否则返回 `false`。
  *
  * @func
  * @memberOf R

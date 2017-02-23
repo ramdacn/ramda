@@ -2,7 +2,7 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * 从一系列只包含键值对元素的 list 创建一个新的 `object`。如果一个 key 出现了多次，最右边的键值对会被保留。
+ * 由一系列 “键值对” 创建一个 `object`。如果某个键出现多次，选取最右侧的键值对。
  *
  * @func
  * @memberOf R

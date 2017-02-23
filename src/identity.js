@@ -3,7 +3,7 @@ var _identity = require('./internal/_identity');
 
 
 /**
- * 一个不做任何事情而只是把给定参数原封不动返回的方法。适合用作默认或者占位方法。
+ * 将输入值原样返回。适合用作默认或占位函数。
  *
  * @func
  * @memberOf R

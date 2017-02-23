@@ -1,7 +1,7 @@
 var _curry2 = require('./internal/_curry2');
 
 /**
- * 接收一个 list ，并返回一个包含一系列 `equal` 元素子 list 的 list 。`equal` 能力由给定的函数定义。
+ * 通过给定的相等性判断函数，将列表按顺序分割成多组子列表。
  *
  * @func
  * @memberOf R

@@ -2,7 +2,7 @@ var add = require('./add');
 
 
 /**
- * 返回参数加1的结果。
+ * 加1。
  *
  * @func
  * @memberOf R
