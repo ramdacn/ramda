@@ -4,7 +4,7 @@ var keys = require('./keys');
 
 
 /**
- * 和 R.invertObj 等同，但是对于具有多个相同值的 object 的情况，该方法会将这些值对应键存到一个数组中。
+ * 与 R.invertObj 类似，但会将值放入数组中，来处理一个键对应多个值的情况。
  *
  * @func
  * @memberOf R

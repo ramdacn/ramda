@@ -2078,8 +2078,7 @@
     var inc = add(1);
 
     /**
-     * 将给定的元素插入到 list 指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组拷贝。
-     * <small>应用中的所有 list 不会因为这个方法受到任何副作用影响。</small>
+     * 将元素插入到 list 指定索引处。注意，该函数无破坏性：它返回的是变化的列表的拷贝。<small>函数运行过程中不会破坏任何列表。</small>
      *
      * @func
      * @memberOf R
@@ -2102,9 +2101,9 @@
     });
 
     /**
-     * 将给定的子 list 插入到 list 指定 `index` 的位置。注意这个变化是不具有破坏性的：它返回的是携带变化的数组拷贝。
-     * <small>应用中的所有 list 不会因为这个方法受到任何副作用影响。</small>
+     * 将子 list 插入到 list 指定索引处。注意，该函数无破坏性：它返回的是变化的列表的拷贝。<small>函数运行过程中不会破坏任何列表。</small>
      *
+    *
      * @func
      * @memberOf R
      * @since v0.9.0
@@ -2124,7 +2123,7 @@
     });
 
     /**
-     * 创建一个新的 list ，该 list 会将给定的 separator 元素插入到 list 每两个元素之间。
+     * 在列表的元素之间插入分割元素。
      *
      * 若第二个参数自身存在 `intersperse` 方法，则调用自身的 `intersperse` 方法。
      *
@@ -5613,8 +5612,8 @@
      */
     var head = nth(0);
 
-    /**
-     * 返回给定 list 或 string 去除最后一个元素后的结果。
+    /*
+     * 返回 list 或 string 删除最后一个元素后的部分。
      *
      * @func
      * @memberOf R
@@ -5640,7 +5639,7 @@
     var init = slice(0, -1);
 
     /**
-     * 返回由两个 list 中相同元素组成的 list 。判断元素是否相同由给定的 `predicate` 来定义。
+     * 取出两个 list 中相同的元素组成的 set （集合：没有重复元素）。由给定的 `predicate` 进行相同性判断。
      *
      * @func
      * @memberOf R
@@ -5693,17 +5692,13 @@
     });
 
     /**
-     * 根据给定的 transducer 对 list 中的元素进行转换，然后使用基于 accumulator 类型的迭代器将转换后的元素依次添加到 accumulator 中。
+     * 使用 transducer 对 list 中的元素进行转换，然后使用基于 accumulator 的类型的迭代器函数将转换后的元素依次添加到 accumulator 上。
      *
-     * 该 accumulator 可以是以下数据类型：array、string、object 或者 transformer 。
-     * 如果 accumulator 类型是数组或者字符串，则迭代元素将会被附加到数组中或者连接到字符串上。如果是对象，迭代元素将会被直接合并，
-     * 如果是二元数组，迭代元素则将会根据键值对进行合并。
+     * accumulator 的类型可以是：array、string、object 或者 transformer 。如果 accumulator 类型是 array 或 string，则迭代元素将被添加到数组或连接到字符串上；如果是对象，迭代元素将会被直接合并；如果是二元素数组，迭代元素会以键值对形式进行合并。
      *
-     * 该 accumulator 也可以是一个 transformer 对象，它提供 transformer 所必须的 step、init、result 方法。
-     * step 方法被用作规约函数中的迭代函数。result 方法被用来将最终的 accumulator 转换为相应的返回类型（大部分情况都是 R.identity）。
-     * init 方法被用来提供初始的 accumulator。
+     * accumulator 也可作为 transformer 对象，提供 transformer 所需要的二元 reducing iterator、step、零元 init 和 一元 result 函数。step 作作为 reduce 过程中的迭代函数；result 将最终的 accumulator 转换为需要的返回类型（通常为 R.identity）；init 提供初始 accumulator。
      *
-     * 在 transducer 初始化之后，iteration 和 R.reduce 同步执行。
+     * 在 transducer 初始化之后，使用 R.reduce 进行迭代操作。
      *
      * @func
      * @memberOf R
@@ -5729,7 +5724,7 @@
     });
 
     /**
-     * 和 R.invertObj 等同，但是对于具有多个相同值的 object 的情况，该方法会将这些值对应键存到一个数组中。
+     * 与 R.invertObj 类似，但会将值放入数组中，来处理一个键对应多个值的情况。
      *
      * @func
      * @memberOf R
@@ -5765,7 +5760,7 @@
     });
 
     /**
-     * 返回一个键值交换后的新的 object，交换后的键会被强制转换为 string。注意，如果原 object 存在多个相同的值那么最后一个会被保留。
+     * 将对象的键、值交换位置：值作为键，对应的键作为值。交换后的键会被强制转换为字符串。注意，如果原对象同一值对应多个键，采用最后一个键。
      *
      * @func
      * @memberOf R
@@ -6939,9 +6934,7 @@
 
     /**
      *
-     * 接受一个函数和两个值，通过传入函数对两个值进行相等性判断。
-     *
-     * 如果两个值通过传入函数的计算后相等，则返回 `true` ；否则返回 `false` 。
+     * 接受一个函数和两个值，通过传入函数对两个值进行相等性判断。如果两个值的计算结果相等，则返回 `true` ；否则返回 `false` 。
      *
      * @func
      * @memberOf R
@@ -7034,8 +7027,7 @@
     }, null)));
 
     /**
-     * 根据给定函数生成的键，将一个包含多个对象的 list 转换为一个包含多个以该键对应值为索引对象的新对象。
-     * 注意如果 list 中多个对象根据该键索引的值相同，那么只有最后一个对象会被保留。
+     * 通过生成键的函数，将元素为对象的 list 转换为以生成的键为索引的新对象。注意，如果 list 中多个对象元素生成相同的键，以最后一个对象元素作为该键的值。
      *
      * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
      *
@@ -7058,7 +7050,7 @@
     }, null);
 
     /**
-     * 返回数组中第一次出现目标元素的索引，如果目标元素不存在于数组中，则返回 `-1`。借助 `R.equals` 来判断元素是否相等。
+     * 返回给定元素在数组中首次出现时的索引值，如果数组中没有该元素，则返回 `-1`。通过 ` R.equals` 函数进行相等性判断。
      *
      * @func
      * @memberOf R
@@ -8436,7 +8428,7 @@
     var uniq = uniqBy(identity);
 
     /**
-     * 返回由两个 list 中相同元素组成的 list 。
+     * 取出两个 list 中相同的元素组成的 set （集合：没有重复元素）。
      *
      * @func
      * @memberOf R

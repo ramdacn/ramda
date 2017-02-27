@@ -1,8 +1,8 @@
 var slice = require('./slice');
 
 
-/**
- * 返回给定 list 或 string 去除最后一个元素后的结果。
+/*
+ * 返回 list 或 string 删除最后一个元素后的部分。
  *
  * @func
  * @memberOf R

@@ -6,17 +6,13 @@ var _stepCat = require('./internal/_stepCat');
 
 
 /**
- * 根据给定的 transducer 对 list 中的元素进行转换，然后使用基于 accumulator 类型的迭代器将转换后的元素依次添加到 accumulator 中。
+ * 使用 transducer 对 list 中的元素进行转换，然后使用基于 accumulator 的类型的迭代器函数将转换后的元素依次添加到 accumulator 上。
  *
- * 该 accumulator 可以是以下数据类型：array、string、object 或者 transformer 。
- * 如果 accumulator 类型是数组或者字符串，则迭代元素将会被附加到数组中或者连接到字符串上。如果是对象，迭代元素将会被直接合并，
- * 如果是二元数组，迭代元素则将会根据键值对进行合并。
+ * accumulator 的类型可以是：array、string、object 或者 transformer 。如果 accumulator 类型是 array 或 string，则迭代元素将被添加到数组或连接到字符串上；如果是对象，迭代元素将会被直接合并；如果是二元素数组，迭代元素会以键值对形式进行合并。
  *
- * 该 accumulator 也可以是一个 transformer 对象，它提供 transformer 所必须的 step、init、result 方法。
- * step 方法被用作规约函数中的迭代函数。result 方法被用来将最终的 accumulator 转换为相应的返回类型（大部分情况都是 R.identity）。
- * init 方法被用来提供初始的 accumulator。
+ * accumulator 也可作为 transformer 对象，提供 transformer 所需要的二元 reducing iterator、step、零元 init 和 一元 result 函数。step 作作为 reduce 过程中的迭代函数；result 将最终的 accumulator 转换为需要的返回类型（通常为 R.identity）；init 提供初始 accumulator。
  *
- * 在 transducer 初始化之后，iteration 和 R.reduce 同步执行。
+ * 在 transducer 初始化之后，使用 R.reduce 进行迭代操作。
  *
  * @func
  * @memberOf R
