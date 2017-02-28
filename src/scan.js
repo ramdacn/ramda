@@ -2,7 +2,7 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * Scan 与 reduce 类似。但会将每次迭代计算的累积值记录下来，组成一个列表返回。
+ * Scan 与 reduce 类似，但会将每次迭代计算的累积值记录下来，组成一个列表返回。
  *
  * @func
  * @memberOf R

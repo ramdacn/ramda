@@ -4,7 +4,7 @@ var slice = require('./slice');
 
 
 /**
- * 在给定的索引位置拆分列表或者字符串
+ * 在指定的索引处拆分列表或者字符串。
  *
  * @func
  * @memberOf R

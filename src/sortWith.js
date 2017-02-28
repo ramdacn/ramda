@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 依据 comparators 列表对原列表进行排序。
+ * 依据比较函数列表对输入列表进行排序。
  *
  * @func
  * @memberOf R

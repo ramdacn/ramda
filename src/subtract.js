@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 第1个参数减去第2个参数。
+ * 首个参数减去第二个参数。
  *
  * @func
  * @memberOf R

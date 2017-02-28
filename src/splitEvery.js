@@ -3,7 +3,7 @@ var slice = require('./slice');
 
 
 /**
- * 将 collection 拆分成指定长度的子 collection 列表。
+ * 将列表拆分成指定长度的子列表集。
  *
  * @func
  * @memberOf R

@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 遍历列表，在第一个符合 predicate 的元素的位置，将列表拆分为两部分。第一个符合 predicate 的元素包含在后一部分中。
+ * 查找列表中首个满足 predicate 的元素，在该处将列表拆分为两部分。首个满足 predicate 的元素包含在后一部分。
  *
  * @func
  * @memberOf R
