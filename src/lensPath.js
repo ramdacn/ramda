@@ -5,7 +5,7 @@ var path = require('./path');
 
 
 /**
- * 返回 focus 到指定路径的 lens。
+ * 返回聚焦到指定路径的 lens。
  *
  * @func
  * @memberOf R

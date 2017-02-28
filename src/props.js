@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 返回 `prop` 的数组：输入为 keys 数组，输出为对应的 values 数组。values 数组顺序与 keys 的相同。
+ * 返回 `prop` 的数组：输入为 keys 数组，输出为对应的 values 数组。values 数组的顺序与 keys 的相同。
  *
  * @func
  * @memberOf R

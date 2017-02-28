@@ -2,7 +2,7 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 对数据结构中 lens focus 的部分进行函数变换。
+ * 对数据结构中被 lens 聚焦的部分进行函数变换。
  *
  * @func
  * @memberOf R

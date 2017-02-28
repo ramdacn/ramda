@@ -3,7 +3,7 @@ var converge = require('./converge');
 
 
 /**
- * `juxt` 将一系列函数作用于一系列值上面。
+ * `juxt` 将函数列表作用于值列表。
  *
  * @func
  * @memberOf R

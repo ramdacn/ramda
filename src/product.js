@@ -3,7 +3,7 @@ var reduce = require('./reduce');
 
 
 /**
- * 将列表中的所有元素相乘。
+ * 列表中的所有元素相乘。
  *
  * @func
  * @memberOf R

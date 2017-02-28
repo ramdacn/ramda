@@ -3,7 +3,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 去除对象中给定的 keys 对应的属性。
+ * 删除对象中给定的 keys 对应的属性。
  *
  * @func
  * @memberOf R

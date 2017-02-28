@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 如果第一个参数小于第二个，返回 `true`；否则返回 `false`。
+ * 如果首个参数小于第二个参数，返回 `true`；否则返回 `false`。
  *
  * @func
  * @memberOf R

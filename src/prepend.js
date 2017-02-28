@@ -3,7 +3,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 返回一个新列表，首位是给定的元素，后面拼接给定列表的内容。
+ * 在列表头部之前拼接一个元素。
  *
  * @func
  * @memberOf R

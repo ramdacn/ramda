@@ -3,7 +3,7 @@ var path = require('./path');
 
 
 /**
- * 如果给定路径下的对象属性满足 predicate，返回 `ture`；否则返回 `false`。
+ * 如果对象的给定路径上的属性满足 predicate，返回 `ture`；否则返回 `false`。
  *
  * @func
  * @memberOf R

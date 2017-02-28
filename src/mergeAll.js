@@ -3,7 +3,7 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * 将一系列对象合并为一个对象。
+ * 将对象类型列表合并为一个对象。
  *
  * @func
  * @memberOf R

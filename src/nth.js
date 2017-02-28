@@ -3,7 +3,7 @@ var _isString = require('./internal/_isString');
 
 
 /**
- * 返回给定列表或字符串的第 n 个元素。如果 n 为负数，则返回索引为 length + n 的元素。
+ * 返回列表或字符串的第 n 个元素。如果 n 为负数，则返回索引为 length + n 的元素。
  *
  * @func
  * @memberOf R

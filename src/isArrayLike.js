@@ -4,7 +4,7 @@ var _isString = require('./internal/_isString');
 
 
 /**
- * 检测一个对象是否是一个类数组的元素。
+ * 检测给定对象是否是一个类数组类型的值。
  *
  * @func
  * @memberOf R

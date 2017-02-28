@@ -6,7 +6,7 @@ var _xreduceBy = require('./internal/_xreduceBy');
 
 
 /**
- * 首先对列表中的每个元素调用返回字符串的函数 `keyFn` ，根据返回的字符串对元素进行分组。然后调用 reducer 函数 `valueFn`，对组内的元素进行折叠操作。
+ * 首先对列表中的每个元素调用函数 `keyFn` ，根据 `keyFn` 返回的字符串对列表元素进行分组。然后调用 reducer 函数 `valueFn`，对组内的元素进行折叠操作。
  *
  * 该函数相当于更通用的 `groupBy` 函数。
  *

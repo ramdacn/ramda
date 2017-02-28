@@ -3,7 +3,7 @@ var map = require('./map');
 
 
 /**
- * 返回封装了给定 getter 和 setter 方法的 lens 。 getter 和 setter 分别用于 “获取” 和 “设置” 被 `lens` focus 的值。setter 不会改变原数据。
+ * 返回封装了给定 getter 和 setter 方法的 lens 。 getter 和 setter 分别用于 “获取” 和 “设置” 焦点（`lens` 聚焦的值）。setter 不会改变原数据。
  *
  * @func
  * @memberOf R
