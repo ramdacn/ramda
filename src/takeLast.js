@@ -3,8 +3,7 @@ var drop = require('./drop');
 
 
 /**
- * 返回列表的后`n`个元素。
- * 如果 `n > list.length` 则返回 `list.length` 个元素的列表。
+ * 返回列表的后 `n` 个元素。如果 `n > list.length`，则返回 `list.length` 个元素。
  *
  * @func
  * @memberOf R

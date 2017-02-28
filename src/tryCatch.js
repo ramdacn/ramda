@@ -4,9 +4,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * `tryCatch` 接收 `tryer` 函数和 `catcher` 函数，返回一个函数执行 `tryer` ，如果没有抛出异常则正常返回。
- * 如果 `tryer` 抛出异常，重新执行 `catcher` ，然后返回结果。
- * 注意，`tryer` 和 `catcher` 都返回同样类型的结果可以提高效率。
+ * `tryCatch` 接受两个函数：`tryer` 和 `catcher`，生成的函数执行 `tryer`，若未抛出异常，则返回执行结果。若抛出异常，则执行 `catcher`，返回 `catcher` 的执行结果。注意，为了有效的组合该函数，`tryer` 和 `catcher` 应赶回相同类型的值。
  *
  * @func
  * @memberOf R

@@ -2,7 +2,7 @@ var always = require('./always');
 
 
 /**
- * 始终返回 `true` 的函数。 参数中传递的任何内容都将被忽略。
+ * 恒定返回 `true` 的函数。忽略所有的输入参数。
  *
  * @func
  * @memberOf R

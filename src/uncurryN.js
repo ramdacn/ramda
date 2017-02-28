@@ -3,7 +3,7 @@ var curryN = require('./curryN');
 
 
 /**
- * 输入一个柯里化的函数，返回一个 `n` 个参数的函数。
+ * 将一个柯里化的函数转换为一个 `n` 元函数。
  *
  * @func
  * @memberOf R

@@ -4,13 +4,11 @@ var _xtakeWhile = require('./internal/_xtakeWhile');
 
 
 /**
- * 列表中从后往前每个元素都使用条件函数判断，直到条件函数返回 `false` 跳出，然后返回列表在迭代跳出时的满足条件的`n`个元素。
- * 除非条件函数在处理元素的时候报错。条件函数接收一个值：
- * *(value)*
+ * 从前往后取出列表元素，直到遇到首个不满足 predicate 的元素为止。取出的元素中不包含首个不满足 predicate 的元素。
  *
- * 如果第2个参数有 `takeWhile` 方法，则调用 `takeWhile` 方法。
+ * 若第二个参数自身存在 `takeWhile` 方法，则调用自身的 `takeWhile` 方法
  *
- * 如果第2个参数是 transformer ，则 `takeWhile` 作为一个 transducer 调用。
+ * 若在列表位置中给出 transfomer，则用作 transducer 。
  *
  * @func
  * @memberOf R

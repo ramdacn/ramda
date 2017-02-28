@@ -3,11 +3,9 @@ var _toString = require('./internal/_toString');
 
 
 /**
- * 返回一个值的字符串表现形式。
- * 输出的值执行 `eval` 的结果等价于输入的值。原生的 `toString` 方法不满足这一条件。
+ * 返回代表输入元素的字符串。求得的输出结果应该等价于输入的值。许多内建的 `toString` 方法都不满足这一条件。
  *
- * 如果输入值是一个 `[object Object]` 对象，且有不同于 `Object.prototype.toString` 的方法，那么将不传递参数直接调用这个方法。
- * 换句话说，在构造函数中自定义的 `toString` 方法会满足这个条件，例如：
+ * 如果输入值是 `[object Object]` 对象，且自身含有 `toString` 方法（不是 `Object.prototype.toString` 方法），那么直接调用这个方法求返回值。这意味着，通过用户自定义的构造函数可以提供合适的 `toString` 方法。例如：
  *
  *     function Point(x, y) {
  *       this.x = x;

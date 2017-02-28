@@ -4,20 +4,15 @@ var curryN = require('./curryN');
 
 
 /**
- * 用迭代函数来初始化一个 transducer ，为列表中每个元素执行迭代函数进行 transform
- * ，将返回值传入加法器，然后把累加传入进行下一轮迭代。
+ * 用 iterator function 初始化 transducer ，生成一个 transformed iterator function。然后顺次遍历列表，对每个列表元素先进行转换，然后与累积值进行归约，返回值作为下一轮迭代的累积值。最终返回与初始累积值类型相同的一个累积值。
  *
- * 迭代函数接收2个参数： *(acc, value)* ，然后被包装成 transformer 来初始化 transducer 。
- * Transformer 能直接替代迭代函数。并且，打断 `R.transduce` 的迭代过程比 `R.reduced` 更容易。
+ * iterator function 接收两个参数： *(acc, value)* ，iterator function 会被封装为 transformer 来初始化 transducer 。可以直接传递 transformer 来代替 iterator function。这两种情况下，可以使用 `R.reduced` 提前终止迭代操作。
  *
- * Transducer 接收 transformer ，然后返回 transformer ，可以直接用于函数组合。
+ * transducer 函数接受一个 transformer ，返回一个新的 transformer ，并且 transducer 函数可以直接组合。
  *
- * Transformer 传入2个参数到迭代函数进行迭代，传入0个参数到初始化函数进行初始化，传入1个参数到累加函数作为结果。
- * 迭代用于 reduce 的迭代；
- * 累加函数作为累加器，用来计算返回值，通常使用 `R.identity` ；
- * 初始化函数用来计算初始值，但在 transduce 里面被忽略。
+ * transformer 是一个对象，其中包含二元 reducing iterator、step、零元 init 和 一元 result 函数。step 作作为 reduce 过程中的迭代函数；result 将最终的累积值转换为需要的返回类型（通常为 R.identity）；init 提供初始累积值，但通常会被 `transduce` 函数忽略。
  *
- * 在 transduce 初始化之后，迭代方式和 `R.reduce` 一样。
+ * 在 transducer 初始化之后，使用 R.reduce 进行迭代操作。
  *
  * @func
  * @memberOf R

@@ -3940,9 +3940,9 @@
     });
 
     /**
-     * 返回除第1个元素以外的元素（或者调用 `tail` 方法）。
+     * 删除列表中的首个元素（或者调用对象的 `tail` 方法）。
      *
-     * 如果第1个参数有 `slice` 方法，则调用 `slice` 方法。
+     * 如果第一个参数自身存在 `slice` 方法，则调用自身的 `slice` 方法。
      *
      * @func
      * @memberOf R
@@ -3968,9 +3968,9 @@
     var tail = _curry1(_checkForMethod('tail', slice(1, Infinity)));
 
     /**
-     * 返回列表的前`n`个列表、字符串的前`n`个字符或者进行 transducer/transform 。
+     * 返回列表的前 `n` 个元素、字符串的前`n`个字符或者用作 transducer/transform（或者调用对象的 `take` 方法）。
      *
-     * 如果第2个参数有 `take` 方法，则调用 `take` 方法。
+     * 如果第二个参数自身存在 `take` 方法，则调用自身的 `take` 方法。
      *
      * @func
      * @memberOf R
@@ -4014,9 +4014,7 @@
     }));
 
     /**
-     * 列表中从后往前每个元素都使用条件函数判断，直到条件函数返回 `false` 跳出，然后返回列表在迭代跳出时的满足条件的`n`个元素。
-     * 除非条件函数在处理元素的时候报错。条件函数接收一个值：
-     * *(value)*
+     * 从后往前取出列表元素，直到遇到首个不满足 predicate 的元素为止。取出的元素中不包含首个不满足 predicate 的元素。
      *
      * @func
      * @memberOf R
@@ -4042,13 +4040,11 @@
     });
 
     /**
-     * 列表中从后往前每个元素都使用条件函数判断，直到条件函数返回 `false` 跳出，然后返回列表在迭代跳出时的满足条件的`n`个元素。
-     * 除非条件函数在处理元素的时候报错。条件函数接收一个值：
-     * *(value)*
+     * 从前往后取出列表元素，直到遇到首个不满足 predicate 的元素为止。取出的元素中不包含首个不满足 predicate 的元素。
      *
-     * 如果第2个参数有 `takeWhile` 方法，则调用 `takeWhile` 方法。
+     * 若第二个参数自身存在 `takeWhile` 方法，则调用自身的 `takeWhile` 方法
      *
-     * 如果第2个参数是 transformer ，则 `takeWhile` 作为一个 transducer 调用。
+     * 若在列表位置中给出 transfomer，则用作 transducer 。
      *
      * @func
      * @memberOf R
@@ -4098,9 +4094,9 @@
     });
 
     /**
-     * 执行一个函数`n`次，返回函数执行结果的数组。
+     * 执行输入的函数 `n` 次，返回由函数执行结果组成的数组。
      *
-     * `fn` 接收的参数是从 `0` 递增到 `n-1` 的值。
+     * `fn` 为一元函数，n 次调用接收的参数为：从 `0` 递增到 `n-1` 。
      *
      * @func
      * @memberOf R
@@ -4133,7 +4129,7 @@
     });
 
     /**
-     * 把一个对象的属性转换成键值对数组，只处理可枚举的属性。注意：不同 JS 运行环境输出数组的顺序可能不一致。
+     * 将一个对象的属性转换成键、值二元组类型的数组，只处理对象自身的属性。注意：不同 JS 运行环境输出数组的顺序可能不一致。
      *
      * @func
      * @memberOf R
@@ -4161,7 +4157,7 @@
     });
 
     /**
-     * 把一个对象所有属性转换成键值对数组，包括原型链上的属性。注意，不同 JS 运行环境输出数组的顺序可能不一致。
+     * 将一个对象的属性转换成键、值二元组类型的数组，包括原型链上的属性。注意，不同 JS 运行环境输出数组的顺序可能不一致。
      *
      * @func
      * @memberOf R
@@ -4189,8 +4185,7 @@
     });
 
     /**
-     * 二维数组行列转置。
-     * 输入`n`个长度为 `x` 的数组，输出`x`个长度为 `n` 的数组。
+     * 二维数组行列转置。输入 `n` 个长度为 `x` 的数组，输出 `x` 个长度为 `n` 的数组。
      *
      *
      * @func
@@ -4231,7 +4226,7 @@
     });
 
     /**
-     * 移除字符串首尾的空白字符。
+     * 删除字符串首、尾两端的空白字符。
      *
      * @func
      * @memberOf R
@@ -4263,9 +4258,7 @@
     }();
 
     /**
-     * `tryCatch` 接收 `tryer` 函数和 `catcher` 函数，返回一个函数执行 `tryer` ，如果没有抛出异常则正常返回。
-     * 如果 `tryer` 抛出异常，重新执行 `catcher` ，然后返回结果。
-     * 注意，`tryer` 和 `catcher` 都返回同样类型的结果可以提高效率。
+     * `tryCatch` 接受两个函数：`tryer` 和 `catcher`，生成的函数执行 `tryer`，若未抛出异常，则返回执行结果。若抛出异常，则执行 `catcher`，返回 `catcher` 的执行结果。注意，为了有效的组合该函数，`tryer` 和 `catcher` 应赶回相同类型的值。
      *
      * @func
      * @memberOf R
@@ -4291,8 +4284,7 @@
     });
 
     /**
-     * 用一个词来描述输入值的（原生）类型，返回诸如 Object 、 Number 、 Array 、 Null 之类的结果。
-     * 不区分用户自定义的类型，统一返回 Object 。
+     * 用一个单词来描述输入值的（原生）类型，返回诸如 'Object'、'Number'、'Array'、'Null' 之类的结果。不区分用户自定义的类型，统一返回 'Object'。
      *
      * @func
      * @memberOf R
@@ -4316,13 +4308,13 @@
     });
 
     /**
-     * 输入一个只接收一个数组的作为参数的函数，返回一个函数执行下列过程：
+     * 输入一个只接收单个数组作为参数的函数，返回一个新函数：
      *
-     *   - 接收所有参数；
-     *   - 把参数作为数组传递给 `fn` ；
+     *   - 接收任意个参数；
+     *   - 将参数组成数组传递给 `fn` ；
      *   - 返回执行结果。
      *
-     * 换言之， R.apply 输入一个只接收一个数组的作为参数的函数，返回一个不定参函数。 R.unapply 是 R.apply 的逆函数。
+     * 换言之，R.apply 将一个使用数组作为参数的函数，变为一个不定参函数。 R.unapply 是 R.apply 的逆函数。
      *
      * @func
      * @memberOf R
@@ -4344,7 +4336,7 @@
     });
 
     /**
-     * 把接收任意个（包括0个）参数的函数封装成只接收一个参数的函数，无关的参数不会被作为参数传入函数。
+     * 将任意元（包括零元）函数封装成一元函数。任何额外的参数都不会传递给被封装的函数。
      *
      * @func
      * @memberOf R
@@ -4372,7 +4364,7 @@
     });
 
     /**
-     * 输入一个柯里化的函数，返回一个 `n` 个参数的函数。
+     * 将一个柯里化的函数转换为一个 `n` 元函数。
      *
      * @func
      * @memberOf R
@@ -4876,7 +4868,7 @@
     });
 
     /**
-     * 恒定返回 `false` 的函数。所有输入的参数都会被忽略。
+     * 恒定返回 `false` 的函数。忽略所有的输入参数。
      *
      * @func
      * @memberOf R
@@ -4893,7 +4885,7 @@
     var F = always(false);
 
     /**
-     * 始终返回 `true` 的函数。 参数中传递的任何内容都将被忽略。
+     * 恒定返回 `true` 的函数。忽略所有的输入参数。
      *
      * @func
      * @memberOf R
@@ -6317,8 +6309,7 @@
     var sum = reduce(add, 0);
 
     /**
-     * 返回列表的后`n`个元素。
-     * 如果 `n > list.length` 则返回 `list.length` 个元素的列表。
+     * 返回列表的后 `n` 个元素。如果 `n > list.length`，则返回 `list.length` 个元素。
      *
      * @func
      * @memberOf R
@@ -6343,20 +6334,15 @@
     });
 
     /**
-     * 用迭代函数来初始化一个 transducer ，为列表中每个元素执行迭代函数进行 transform
-     * ，将返回值传入加法器，然后把累加传入进行下一轮迭代。
+     * 用 iterator function 初始化 transducer ，生成一个 transformed iterator function。然后顺次遍历列表，对每个列表元素先进行转换，然后与累积值进行归约，返回值作为下一轮迭代的累积值。最终返回与初始累积值类型相同的一个累积值。
      *
-     * 迭代函数接收2个参数： *(acc, value)* ，然后被包装成 transformer 来初始化 transducer 。
-     * Transformer 能直接替代迭代函数。并且，打断 `R.transduce` 的迭代过程比 `R.reduced` 更容易。
+     * iterator function 接收两个参数： *(acc, value)* ，iterator function 会被封装为 transformer 来初始化 transducer 。可以直接传递 transformer 来代替 iterator function。这两种情况下，可以使用 `R.reduced` 提前终止迭代操作。
      *
-     * Transducer 接收 transformer ，然后返回 transformer ，可以直接用于函数组合。
+     * transducer 函数接受一个 transformer ，返回一个新的 transformer ，并且 transducer 函数可以直接组合。
      *
-     * Transformer 传入2个参数到迭代函数进行迭代，传入0个参数到初始化函数进行初始化，传入1个参数到累加函数作为结果。
-     * 迭代用于 reduce 的迭代；
-     * 累加函数作为累加器，用来计算返回值，通常使用 `R.identity` ；
-     * 初始化函数用来计算初始值，但在 transduce 里面被忽略。
+     * transformer 是一个对象，其中包含二元 reducing iterator、step、零元 init 和 一元 result 函数。step 作作为 reduce 过程中的迭代函数；result 将最终的累积值转换为需要的返回类型（通常为 R.identity）；init 提供初始累积值，但通常会被 `transduce` 函数忽略。
      *
-     * 在 transduce 初始化之后，迭代方式和 `R.reduce` 一样。
+     * 在 transducer 初始化之后，使用 R.reduce 进行迭代操作。
      *
      * @func
      * @memberOf R
@@ -7385,12 +7371,9 @@
     });
 
     /**
-     * Maps an [Applicative](https://github.com/fantasyland/fantasy-land#applicative)-returning
-     * 将 [Applicative](https://github.com/fantasyland/fantasy-land#applicative) 返回函数映射成为
-     * [Traversable](https://github.com/fantasyland/fantasy-land#traversable)
-     * ，然后把 Applicative 的 Traversable 映射结果对 [`sequence`](#sequence) 做转换。
+     * 将返回值为 [Applicative](https://github.com/fantasyland/fantasy-land#applicative) 类型的函数映射到一个 [Traversable](https://github.com/fantasyland/fantasy-land#traversable) 上。然后使用 [`sequence`](#sequence) 将结果由 Traversable of Applicative 转换为 Applicative of Traversable。
      *
-     * 如果第三个参数有 `sequence` 方法，则调用 `sequence` 方法。
+     * 若第二个参数自身存在 `sequence` 方法，则调用自身的 `sequence` 方法。
      *
      * @func
      * @memberOf R
@@ -7641,7 +7624,7 @@
     var contains = _curry2(_contains);
 
     /**
-     * 求第一个列表中未包含在第二个列表中的所有元素的集合。对象和数组比较数值相等，而非引用相等。
+     * 求差集。求第一个列表中未包含在第二个列表中的所有元素的集合。对象和数组比较数值相等，而非引用相等。
      *
      * @func
      * @memberOf R
@@ -7782,11 +7765,9 @@
     };
 
     /**
-     * 返回一个值的字符串表现形式。
-     * 输出的值执行 `eval` 的结果等价于输入的值。原生的 `toString` 方法不满足这一条件。
+     * 返回代表输入元素的字符串。求得的输出结果应该等价于输入的值。许多内建的 `toString` 方法都不满足这一条件。
      *
-     * 如果输入值是一个 `[object Object]` 对象，且有不同于 `Object.prototype.toString` 的方法，那么将不传递参数直接调用这个方法。
-     * 换句话说，在构造函数中自定义的 `toString` 方法会满足这个条件，例如：
+     * 如果输入值是 `[object Object]` 对象，且自身含有 `toString` 方法（不是 `Object.prototype.toString` 方法），那么直接调用这个方法求返回值。这意味着，通过用户自定义的构造函数可以提供合适的 `toString` 方法。例如：
      *
      *     function Point(x, y) {
      *       this.x = x;
@@ -8263,7 +8244,7 @@
     var split = invoker(1, 'split');
 
     /**
-     * 寻找一个无重复元素的集合，其元素在且仅在给定列表中的一个里面出现。
+     * 求对称差集。所有不属于两列表交集元素的集合，其元素在且仅在给定列表中的一个里面出现。
      *
      * @func
      * @memberOf R
@@ -8284,8 +8265,7 @@
     });
 
     /**
-     * 寻找一个无重复元素的集合，其元素在且仅在给定列表中的一个里面出现。
-     * “重复”由条件函数的返回值决定。
+     * 求对称差集。所有不属于两列表交集元素的集合。交集的元素由条件函数的返回值决定。
      *
      * @func
      * @memberOf R
@@ -8309,7 +8289,7 @@
     });
 
     /**
-     * 检测一个字符串是否匹配一个正则表达式。
+     * 检测字符串是否匹配给定的正则表达式。
      *
      * @func
      * @memberOf R
@@ -8333,7 +8313,7 @@
     });
 
     /**
-     * 把字符串转换成小写。
+     * 将字符串转换成小写。
      *
      * @func
      * @memberOf R
@@ -8350,7 +8330,7 @@
     var toLower = invoker(0, 'toLowerCase');
 
     /**
-     * 把字符串转换为大写。
+     * 将字符串转换为大写。
      *
      * @func
      * @memberOf R

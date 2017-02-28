@@ -5,7 +5,7 @@ var toString = require('./toString');
 
 
 /**
- * 检测一个字符串是否匹配一个正则表达式。
+ * 检测字符串是否匹配给定的正则表达式。
  *
  * @func
  * @memberOf R

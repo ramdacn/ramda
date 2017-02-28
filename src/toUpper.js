@@ -2,7 +2,7 @@ var invoker = require('./invoker');
 
 
 /**
- * 把字符串转换为大写。
+ * 将字符串转换为大写。
  *
  * @func
  * @memberOf R

@@ -5,9 +5,9 @@ var slice = require('./slice');
 
 
 /**
- * 返回列表的前`n`个列表、字符串的前`n`个字符或者进行 transducer/transform 。
+ * 返回列表的前 `n` 个元素、字符串的前`n`个字符或者用作 transducer/transform（或者调用对象的 `take` 方法）。
  *
- * 如果第2个参数有 `take` 方法，则调用 `take` 方法。
+ * 如果第二个参数自身存在 `take` 方法，则调用自身的 `take` 方法。
  *
  * @func
  * @memberOf R

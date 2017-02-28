@@ -4,12 +4,9 @@ var sequence = require('./sequence');
 
 
 /**
- * Maps an [Applicative](https://github.com/fantasyland/fantasy-land#applicative)-returning
- * 将 [Applicative](https://github.com/fantasyland/fantasy-land#applicative) 返回函数映射成为
- * [Traversable](https://github.com/fantasyland/fantasy-land#traversable)
- * ，然后把 Applicative 的 Traversable 映射结果对 [`sequence`](#sequence) 做转换。
+ * 将返回值为 [Applicative](https://github.com/fantasyland/fantasy-land#applicative) 类型的函数映射到一个 [Traversable](https://github.com/fantasyland/fantasy-land#traversable) 上。然后使用 [`sequence`](#sequence) 将结果由 Traversable of Applicative 转换为 Applicative of Traversable。
  *
- * 如果第三个参数有 `sequence` 方法，则调用 `sequence` 方法。
+ * 若第二个参数自身存在 `sequence` 方法，则调用自身的 `sequence` 方法。
  *
  * @func
  * @memberOf R

@@ -2,7 +2,7 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * 移除字符串首尾的空白字符。
+ * 删除字符串首、尾两端的空白字符。
  *
  * @func
  * @memberOf R
