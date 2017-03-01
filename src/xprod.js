@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 两个列表的元素两两组合，生成一个新的元素对的列表。
+ * 将两个列表的元素两两组合，生成一个新的元素对列表。
  *
  * @func
  * @memberOf R

@@ -2,8 +2,7 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 接收一个条件函数、一个迭代函数、一个初始值，返回一个与初始值同类型的值。
- * 如果迭代的结果满足条件函数，那么返回这个值。
+ * 接受一个 predicate ，transform function 和 初始值，返回一个与初始值相同类型的值。对输入值进行 transform ，直到 transform 的结果满足 predicate，此时返回这个满足 predicate 的值。
  *
  * @func
  * @memberOf R

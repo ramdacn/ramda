@@ -3,8 +3,7 @@ var uniqBy = require('./uniqBy');
 
 
 /**
- * 返回无重复元素的列表。
- * 比较函数是 `R.equals` 。
+ * 列表去重操作。返回无重复元素的列表。通过 ` R.equals` 函数进行相等性判断。
  *
  * @func
  * @memberOf R

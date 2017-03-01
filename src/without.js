@@ -5,10 +5,9 @@ var reject = require('./reject');
 
 
 /**
- * 返回一个列表，其元素都不在给定的第1个列表中。
- * 比较函数是 `R.equals` 。
+ * 求第二个列表中，未包含在第一个列表中的任一元素的集合。通过 ` R.equals` 函数进行相等性判断
  *
- * 如果输入是 transformer ，那么按照 transducer 的方式执行。
+ * 若在列表位置中给出 transfomer，则用作 transducer 。
  *
  * @func
  * @memberOf R

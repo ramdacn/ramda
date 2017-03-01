@@ -67,3 +67,4 @@
 
 19. Acts as a transducer if a transformer is given in list position. -> 若在列表位置中给出 transfomer，则用作 transducer 。
 
+20. receive / accept -> 接受

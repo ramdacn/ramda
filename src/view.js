@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 返回一个结构在一个镜头(lens)下的“视野”。镜头的焦点取决于数据结构的可见性。
+ * 返回数据结构中，lens 聚焦的部分。lens 的焦点决定了数据结构中的哪部分是可见的。
  *
  * @func
  * @memberOf R

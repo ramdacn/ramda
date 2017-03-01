@@ -2,9 +2,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 两个列表对应位置元素组合，生成一个新的元素对的列表。
- * 生成的列表长度取较短的输入列表的长度。
- * 注意， `zip` 等价于 `zipWith(function(a, b) { return [a, b] })` 。
+ * 将两个列表对应位置的元素组合，生成一个新的元素对列表。生成的列表长度取决于较短的输入列表的长度。
+ * 注意，`zip` 等价于 `zipWith(function(a, b) { return [a, b] })` 。
  *
  * @func
  * @memberOf R

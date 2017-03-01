@@ -4,7 +4,7 @@ var always = require('./always');
 
 
 /**
- * 修改一个数组拷贝指定位置的值，然后返回修改后的数组拷贝。
+ * 替换数组中指定索引处的值。
  *
  * @func
  * @memberOf R
