@@ -4,7 +4,6 @@ var _xdropWhile = require('./internal/_xdropWhile');
 
 
 /**
- *
  * 对 list 从前向后删除满足 `predicate` 的头部元素，直到遇到第一个 `falsy` 值。
  *
  * `predicate` 需要作为第一个参数传入。

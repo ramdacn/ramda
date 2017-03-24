@@ -4,7 +4,6 @@ var _curry1 = require('./internal/_curry1');
 /**
  * 二维数组行列转置。输入 `n` 个长度为 `x` 的数组，输出 `x` 个长度为 `n` 的数组。
  *
- *
  * @func
  * @memberOf R
  * @since v0.19.0

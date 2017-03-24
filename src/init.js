@@ -1,7 +1,7 @@
 var slice = require('./slice');
 
 
-/*
+/**
  * 返回 list 或 string 删除最后一个元素后的部分。
  *
  * @func
