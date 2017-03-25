@@ -1,0 +1,2 @@
+ * `Object` 版本的 `map`。mapping function 接受三个参数： *(value, key, obj)* 。如果仅用到参数 *value*，则用 `map` 即可。
+ *

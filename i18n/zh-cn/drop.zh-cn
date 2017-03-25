@@ -1,0 +1,6 @@
+ * 删除给定 list，string 或者 transducer/transformer（或者具有 drop 方法的对象）的前 `n` 个元素。
+ *
+ * 若第二个参数自身存在 `drop` 方法，则调用自身的 `drop` 方法。
+ *
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
+ *

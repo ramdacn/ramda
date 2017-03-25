@@ -1,0 +1,4 @@
+ * 将返回值为 [Applicative](https://github.com/fantasyland/fantasy-land#applicative) 类型的函数映射到一个 [Traversable](https://github.com/fantasyland/fantasy-land#traversable) 上。然后使用 [`sequence`](#sequence) 将结果由 Traversable of Applicative 转换为 Applicative of Traversable。
+ *
+ * 若第二个参数自身存在 `sequence` 方法，则调用自身的 `sequence` 方法。
+ *

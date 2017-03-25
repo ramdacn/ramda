@@ -1,0 +1,6 @@
+ * 使用 `predicate` 遍历传入的 `filterable`，返回满足 `predicate` 的所有元素的新的 `filterable`。新 `filterable` 与原先的类型相同。
+ *
+ * 若第二个参数自身存在 `filter` 方法，则调用自身的 `filter` 方法。
+ *
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
+ *

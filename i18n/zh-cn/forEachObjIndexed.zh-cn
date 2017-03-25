@@ -1,0 +1,4 @@
+ * 遍历 `object`，对 `object` 中的每对 `key` 和 `value` 执行方法 `fn`。
+ *
+ * `fn` 接收三个参数: *(value, key, obj)*.
+ *
