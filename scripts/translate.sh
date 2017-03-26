@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
 
 GIT_ROOT_DIR="$(git rev-parse --show-toplevel)"
 SRC_DIR="$GIT_ROOT_DIR/src"
@@ -21,20 +22,25 @@ done
 if [[ "$LANG" =~ ^zh(-cn)*$|^en(-us)*$ ]]; then
   LANG_DIR="$TRANS_DIR/$LANG"
   if [ ! -d "$LANG_DIR" ]; then
-    mkdir -p "$LANG_DIR"
+    echo "No relative language repository: $LANG_DIR"
+    exit 1
   fi
 else
   echo "-l/--language must equals zh[-cn] or en[-us]"
   exit 1
 fi
 
-echo "Comments picking..."
+echo "Tranlating to $LANG..."
 for file in $SRC_DIR_FILES
 do
   fname=`basename $file .js`
-  comment=`sed -n -e '/^\/\*\*/,/^ \* \@/{/^\/\*\*/d; /^ \* \@/d; p; }' $file`
-  echo "$comment" > "$LANG_DIR/$fname.$LANG"
+  trans=`cat "$LANG_DIR/$fname.$LANG"`
+  echo $fname
+  echo "$trans"
+  comment=`sed '/^\/\*\*/,/^ \* \@/{/^\/\*\*/!{/^ \* \@/!d;};}' $file | sed -e '/^\/\*\*/r "$trans"'`
+  echo "$comment"
+  echo ""
 done
 
-echo "Comments have picked!"
+echo "Tranlate to $LANG done!"
 
