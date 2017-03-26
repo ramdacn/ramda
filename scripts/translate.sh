@@ -37,7 +37,7 @@ do
   trans_name="$LANG_DIR/$fname.$LANG"
   echo $fname
   file_transed=`sed '/^\/\*\*/,/^ \* \@/{/^\/\*\*/!{/^ \* \@/!d;};}' $file | sed "/^\/\*\*/r $trans_name"`
-  echo "$file_transed"
+  echo "$file_transed" > "$file"
 done
 
 echo "Tranlate to $LANG done!"
