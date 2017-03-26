@@ -35,20 +35,9 @@ for file in $SRC_DIR_FILES
 do
   fname=`basename $file .js`
   trans_name="$LANG_DIR/$fname.$LANG"
-  trans=`cat "$LANG_DIR/$fname.$LANG"`
   echo $fname
-  echo $file
-  #echo "$trans"
-  comment=`sed '/^\/\*\*/,/^ \* \@/{/^\/\*\*/!{/^ \* \@/!d;};}' $file | sed "/^\/\*\*/r $trans_name"`
-#  comment=`sed "/^\/\*\*/r $trans_name" $file`
-#  comment=`sed -n -e '/\/\*\*/ {
-#           h
-#           r $trans_name
-#           g
-#           N
-#       }' $file`
-  echo "$comment"
-  echo ""
+  file_transed=`sed '/^\/\*\*/,/^ \* \@/{/^\/\*\*/!{/^ \* \@/!d;};}' $file | sed "/^\/\*\*/r $trans_name"`
+  echo "$file_transed"
 done
 
 echo "Tranlate to $LANG done!"
