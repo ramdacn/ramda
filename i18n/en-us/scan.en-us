@@ -1,0 +1,3 @@
+ * Scan is similar to reduce, but returns a list of successively reduced values
+ * from the left
+ *

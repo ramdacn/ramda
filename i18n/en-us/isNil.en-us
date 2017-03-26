@@ -1,0 +1,2 @@
+ * Checks if the input value is `null` or `undefined`.
+ *

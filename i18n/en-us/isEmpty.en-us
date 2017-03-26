@@ -1,0 +1,3 @@
+ * Returns `true` if the given value is its type's empty value; `false`
+ * otherwise.
+ *

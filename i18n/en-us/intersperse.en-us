@@ -1,0 +1,4 @@
+ * Creates a new list with the separator interposed between elements.
+ *
+ * Dispatches to the `intersperse` method of the second argument, if present.
+ *

@@ -34,10 +34,19 @@ echo "Tranlating to $LANG..."
 for file in $SRC_DIR_FILES
 do
   fname=`basename $file .js`
+  trans_name="$LANG_DIR/$fname.$LANG"
   trans=`cat "$LANG_DIR/$fname.$LANG"`
   echo $fname
+  echo $file
   echo "$trans"
-  comment=`sed '/^\/\*\*/,/^ \* \@/{/^\/\*\*/!{/^ \* \@/!d;};}' $file | sed -e '/^\/\*\*/r "$trans"'`
+  #comment=`sed '/^\/\*\*/,/^ \* \@/{/^\/\*\*/!{/^ \* \@/!d;};}' $file`
+  #comment=`sed '/^\/\*\*/r $trans_name' $file`
+  comment=`sed '/^\/\*\*/ {
+           h
+           r $trans_name
+           g
+           N
+       }' $file`
   echo "$comment"
   echo ""
 done

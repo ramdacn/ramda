@@ -1,0 +1,2 @@
+ * Returns a function of arity `n` from a (manually) curried function.
+ *

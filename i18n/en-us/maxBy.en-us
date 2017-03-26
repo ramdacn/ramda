@@ -1,0 +1,3 @@
+ * Takes a function and two values, and returns whichever value produces the
+ * larger result when passed to the provided function.
+ *

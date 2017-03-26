@@ -1,0 +1,3 @@
+ * Returns `true` if the specified object property is of the given type;
+ * `false` otherwise.
+ *

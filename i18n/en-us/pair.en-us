@@ -1,0 +1,2 @@
+ * Takes two arguments, `fst` and `snd`, and returns `[fst, snd]`.
+ *
