@@ -35,10 +35,25 @@ for file in $SRC_DIR_FILES
 do
   fname=`basename $file .js`
   trans_name="$LANG_DIR/$fname.$LANG"
-  echo $fname
-  file_transed=`sed '/^\/\*\*/,/^ \* \@/{/^\/\*\*/!{/^ \* \@/!d;};}' $file | sed "/^\/\*\*/r $trans_name"`
-  echo "$file_transed" > "$file"
+  if [ -f "$trans_name" ]; then
+    file_transed=`sed '/^\/\*\*/,/^ \* \@/{/^\/\*\*/!{/^ \* \@/!d;};}' $file |\
+      sed "/^\/\*\*/r $trans_name"`
+    echo "$file_transed" > "$file"
+  else
+    echo "No $fname.js related translation: $fname.$LANG, please translate it. ✏️  "
+  fi
 done
-
 echo "Tranlate to $LANG done!"
 
+echo "Scan deledted API"
+TRANS_DIR_FILES="$LANG_DIR/*.$LANG"
+
+for trans_file in $TRANS_DIR_FILES
+do
+  fname=`basename $trans_file ."$LANG"`
+  src_name="$SRC_DIR/$fname.js"
+  if [ ! -f "$src_name" ]; then
+    echo "$fname.js have been deleted, please remove its translation. 🗑  "
+  fi
+done
+echo "Scan API finished."
