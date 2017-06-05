@@ -2,7 +2,7 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * 取反操作。
+ * Negates its argument.
  *
  * @func
  * @memberOf R

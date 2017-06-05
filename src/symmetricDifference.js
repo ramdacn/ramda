@@ -4,7 +4,8 @@ var difference = require('./difference');
 
 
 /**
- * 求对称差集。所有不属于两列表交集元素的集合，其元素在且仅在给定列表中的一个里面出现。
+ * Finds the set (i.e. no duplicates) of all elements contained in the first or
+ * second list, but not both.
  *
  * @func
  * @memberOf R

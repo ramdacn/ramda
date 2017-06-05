@@ -7,9 +7,9 @@ var update = require('./update');
 
 
 /**
- * 删除对象中指定路径上的属性。
- *
- * 注意，这也会将 prototype 属性复制到新对象上并展开。所有非原始类型属性都通过引用复制。
+ * Makes a shallow clone of an object, omitting the property at the given path.
+ * Note that this copies and flattens prototype properties onto the new object
+ * as well. All non-primitive properties are copied by reference.
  *
  * @func
  * @memberOf R

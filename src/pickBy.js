@@ -2,7 +2,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 返回对象的部分拷贝，其中仅包含 key 满足 predicate 的属性。
+ * Returns a partial copy of an object containing only the keys that satisfy
+ * the supplied predicate.
  *
  * @func
  * @memberOf R

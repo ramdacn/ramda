@@ -3,17 +3,21 @@ var _reduce = require('./internal/_reduce');
 
 
 /**
- * 左折叠操作。
+ * Returns a single item by iterating through the list, successively calling
+ * the iterator function and passing it an accumulator value and the current
+ * value from the array, and then passing the result to the next call.
  *
- * 遍历列表，相继调用二元迭代函数（参数为累积值和从数组中取出的当前元素），将本次迭代结果作为下次迭代的累积值。返回最终累积值。
+ * The iterator function receives two values: *(acc, value)*. It may use
+ * `R.reduced` to shortcut the iteration.
  *
- * 可以用`R.reduced` 提前终止遍历操作。
+ * The arguments' order of `reduceRight`'s iterator function is *(value, acc)*.
  *
- * `reduce` 的迭代函数接收两个参数 *(acc, value)*，`reduceRight` 的迭代函数的参数顺序为 *(value, acc)*
+ * Note: `R.reduce` does not skip deleted or unassigned indices (sparse
+ * arrays), unlike the native `Array.prototype.reduce` method. For more details
+ * on this behavior, see:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
  *
- * 注意：`R.reduce` 与原生 `Array.prototype.reduce` 方法不同，它不会跳过删除或未分配的索引项（稀疏矩阵）。更多关于原生 reduce 的行为，请参考：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
- *
- * 如果第三个参数自身有 `reduce` 方法，则调用自身的 `reduce` 方法。
+ * Dispatches to the `reduce` method of the third argument, if present.
  *
  * @func
  * @memberOf R

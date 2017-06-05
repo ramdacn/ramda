@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 接收两个参数，`fst` 和 `snd`，返回数组 `[fst, snd]`。
+ * Takes two arguments, `fst` and `snd`, and returns `[fst, snd]`.
  *
  * @func
  * @memberOf R

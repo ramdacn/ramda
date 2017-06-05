@@ -1,7 +1,9 @@
 var _curry2 = require('./internal/_curry2');
 
 /**
- * 通过给定的相等性判断函数，将列表按顺序分割成多组子列表。
+ * Takes a list and returns a list of lists where each sublist's elements are
+ * all satisfied pairwise comparison according to the provided function.
+ * Only adjacent elements are passed to the comparison function.
  *
  * @func
  * @memberOf R

@@ -2,7 +2,8 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * 由首个参数是否小于第二个参数的判断函数，生成一个比较函数。
+ * Makes a comparator function out of a function that reports whether the first
+ * element is less than the second.
  *
  * @func
  * @memberOf R

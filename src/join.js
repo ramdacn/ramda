@@ -2,7 +2,8 @@ var invoker = require('./invoker');
 
 
 /**
- * 将列表中所有元素通过 `分隔符` 串连为一个字符串。
+ * Returns a string made by inserting the `separator` between each element and
+ * concatenating all the elements into a single string.
  *
  * @func
  * @memberOf R

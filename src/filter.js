@@ -8,11 +8,14 @@ var keys = require('./keys');
 
 
 /**
- * 使用 `predicate` 遍历传入的 `filterable`，返回满足 `predicate` 的所有元素的新的 `filterable`。新 `filterable` 与原先的类型相同。
+ * Takes a predicate and a `Filterable`, and returns a new filterable of the
+ * same type containing the members of the given filterable which satisfy the
+ * given predicate. Filterable objects include plain objects or any object
+ * that has a filter method such as `Array`.
  *
- * 若第二个参数自身存在 `filter` 方法，则调用自身的 `filter` 方法。
+ * Dispatches to the `filter` method of the second argument, if present.
  *
- * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
+ * Acts as a transducer if a transformer is given in list position.
  *
  * @func
  * @memberOf R

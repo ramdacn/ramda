@@ -3,7 +3,7 @@ var mean = require('./mean');
 
 
 /**
- * 返回给定数字列表的中位数。
+ * Returns the median of the given list of numbers.
  *
  * @func
  * @memberOf R

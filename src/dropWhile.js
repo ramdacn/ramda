@@ -4,13 +4,14 @@ var _xdropWhile = require('./internal/_xdropWhile');
 
 
 /**
- * 对 list 从前向后删除满足 `predicate` 的头部元素，直到遇到第一个 `falsy` 值。
+ * Returns a new list excluding the leading elements of a given list which
+ * satisfy the supplied predicate function. It passes each value to the supplied
+ * predicate function, skipping elements while the predicate function returns
+ * `true`. The predicate function is applied to one argument: *(value)*.
  *
- * `predicate` 需要作为第一个参数传入。
+ * Dispatches to the `dropWhile` method of the second argument, if present.
  *
- * 若第二个参数自身存在 `dropWhile` 方法，则调用自身的 `dropWhile` 方法。
- *
- * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
+ * Acts as a transducer if a transformer is given in list position.
  *
  * @func
  * @memberOf R

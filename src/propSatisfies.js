@@ -2,7 +2,8 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 如果指定的对象属性满足 predicate，返回 `true`；否则返回 `false`。
+ * Returns `true` if the specified object property satisfies the given
+ * predicate; `false` otherwise.
  *
  * @func
  * @memberOf R

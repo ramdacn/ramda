@@ -2,7 +2,7 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * 删除字符串首、尾两端的空白字符。
+ * Removes (strips) whitespace from both ends of the string.
  *
  * @func
  * @memberOf R

@@ -2,7 +2,8 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 由返回值可与 `<` 和 `>` 比较的函数，创建一个降序比较函数。
+ * Makes a descending comparator function out of a function that returns a value
+ * that can be compared with `<` and `>`.
  *
  * @func
  * @memberOf R

@@ -2,9 +2,8 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 逻辑或运算，
- *
- * 只要有一个参数为 `truth-y`，就返回 `true`；否则返回 `false`。
+ * Returns `true` if one or both of its arguments are `true`. Returns `false`
+ * if both arguments are `false`.
  *
  * @func
  * @memberOf R

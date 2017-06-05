@@ -2,7 +2,9 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 用第一个参数除以第二个参数，并返回余数。注意，该函数是 JavaScript-style 的求模操作。数学求模另见 `mathMod`。
+ * Divides the first parameter by the second and returns the remainder. Note
+ * that this function preserves the JavaScript-style behavior for modulo. For
+ * mathematical modulo see `mathMod`.
  *
  * @func
  * @memberOf R

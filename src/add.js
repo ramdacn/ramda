@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 两数相加。
+ * Adds two values.
  *
  * @func
  * @memberOf R

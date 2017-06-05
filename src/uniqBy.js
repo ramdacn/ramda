@@ -3,7 +3,10 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 返回无重复元素的列表。元素通过给定的函数的返回值以及 `R.equals` 进行相同性判断。如果给定的函数返回值相同，保留第一个元素。
+ * Returns a new list containing only one copy of each element in the original
+ * list, based upon the value returned by applying the supplied function to
+ * each list element. Prefers the first item if the supplied function produces
+ * the same value on two items. `R.equals` is used for comparison.
  *
  * @func
  * @memberOf R

@@ -3,7 +3,9 @@ var keys = require('./keys');
 
 
 /**
- * 返回对象所有自身可枚举的属性的值。注意：不同 JS 运行环境输出数组的顺序可能不一致。
+ * Returns a list of all the enumerable own properties of the supplied object.
+ * Note that the order of the output array is not guaranteed across different
+ * JS platforms.
  *
  * @func
  * @memberOf R
