@@ -12,8 +12,10 @@ var nAry = require('./nAry');
  * @since v0.2.0
  * @category Function
  * @sig (* -> b) -> (a -> b)
- * @param {Function} fn 待封装的函数
- * @return {Function} 封装后的函数`fn`，只接收一个参数
+ * @param {Function} fn The function to wrap.
+ * @return {Function} A new function wrapping `fn`. The new function is guaranteed to be of
+ *         arity 1.
+ * @see R.binary, R.nAry
  * @example
  *
  *      var takesTwoArgs = function(a, b) {

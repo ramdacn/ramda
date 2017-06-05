@@ -12,8 +12,9 @@ var _curry1 = require('./internal/_curry1');
  * @since v0.2.0
  * @category Object
  * @sig {k: v} -> [v]
- * @param {Object} obj 需要展开的对象
- * @return {Array} 对象可枚举属性和原型链上属性的值的数组
+ * @param {Object} obj The object to extract values from
+ * @return {Array} An array of the values of the object's own and prototype properties.
+ * @see R.values, R.keysIn
  * @example
  *
  *      var F = function() { this.x = 'X'; };

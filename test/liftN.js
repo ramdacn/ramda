@@ -1,4 +1,3 @@
-/* jshint -W053 */
 
 var R = require('..');
 var eq = require('./shared/eq');
@@ -41,7 +40,7 @@ describe('liftN', function() {
 
   it('works with other functors such as "Maybe"', function() {
     var addM = R.liftN(2, R.add);
-    eq(addM(Maybe(3), Maybe(5)), Maybe(8));
+    eq(addM(Maybe.Just(3), Maybe.Just(5)), Maybe.Just(8));
   });
 
   it('interprets [a] as a functor', function() {

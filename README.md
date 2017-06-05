@@ -68,7 +68,7 @@ $ npm install ramda
 然后在 console 中使用：
 
 ```javascript
-var R = require('ramda');
+const R = require('ramda');
 ```
 
 直接在浏览器中使用：
@@ -86,14 +86,14 @@ var R = require('ramda');
 或从 CDN 上获取：
 
 ```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.23.0/ramda.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.24.1/ramda.min.js"></script>
 ```
 
 或使用 [jsDelivr](http://jsdelivr.com) 的以下任意链接：
 
 ```html
-<script src="//cdn.jsdelivr.net/ramda/0.23.0/ramda.min.js"></script>
-<script src="//cdn.jsdelivr.net/ramda/0.23/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/ramda/0.24.1/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/ramda/0.24/ramda.min.js"></script>
 <script src="//cdn.jsdelivr.net/ramda/latest/ramda.min.js"></script>
 ```
 
@@ -160,11 +160,12 @@ var R = require('ramda');
 
 
 
-
 致谢
 -----------------
 
 感谢 [J. C. Phillipps](http://www.jcphillipps.com) 为 Ramda 设计的标志。 Ramda 标志艺术品 &copy; 2014 J. C. Phillipps 。 创作共享协议 [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)。
+
+
 
 中文翻译
 -----------------

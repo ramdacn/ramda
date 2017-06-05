@@ -12,8 +12,9 @@ var keys = require('./keys');
  * @since v0.1.0
  * @category Object
  * @sig {k: v} -> [v]
- * @param {Object} obj 需要展开的对象
- * @return {Array} 对象可枚举属性的值的数组
+ * @param {Object} obj The object to extract values from
+ * @return {Array} An array of the values of the object's own properties.
+ * @see R.valuesIn, R.keys
  * @example
  *
  *      R.values({a: 1, b: 2, c: 3}); //=> [1, 2, 3]

@@ -13,9 +13,10 @@ var _curry2 = require('./internal/_curry2');
  * @since v0.2.3
  * @category List
  * @sig (Number -> a) -> Number -> [a]
- * @param {Function} fn 需要执行的函数，接收的参数是`n`
- * @param {Number} n 从`0`到`n - 1`的值，每次函数调用后递增1
- * @return {Array} `fn`执行结果的数组
+ * @param {Function} fn The function to invoke. Passed one argument, the current value of `n`.
+ * @param {Number} n A value between `0` and `n - 1`. Increments after each function call.
+ * @return {Array} An array containing the return values of all calls to `fn`.
+ * @see R.repeat
  * @example
  *
  *      R.times(R.identity, 5); //=> [0, 1, 2, 3, 4]
