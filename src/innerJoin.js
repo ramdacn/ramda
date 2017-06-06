@@ -9,7 +9,8 @@ var _filter = require('./internal/_filter');
  * `pred` 必须为二元函数，两个参数分别来自于对应两个列表中的元素。
  *
  * `xs`、`ys` 和 `xs'` 被当作集合处理，所以从语义上讲，元素的顺序并不重要，但由于 `xs'` 是列表（列表中元素有排列顺序），所以本实现保证 `xs'` 中元素的顺序与 `xs` 中的一致。重复的元素也不会被移除，因此，若 `xs` 中含重复元素，`xs'` 中也会包含元素。
- * * @func
+ *
+ * @func
  * @memberOf R
  * @since v0.24.0
  * @category Relation

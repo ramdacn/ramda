@@ -7,7 +7,8 @@ var mergeDeepWithKey = require('./mergeDeepWithKey');
  *
  * - 并且两个值都是对象，则继续递归合并这两个值。
  * - 否则，采用第一个对象的值。
- * * @func
+ *
+ * @func
  * @memberOf R
  * @since v0.24.0
  * @category Object

@@ -4,7 +4,8 @@ var take = require('./take');
 
 /**
  * 检查列表是否以给定的值开头。
- * * @func
+ *
+ * @func
  * @memberOf R
  * @since v0.24.0
  * @category List

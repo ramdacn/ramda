@@ -5,7 +5,8 @@ var _has = require('./internal/_has');
 
 /**
  * [`R.memoize`](＃memoize) 的可定制版本。`memoizeWith` 需要一个额外的函数，该函数接受一个参数集，用于创建缓存的键值，在该缓存中会存储被缓存函数的结果。注意，生成缓存键值时，要避免可能会错误地覆盖之前已缓存键值对的冲突。 
- * * @func
+ *
+ * @func
  * @memberOf R
  * @since v0.24.0
  * @category Function

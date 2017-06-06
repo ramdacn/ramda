@@ -5,6 +5,7 @@ var _curry3 = require('./internal/_curry3');
  * `o` 是一个柯里化组合函数，返回一元函数。
  *
  * 类似于 [`compose`](＃compose)，`o` 从右到左执行函数组合。但与 [`compose`](＃compose) 不同的是，传递给 `o` 的最右边的函数为一元函数。 * @func
+ *
  * @memberOf R
  * @since v0.24.0
  * @category Function
