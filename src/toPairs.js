@@ -3,10 +3,7 @@ var _has = require('./internal/_has');
 
 
 /**
- * Converts an object into an array of key, value arrays. Only the object's
- * own properties are used.
- * Note that the order of the output array is not guaranteed to be consistent
- * across different JS platforms.
+ * 将一个对象的属性转换成键、值二元组类型的数组，只处理对象自身的属性。注意：不同 JS 运行环境输出数组的顺序可能不一致。
  *
  * @func
  * @memberOf R

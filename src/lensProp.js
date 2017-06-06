@@ -5,7 +5,7 @@ var prop = require('./prop');
 
 
 /**
- * Returns a lens whose focus is the specified property.
+ * 返回聚焦到指定属性的 lens。
  *
  * @func
  * @memberOf R

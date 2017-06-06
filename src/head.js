@@ -2,8 +2,7 @@ var nth = require('./nth');
 
 
 /**
- * Returns the first element of the given list or string. In some libraries
- * this function is named `first`.
+ * 求列表或字符串的首个元素。在某些库中，该函数也被称作 `first`。
  *
  * @func
  * @memberOf R

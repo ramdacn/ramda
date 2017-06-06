@@ -3,8 +3,7 @@ var chain = require('./chain');
 
 
 /**
- * Shorthand for `R.chain(R.identity)`, which removes one level of nesting from
- * any [Chain](https://github.com/fantasyland/fantasy-land#chain).
+ * `R.chain(R.identity)` 的简写, 对 [Chain](https://github.com/fantasyland/fantasy-land#chain) 类型的数据消除一层嵌套.
  *
  * @func
  * @memberOf R

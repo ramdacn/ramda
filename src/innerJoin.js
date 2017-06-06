@@ -4,18 +4,12 @@ var _filter = require('./internal/_filter');
 
 
 /**
- * Takes a predicate `pred`, a list `xs`, and a list `ys`, and returns a list
- * `xs'` comprising each of the elements of `xs` which is equal to one or more
- * elements of `ys` according to `pred`.
+ * 接受一个 predicate `pred` 、列表 `xs` 和 `ys` ，返回列表 `xs'`。依次取出 `xs` 中的元素，若通过 `pred` 判断等于 `ys` 中的一个或多个元素，则放入 `xs'` 。
  *
- * `pred` must be a binary function expecting an element from each list.
+ * `pred` 必须为二元函数，两个参数分别来自于对应两个列表中的元素。
  *
- * `xs`, `ys`, and `xs'` are treated as sets, semantically, so ordering should
- * not be significant, but since `xs'` is ordered the implementation guarantees
- * that its values are in the same order as they appear in `xs`. Duplicates are
- * not removed, so `xs'` may contain duplicates if `xs` contains duplicates.
- *
- * @func
+ * `xs`、`ys` 和 `xs'` 被当作集合处理，所以从语义上讲，元素的顺序并不重要，但由于 `xs'` 是列表（列表中元素有排列顺序），所以本实现保证 `xs'` 中元素的顺序与 `xs` 中的一致。重复的元素也不会被移除，因此，若 `xs` 中含重复元素，`xs'` 中也会包含元素。
+ * * @func
  * @memberOf R
  * @since v0.24.0
  * @category Relation

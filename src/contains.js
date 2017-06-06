@@ -3,8 +3,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns `true` if the specified value is equal, in [`R.equals`](#equals)
- * terms, to at least one element of the given list; `false` otherwise.
+ * 只要列表中有一个元素等于指定值，则返回 `true`；否则返回 `false`。通过 [`R.equals`](#equals) 函数进行相等性判断。
  *
  * @func
  * @memberOf R

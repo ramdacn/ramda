@@ -2,10 +2,7 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * Takes a predicate, a transformation function, and an initial value,
- * and returns a value of the same type as the initial value.
- * It does so by applying the transformation until the predicate is satisfied,
- * at which point it returns the satisfactory value.
+ * 接受一个 predicate ，transform function 和 初始值，返回一个与初始值相同类型的值。对输入值进行 transform ，直到 transform 的结果满足 predicate，此时返回这个满足 predicate 的值。
  *
  * @func
  * @memberOf R

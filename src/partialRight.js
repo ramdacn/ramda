@@ -4,9 +4,9 @@ var flip = require('./flip');
 
 
 /**
- * Takes a function `f` and a list of arguments, and returns a function `g`.
- * When applied, `g` returns the result of applying `f` to the arguments
- * provided to `g` followed by the arguments provided initially.
+ * 部分应用。
+ *
+ * 接收两个参数：函数 `f` 和 参数列表，返回函数 `g`。当调用 `g` 时，将 `g` 的参数和初始参数顺序传给 `f`，并返回 `f` 的执行结果。
  *
  * @func
  * @memberOf R

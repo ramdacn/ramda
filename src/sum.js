@@ -3,7 +3,7 @@ var reduce = require('./reduce');
 
 
 /**
- * Adds together all the elements of a list.
+ * 对数组中所有元素求和。
  *
  * @func
  * @memberOf R

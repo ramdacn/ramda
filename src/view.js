@@ -2,8 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns a "view" of the given data structure, determined by the given lens.
- * The lens's focus determines which portion of the data structure is visible.
+ * 返回数据结构中，lens 聚焦的部分。lens 的焦点决定了数据结构中的哪部分是可见的。
  *
  * @func
  * @memberOf R

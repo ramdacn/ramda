@@ -4,11 +4,9 @@ var filter = require('./filter');
 
 
 /**
- * The complement of [`filter`](#filter).
+ * [`filter`](#filter) 的补操作。返回结果为 [`R.filter`](#filter) 操作结果的补集。
  *
- * Acts as a transducer if a transformer is given in list position. Filterable
- * objects include plain objects or any object that has a filter method such
- * as `Array`.
+ * 若在列表位置给出 transformer，则用作 transducer。Filterable 类型包括 plain object 或者任何带有 filter 方法的类型，如 `Array` 。
  *
  * @func
  * @memberOf R

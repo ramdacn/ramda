@@ -3,8 +3,7 @@ var curryN = require('./curryN');
 
 
 /**
- * Creates a function that will process either the `onTrue` or the `onFalse`
- * function depending upon the result of the `condition` predicate.
+ * 根据 `condition` predicate 的返回值调用 `onTrue` 或 `onFalse` 函数。
  *
  * @func
  * @memberOf R

@@ -3,10 +3,9 @@ var keys = require('./keys');
 
 
 /**
- * Iterate over an input `object`, calling a provided function `fn` for each
- * key and value in the object.
+ * 遍历 `object`，对 `object` 中的每对 `key` 和 `value` 执行方法 `fn`。
  *
- * `fn` receives three argument: *(value, key, obj)*.
+ * `fn` 接收三个参数: *(value, key, obj)*.
  *
  * @func
  * @memberOf R

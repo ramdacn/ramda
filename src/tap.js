@@ -2,7 +2,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Runs the given function with the supplied object, then returns the object.
+ * 对输入的值执行给定的函数，然后返回输入的值。
  *
  * @func
  * @memberOf R

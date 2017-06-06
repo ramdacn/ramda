@@ -4,28 +4,15 @@ var curryN = require('./curryN');
 
 
 /**
- * Initializes a transducer using supplied iterator function. Returns a single
- * item by iterating through the list, successively calling the transformed
- * iterator function and passing it an accumulator value and the current value
- * from the array, and then passing the result to the next call.
+ * 用 iterator function 初始化 transducer ，生成一个 transformed iterator function。然后顺次遍历列表，对每个列表元素先进行转换，然后与累积值进行归约，返回值作为下一轮迭代的累积值。最终返回与初始累积值类型相同的一个累积值。
  *
- * The iterator function receives two values: *(acc, value)*. It will be
- * wrapped as a transformer to initialize the transducer. A transformer can be
- * passed directly in place of an iterator function. In both cases, iteration
- * may be stopped early with the [`R.reduced`](#reduced) function.
+ * iterator function 接收两个参数： *(acc, value)* ，iterator function 会被封装为 transformer 来初始化 transducer 。可以直接传递 transformer 来代替 iterator function。这两种情况下，可以使用 [`R.reduced`](#reduced) 提前终止迭代操作。
  *
- * A transducer is a function that accepts a transformer and returns a
- * transformer and can be composed directly.
+ * transducer 函数接受一个 transformer ，返回一个新的 transformer ，并且 transducer 函数可以直接组合。
  *
- * A transformer is an an object that provides a 2-arity reducing iterator
- * function, step, 0-arity initial value function, init, and 1-arity result
- * extraction function, result. The step function is used as the iterator
- * function in reduce. The result function is used to convert the final
- * accumulator into the return type and in most cases is
- * [`R.identity`](#identity). The init function can be used to provide an
- * initial accumulator, but is ignored by transduce.
+ * transformer 是一个对象，其中包含二元 reducing iterator、step、零元 init 和 一元 result 函数。step 作为 reduce 过程中的迭代函数；result 将最终的累积值转换为需要的返回类型（通常为 [`R.identity`](#identity) ）；init 提供初始累积值，但通常会被 `transduce` 函数忽略。
  *
- * The iteration is performed with [`R.reduce`](#reduce) after initializing the transducer.
+ * 在 transducer 初始化之后，使用 [`R.reduce`](#reduce) 进行迭代操作。
  *
  * @func
  * @memberOf R

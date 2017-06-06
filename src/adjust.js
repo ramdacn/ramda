@@ -3,9 +3,7 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * Applies a function to the value at the given index of an array, returning a
- * new copy of the array with the element at the given index replaced with the
- * result of the function application.
+ * 将数组中指定索引处的值替换为经函数变换的值。
  *
  * @func
  * @memberOf R

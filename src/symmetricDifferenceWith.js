@@ -4,9 +4,7 @@ var differenceWith = require('./differenceWith');
 
 
 /**
- * Finds the set (i.e. no duplicates) of all elements contained in the first or
- * second list, but not both. Duplication is determined according to the value
- * returned by applying the supplied predicate to two list elements.
+ * 求对称差集。所有不属于两列表交集元素的集合。交集的元素由条件函数的返回值决定。
  *
  * @func
  * @memberOf R

@@ -3,9 +3,7 @@ var keys = require('./keys');
 
 
 /**
- * Returns a new object with the keys of the given object as values, and the
- * values of the given object, which are coerced to strings, as keys. Note
- * that the last key found is preferred when handling the same value.
+ * 将对象的键、值交换位置：值作为键，对应的键作为值。交换后的键会被强制转换为字符串。注意，如果原对象同一值对应多个键，采用最后遍历到的键。
  *
  * @func
  * @memberOf R

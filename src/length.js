@@ -3,7 +3,7 @@ var _isNumber = require('./internal/_isNumber');
 
 
 /**
- * Returns the number of elements in the array by returning `list.length`.
+ * 通过 `list.length`，返回数组的大小（数组中元素的数量）。
  *
  * @func
  * @memberOf R

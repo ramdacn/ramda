@@ -3,9 +3,8 @@ var equals = require('./equals');
 var take = require('./take');
 
 /**
- * Checks if a list starts with the provided values
- *
- * @func
+ * 检查列表是否以给定的值开头。
+ * * @func
  * @memberOf R
  * @since v0.24.0
  * @category List

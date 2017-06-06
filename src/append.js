@@ -3,8 +3,7 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * Returns a new list containing the contents of the given list, followed by
- * the given element.
+ * 在列表末尾拼接一个元素。
  *
  * @func
  * @memberOf R

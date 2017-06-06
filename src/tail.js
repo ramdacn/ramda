@@ -4,10 +4,9 @@ var slice = require('./slice');
 
 
 /**
- * Returns all but the first element of the given list or string (or object
- * with a `tail` method).
+ * 删除列表中的首个元素（或者调用对象的 `tail` 方法）。
  *
- * Dispatches to the `slice` method of the first argument, if present.
+ * 如果第一个参数自身存在 `slice` 方法，则调用自身的 `slice` 方法。
  *
  * @func
  * @memberOf R

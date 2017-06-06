@@ -2,8 +2,7 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * Creates a new object from a list key-value pairs. If a key appears in
- * multiple pairs, the rightmost pair is included in the object.
+ * 由一系列 “键值对” 创建一个 `object`。如果某个键出现多次，选取最右侧的键值对。
  *
  * @func
  * @memberOf R

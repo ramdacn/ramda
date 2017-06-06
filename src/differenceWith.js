@@ -3,9 +3,7 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * Finds the set (i.e. no duplicates) of all elements in the first list not
- * contained in the second list. Duplication is determined according to the
- * value returned by applying the supplied predicate to two list elements.
+ * 求第一个列表中未包含在第二个列表中的所有元素的集合（集合中没有重复元素）。两列表中的元素通过 predicate 判断相应元素是否同时 “包含在” 两列表中。
  *
  * @func
  * @memberOf R

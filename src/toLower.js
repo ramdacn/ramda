@@ -2,7 +2,7 @@ var invoker = require('./invoker');
 
 
 /**
- * The lower case version of a string.
+ * 将字符串转换成小写。
  *
  * @func
  * @memberOf R

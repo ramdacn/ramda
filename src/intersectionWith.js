@@ -4,9 +4,7 @@ var uniqWith = require('./uniqWith');
 
 
 /**
- * Combines two lists into a set (i.e. no duplicates) composed of those
- * elements common to both lists. Duplication is determined according to the
- * value returned by applying the supplied predicate to two list elements.
+ * 取出两个 list 中相同的元素组成的 set （集合：没有重复元素）。由给定的 `predicate` 进行相同性判断。
  *
  * @func
  * @memberOf R

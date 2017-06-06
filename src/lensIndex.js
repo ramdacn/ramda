@@ -5,7 +5,7 @@ var update = require('./update');
 
 
 /**
- * Returns a lens whose focus is the specified index.
+ * 返回聚焦到指定索引的 lens。
  *
  * @func
  * @memberOf R
