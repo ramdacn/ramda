@@ -2136,7 +2136,8 @@
      * `pred` 必须为二元函数，两个参数分别来自于对应两个列表中的元素。
      *
      * `xs`、`ys` 和 `xs'` 被当作集合处理，所以从语义上讲，元素的顺序并不重要，但由于 `xs'` 是列表（列表中元素有排列顺序），所以本实现保证 `xs'` 中元素的顺序与 `xs` 中的一致。重复的元素也不会被移除，因此，若 `xs` 中含重复元素，`xs'` 中也会包含元素。
-     * * @func
+     *
+     * @func
      * @memberOf R
      * @since v0.24.0
      * @category Relation
@@ -2659,7 +2660,8 @@
 
     /**
      * [`R.memoize`](＃memoize) 的可定制版本。`memoizeWith` 需要一个额外的函数，该函数接受一个参数集，用于创建缓存的键值，在该缓存中会存储被缓存函数的结果。注意，生成缓存键值时，要避免可能会错误地覆盖之前已缓存键值对的冲突。 
-     * * @func
+     *
+     * @func
      * @memberOf R
      * @since v0.24.0
      * @category Function
@@ -3078,7 +3080,9 @@
     /**
      * `o` 是一个柯里化组合函数，返回一元函数。
      *
-     * 类似于 [`compose`](＃compose)，`o` 从右到左执行函数组合。但与 [`compose`](＃compose) 不同的是，传递给 `o` 的最右边的函数为一元函数。 * @func
+     * 类似于 [`compose`](＃compose)，`o` 从右到左执行函数组合。但与 [`compose`](＃compose) 不同的是，传递给 `o` 的最右边的函数为一元函数。
+     *
+     * @func
      * @memberOf R
      * @since v0.24.0
      * @category Function
@@ -4803,7 +4807,8 @@
      * 接受一个测试规范对象和一个待检测对象，如果测试满足规范，则返回 true，否则返回 false。测试规范对象的每个属性值都必须是 predicate 。每个 predicate 作用于待检测对象对应的属性值，如果所有 predicate 都返回 true，则 `where` 返回 true，否则返回 false 。
      *
      * `where` 非常适合于需要声明式表示约束的函数，比如 [`filter`](#filter) 和 [`find`](#find) 。
-     * * @func
+     *
+     * @func
      * @memberOf R
      * @since v0.1.1
      * @category Object
@@ -6436,7 +6441,8 @@
 
     /**
      * 检查列表是否以给定的值开头。
-     * * @func
+     *
+     * @func
      * @memberOf R
      * @since v0.24.0
      * @category List
@@ -7081,7 +7087,8 @@
 
     /**
      * 检查列表是否以给定的值结尾。
-     * * @func
+     *
+     * @func
      * @memberOf R
      * @since v0.24.0
      * @category List
@@ -7444,7 +7451,8 @@
      *
      * - 并且两个值都是对象，则继续递归合并这两个值。
      * - 否则，采用第一个对象的值。
-     * * @func
+     *
+     * @func
      * @memberOf R
      * @since v0.24.0
      * @category Object
