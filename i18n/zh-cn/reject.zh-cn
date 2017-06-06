@@ -1,4 +1,4 @@
- * `filter` 的补操作。返回结果为 `R.filter` 操作结果的补集。
+ * [`filter`](#filter) 的补操作。返回结果为 [`R.filter`](#filter) 操作结果的补集。
  *
- * 若在列表位置给出 transformer，则用作 transducer。
+ * 若在列表位置给出 transformer，则用作 transducer。Filterable 类型包括 plain object 或者任何带有 filter 方法的类型，如 `Array` 。
  *

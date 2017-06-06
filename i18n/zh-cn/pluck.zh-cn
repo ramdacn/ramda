@@ -1,2 +1,4 @@
  * 从列表内的每个对象元素中取出特定名称的属性，组成一个新的列表。
  *
+ * `pluck` 可以作用于任何 [functor](https://github.com/fantasyland/fantasy-land#functor) ，包括 `Array`，因为它等价于 `R.map(R.prop(k), f)`。
+ *

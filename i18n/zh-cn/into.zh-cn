@@ -4,5 +4,5 @@
  *
  * accumulator 也可作为 transformer 对象，提供 transformer 所需要的二元 reducing iterator、step、零元 init 和 一元 result 函数。step 作为 reduce 过程中的迭代函数；result 将最终的 accumulator 转换为需要的返回类型（通常为 R.identity）；init 提供初始 accumulator。
  *
- * 在 transducer 初始化之后，使用 R.reduce 进行迭代操作。
+ * 在 transducer 初始化之后，使用 [`R.reduce`](#reduce) 进行迭代操作。
  *
