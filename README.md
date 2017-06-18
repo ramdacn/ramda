@@ -40,7 +40,7 @@ Ramda 主要特性如下：
 * [Favoring Curry](http://fr.umio.us/favoring-curry/) by Scott Sauyet
 * [Why Curry Helps](https://hughfdjackson.com/javascript/why-curry-helps/) by Hugh Jackson
 * [Hey Underscore, You're Doing It Wrong!](https://www.youtube.com/watch?v=m3svKOdZijA&app=desktop) by Brian Lonsdorf
-* [Thinking in Ramda](http://randycoulman.com/blog/categories/thinking-in-ramda) by Randy Coulman
+* [Thinking in Ramda](http://randycoulman.com/blog/categories/thinking-in-ramda) by Randy Coulman [中文](https://adispring.coding.me/categories/Thinking-in-Ramda/)
 
 
 理念
