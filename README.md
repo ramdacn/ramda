@@ -35,7 +35,7 @@ Ramda 主要特性如下：
 简介
 -------------
 
-* [Introducing Ramda](http://buzzdecafe.github.io/code/2014/05/16/introducing-ramda) by Buzz de Cafe
+* [Introducing Ramda](http://buzzdecafe.github.io/code/2014/05/16/introducing-ramda) by Buzz de Cafe [中文](https://adispring.coding.me/2017/06/25/Introducing-Ramda/)
 * [Why Ramda?](http://fr.umio.us/why-ramda/) by Scott Sauyet
 * [Favoring Curry](http://fr.umio.us/favoring-curry/) by Scott Sauyet
 * [Why Curry Helps](https://hughfdjackson.com/javascript/why-curry-helps/) by Hugh Jackson
