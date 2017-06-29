@@ -38,7 +38,7 @@ Ramda 主要特性如下：
 * [Introducing Ramda](http://buzzdecafe.github.io/code/2014/05/16/introducing-ramda) by Buzz de Cafe [中文](https://adispring.coding.me/2017/06/25/Introducing-Ramda/)
 * [Why Ramda?](http://fr.umio.us/why-ramda/) by Scott Sauyet [中文](https://adispring.coding.me/2017/06/25/Why-Ramda/)
 * [Favoring Curry](http://fr.umio.us/favoring-curry/) by Scott Sauyet [中文](https://adispring.coding.me/2017/06/27/Favoring-Curry/)
-* [Why Curry Helps](https://hughfdjackson.com/javascript/why-curry-helps/) by Hugh Jackson
+* [Why Curry Helps](https://hughfdjackson.com/javascript/why-curry-helps/) by Hugh Jackson [中文](https://adispring.coding.me/2017/06/28/Why-Curry-Helps/)
 * [Hey Underscore, You're Doing It Wrong!](https://www.youtube.com/watch?v=m3svKOdZijA&app=desktop) by Brian Lonsdorf
 * [Thinking in Ramda](http://randycoulman.com/blog/categories/thinking-in-ramda) by Randy Coulman [中文](https://adispring.coding.me/categories/Thinking-in-Ramda/)
 
