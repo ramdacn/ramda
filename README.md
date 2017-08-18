@@ -170,7 +170,7 @@ const R = require('ramda');
 中文翻译
 -----------------
 
-[增迪](https://adispring.coding.me/)，[聪杰](https://github.com/ZhangCongjie)，[春晓](https://github.com/MissSweety)，[申乾](https://github.com/csqian)，[雪勇](https://github.com/xuelangcxy)。
+[王增迪](https://adispring.coding.me/)，[张聪杰](https://github.com/ZhangCongjie)，[张春晓](https://github.com/MissSweety)，[陈申乾](https://github.com/csqian)，[陈雪勇](https://github.com/xuelangcxy)。
 
 如果发现翻译不恰当的地方，恳请指正。也欢迎加入我们，一起维护 Ramda 中文网站。
 
