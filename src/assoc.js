@@ -2,9 +2,9 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 设置或覆盖对象的指定属性。
+ * 浅复制对象，然后设置或覆盖对象的指定属性。
  *
- * 注意，该函数也会将 prototype 属性复制到新的对象中。所有非原始类型属性都通过引用复制。
+ * 注意，该函数也会将 prototype 属性复制到新的对象中。所有 `non-primitive` 属性都通过引用复制。
  *
  * @func
  * @memberOf R
