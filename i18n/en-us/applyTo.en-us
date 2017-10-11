@@ -1,6 +1,4 @@
-* Takes a value and applies a function to it.
-*
-* This function is also known as the `thrush` combinator.
-*
-* @func
-* @memberOf R
+ * Takes a value and applies a function to it.
+ *
+ * This function is also known as the `thrush` combinator.
+ *
