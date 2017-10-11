@@ -9,6 +9,7 @@ A practical functional library for JavaScript programmers.
 [![Gitter](https://badges.gitter.im/Join_Chat.svg)](https://gitter.im/ramda/ramda?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
+
 Why Ramda?
 ----------
 
@@ -16,6 +17,7 @@ Why Ramda?
      width="170" height="190" align="right" hspace="12" />
 
 There are already several excellent libraries with a functional flavor. Typically, they are meant to be general-purpose toolkits, suitable for working in multiple paradigms. Ramda has a more focused goal. We wanted a library designed specifically for a functional programming style, one that makes it easy to create functional pipelines, one that never mutates user data. 
+
 
 
 What's Different?
@@ -36,6 +38,7 @@ The primary distinguishing features of Ramda are:
 The last two points together make it very easy to build functions as sequences of simpler functions, each of which transforms the data and passes it along to the next. Ramda is designed to support this style of coding.
 
 
+
 Introductions
 -------------
 
@@ -45,6 +48,7 @@ Introductions
 * [Why Curry Helps](https://hughfdjackson.com/javascript/why-curry-helps/) by Hugh Jackson
 * [Hey Underscore, You're Doing It Wrong!](https://www.youtube.com/watch?v=m3svKOdZijA&app=desktop) by Brian Lonsdorf
 * [Thinking in Ramda](http://randycoulman.com/blog/categories/thinking-in-ramda) by Randy Coulman
+
 
 
 Philosophy
@@ -70,6 +74,8 @@ cleaner API.
 Last but not least, Ramda strives for performance. A reliable and quick
 implementation wins over any notions of functional purity.
 
+
+
 Installation
 ------------
 
@@ -82,7 +88,7 @@ $ npm install ramda
 Then in the console:
 
 ```javascript
-var R = require('ramda');
+const R = require('ramda');
 ```
 
 To use directly in the browser:
@@ -100,15 +106,15 @@ or the minified version:
 or from a CDN, either cdnjs:
 
 ```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.23.0/ramda.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.25.0/ramda.min.js"></script>
 ```
 
 or one of the below links from [jsDelivr](http://jsdelivr.com):
 
 ```html
-<script src="//cdn.jsdelivr.net/ramda/0.23.0/ramda.min.js"></script>
-<script src="//cdn.jsdelivr.net/ramda/0.23/ramda.min.js"></script>
-<script src="//cdn.jsdelivr.net/ramda/latest/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@0.24.1/dist/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@0.24/dist/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script>
 ```
 
 (note that using `latest` is taking a significant risk that ramda API changes could break your code.)
@@ -119,21 +125,25 @@ Or you can inject ramda into virtually any unsuspecting website using [the bookm
 
 ### Build
 
-* on Unix-based platforms, `npm run build` updates __dist/ramda.js__ and __dist/ramda.min.js__
-* on Windows, write the output of `scripts/build --complete` to a temporary file, then rename the temporary file __dist/ramda.js__.
+`npm run build` creates `es`, `src` directories and updates both __dist/ramda.js__ and __dist/ramda.min.js__
 
 #### Partial Builds
 
 It is possible to build Ramda with a subset of the functionality to reduce its file size. Ramda's build system supports this with command line flags. For example if you're using `R.compose`, `R.reduce`, and `R.filter` you can create a partial build with:
 
-    ./scripts/build -- src/compose.js src/reduce.js src/filter.js > dist/ramda.custom.js
+    npm run --silent partial-build compose reduce filter > dist/ramda.custom.js
 
-This requires having Node/io.js installed. 
+This requires having Node/io.js installed and ramda's dependencies installed (just use `npm install` before running partial build). 
+
+
 
 Documentation
 -------------
 
 Please review the [API documentation](http://ramdajs.com/docs/).
+
+Also available is our [Cookbook](https://github.com/ramda/ramda/wiki/Cookbook) of functions built from Ramda that you may find useful.
+
 
 The Name
 --------
@@ -170,16 +180,30 @@ then you can run the tests (and get detailed output) by running:
 
 **Browser:**
 
-To run the test suite in the browser, you can simply open `test/index.html`.
-
-Alternatively, you can use [testem](https://github.com/airportyh/testem) to
+You can use [testem](https://github.com/airportyh/testem) to
 test across different browsers (or even headlessly), with livereloading of
-tests too. Install testem (`npm install -g testem`) and run `testem`. Open the
+tests. Install testem (`npm install -g testem`) and run `testem`. Open the
 link provided in your browser and you will see the results in your terminal.
 
 If you have _PhantomJS_ installed, you can run `testem -l phantomjs` to run the
 tests completely headlessly.
 
+
+
+Typings
+-----------------
+
+- [TypeScript](https://github.com/types/npm-ramda/)
+- [Flow](https://github.com/flowtype/flow-typed/tree/master/definitions/npm/ramda_v0.x.x)
+
+
+
+
+Translations
+-----------------
+
+- [Chinese(中文)](http://ramda.cn/)
+- [Ukrainian(Українська)](https://github.com/ivanzusko/ramda)
 
 
 

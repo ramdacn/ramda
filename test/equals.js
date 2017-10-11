@@ -1,5 +1,4 @@
 /* global Map, Set, WeakMap, WeakSet */
-/* jshint typed: true */
 
 var R = require('..');
 var eq = require('./shared/eq');
@@ -22,21 +21,17 @@ describe('equals', function() {
   });
 
   it('considers equivalent Boolean objects equal', function() {
-    /* jshint -W053 */
     eq(R.equals(new Boolean(true), new Boolean(true)), true);
     eq(R.equals(new Boolean(false), new Boolean(false)), true);
     eq(R.equals(new Boolean(true), new Boolean(false)), false);
     eq(R.equals(new Boolean(false), new Boolean(true)), false);
-    /* jshint +W053 */
   });
 
   it('never considers Boolean primitive equal to Boolean object', function() {
-    /* jshint -W053 */
     eq(R.equals(true, new Boolean(true)), false);
     eq(R.equals(new Boolean(true), true), false);
     eq(R.equals(false, new Boolean(false)), false);
     eq(R.equals(new Boolean(false), false), false);
-    /* jshint +W053 */
   });
 
   it('considers equal number primitives equal', function() {
@@ -46,18 +41,14 @@ describe('equals', function() {
   });
 
   it('considers equivalent Number objects equal', function() {
-    /* jshint -W053 */
     eq(R.equals(new Number(0), new Number(0)), true);
     eq(R.equals(new Number(0), new Number(1)), false);
     eq(R.equals(new Number(1), new Number(0)), false);
-    /* jshint +W053 */
   });
 
   it('never considers number primitive equal to Number object', function() {
-    /* jshint -W053 */
     eq(R.equals(0, new Number(0)), false);
     eq(R.equals(new Number(0), 0), false);
-    /* jshint +W053 */
   });
 
   it('considers equal string primitives equal', function() {
@@ -70,23 +61,19 @@ describe('equals', function() {
   });
 
   it('considers equivalent String objects equal', function() {
-    /* jshint -W053 */
     eq(R.equals(new String(''), new String('')), true);
     eq(R.equals(new String(''), new String('x')), false);
     eq(R.equals(new String('x'), new String('')), false);
     eq(R.equals(new String('foo'), new String('foo')), true);
     eq(R.equals(new String('foo'), new String('bar')), false);
     eq(R.equals(new String('bar'), new String('foo')), false);
-    /* jshint +W053 */
   });
 
   it('never considers string primitive equal to String object', function() {
-    /* jshint -W053 */
     eq(R.equals('', new String('')), false);
     eq(R.equals(new String(''), ''), false);
     eq(R.equals('x', new String('x')), false);
     eq(R.equals(new String('x'), 'x'), false);
-    /* jshint +W053 */
   });
 
   it('handles objects', function() {
@@ -171,7 +158,6 @@ describe('equals', function() {
   });
 
   it('requires that both objects have the same enumerable properties with the same values', function() {
-    /* jshint -W053 */
     var a1 = [];
     var a2 = [];
     a2.x = 0;
@@ -195,7 +181,6 @@ describe('equals', function() {
     var s1 = new String('');
     var s2 = new String('');
     s2.x = 0;
-    /* jshint +W053 */
 
     eq(R.equals(a1, a2), false);
     eq(R.equals(b1, b2), false);
@@ -235,11 +220,23 @@ describe('equals', function() {
       eq(R.equals(new Map([]), new Map([[1, 'a']])), false);
       eq(R.equals(new Map([[1, 'a']]), new Map([])), false);
       eq(R.equals(new Map([[1, 'a']]), new Map([[1, 'a']])), true);
+      eq(R.equals(new Map([[1, 'a'], [2, 'b']]), new Map([[2, 'b'], [1, 'a']])), true);
+      eq(R.equals(new Map([[1, 'a']]), new Map([[2, 'a']])), false);
       eq(R.equals(new Map([[1, 'a']]), new Map([[1, 'b']])), false);
       eq(R.equals(new Map([[1, 'a'], [2, new Map([[3, 'c']])]]), new Map([[1, 'a'], [2, new Map([[3, 'c']])]])), true);
       eq(R.equals(new Map([[1, 'a'], [2, new Map([[3, 'c']])]]), new Map([[1, 'a'], [2, new Map([[3, 'd']])]])), false);
       eq(R.equals(new Map([[[1, 2, 3], [4, 5, 6]]]), new Map([[[1, 2, 3], [4, 5, 6]]])), true);
       eq(R.equals(new Map([[[1, 2, 3], [4, 5, 6]]]), new Map([[[1, 2, 3], [7, 8, 9]]])), false);
+    });
+    it('dispatches to `equals` method recursively in Set', function() {
+      var a = new Map();
+      var b = new Map();
+      a.set(a, a);
+      eq(R.equals(a, b), false);
+      a.set(b, b);
+      b.set(b, b);
+      b.set(a, a);
+      eq(R.equals(a, b), true);
     });
   }
 
@@ -248,10 +245,21 @@ describe('equals', function() {
       eq(R.equals(new Set([]), new Set([])), true);
       eq(R.equals(new Set([]), new Set([1])), false);
       eq(R.equals(new Set([1]), new Set([])), false);
+      eq(R.equals(new Set([1, 2]), new Set([2, 1])), true);
       eq(R.equals(new Set([1, new Set([2, new Set([3])])]), new Set([1, new Set([2, new Set([3])])])), true);
       eq(R.equals(new Set([1, new Set([2, new Set([3])])]), new Set([1, new Set([2, new Set([4])])])), false);
       eq(R.equals(new Set([[1, 2, 3], [4, 5, 6]]), new Set([[1, 2, 3], [4, 5, 6]])), true);
       eq(R.equals(new Set([[1, 2, 3], [4, 5, 6]]), new Set([[1, 2, 3], [7, 8, 9]])), false);
+    });
+    it('dispatches to `equals` method recursively in Set', function() {
+      var a = new Set();
+      var b = new Set();
+      a.add(a);
+      eq(R.equals(a, b), false);
+      a.add(b);
+      b.add(b);
+      b.add(a);
+      eq(R.equals(a, b), true);
     });
   }
 
