@@ -2,9 +2,9 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 将两个列表对应位置的元素作为键值对组合，生成一个新的键值对的列表。生成的列表长度取决于较短的输入列表的长度。
- *
- * 注意，`zip` 等价于 `pipe(zipWith(pair), fromPairs)` 。
+ * Creates a new object out of a list of keys and a list of values.
+ * Key/value pairing is truncated to the length of the shorter of the two lists.
+ * Note: `zipObj` is equivalent to `pipe(zipWith(pair), fromPairs)`.
  *
  * @func
  * @memberOf R

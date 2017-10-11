@@ -2,7 +2,11 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 从后往前取出列表元素，直到遇到首个不满足 predicate 的元素为止。取出的元素中不包含首个不满足 predicate 的元素。
+ * Returns a new list containing the last `n` elements of a given list, passing
+ * each value to the supplied predicate function, and terminating when the
+ * predicate function returns `false`. Excludes the element that caused the
+ * predicate function to fail. The predicate function is passed one argument:
+ * *(value)*.
  *
  * @func
  * @memberOf R

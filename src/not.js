@@ -2,9 +2,8 @@ var _curry1 = require('./internal/_curry1');
 
 
 /**
- * 逻辑非运算。
-
- * 当传入参数为 false-y 值时，返回 `true`；truth-y 值时，返回 `false`。
+ * A function that returns the `!` of its argument. It will return `true` when
+ * passed false-y value, and `false` when passed a truth-y one.
  *
  * @func
  * @memberOf R

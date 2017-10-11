@@ -2,7 +2,10 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 判断输入值是否满足 predicate，若不符合，则将输入值传给 `whenFalseFn` 处理，并将处理结果作为返回；若符合，则将输入值原样返回。
+ * Tests the final argument by passing it to the given predicate function. If
+ * the predicate is not satisfied, the function will return the result of
+ * calling the `whenFalseFn` function with the same argument. If the predicate
+ * is satisfied, the argument is returned as is.
  *
  * @func
  * @memberOf R

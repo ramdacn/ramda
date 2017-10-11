@@ -6,11 +6,13 @@ var toString = require('./toString');
 
 
 /**
- * 连接列表或字符串。
+ * Returns the result of concatenating the given lists or strings.
  *
- * 注意：不同于 [`Array.prototype.concat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat), `R.concat` 要求两个参数类型相同。 如果将 Array 与非 Array 连接，将抛出错误。
+ * Note: `R.concat` expects both arguments to be of the same type,
+ * unlike the native `Array.prototype.concat` method. It will throw
+ * an error if you `concat` an Array with a non-Array value.
  *
- * 若第一个参数自身存在 `concat` 方法，则调用自身的 `concat`。
+ * Dispatches to the `concat` method of the first argument, if present.
  *
  * @func
  * @memberOf R

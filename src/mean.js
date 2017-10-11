@@ -3,7 +3,7 @@ var sum = require('./sum');
 
 
 /**
- * 返回给定数字列表的平均值。
+ * Returns the mean of the given list of numbers.
  *
  * @func
  * @memberOf R

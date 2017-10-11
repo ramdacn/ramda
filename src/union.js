@@ -5,7 +5,8 @@ var uniq = require('./uniq');
 
 
 /**
- * 集合并运算，合并两个列表为新列表（新列表中无重复元素）。
+ * Combines two lists into a set (i.e. no duplicates) composed of the elements
+ * of each list.
  *
  * @func
  * @memberOf R

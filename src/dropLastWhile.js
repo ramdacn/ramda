@@ -5,9 +5,11 @@ var _xdropLastWhile = require('./internal/_xdropLastWhile');
 
 
 /**
- * 对 list 从后向前一直删除满足 `predicate` 的尾部元素，直到遇到第一个 `falsy` 值，此时停止删除操作。
- *
- * `predicate` 需要作为第一个参数传入。
+ * Returns a new list excluding all the tailing elements of a given list which
+ * satisfy the supplied predicate function. It passes each value from the right
+ * to the supplied predicate function, skipping elements until the predicate
+ * function returns a `falsy` value. The predicate function is applied to one argument:
+ * *(value)*.
  *
  * @func
  * @memberOf R

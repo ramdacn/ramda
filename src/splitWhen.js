@@ -2,7 +2,11 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 查找列表中首个满足 predicate 的元素，在该处将列表拆分为两部分。首个满足 predicate 的元素包含在后一部分。
+ * Takes a list and a predicate and returns a pair of lists with the following properties:
+ *
+ *  - the result of concatenating the two output lists is equivalent to the input list;
+ *  - none of the elements of the first output list satisfies the predicate; and
+ *  - if the second output list is non-empty, its first element satisfies the predicate.
  *
  * @func
  * @memberOf R

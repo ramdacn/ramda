@@ -3,7 +3,9 @@ var reverse = require('./reverse');
 
 
 /**
- * 从右向左执行返回 Promise 的函数的组合。最右边的函数可以是任意元函数（参数个数不限）; 其余函数必须是一元函数。
+ * Performs right-to-left composition of one or more Promise-returning
+ * functions. The rightmost function may have any arity; the remaining
+ * functions must be unary.
  *
  * @func
  * @memberOf R

@@ -4,7 +4,8 @@ var keys = require('./keys');
 
 
 /**
- * 与 [`R.invertObj`](#invertObj) 类似，但会将值放入数组中，来处理一个键对应多个值的情况。
+ * Same as [`R.invertObj`](#invertObj), however this accounts for objects with
+ * duplicate values by putting the values into an array.
  *
  * @func
  * @memberOf R

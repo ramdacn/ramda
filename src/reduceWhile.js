@@ -4,7 +4,11 @@ var _reduced = require('./internal/_reduced');
 
 
 /**
- * 与 [`reduce`](#reduce) 类似， `reduceWhile` 会遍历列表，相继调用二元迭代函数，并返回最终累积值。`reduceWhile` 在每次调用迭代函数前，先使用 predicate 进行判断，如果 predicate 返回 `false` ，则提前终止遍历操作，并返回当前累积值。
+ * Like [`reduce`](#reduce), `reduceWhile` returns a single item by iterating
+ * through the list, successively calling the iterator function. `reduceWhile`
+ * also takes a predicate that is evaluated before each step. If the predicate
+ * returns `false`, it "short-circuits" the iteration and returns the current
+ * value of the accumulator.
  *
  * @func
  * @memberOf R

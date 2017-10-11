@@ -2,9 +2,13 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * `mapAccum` 的行为类似于 map 和 reduce 的组合；它将迭代函数作用于列表中的每个元素，从左往右传递经迭代函数计算的累积值，并将最后的累积值和由所有中间的累积值组成的列表一起返回。
-
- * 迭代函数接收两个参数，*acc* 和 *value*， 返回一个元组 *[acc, value]*。
+ * The `mapAccum` function behaves like a combination of map and reduce; it
+ * applies a function to each element of a list, passing an accumulating
+ * parameter from left to right, and returning a final value of this
+ * accumulator together with the new list.
+ *
+ * The iterator function receives two arguments, *acc* and *value*, and should
+ * return a tuple *[acc, value]*.
  *
  * @func
  * @memberOf R

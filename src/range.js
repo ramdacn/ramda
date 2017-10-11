@@ -3,7 +3,7 @@ var _isNumber = require('./internal/_isNumber');
 
 
 /**
- * 返回从 `from` 到 `to` 之间的所有数的升序列表。左闭右开（包含 `from`，不包含 `to`）。
+ * Returns a list of numbers from `from` (inclusive) to `to` (exclusive).
  *
  * @func
  * @memberOf R

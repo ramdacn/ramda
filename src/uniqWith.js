@@ -3,7 +3,10 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 返回无重复元素的列表。元素通过 predicate 进行相同性判断。如果通过 predicate 判断两元素相同，保留第一个元素。
+ * Returns a new list containing only one copy of each element in the original
+ * list, based upon the value returned by applying the supplied predicate to
+ * two list elements. Prefers the first item if two items compare equal based
+ * on the predicate.
  *
  * @func
  * @memberOf R

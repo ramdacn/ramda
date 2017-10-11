@@ -3,7 +3,10 @@ var _isInteger = require('./internal/_isInteger');
 
 
 /**
- * `mathMod` 和算术取模操作类似，而不像 `%` 操作符 （或 [`R.modulo`](#modulo)）。所以 `-17 % 5` 等于 `-2`，而 `mathMod(-17, 5)` 等于 `3` 。`mathMod` 要求参数为整型，并且当模数等于 0 或者负数时返回 NaN 。
+ * `mathMod` behaves like the modulo operator should mathematically, unlike the
+ * `%` operator (and by extension, [`R.modulo`](#modulo)). So while
+ * `-17 % 5` is `-2`, `mathMod(-17, 5)` is `3`. `mathMod` requires Integer
+ * arguments, and returns NaN when the modulus is zero or negative.
  *
  * @func
  * @memberOf R

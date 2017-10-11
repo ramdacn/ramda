@@ -2,7 +2,8 @@ var _curry3 = require('./internal/_curry3');
 
 
 /**
- * 接收一个函数和两个值，返回使给定函数执行结果较小的值。
+ * Takes a function and two values, and returns whichever value produces the
+ * smaller result when passed to the provided function.
  *
  * @func
  * @memberOf R

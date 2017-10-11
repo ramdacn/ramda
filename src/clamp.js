@@ -1,9 +1,9 @@
 var _curry3 = require('./internal/_curry3');
 
 /**
- * 将数字限制在指定的范围内。
+ * Restricts a number to be within a range.
  *
- * `clamp` 也可用于其他有序类型，如字符串和日期。
+ * Also works for other ordered types such as Strings and Dates.
  *
  * @func
  * @memberOf R

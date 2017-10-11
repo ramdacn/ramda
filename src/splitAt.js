@@ -4,7 +4,7 @@ var slice = require('./slice');
 
 
 /**
- * 在指定的索引处拆分列表或者字符串。
+ * Splits a given list or string at a given index.
  *
  * @func
  * @memberOf R

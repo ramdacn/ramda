@@ -4,9 +4,14 @@ var curryN = require('./curryN');
 
 
 /**
- * 通过向列表迭代函数的回调函数添加两个新的参数：当前索引、整个列表，创建新的列表迭代函数。
+ * Creates a new list iteration function from an existing one by adding two new
+ * parameters to its callback function: the current index, and the entire list.
  *
- * 例如，`addIndex` 可以将 [`R.map`](#map) 转换为类似于 `Array.prototype.map` 的函数。注意，`addIndex` 只适用于迭代回调函数是首个参数、列表是最后一个参数的函数。（如果列表参数没有用到，后一个条件可以忽略）。
+ * This would turn, for instance, [`R.map`](#map) function into one that
+ * more closely resembles `Array.prototype.map`. Note that this will only work
+ * for functions in which the iteration callback function is the first
+ * parameter, and where the list is the last parameter. (This latter might be
+ * unimportant if the list parameter is not used.)
  *
  * @func
  * @memberOf R

@@ -2,7 +2,9 @@ var _curry2 = require('./internal/_curry2');
 
 
 /**
- * 将一个任意元（包括零元）的函数，封装成一个确定元数（参数个数）的函数。任何多余的参数都不会传入被封装的函数。
+ * Wraps a function of any arity (including nullary) in a function that accepts
+ * exactly `n` parameters. Any extraneous parameters will not be passed to the
+ * supplied function.
  *
  * @func
  * @memberOf R
