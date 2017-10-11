@@ -1,2 +1,2 @@
- * 如果指定的对象属性满足 predicate，返回 `true`；否则返回 `false`。
+ * 如果指定的对象属性满足 predicate，返回 `true`；否则返回 `false`。可以使用 [`R.where`](#where) 进行多个属性的判断。
  *
