@@ -2,8 +2,8 @@
 set -e
 
 GIT_ROOT_DIR="$(git rev-parse --show-toplevel)"
-SRC_DIR="$GIT_ROOT_DIR/src"
-SRC_DIR_FILES="$GIT_ROOT_DIR/src/*.js"
+SRC_DIR="$GIT_ROOT_DIR/source"
+SRC_DIR_FILES="$GIT_ROOT_DIR/source/*.js"
 TRANS_DIR="$GIT_ROOT_DIR/i18n"
 
 for i in "$@"
@@ -51,8 +51,8 @@ TRANS_DIR_FILES="$LANG_DIR/*.$LANG"
 for trans_file in $TRANS_DIR_FILES
 do
   fname=`basename $trans_file ."$LANG"`
-  src_name="$SRC_DIR/$fname.js"
-  if [ ! -f "$src_name" ]; then
+  source_name="$SRC_DIR/$fname.js"
+  if [ ! -f "$source_name" ]; then
     echo "$fname.js have been deleted, please remove its translation. 🗑  "
   fi
 done
