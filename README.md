@@ -86,15 +86,15 @@ const R = require('ramda');
 或从 CDN 上获取：
 
 ```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.24.1/ramda.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.25.0/ramda.min.js"></script>
 ```
 
 或使用 [jsDelivr](http://jsdelivr.com) 的以下任意链接：
 
 ```html
-<script src="//cdn.jsdelivr.net/ramda/0.24.1/ramda.min.js"></script>
-<script src="//cdn.jsdelivr.net/ramda/0.24/ramda.min.js"></script>
-<script src="//cdn.jsdelivr.net/ramda/latest/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@0.24.1/dist/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@0.24/dist/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script>
 ```
 
 （注意，使用 `最新` 的版本可能会带来很大的风险，ramda API 的更改可能会对以前代码造成破坏）
@@ -105,21 +105,23 @@ const R = require('ramda');
 
 ### 构建库
 
-* 在基于 Unix 的平台上，运行 `npm run build` 来更新 __dist/ramda.js__ 和 __dist/ramda.min.js__
-* 在 Windows 上，将 `scripts/build --complete` 的运行结果输出到一个临时文件中，然后将该文件重命名为 __dist/ramda.js__.
+运行 `npm run build` 生成 `es`、`src` 文件夹，并更新 __dist/ramda.js__ 和 __dist/ramda.min.js__ 。
+
 
 #### 部分构建库 
 
 可以生成 Ramda 的函数子集来减小库文件大小。Ramda 的构建系统通过命令行标志来支持部分构建。例如，要使用 `R.compose`, `R.reduce`, and `R.filter` ，可以创建一个部分构建库：
 
-    ./scripts/build -- src/compose.js src/reduce.js src/filter.js > dist/ramda.custom.js
+    npm run --silent partial-build compose reduce filter > dist/ramda.custom.js
 
-上述命令需要安装 Node/io.js。
+上述命令需要安装 Node/io.js 和 ramda 的依赖（只需在部分构建开始前运行 `npm install`）。
 
 文档
 -------------
 
-请查看 [API 文档](http://ramdajs.com/docs/).
+请参考 [API 文档](http://ramdajs.com/docs/).
+
+也可以使用 [Cookbook](https://github.com/ramda/ramda/wiki/Cookbook) 中的由 Ramda 构建的函数。
 
 关于名字
 --------
@@ -160,10 +162,19 @@ const R = require('ramda');
 
 
 
-致谢
+类型
 -----------------
 
-感谢 [J. C. Phillipps](http://www.jcphillipps.com) 为 Ramda 设计的标志。 Ramda 标志艺术品 &copy; 2014 J. C. Phillipps 。 创作共享协议 [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)。
+- [TypeScript](https://github.com/types/npm-ramda/)
+- [Flow](https://github.com/flowtype/flow-typed/tree/master/definitions/npm/ramda_v0.x.x)
+
+
+
+翻译
+-----------------
+
+- [Chinese(中文)](http://ramda.cn/)
+- [Ukrainian(Українська)](https://github.com/ivanzusko/ramda)
 
 
 
@@ -174,3 +185,7 @@ const R = require('ramda');
 
 如果发现翻译不恰当的地方，恳请指正。也欢迎加入我们，一起维护 Ramda 中文网站。
 
+致谢
+-----------------
+
+感谢 [J. C. Phillipps](http://www.jcphillipps.com) 为 Ramda 设计的标志。 Ramda 标志艺术品 &copy; 2014 J. C. Phillipps 。 创作共享协议 [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)。
