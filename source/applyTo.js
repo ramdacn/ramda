@@ -1,9 +1,9 @@
 import _curry2 from './internal/_curry2';
 
 /**
- * Takes a value and applies a function to it.
+ * 给定一个值，并将函数作用于该值。
  *
- * This function is also known as the `thrush` combinator.
+ * 该函数也被称为 `thrush` combinator.
  *
  * @func
  * @memberOf R

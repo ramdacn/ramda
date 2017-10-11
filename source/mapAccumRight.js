@@ -2,16 +2,11 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * The `mapAccumRight` function behaves like a combination of map and reduce; it
- * applies a function to each element of a list, passing an accumulating
- * parameter from right to left, and returning a final value of this
- * accumulator together with the new list.
+ * `mapAccumRight` 的行为类似于 map 和 reduce 的组合；它将迭代函数作用于列表中的每个元素，从右往左传递经迭代函数计算的累积值，并将最后的累积值和由所有中间的累积值组成的列表一起返回。
  *
- * Similar to [`mapAccum`](#mapAccum), except moves through the input list from
- * the right to the left.
+ * 和 [`mapAccum`](#mapAccum) 类似，除了列表遍历顺序是从右往左的。
  *
- * The iterator function receives two arguments, *value* and *acc*, and should
- * return a tuple *[value, acc]*.
+ * 迭代函数接收两个参数，*value* 和 *acc* ，返回一个元组 *[value, acc]*。
  *
  * @func
  * @memberOf R

@@ -3,8 +3,7 @@ import _makeFlat from './internal/_makeFlat';
 
 
 /**
- * Returns a new list by pulling every item out of it (and all its sub-arrays)
- * and putting them in a new array, depth-first.
+ * 获取 list 的所有元素（包含所有子数组中的元素），然后由这些元素组成一个新的数组。深度优先。
  *
  * @func
  * @memberOf R

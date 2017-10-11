@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Adds two values.
+ * 两数相加。
  *
  * @func
  * @memberOf R

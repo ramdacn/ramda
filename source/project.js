@@ -5,7 +5,7 @@ import useWith from './useWith';
 
 
 /**
- * Reasonable analog to SQL `select` statement.
+ * 模拟 SQL 中的 `select` 语句。
  *
  * @func
  * @memberOf R

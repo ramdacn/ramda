@@ -2,10 +2,7 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * Inserts the supplied element into the list, at the specified `index`. _Note that
-
- * this is not destructive_: it returns a copy of the list with the changes.
- * <small>No lists have been harmed in the application of this function.</small>
+ * 将元素插入到 list 指定索引处。注意，该函数是破坏性的：返回处理后列表的拷贝。<small>函数运行过程中不会破坏任何列表。</small>
  *
  * @func
  * @memberOf R

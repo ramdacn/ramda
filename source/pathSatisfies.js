@@ -3,8 +3,7 @@ import path from './path';
 
 
 /**
- * Returns `true` if the specified object property at given path satisfies the
- * given predicate; `false` otherwise.
+ * 如果对象的给定路径上的属性满足 predicate，返回 `ture`；否则返回 `false`。
  *
  * @func
  * @memberOf R

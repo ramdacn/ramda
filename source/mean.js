@@ -3,7 +3,7 @@ import sum from './sum';
 
 
 /**
- * Returns the mean of the given list of numbers.
+ * 返回给定数字列表的平均值。
  *
  * @func
  * @memberOf R

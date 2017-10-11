@@ -4,12 +4,11 @@ import _xany from './internal/_xany';
 
 
 /**
- * Returns `true` if at least one of elements of the list match the predicate,
- * `false` otherwise.
+ * 只要列表中有一个元素满足 predicate，就返回 `true`，否则返回 `false`。
  *
- * Dispatches to the `any` method of the second argument, if present.
+ * 若第二个参数自身存在 `any` 方法，则调用其自身的 `any`。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在列表位置中给出 transfomer，则用作 transducer 。
  *
  * @func
  * @memberOf R

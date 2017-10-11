@@ -2,12 +2,9 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Builds a list from a seed value. Accepts an iterator function, which returns
- * either false to stop iteration or an array of length 2 containing the value
- * to add to the resulting list and the seed to be used in the next call to the
- * iterator function.
+ * 通过一个种子值（ seed ）创建一个列表。`unfold` 接受一个迭代函数：该函数或者返回 false 停止迭代，或者返回一个长度为 2 的数组：数组首个元素添加到结果列表，第二个元素作为种子值传给下一轮迭代使用。
  *
- * The iterator function receives one argument: *(seed)*.
+ * 迭代函数接受单个参数： *(seed)*。
  *
  * @func
  * @memberOf R

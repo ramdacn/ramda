@@ -3,11 +3,9 @@ import _curry1 from './internal/_curry1';
 
 
 /**
- * Creates a deep copy of the value which may contain (nested) `Array`s and
- * `Object`s, `Number`s, `String`s, `Boolean`s and `Date`s. `Function`s are
- * assigned by reference rather than copied
+ * 深复制。其值可能（嵌套）包含 `Array`、`Object`、`Number`、`String`、`Boolean`、`Date` 类型的数据。`Function` 通过引用复制。
  *
- * Dispatches to a `clone` method if present.
+ * 若自身存在 `clone` 方法，则调用自身的 `clone` 方法。
  *
  * @func
  * @memberOf R

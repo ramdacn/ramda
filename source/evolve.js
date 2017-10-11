@@ -2,12 +2,9 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Creates a new object by recursively evolving a shallow copy of `object`,
- * according to the `transformation` functions. All non-primitive properties
- * are copied by reference.
+ * 递归地对 `object` 的属性进行变换，变换方式由 `transformation` 函数定义。所有非原始类型属性都通过引用来复制。
  *
- * A `transformation` function will not be invoked if its corresponding key
- * does not exist in the evolved object.
+ * 如果某个 `transformation` 函数对应的键在被变换的 `object` 中不存在，那么该方法将不会执行。
  *
  * @func
  * @memberOf R

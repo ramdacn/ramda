@@ -2,20 +2,15 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * Returns a single item by iterating through the list, successively calling
- * the iterator function and passing it an accumulator value and the current
- * value from the array, and then passing the result to the next call.
+ * 右折叠操作。
  *
- * Similar to [`reduce`](#reduce), except moves through the input list from the
- * right to the left.
+ * 遍历列表，相继调用二元迭代函数（参数为累积值和从数组中取出的当前元素），将本次迭代结果作为下次迭代的累积值。返回最终累积值。
  *
- * The iterator function receives two values: *(value, acc)*, while the arguments'
- * order of `reduce`'s iterator function is *(acc, value)*.
+ * 类似于 [`reduce`](#reduce)，除了遍历列表的顺序是从右向左的。
  *
- * Note: `R.reduceRight` does not skip deleted or unassigned indices (sparse
- * arrays), unlike the native `Array.prototype.reduceRight` method. For more details
- * on this behavior, see:
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight#Description
+ * `reduceRight` 的迭代函数接收两个参数 *(acc, value)*。与之对应的，`reduce` 的迭代函数的参数顺序为 *(value, acc)*
+ *
+ * 注意：`R.reduceRight` 与原生 `Array.prototype.reduceRight` 方法不同，它不会跳过删除或未分配的索引项（稀疏矩阵）。更多关于原生 reduceRight 的行为，请参考：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight#Description
  *
  * @func
  * @memberOf R

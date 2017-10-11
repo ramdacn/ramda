@@ -2,7 +2,7 @@ import invoker from './invoker';
 
 
 /**
- * The upper case version of a string.
+ * 将字符串转换为大写。
  *
  * @func
  * @memberOf R

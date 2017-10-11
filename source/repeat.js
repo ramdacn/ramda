@@ -4,7 +4,7 @@ import times from './times';
 
 
 /**
- * Returns a fixed list of size `n` containing a specified identical value.
+ * 生成包含 `n` 个同一元素的数组。
  *
  * @func
  * @memberOf R
