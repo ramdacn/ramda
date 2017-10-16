@@ -2,8 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Creates a new list out of the two supplied by creating each possible pair
- * from the lists.
+ * 将两个列表的元素两两组合，生成一个新的元素对列表。
  *
  * @func
  * @memberOf R

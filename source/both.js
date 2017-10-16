@@ -5,15 +5,9 @@ import lift from './lift';
 
 
 /**
- * A function which calls the two provided functions and returns the `&&`
- * of the results.
- * It returns the result of the first function if it is false-y and the result
- * of the second function otherwise. Note that this is short-circuited,
- * meaning that the second function will not be invoked if the first returns a
- * false-y value.
+ * 该函数调用两个函数，并对两函数返回值进行`与操作`。若第一个函数结果为 false-y 值 (false, null, 0 等)，则返回该结果，否则返回第二个函数的结果。注意，`both` 为短路操作，即如果第一个函数返回 false-y 值，则不会调用第二个函数。
  *
- * In addition to functions, `R.both` also accepts any fantasy-land compatible
- * applicative functor.
+ * 除了函数，`R.both` 还接受任何兼容 fantasy-land 的 applicative functor。
  *
  * @func
  * @memberOf R

@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Subtracts its second argument from its first argument.
+ * 首个参数减去第二个参数。
  *
  * @func
  * @memberOf R

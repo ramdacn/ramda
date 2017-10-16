@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Returns a new object that does not contain a `prop` property.
+ * 删除对象中指定 `prop` 属性。
  *
  * @func
  * @memberOf R

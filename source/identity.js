@@ -3,8 +3,7 @@ import _identity from './internal/_identity';
 
 
 /**
- * A function that does nothing but return the parameter supplied to it. Good
- * as a default or placeholder function.
+ * 将输入值原样返回。适合用作默认或占位函数。
  *
  * @func
  * @memberOf R

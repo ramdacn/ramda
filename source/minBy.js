@@ -2,8 +2,7 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * Takes a function and two values, and returns whichever value produces the
- * smaller result when passed to the provided function.
+ * 接收一个函数和两个值，返回使给定函数执行结果较小的值。
  *
  * @func
  * @memberOf R

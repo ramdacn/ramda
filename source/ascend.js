@@ -2,8 +2,7 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * Makes an ascending comparator function out of a function that returns a value
- * that can be compared with `<` and `>`.
+ * 由返回值可与 `<` 和 `>` 比较的函数，创建一个升序比较函数。
  *
  * @func
  * @memberOf R

@@ -3,11 +3,9 @@ import toString from './toString';
 
 
 /**
- * Creates a new function that, when invoked, caches the result of calling `fn`
- * for a given argument set and returns the result. Subsequent calls to the
- * memoized `fn` with the same argument set will not result in an additional
- * call to `fn`; instead, the cached result for that set of arguments will be
- * returned.
+ * `memoize` 方法可以缓存函数的计算结果。
+ *
+ * 创建一个新函数，被调用时，缓存特定参数对应的经 `fn` 计算的结果，并将结果返回。此后如果用相同的参数调用缓存的 `fn` 时，直接返回该参数对应的缓存结果，不必再调用 `fn`。
  *
  * @func
  * @memberOf R

@@ -3,8 +3,7 @@ import drop from './drop';
 
 
 /**
- * Returns a new list containing the last `n` elements of the given list.
- * If `n > list.length`, returns a list of `list.length` elements.
+ * 返回列表的后 `n` 个元素。如果 `n > list.length`，则返回 `list.length` 个元素。
  *
  * @func
  * @memberOf R

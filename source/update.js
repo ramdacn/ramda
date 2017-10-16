@@ -4,8 +4,7 @@ import always from './always';
 
 
 /**
- * Returns a new copy of the array with the element at the provided index
- * replaced with the given value.
+ * 替换数组中指定索引处的值。
  *
  * @func
  * @memberOf R

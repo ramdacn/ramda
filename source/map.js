@@ -8,19 +8,15 @@ import keys from './keys';
 
 
 /**
- * Takes a function and
- * a [functor](https://github.com/fantasyland/fantasy-land#functor),
- * applies the function to each of the functor's values, and returns
- * a functor of the same shape.
+ * 接收一个函数和一个 [functor](https://github.com/fantasyland/fantasy-land#functor), 将该函数应用到 functor 的每个值上，返回一个具有相同形态的 functor。
  *
- * Ramda provides suitable `map` implementations for `Array` and `Object`,
- * so this function may be applied to `[1, 2, 3]` or `{x: 1, y: 2, z: 3}`.
+ * Ramda 为 `Array` 和 `Object` 提供了合适的 `map` 实现，因此 `R.map` 适用于 `[1, 2, 3]` 或 `{x: 1, y: 2, z: 3}`。
  *
- * Dispatches to the `map` method of the second argument, if present.
+ * 若第二个参数自身存在 `map` 方法，则调用自身的 `map` 方法。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在列表位置中给出 transfomer，则用作 transducer 。
  *
- * Also treats functions as functors and will compose them together.
+ * 函数也是 functors，`map` 会将它们组合起来（相当于 `R.compose`）。
  *
  * @func
  * @memberOf R

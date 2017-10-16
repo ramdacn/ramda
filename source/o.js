@@ -2,10 +2,9 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * `o` is a curried composition function that returns a unary function.
- * Like [`compose`](#compose), `o` performs right-to-left function composition.
- * Unlike [`compose`](#compose), the rightmost function passed to `o` will be
- * invoked with only one argument.
+ * `o` 是一个柯里化组合函数，返回一元函数。
+ *
+ * 类似于 [`compose`](＃compose)，`o` 从右到左执行函数组合。但与 [`compose`](＃compose) 不同的是，传递给 `o` 的最右边的函数为一元函数。
  *
  * @func
  * @memberOf R

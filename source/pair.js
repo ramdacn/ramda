@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Takes two arguments, `fst` and `snd`, and returns `[fst, snd]`.
+ * 接收两个参数，`fst` 和 `snd`，返回数组 `[fst, snd]`。
  *
  * @func
  * @memberOf R

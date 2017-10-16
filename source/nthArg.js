@@ -4,7 +4,7 @@ import nth from './nth';
 
 
 /**
- * Returns a function which returns its nth argument.
+ * 返回一个函数，该函数返回它的第 n 个参数。
  *
  * @func
  * @memberOf R

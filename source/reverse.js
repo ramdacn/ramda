@@ -3,8 +3,7 @@ import _isString from './internal/_isString';
 
 
 /**
- * Returns a new list or string with the elements or characters in reverse
- * order.
+ * 对列表或字符串的排列顺序取反。
  *
  * @func
  * @memberOf R

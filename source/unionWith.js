@@ -4,9 +4,7 @@ import uniqWith from './uniqWith';
 
 
 /**
- * Combines two lists into a set (i.e. no duplicates) composed of the elements
- * of each list. Duplication is determined according to the value returned by
- * applying the supplied predicate to two list elements.
+ * 集合并运算，合并两个列表为新列表（新列表中无重复元素）。由 predicate 的返回值决定两元素是否重复。
  *
  * @func
  * @memberOf R

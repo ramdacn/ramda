@@ -3,7 +3,7 @@ import equals from './equals';
 import takeLast from './takeLast';
 
 /**
- * Checks if a list ends with the provided values
+ * 检查列表是否以给定的值结尾。
  *
  * @func
  * @memberOf R
