@@ -92,8 +92,8 @@ const R = require('ramda');
 或使用 [jsDelivr](http://jsdelivr.com) 的以下任意链接：
 
 ```html
-<script src="//cdn.jsdelivr.net/npm/ramda@0.24.1/dist/ramda.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/ramda@0.24/dist/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@0.25.0/dist/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@0.25/dist/ramda.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script>
 ```
 

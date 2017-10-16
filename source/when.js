@@ -12,11 +12,13 @@ import _curry3 from './internal/_curry3';
  * @since v0.18.0
  * @category Logic
  * @sig (a -> Boolean) -> (a -> a) -> a -> a
- * @param {Function} pred 条件函数
- * @param {Function} whenTrueFn 当`pred`函数返回为 false 时候调用的函数
- * @param {*} x 作为参数传入`pred`用于判断，如果需要作为参数传入`whenTrueFn`
- * @return {*} `x`或者`whenTrueFn`的执行结果
- * @see R.ifElse, R.unless
+ * @param {Function} pred       A predicate function
+ * @param {Function} whenTrueFn A function to invoke when the `condition`
+ *                              evaluates to a truthy value.
+ * @param {*}        x          An object to test with the `pred` function and
+ *                              pass to `whenTrueFn` if necessary.
+ * @return {*} Either `x` or the result of applying `x` to `whenTrueFn`.
+ * @see R.ifElse, R.unless, R.cond
  * @example
  *
  *      // truncate :: String -> String
