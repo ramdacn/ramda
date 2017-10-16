@@ -2,7 +2,7 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * 替换字符串的子串或正则匹配到的值。
+ * Replace a substring or regex match in a string with a replacement.
  *
  * @func
  * @memberOf R

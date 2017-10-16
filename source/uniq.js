@@ -3,7 +3,8 @@ import uniqBy from './uniqBy';
 
 
 /**
- * 列表去重操作。返回无重复元素的列表。通过 [`R.equals`](#equals) 函数进行相等性判断。
+ * Returns a new list containing only one copy of each element in the original
+ * list. [`R.equals`](#equals) is used to determine equality.
  *
  * @func
  * @memberOf R

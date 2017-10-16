@@ -6,9 +6,11 @@ import reduceRight from './reduceRight';
 
 
 /**
- * 将一个 [Applicative](https://github.com/fantasyland/fantasy-land#applicative) 的 [Traversable](https://github.com/fantasyland/fantasy-land#traversable) 转换成一个 Traversable 类型的 Applicative。
+ * Transforms a [Traversable](https://github.com/fantasyland/fantasy-land#traversable)
+ * of [Applicative](https://github.com/fantasyland/fantasy-land#applicative) into an
+ * Applicative of Traversable.
  *
- * 如果第二个参数自身存在 `sequence` 方法，则调用自身的 `sequence`。
+ * Dispatches to the `sequence` method of the second argument, if present.
  *
  * @func
  * @memberOf R

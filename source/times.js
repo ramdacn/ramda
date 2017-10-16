@@ -2,9 +2,11 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * 执行输入的函数 `n` 次，返回由函数执行结果组成的数组。
+ * Calls an input function `n` times, returning an array containing the results
+ * of those function calls.
  *
- * `fn` 为一元函数，n 次调用接收的参数为：从 `0` 递增到 `n-1` 。
+ * `fn` is passed one argument: The current value of `n`, which begins at `0`
+ * and is gradually incremented to `n - 1`.
  *
  * @func
  * @memberOf R

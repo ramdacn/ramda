@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * 两数相除。等价于 `a / b`。
+ * Divides two numbers. Equivalent to `a / b`.
  *
  * @func
  * @memberOf R

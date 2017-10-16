@@ -4,11 +4,12 @@ import _xfind from './internal/_xfind';
 
 
 /**
- * 查找并返回 list 中首个满足 `predicate` 的元素；如果未找到满足条件的元素，则返回 `undefined` 。
+ * Returns the first element of the list which matches the predicate, or
+ * `undefined` if no element matches.
  *
- * 若第二个参数自身存在 `find` 方法，则调用自身的 `find` 方法。
+ * Dispatches to the `find` method of the second argument, if present.
  *
- * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
+ * Acts as a transducer if a transformer is given in list position.
  *
  * @func
  * @memberOf R

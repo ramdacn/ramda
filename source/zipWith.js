@@ -2,7 +2,9 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * 将两个列表对应位置的元素通过一个函数处理，生成一个新的元素的列表。生成的列表长度取决于较短的输入列表的长度。
+ * Creates a new list out of the two supplied by applying the function to each
+ * equally-positioned pair in the lists. The returned list is truncated to the
+ * length of the shorter of the two input lists.
  *
  * @function
  * @memberOf R

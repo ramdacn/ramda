@@ -3,7 +3,9 @@ import _has from './internal/_has';
 
 
 /**
- * 对于给定的非空对象，如果指定属性存在，则返回该属性值；否则返回给定的默认值。
+ * If the given, non-null object has an own property with the specified name,
+ * returns the value of that property. Otherwise returns the provided default
+ * value.
  *
  * @func
  * @memberOf R

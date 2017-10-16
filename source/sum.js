@@ -3,7 +3,7 @@ import reduce from './reduce';
 
 
 /**
- * 对数组中所有元素求和。
+ * Adds together all the elements of a list.
  *
  * @func
  * @memberOf R

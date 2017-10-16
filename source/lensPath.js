@@ -5,7 +5,7 @@ import path from './path';
 
 
 /**
- * 返回聚焦到指定路径的 lens。
+ * Returns a lens whose focus is the specified path.
  *
  * @func
  * @memberOf R

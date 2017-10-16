@@ -4,7 +4,10 @@ import reject from './reject';
 
 
 /**
- * 通过 predicate 将列表或 "Filterable" （可过滤的）对象分成两部分，分别为满足 predicate 的元素和不满足 predicate 的元素。元素类型保持不变。Filterable 类型包括 plain object 或者任何带有 filter 方法的类型，如 `Array` 。
+ * Takes a predicate and a list or other `Filterable` object and returns the
+ * pair of filterable objects of the same type of elements which do and do not
+ * satisfy, the predicate, respectively. Filterable objects include plain objects or any object
+ * that has a filter method such as `Array`.
  *
  * @func
  * @memberOf R

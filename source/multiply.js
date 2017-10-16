@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * 两数相乘，等价于柯里化的 `a * b` 。
+ * Multiplies two numbers. Equivalent to `a * b` but curried.
  *
  * @func
  * @memberOf R

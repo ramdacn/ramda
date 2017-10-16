@@ -2,7 +2,8 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * 如果对象自身或其原型链上含有指定的属性，则返回 `true`；否则返回 `false`。
+ * Returns whether or not an object or its prototype chain has a property with
+ * the specified name
  *
  * @func
  * @memberOf R

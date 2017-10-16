@@ -3,7 +3,7 @@ import equals from './equals';
 import take from './take';
 
 /**
- * 检查列表是否以给定的值开头。
+ * Checks if a list starts with the provided values
  *
  * @func
  * @memberOf R

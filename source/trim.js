@@ -7,7 +7,7 @@ var ws = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
 var zeroWidth = '\u200b';
 var hasProtoTrim = (typeof String.prototype.trim === 'function');
 /**
- * 删除字符串首、尾两端的空白字符。
+ * Removes (strips) whitespace from both ends of the string.
  *
  * @func
  * @memberOf R

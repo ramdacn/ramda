@@ -6,11 +6,13 @@ import _xreduceBy from './internal/_xreduceBy';
 
 
 /**
- * 首先对列表中的每个元素调用函数 `keyFn` ，根据 `keyFn` 返回的字符串对列表元素进行分组。然后调用 reducer 函数 `valueFn`，对组内的元素进行折叠操作。
+ * Groups the elements of the list according to the result of calling
+ * the String-returning function `keyFn` on each element and reduces the elements
+ * of each group to a single value via the reducer function `valueFn`.
  *
- * 该函数相当于更通用的 [`groupBy`](#groupBy) 函数。
+ * This function is basically a more general [`groupBy`](#groupBy) function.
  *
- * 若在列表位置给出 transformer，则用做 transducer
+ * Acts as a transducer if a transformer is given in list position.
  *
  * @func
  * @memberOf R

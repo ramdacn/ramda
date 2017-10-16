@@ -3,9 +3,10 @@ import not from './not';
 
 
 /**
- * 对函数的返回值取反。接受一个函数 `f`，返回一个新函数 `g`：在输入参数相同的情况下，若 `f` 返回 'true-y' ，则 `g` 返回 `false-y` ，反之亦然。
+ * Takes a function `f` and returns a function `g` such that if called with the same arguments
+ * when `f` returns a "truthy" value, `g` returns `false` and when `f` returns a "falsy" value `g` returns `true`.
  *
- * `R.complement` 可用于任何 functor。
+ * `R.complement` may be applied to any functor
  *
  * @func
  * @memberOf R

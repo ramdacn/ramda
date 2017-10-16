@@ -2,9 +2,12 @@ import reduceBy from './reduceBy';
 
 
 /**
- * 通过生成键的函数，将元素为对象的 list 转换为以生成的键为索引的新对象。注意，如果 list 中多个对象元素生成相同的键，以最后一个对象元素作为该键的值。
+ * Given a function that generates a key, turns a list of objects into an
+ * object indexing the objects by the given key. Note that if multiple
+ * objects generate the same value for the indexing key only the last value
+ * will be included in the generated object.
  *
- * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
+ * Acts as a transducer if a transformer is given in list position.
  *
  * @func
  * @memberOf R

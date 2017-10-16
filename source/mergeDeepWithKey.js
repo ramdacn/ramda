@@ -4,12 +4,14 @@ import mergeWithKey from './mergeWithKey';
 
 
 /**
- * 合并两个对象的自身属性（不包括 prototype 属性）。如果某个 key 在两个对象中都存在：
- *
- * - 并且两个关联的值都是对象，则继续递归合并这两个值。
- * - 否则，使用给定函数对该 key 和对应的两个值进行处理，并将返回值作为该 key 的新值。
- *
- * 如果某 key 只存在于一个对象中，该键值对将作为结果对象的键值对。
+ * Creates a new object with the own properties of the two provided objects.
+ * If a key exists in both objects:
+ * - and both associated values are also objects then the values will be
+ *   recursively merged.
+ * - otherwise the provided function is applied to the key and associated values
+ *   using the resulting value as the new value associated with the key.
+ * If a key only exists in one object, the value will be associated with the key
+ * of the resulting object.
  *
  * @func
  * @memberOf R

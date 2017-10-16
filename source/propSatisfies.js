@@ -2,7 +2,9 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * 如果指定的对象属性满足 predicate，返回 `true`；否则返回 `false`。可以使用 [`R.where`](#where) 进行多个属性的判断。
+ * Returns `true` if the specified object property satisfies the given
+ * predicate; `false` otherwise. You can test multiple properties with
+ * [`R.where`](#where).
  *
  * @func
  * @memberOf R

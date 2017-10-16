@@ -3,9 +3,10 @@ import reverse from './reverse';
 
 
 /**
- * 从右往左执行函数组合（右侧函数的输出作为左侧函数的输入）。最右侧函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
+ * Performs right-to-left function composition. The rightmost function may have
+ * any arity; the remaining functions must be unary.
  *
- * **注意：**compose 输出的函数不会自动进行柯里化。
+ * **Note:** The result of compose is not automatically curried.
  *
  * @func
  * @memberOf R

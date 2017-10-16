@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * 返回两个参数中的较小值。
+ * Returns the smaller of its two arguments.
  *
  * @func
  * @memberOf R

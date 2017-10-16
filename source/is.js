@@ -2,7 +2,8 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * 检测一个对象（`val`）是否是给定构造函数的实例。该函数会依次检测其原型链，如果存在的话。
+ * See if an object (`val`) is an instance of the supplied constructor. This
+ * function will check up the inheritance chain, if any.
  *
  * @func
  * @memberOf R

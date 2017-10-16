@@ -5,9 +5,10 @@ import slice from './slice';
 
 
 /**
- * 返回列表的前 `n` 个元素、字符串的前`n`个字符或者用作 transducer/transform（或者调用对象的 `take` 方法）。
+ * Returns the first `n` elements of the given list, string, or
+ * transducer/transformer (or object with a `take` method).
  *
- * 如果第二个参数自身存在 `take` 方法，则调用自身的 `take` 方法。
+ * Dispatches to the `take` method of the second argument, if present.
  *
  * @func
  * @memberOf R

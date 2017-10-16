@@ -2,7 +2,10 @@ import _curry1 from './internal/_curry1';
 
 
 /**
- * 返回给定对象所有属性（包括 prototype 属性）的属性名组成的列表。注意，不同 JS 运行环境输出数组的顺序可能不一致。
+ * Returns a list containing the names of all the properties of the supplied
+ * object, including prototype properties.
+ * Note that the order of the output array is not guaranteed to be consistent
+ * across different JS platforms.
  *
  * @func
  * @memberOf R

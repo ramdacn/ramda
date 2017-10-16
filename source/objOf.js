@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * 创建一个包含单个键值对的对象。
+ * Creates an object containing a single key:value pair.
  *
  * @func
  * @memberOf R

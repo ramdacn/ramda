@@ -3,7 +3,9 @@ import map from './map';
 
 
 /**
- * 返回封装了给定 getter 和 setter 方法的 lens 。 getter 和 setter 分别用于 “获取” 和 “设置” 焦点（`lens` 聚焦的值）。setter 不会改变原数据。
+ * Returns a lens for the given getter and setter functions. The getter "gets"
+ * the value of the focus; the setter "sets" the value of the focus. The setter
+ * should not mutate the data structure.
  *
  * @func
  * @memberOf R

@@ -3,7 +3,8 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * 在列表末尾拼接一个元素。
+ * Returns a new list containing the contents of the given list, followed by
+ * the given element.
  *
  * @func
  * @memberOf R

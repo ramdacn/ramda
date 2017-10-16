@@ -5,7 +5,7 @@ import _xdropLast from './internal/_xdropLast';
 
 
 /**
- * 删除 "list" 末尾的 `n` 个元素。
+ * Returns a list containing all but the last `n` elements of the given `list`.
  *
  * @func
  * @memberOf R
