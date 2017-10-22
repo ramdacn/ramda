@@ -2,7 +2,7 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * 删除列表中从 `start` 开始的 `count` 个元素。_ 注意，该操作是非破坏性的：不改变原列表，返回处理后列表的拷贝。
+ * 删除列表中从 `start` 开始的 `count` 个元素。注意，该操作是非破坏性的：不改变原列表，返回处理后列表的拷贝。
  *
  * @func
  * @memberOf R
