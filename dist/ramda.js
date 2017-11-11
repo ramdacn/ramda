@@ -3259,7 +3259,7 @@ var dissoc = _curry2(function dissoc(prop, obj) {
 });
 
 /**
- * 删除列表中从 `start` 开始的 `count` 个元素。_ 注意，该操作是非破坏性的：不改变原列表，返回处理后列表的拷贝。
+ * 删除列表中从 `start` 开始的 `count` 个元素。注意，该操作是非破坏性的：不改变原列表，返回处理后列表的拷贝。
  *
  * @func
  * @memberOf R
@@ -4748,7 +4748,7 @@ var innerJoin = _curry3(function innerJoin(pred, xs, ys) {
 });
 
 /**
- * 将元素插入到 list 指定索引处。注意，该函数是破坏性的：返回处理后列表的拷贝。<small>函数运行过程中不会破坏任何列表。</small>
+ * 将元素插入到 list 指定索引处。注意，该函数是非破坏性的：返回处理后列表的拷贝。<small>函数运行过程中不会破坏任何列表。</small>
  *
  * @func
  * @memberOf R
@@ -4771,7 +4771,7 @@ var insert = _curry3(function insert(idx, elt, list) {
 });
 
 /**
- * 将子 list 插入到 list 指定索引处。注意，该函数是破坏性的：返回处理后列表的拷贝。<small>函数运行过程中不会破坏任何列表。</small>
+ * 将子 list 插入到 list 指定索引处。注意，该函数是非破坏性的：返回处理后列表的拷贝。<small>函数运行过程中不会破坏任何列表。</small>
  *
  * @func
  * @memberOf R
@@ -6441,7 +6441,7 @@ var omit = _curry2(function omit(names, obj) {
 });
 
 /**
- * 创建一个只能调用一次的函数。
+ * 创建一个只执行一次的函数。
  *
  * 将给定函数 `fn` 封装到新函数`fn'`中，`fn'` 确保 `fn` 只能调用一次。重复调用`fn'` ，只会返回第一次执行时的结果。
  *
