@@ -1046,12 +1046,11 @@ XAny.prototype['@@transducer/step'] = function(result, input) {
 var _xany = _curry2(function _xany(f, xf) { return new XAny(f, xf); });
 
 /**
- * Returns `true` if at least one of the elements of the list match the predicate,
- * `false` otherwise.
+ * 只要列表中有一个元素满足 predicate，就返回 `true`，否则返回 `false`。
  *
- * Dispatches to the `any` method of the second argument, if present.
+ * 若第二个参数自身存在 `any` 方法，则调用其自身的 `any`。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在列表位置中给出 transfomer，则用作 transducer 。
  *
  * @func
  * @memberOf R
@@ -1338,9 +1337,9 @@ var applySpec = _curry1(function applySpec(spec) {
 });
 
 /**
- * 给定一个值，并将函数作用于该值。
+ * 接受一个值，并将一个函数作用于其上。
  *
- * 该函数也被称为 `thrush` combinator.
+ * 该函数又被称为 `thrush` combinator.
  *
  * @func
  * @memberOf R
@@ -1792,15 +1791,13 @@ var _xchain = _curry2(function _xchain(f, xf) {
 });
 
 /**
- * `chain` maps a function over a list and concatenates the results. `chain`
- * is also known as `flatMap` in some libraries.
+ * `chain` 将函数映射到列表中每个元素，并将结果连接起来。 `chain` 在一些库中也称为 `flatMap`（先 map 再 flatten ）。
  *
- * Dispatches to the `chain` method of the second argument, if present,
- * according to the [FantasyLand Chain spec](https://github.com/fantasyland/fantasy-land#chain).
+ * 若第二个参数存在 `chain` 方法，则调用其自身的 `chain`方法。该参数需符合 [FantasyLand Chain 规范](https://github.com/fantasyland/fantasy-land#chain)。
  *
- * If second argument is a function, `chain(f, g)(x)` is equivalent to `f(g(x), x)`.
+ * 如果第二个参数是函数，`chain(f, g)(x)` 等价于 `f(g(x), x)`。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在列表位置中给出 transfomer，则用作 transducer。
  *
  * @func
  * @memberOf R
@@ -2395,10 +2392,8 @@ function _identity(x) { return x; }
 var identity = _curry1(_identity);
 
 /**
- * Performs left-to-right function composition using transforming function. The leftmost function may have
- * any arity; the remaining functions must be unary.
- *
- * **Note:** The result of pipeWith is not automatically curried.
+ * 利用转换函数从左往右执行函数组合。最右侧函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。 *
+ * **注意：**pipe 输出的函数不会自动进行柯里化。
  *
  * @func
  * @memberOf R
@@ -2435,10 +2430,8 @@ var pipeWith = _curry2(function pipeWith(xf, list) {
 });
 
 /**
- * Performs right-to-left function composition using transforming function. The rightmost function may have
- * any arity; the remaining functions must be unary.
- *
- * **Note:** The result of compose is not automatically curried.
+ * 利用转换函数从右往左执行函数组合。最右侧函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。 *
+ * **注意：**compose 输出的函数不会自动进行柯里化。
  *
  * @func
  * @memberOf R
@@ -3124,9 +3117,9 @@ var construct = _curry1(function construct(Fn) {
 });
 
 /**
- * Returns `true` if the specified value is equal, in [`R.equals`](#equals)
- * terms, to at least one element of the given list; `false` otherwise.
- * Works also with strings.
+ * 只要列表中有一个元素等于指定值，则返回 `true`；否则返回 `false`。通过 [`R.equals`](#equals) 函数进行相等性判断。
+ *
+ * 也可以判断字符串中是否包含指定值。
  *
  * @func
  * @memberOf R
@@ -3149,12 +3142,7 @@ var construct = _curry1(function construct(Fn) {
 var contains$1 = _curry2(_includes);
 
 /**
- * Accepts a converging function and a list of branching functions and returns
- * a new function. The arity of the new function is the same as the arity of
- * the longest branching function. When invoked, this new function is applied
- * to some arguments, and each branching function is applied to those same
- * arguments. The results of each branching function are passed as arguments
- * to the converging function to produce the return value.
+ * 接受一个 converging 函数和一个分支函数列表，返回一个新函数。新函数的元数（参数个数）等于最长分支函数的元数。当被调用时，新函数接受参数，并将这些参数转发给每个分支函数；然后将每个分支函数的计算结果作为参数传递给 converging 函数，converging 函数的计算结果即新函数的返回值。
  *
  * @func
  * @memberOf R
@@ -3879,7 +3867,7 @@ var _xdropLast = _curry2(function _xdropLast(n, xf) { return new XDropLast(n, xf
 /**
  * 删除 "list" 末尾的 `n` 个元素。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在列表位置中给出 transfomer，则用作 transducer 。
  *
  * @func
  * @memberOf R
@@ -3945,7 +3933,7 @@ var _xdropLastWhile = _curry2(function _xdropLastWhile(fn, xf) { return new XDro
  *
  * `predicate` 需要作为第一个参数传入。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在列表位置中给出 transfomer，则用作 transducer 。
  *
  * @func
  * @memberOf R
@@ -4247,9 +4235,9 @@ var takeLast = _curry2(function takeLast(n, xs) {
 });
 
 /**
- * Checks if a list ends with the provided sublist.
+ * 检查列表是否以指定的子列表结尾。
  *
- * Similarly, checks if a string ends with the provided substring.
+ * 同样的，检查字符串是否以指定的子字符串结尾。
  *
  * @func
  * @memberOf R
@@ -4848,8 +4836,7 @@ var gt = _curry2(function gt(a, b) { return a > b; });
 var gte = _curry2(function gte(a, b) { return a >= b; });
 
 /**
- * Returns whether or not a path exists in an object. Only the object's
- * own properties are checked.
+ * 检查对象中是否存在指定的路径。只检查对象自身的属性。
  *
  * @func
  * @memberOf R
@@ -4945,7 +4932,7 @@ var hasIn = _curry2(function hasIn(prop, obj) {
 /**
  * 如果两个参数是完全相同，则返回 `true`，否则返回 `false`。如果它们引用相同的内存，也认为是完全相同的。`NaN` 和 `NaN` 是完全相同的；`0` 和 `-0` 不是完全相同的。
  *
- * Note this is merely a curried version of ES6 `Object.is`.
+ * **注意**：这只是 ES6 `Object.is` 的柯里化版本而已。
  *
  * @func
  * @memberOf R
@@ -5017,9 +5004,9 @@ var ifElse = _curry3(function ifElse(condition, onTrue, onFalse) {
 var inc = add(1);
 
 /**
- * Returns `true` if the specified value is equal, in [`R.equals`](#equals)
- * terms, to at least one element of the given list; `false` otherwise.
- * Works also with strings.
+ * 只要列表中有一个元素等于指定值，则返回 `true`；否则返回 `false`。通过 `R.equals` 函数进行相等性判断。
+ *
+ * 也可以判断字符串中是否包含指定值。
  *
  * @func
  * @memberOf R
@@ -5910,16 +5897,11 @@ var mapAccum = _curry3(function mapAccum(fn, acc, list) {
 });
 
 /**
- * The `mapAccumRight` function behaves like a combination of map and reduce; it
- * applies a function to each element of a list, passing an accumulating
- * parameter from right to left, and returning a final value of this
- * accumulator together with the new list.
+ * `mapAccumRight` 的行为类似于 map 和 reduce 的组合；它将迭代函数作用于列表中的每个元素，从右往左传递经迭代函数计算的累积值，并将最后的累积值和由所有中间的累积值组成的列表一起返回。
  *
- * Similar to [`mapAccum`](#mapAccum), except moves through the input list from
- * the right to the left.
+ * 和 [`mapAccum`](#mapAccum) 类似，除了列表遍历顺序是从右往左的。
  *
- * The iterator function receives two arguments, *acc* and *value*, and should
- * return a tuple *[acc, value]*.
+ * 迭代函数接收两个参数，*acc* 和 *value* ，返回一个元组 *[acc, value]*。
  *
  * @func
  * @memberOf R
@@ -6381,9 +6363,7 @@ var mergeDeepWith = _curry3(function mergeDeepWith(fn, lObj, rObj) {
 });
 
 /**
- * Create a new object with the own properties of the first object merged with
- * the own properties of the second object. If a key exists in both objects,
- * the value from the first object will be used.
+ * 合并两个对象的自身属性（不包括 prototype 属性）。如果某个 key 在两个对象中都存在，使用前一个对象对应的属性值。
  *
  * @func
  * @memberOf R
@@ -6407,9 +6387,7 @@ var mergeLeft = _curry2(function mergeLeft(l, r) {
 });
 
 /**
- * Create a new object with the own properties of the first object merged with
- * the own properties of the second object. If a key exists in both objects,
- * the value from the second object will be used.
+ * 合并两个对象的自身属性（不包括 prototype 属性）。如果某个 key 在两个对象中都存在，使用后一个对象对应的属性值。
  *
  * @func
  * @memberOf R
@@ -6570,12 +6548,9 @@ var multiply = _curry2(function multiply(a, b) { return a * b; });
 var negate = _curry1(function negate(n) { return -n; });
 
 /**
- * Returns `true` if no elements of the list match the predicate, `false`
- * otherwise.
+ * 如果列表中的元素都不满足 predicate，返回 `true`；否则返回 `false`。
  *
- * Dispatches to the `all` method of the second argument, if present.
- *
- * Acts as a transducer if a transformer is given in list position.
+ * 若第二个参数自身存在 `none` 方法，则调用自身的 `none` 方法。
  *
  * @func
  * @memberOf R
@@ -6624,12 +6599,9 @@ var nthArg = _curry1(function nthArg(n) {
 });
 
 /**
- * `o` is a curried composition function that returns a unary function.
- * Like [`compose`](#compose), `o` performs right-to-left function composition.
- * Unlike [`compose`](#compose), the rightmost function passed to `o` will be
- * invoked with only one argument. Also, unlike [`compose`](#compose), `o` is
- * limited to accepting only 2 unary functions. The name o was chosen because
- * of its similarity to the mathematical composition operator ∘.
+ * `o` 是一个柯里化组合函数，返回一元函数。
+ *
+ * 类似于 [`compose`](＃compose)，`o` 从右到左执行函数组合。但与 [`compose`](＃compose) 不同的是，传递给 `o` 的最右边的函数为一元函数。
  *
  * @func
  * @memberOf R
@@ -6748,9 +6720,9 @@ function _assertPromise(name, p) {
 }
 
 /**
- * Returns the result of applying the onFailure function to the value inside
- * a failed promise. This is useful for handling rejected promises
- * inside function compositions.
+ * 将 onFailure 函数应用于一个失败 Promise 的内部值，并将计算结果放入新的 Promise 中返回。这对于处理函数组合内的 rejected promises 很有用。
+ *
+ * 相当于 `Promise` 的 `catch`。
  *
  * @func
  * @memberOf R
@@ -7447,14 +7419,11 @@ var reduceWhile = _curryN(4, [], function _reduceWhile(pred, fn, a, list) {
 });
 
 /**
- * Returns a value wrapped to indicate that it is the final value of the reduce
- * and transduce functions. The returned value should be considered a black
- * box: the internal structure is not guaranteed to be stable.
+ * 返回一个封装的值，该值代表 `reduce` 或 `transduce` 操作的最终结果。
  *
- * Note: this optimization is only available to the below functions:
- * - [`reduce`](#reduce)
- * - [`reduceWhile`](#reduceWhile)
- * - [`transduce`](#transduce)
+ * 返回值是一个黑盒：不保证其内部结构的稳定性。
+ *
+ * 注意：这个优化不适用于上面未明确列出的函数。例如，现在还不支持 `reduceRight`。
  *
  * @func
  * @memberOf R
@@ -7539,10 +7508,6 @@ var repeat = _curry2(function repeat(value, n) {
 
 /**
  * 替换字符串的子串或正则匹配到的值。
- *
- * The first two parameters correspond to the parameters of the
- * `String.prototype.replace()` function, so the second parameter can also be a
- * function.
  *
  * @func
  * @memberOf R
@@ -7860,9 +7825,7 @@ var splitWhen = _curry2(function splitWhen(pred, list) {
 });
 
 /**
- * Checks if a list starts with the provided sublist.
- *
- * Similarly, checks if a string starts with the provided substring.
+ * 检查列表是否以给定的值开头。
  *
  * @func
  * @memberOf R
@@ -8099,9 +8062,7 @@ var test = _curry2(function test(pattern, str) {
 });
 
 /**
- * Returns the result of applying the onSuccess function to the value inside
- * a successfully resolved promise. This is useful for working with promises
- * inside function compositions.
+ * 将 onSuccess 函数应用于一个 resolved Promise 的内部值，并将计算结果放入新的 Promise 中返回。这对于处理函数组合内的 promises 很有用。
  *
  * @func
  * @memberOf R
@@ -8946,8 +8907,7 @@ var zipWith = _curry3(function zipWith(fn, a, b) {
 });
 
 /**
- * Creates a thunk out of a function. A thunk delays a calculation until
- * its result is needed, providing lazy evaluation of arguments.
+ * 创建一个 thunk 版本的函数。 thunk 会延迟计算直到需要其结果，从而实现惰性求值。
  *
  * @func
  * @memberOf R
