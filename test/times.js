@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -10,11 +10,6 @@ describe('times', function() {
     eq(R.times(function(x) {
       return x * 2;
     }, 5), [0, 2, 4, 6, 8]);
-  });
-
-  it('is curried', function() {
-    var mapid = R.times(R.identity);
-    eq(mapid(5), [0, 1, 2, 3, 4]);
   });
 
   it('throws if second argument is not a valid array length', function() {

@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 var byType = R.prop('type');
@@ -45,25 +45,14 @@ describe('reduceBy', function() {
     eq(R.reduceBy(sumValues, 0, byType, []), {});
   });
 
-  it('is curried', function() {
-    var reduceToSumsBy = R.reduceBy(sumValues, 0);
-    var sumByType = reduceToSumsBy(byType);
-    eq(sumByType(sumInput), {A: 80, B: 80, C: 50});
-  });
-
-  it('correctly reports the arity of curried versions', function() {
-    var inc = R.reduceBy(sumValues, 0)(byType);
-    eq(inc.length, 1);
-  });
-
   it('can act as a transducer', function() {
     var reduceToSumsBy = R.reduceBy(sumValues, 0);
     var sumByType = reduceToSumsBy(byType);
     eq(R.into(
-         {},
-         R.compose(sumByType, R.map(R.adjust(R.multiply(10), 1))),
-         sumInput),
-       {A: 800, B: 800, C: 500});
+      {},
+      R.compose(sumByType, R.map(R.adjust(1, R.multiply(10)))),
+      sumInput
+    ), {A: 800, B: 800, C: 500});
   });
 
 });

@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -47,16 +47,6 @@ describe('constructN', function() {
       return (err instanceof Error &&
               err.message === 'Constructor with greater than ten arguments');
     });
-  });
-
-  it('is curried', function() {
-    function G(a, b, c) { this.a = a; this.b = b; this.c = c; }
-    var construct2 = R.constructN(2);
-    eq(typeof construct2, 'function');
-    var g2 = construct2(G);
-    eq(typeof g2, 'function');
-    eq(g2('a', 'b').constructor, G);
-    eq(g2('a')('b').constructor, G);
   });
 
 });

@@ -6,6 +6,6 @@
  * Similar to [`mapAccum`](#mapAccum), except moves through the input list from
  * the right to the left.
  *
- * The iterator function receives two arguments, *value* and *acc*, and should
- * return a tuple *[value, acc]*.
+ * The iterator function receives two arguments, *acc* and *value*, and should
+ * return a tuple *[acc, value]*.
  *

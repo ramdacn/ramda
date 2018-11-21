@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -9,11 +9,6 @@ describe('splitAt', function() {
 
   it('splits a string at a given index', function() {
     eq(R.splitAt(5, 'hello world'), ['hello', ' world']);
-  });
-
-  it('is curried', function() {
-    var splitAtThree = R.splitAt(3);
-    eq(splitAtThree('foobar'), ['foo', 'bar']);
   });
 
   it('can handle index greater than array length', function() {

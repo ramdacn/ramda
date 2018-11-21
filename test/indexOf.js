@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -71,22 +71,23 @@ describe('indexOf', function() {
     };
 
     var list = new List('b',
-               new List('a',
-               new List('n',
-               new List('a',
-               new List('n',
-               new List('a',
-               new Empty()))))));
+      new List('a',
+        new List('n',
+          new List('a',
+            new List('n',
+              new List('a',
+                new Empty()
+              )
+            )
+          )
+        )
+      )
+    );
 
     eq(R.indexOf('a', 'banana'), 1);
     eq(R.indexOf('x', 'banana'), -1);
     eq(R.indexOf('a', list), 1);
     eq(R.indexOf('x', list), -1);
-  });
-
-  it('is curried', function() {
-    var curried = R.indexOf(3);
-    eq(curried(list), 2);
   });
 
   it('finds function, compared by identity', function() {

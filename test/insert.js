@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -16,12 +16,6 @@ describe('insert', function() {
   it('appends to the end of the list if the index is too large', function() {
     var list = ['a', 'b', 'c', 'd', 'e'];
     eq(R.insert(8, 'z', list), ['a', 'b', 'c', 'd', 'e', 'z']);
-  });
-
-  it('is curried', function() {
-    var list = ['a', 'b', 'c', 'd', 'e'];
-    eq(R.insert(8)('z')(list), ['a', 'b', 'c', 'd', 'e', 'z']);
-    eq(R.insert(8, 'z')(list), ['a', 'b', 'c', 'd', 'e', 'z']);
   });
 
 });

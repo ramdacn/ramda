@@ -1,8 +1,7 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
-var assocPath = require('../src/assocPath');
 
 
 describe('assocPath', function() {
@@ -19,7 +18,7 @@ describe('assocPath', function() {
 
   it('is the equivalent of clone and setPath if the property is not on the original', function() {
     var obj1 = {a: 1, b: {c: 2, d: 3}, e: 4, f: 5};
-    var obj2 = assocPath(['x', 0, 'y'], 42, obj1);
+    var obj2 = R.assocPath(['x', 0, 'y'], 42, obj1);
     eq(obj2, {a: 1, b: {c: 2, d: 3}, e: 4, f: 5, x: [{y: 42}]});
     // Note: reference equality below!
     assert.strictEqual(obj2.a, obj1.a);
@@ -28,25 +27,16 @@ describe('assocPath', function() {
     assert.strictEqual(obj2.f, obj1.f);
   });
 
-  it('is curried', function() {
-    var obj1 = {a: {b: 1, c: 2, d: {e: 3}}, f: {g: {h: 4, i: 5, j: {k: 6, l: 7}}}, m: 8};
-    var expected = {a: {b: 1, c: 2, d: {e: 3}}, f: {g: {h: 4, i: {x: 42}, j: {k: 6, l: 7}}}, m: 8};
-    var f = R.assocPath(['f', 'g', 'i']);
-    var g = f({x: 42});
-    eq(f({x: 42}, obj1), expected);
-    eq(g(obj1), expected);
-  });
-
   it('empty path replaces the the whole object', function() {
     eq(R.assocPath([], 3, {a: 1, b: 2}), 3);
   });
 
   it('replaces `undefined` with a new object', function() {
-    eq(assocPath(['foo', 'bar', 'baz'], 42, {foo: undefined}), {foo: {bar: {baz: 42}}});
+    eq(R.assocPath(['foo', 'bar', 'baz'], 42, {foo: undefined}), {foo: {bar: {baz: 42}}});
   });
 
   it('replaces `null` with a new object', function() {
-    eq(assocPath(['foo', 'bar', 'baz'], 42, {foo: null}), {foo: {bar: {baz: 42}}});
+    eq(R.assocPath(['foo', 'bar', 'baz'], 42, {foo: null}), {foo: {bar: {baz: 42}}});
   });
 
 });

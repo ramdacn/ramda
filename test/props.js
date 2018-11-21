@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -22,10 +22,6 @@ describe('props', function() {
     eq(ps.length, 2);
     eq(ps[0], 1);
     eq(ps[1], void 0);
-  });
-
-  it('is curried', function() {
-    eq(R.props(['a', 'b'])(obj), [1, 2]);
   });
 
 });

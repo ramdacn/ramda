@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -20,10 +20,8 @@ describe('dropLastWhile', function() {
     eq(sublist[2], void 0);
   });
 
-  it('is curried', function() {
-    var dropGt7 = R.dropLastWhile(function(x) {return x > 7;});
-    eq(dropGt7([1, 3, 5, 7, 9]), [1, 3, 5, 7]);
-    eq(dropGt7([1, 3, 5]), [1, 3, 5]);
+  it('can operate on strings', function() {
+    eq(R.dropLastWhile(function(x) { return x !== 'd'; }, 'Ramda'), 'Ramd');
   });
 
   it('can act as a transducer', function() {

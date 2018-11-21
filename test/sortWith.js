@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -60,14 +60,6 @@ describe('sortWith', function() {
     eq(sortedAlbums[0].title, 'Fly By Night');
     eq(sortedAlbums[1].title, 'Romance with the Unseen');
     eq(sortedAlbums[11].title, 'In Times of Desparation');
-  });
-
-  it('is curried', function() {
-    var sorter = R.sortWith([R.ascend(R.prop('title'))]);
-    var sortedAlbums = sorter(albums);
-    eq(sortedAlbums.length, albums.length);
-    eq(sortedAlbums[0].title, 'A Farewell to Kings');
-    eq(sortedAlbums[11].title, 'Timeout');
   });
 
   it('preserves object identity', function() {

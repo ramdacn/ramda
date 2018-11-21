@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -42,11 +42,6 @@ describe('difference', function() {
     eq(R.difference(M2, M), []);
     eq(R.difference(M, M2), []);
     eq(R.difference([], M2), []);
-  });
-
-  it('is curried', function() {
-    eq(typeof R.difference([1, 2, 3]), 'function');
-    eq(R.difference([1, 2, 3])([1, 3]), [2]);
   });
 
 });

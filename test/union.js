@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -7,11 +7,6 @@ describe('union', function() {
   var N = [3, 4, 5, 6];
   it('combines two lists into the set of all their elements', function() {
     eq(R.union(M, N), [1, 2, 3, 4, 5, 6]);
-  });
-
-  it('is curried', function() {
-    eq(typeof R.union(M), 'function');
-    eq(R.union(M)(N), [1, 2, 3, 4, 5, 6]);
   });
 
   it('has R.equals semantics', function() {

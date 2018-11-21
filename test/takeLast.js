@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -34,12 +34,6 @@ describe('takeLast', function() {
 
   it('handles zero correctly (#1224)', function() {
     eq(R.takeLast(0, [1, 2, 3]), []);
-  });
-
-  it('is curried', function() {
-    var takeLast3 = R.takeLast(3);
-    eq(takeLast3(['a', 'b', 'c', 'd', 'e', 'f', 'g']), ['e', 'f', 'g']);
-    eq(takeLast3(['w', 'x', 'y', 'z']), ['x', 'y', 'z']);
   });
 
 });

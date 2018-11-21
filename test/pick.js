@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -23,11 +23,6 @@ describe('pick', function() {
     var obj = new F(30);
     obj.v = 10; obj.w = 20;
     eq(R.pick(['w', 'x', 'y'], obj), {w: 20, x: 30, y: 40});
-  });
-
-  it('is curried', function() {
-    var copyAB = R.pick(['a', 'b']);
-    eq(copyAB(obj), {a: 1, b: 2});
   });
 
 });

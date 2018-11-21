@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -36,11 +36,6 @@ describe('pickBy', function() {
     var obj = new F(30);
     obj.v = 10; obj.w = 20;
     eq(R.pickBy(function(val) {return val < 45;}, obj), {v: 10, w: 20, x: 30, y: 40});
-  });
-
-  it('is curried', function() {
-    var copier = R.pickBy(R.T);
-    eq(copier(obj), obj);
   });
 
 });

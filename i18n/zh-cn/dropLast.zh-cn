@@ -1,2 +1,4 @@
  * 删除 "list" 末尾的 `n` 个元素。
  *
+ * 若在列表位置中给出 transfomer，则用作 transducer 。
+ *

@@ -1,6 +1,6 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
-var _isTransformer = require('../src/internal/_isTransformer');
+var _isTransformer = require('../source/internal/_isTransformer');
 
 
 describe('groupBy', function() {
@@ -27,22 +27,6 @@ describe('groupBy', function() {
       C: [{name: 'Brad', score: 73}, {name: 'Hannah', score: 78}],
       D: [{name: 'Fred', score: 67}, {name: 'Jack', score: 69}],
       F: [{name: 'Eddy', score: 58}]
-    });
-  });
-
-  it('is curried', function() {
-    var splitByType = R.groupBy(R.prop('type'));
-    eq(splitByType([
-      {type: 'A', val: 10},
-      {type: 'B', val: 20},
-      {type: 'A', val: 30},
-      {type: 'A', val: 40},
-      {type: 'C', val: 50},
-      {type: 'B', val: 60}
-    ]), {
-      A: [{type: 'A', val: 10}, {type: 'A', val: 30}, {type: 'A', val: 40}],
-      B: [{type: 'B', val: 20}, {type: 'B', val: 60}],
-      C: [{type: 'C', val: 50}]
     });
   });
 

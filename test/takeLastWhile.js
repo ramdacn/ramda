@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -14,10 +14,8 @@ describe('takeLastWhile', function() {
     eq(R.takeLastWhile(function(x) {return x !== void 0;}, [1, 3, void 0, 5, 7]), [5, 7]);
   });
 
-  it('is curried', function() {
-    var takeLastUntil7 = R.takeLastWhile(function(x) {return x !== 7;});
-    eq(takeLastUntil7([1, 3, 5, 7, 9]), [9]);
-    eq(takeLastUntil7([2, 4, 6, 8, 10]), [2, 4, 6, 8, 10]);
+  it('can operate on strings', function() {
+    eq(R.takeLastWhile(function(x) { return x !== 'R'; }, 'Ramda'), 'amda');
   });
 
 });

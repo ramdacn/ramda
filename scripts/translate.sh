@@ -2,8 +2,8 @@
 set -e
 
 GIT_ROOT_DIR="$(git rev-parse --show-toplevel)"
-SRC_DIR="$GIT_ROOT_DIR/src"
-SRC_DIR_FILES="$GIT_ROOT_DIR/src/*.js"
+SRC_DIR="$GIT_ROOT_DIR/source"
+SRC_DIR_FILES="$GIT_ROOT_DIR/source/*.js"
 TRANS_DIR="$GIT_ROOT_DIR/i18n"
 
 for i in "$@"

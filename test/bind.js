@@ -1,5 +1,5 @@
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -69,11 +69,6 @@ describe('bind', function() {
     var getXBarBound = R.bind(getX, b);
     eq(b.getX(), 'prototype getX');
     eq(getXBarBound(), 'a');
-  });
-
-  it('is curried', function() {
-    var f = new Foo(1);
-    eq(R.bind(add)(f)(10), 11);
   });
 
   it('preserves arity', function() {

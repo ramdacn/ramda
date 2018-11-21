@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -29,11 +29,6 @@ describe('filter', function() {
   it('dispatches to passed-in non-Array object with a `filter` method', function() {
     var f = {filter: function(f) { return f('called f.filter'); }};
     eq(R.filter(function(s) { return s; }, f), 'called f.filter');
-  });
-
-  it('is curried', function() {
-    var onlyEven = R.filter(even);
-    eq(onlyEven([1, 2, 3, 4, 5, 6, 7]), [2, 4, 6]);
   });
 
 });

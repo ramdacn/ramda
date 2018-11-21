@@ -1,15 +1,10 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
 describe('without', function() {
   it('returns an array not containing values in the first argument', function() {
     eq(R.without([1, 2], [1, 2, 1, 4, 5]), [4, 5]);
-  });
-
-  it('is curried', function() {
-    var withoutOnes = R.without([1]);
-    eq(withoutOnes([1, 2, 3, 5, 1]), [2, 3, 5]);
   });
 
   it('can act as a transducer', function() {

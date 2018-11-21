@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -12,12 +12,6 @@ describe('match', function() {
   it('determines whether a string matches a regex', function() {
     eq(R.match(re, matching).length, 1);
     eq(R.match(re, notMatching), []);
-  });
-
-  it('is curried', function() {
-    var format = R.match(re);
-    eq(format(matching).length, 1);
-    eq(format(notMatching), []);
   });
 
   it('defaults to a different empty array each time', function() {

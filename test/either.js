@@ -1,6 +1,6 @@
 var S = require('sanctuary');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -29,15 +29,6 @@ describe('either', function() {
     var effect = 'not evaluated';
     R.either(T, Z)();
     eq(effect, 'not evaluated');
-  });
-
-  it('is curried', function() {
-    var even = function(x) {return x % 2 === 0;};
-    var gt10 = function(x) {return x > 10;};
-    var evenOr = R.either(even);
-    eq(typeof evenOr(gt10), 'function');
-    eq(evenOr(gt10)(11), true);
-    eq(evenOr(gt10)(9), false);
   });
 
   it('accepts fantasy-land applicative functors', function() {

@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -15,11 +15,6 @@ describe('omit', function() {
     var obj = new F(30);
     obj.v = 10; obj.w = 20;
     eq(R.omit(['w', 'x', 'y'], obj), {v: 10, z: 50});
-  });
-
-  it('is curried', function() {
-    var skipAB = R.omit(['a', 'b']);
-    eq(skipAB(obj), {c: 3, d: 4, e: 5, f: 6});
   });
 
 });

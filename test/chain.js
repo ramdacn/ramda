@@ -1,8 +1,8 @@
 var listXf = require('./helpers/listXf');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
-var _isTransformer = require('../src/internal/_isTransformer');
+var _isTransformer = require('../source/internal/_isTransformer');
 
 describe('chain', function() {
   var intoArray = R.into([]);
@@ -61,16 +61,6 @@ describe('chain', function() {
     var mdec = R.chain(dec);
     var xcomp = R.compose(mdec, mdouble);
     eq(intoArray(xcomp, [10, 20, 30]), [18, 38, 58]);
-  });
-
-  it('is curried', function() {
-    var flatInc = R.chain(add1);
-    eq(flatInc([1, 2, 3, 4, 5, 6]), [2, 3, 4, 5, 6, 7]);
-  });
-
-  it('correctly reports the arity of curried versions', function() {
-    var inc = R.chain(add1);
-    eq(inc.length, 1);
   });
 
 });

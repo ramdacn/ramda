@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -20,10 +20,8 @@ describe('dropWhile', function() {
     eq(sublist[2], 7);
   });
 
-  it('is curried', function() {
-    var dropLt7 = R.dropWhile(function(x) {return x < 7;});
-    eq(dropLt7([1, 3, 5, 7, 9]), [7, 9]);
-    eq(dropLt7([2, 4, 6, 8, 10]), [8, 10]);
+  it('can operate on strings', function() {
+    eq(R.dropWhile(function(x) { return x !== 'd'; }, 'Ramda'), 'da');
   });
 
 });

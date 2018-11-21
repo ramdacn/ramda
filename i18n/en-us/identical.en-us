@@ -2,3 +2,5 @@
  * identical if they reference the same memory. `NaN` is identical to `NaN`;
  * `0` and `-0` are not identical.
  *
+ * Note this is merely a curried version of ES6 `Object.is`.
+ *

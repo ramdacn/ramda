@@ -1,10 +1,11 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 describe('transduce', function() {
   var add = R.add;
   var mult = function(a, b) {return a * b;};
   var isOdd = function(b) {return b % 2 === 1;};
+  var square = function(a) {return a * a;};
   var addxf = {
     '@@transducer/step': function(acc, x) { return acc + x; },
     '@@transducer/init': function() { return 0; },
@@ -72,18 +73,10 @@ describe('transduce', function() {
     eq(R.transduce(toxf(R.concat), listxf, [], []), []);
   });
 
-  it('is curried', function() {
-    var addOrCat1 = R.transduce(toxf(add));
-    var addOrCat2 = addOrCat1(addxf);
-    var sum = addOrCat2(0);
-    var cat = addOrCat2('');
-    eq(sum([1, 2, 3, 4]), 10);
-    eq(cat(['1', '2', '3', '4']), '1234');
+  it('short circuits with reduced', function() {
+    var transducer = R.compose(R.map(square), R.filter(isOdd));
+    var iterator = function(acc, val) {return val > 10 ? R.reduced(acc) : R.append(val, acc);};
+    var getOddSquaresWhileLessThan10 = R.transduce(transducer, iterator, []);
+    eq(getOddSquaresWhileLessThan10([1, 2, 3, 4]), [1, 9]);
   });
-
-  it('correctly reports the arity of curried versions', function() {
-    var sum = R.transduce(toxf(add), addxf, 0);
-    eq(sum.length, 1);
-  });
-
 });

@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -50,11 +50,6 @@ describe('reject', function() {
     eq(R.filter(R.F, m), Nothing.value);
     eq(R.reject(R.T, m), Nothing.value);
     eq(R.reject(R.F, m), m);
-  });
-
-  it('is curried', function() {
-    var odd = R.reject(even);
-    eq(odd([1, 2, 3, 4, 5, 6, 7]), [1, 3, 5, 7]);
   });
 
 });

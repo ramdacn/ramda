@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -37,7 +37,4 @@ describe('mergeWith', function() {
     eq(R.mergeWith(last, new Cla(), {w: 1}), {w: 1});
   });
 
-  it('is curried', function() {
-    eq(R.mergeWith(last)({w: 1, x: 2})({y: 3, z: 4}), {w: 1, x: 2, y: 3, z: 4});
-  });
 });

@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -25,16 +25,6 @@ describe('project', function() {
       {name: 'Fred', hair: 'brown'},
       {name: 'Rusty', hair: 'brown'},
       {name: 'Alois', hair: undefined}
-    ]);
-  });
-
-  it('is curried', function() {
-    var myFields = R.project(['name', 'age']);
-    eq(myFields(kids), [
-      {name: 'Abby', age: 7},
-      {name: 'Fred', age: 12},
-      {name: 'Rusty', age: 10},
-      {name: 'Alois', age: 15}
     ]);
   });
 

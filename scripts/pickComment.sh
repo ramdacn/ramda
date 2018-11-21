@@ -1,8 +1,8 @@
 #!/bin/bash
 
 GIT_ROOT_DIR="$(git rev-parse --show-toplevel)"
-SRC_DIR="$GIT_ROOT_DIR/src"
-SRC_DIR_FILES="$GIT_ROOT_DIR/src/*.js"
+SRC_DIR="$GIT_ROOT_DIR/source"
+SRC_DIR_FILES="$GIT_ROOT_DIR/source/*.js"
 TRANS_DIR="$GIT_ROOT_DIR/i18n"
 
 for i in "$@"
@@ -31,10 +31,11 @@ fi
 echo "Comments picking..."
 for file in $SRC_DIR_FILES
 do
-  fname=`basename $file .js`
-  comment=`sed -n -e '/^\/\*\*/,/^ \* \@/{/^\/\*\*/d; /^ \* \@/d; p; }' $file`
-  echo "$comment" > "$LANG_DIR/$fname.$LANG"
+    fname=`basename $file .js`
+    if [ "$fname" != index ];then
+        comment=`sed -n -e '/^\/\*\*/,/^ \* \@/{/^\/\*\*/d; /^ \* \@/d; p; }' $file`
+        echo "$comment" > "$LANG_DIR/$fname.$LANG"
+    fi
 done
 
 echo "Comments have picked!"
-

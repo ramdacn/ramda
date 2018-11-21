@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -31,14 +31,6 @@ describe('forEach', function() {
     };
     R.forEach(fn, new DummyList());
     eq(dispatched, true);
-  });
-
-  it('is curried', function() {
-    var xStr = '';
-    var xe = R.forEach(function(x) { xStr += (x + ' '); });
-    eq(typeof xe, 'function');
-    xe([1, 2, 4]);
-    eq(xStr, '1 2 4 ');
   });
 
 });

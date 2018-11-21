@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -14,11 +14,6 @@ describe('aperture', function() {
   it('returns an empty list when `n` > `list.length`', function() {
     eq(R.aperture(6, [1, 2, 3]), []);
     eq(R.aperture(1, []), []);
-  });
-
-  it('is curried', function() {
-    var pairwise = R.aperture(2);
-    eq(pairwise(sevenLs), [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]]);
   });
 
   it('can act as a transducer', function() {

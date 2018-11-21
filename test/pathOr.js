@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -46,10 +46,6 @@ describe('pathOr', function() {
 
   it('works with falsy items', function() {
     eq(R.pathOr('Unknown', ['toString'], false), Boolean.prototype.toString);
-  });
-
-  it('is curried', function() {
-    eq(R.pathOr('Unknown', ['arrayVal', '0'])(deepObject), 'arr');
   });
 
 });

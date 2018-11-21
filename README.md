@@ -9,16 +9,18 @@ Ramda 中文
 [![Gitter](https://badges.gitter.im/Join_Chat.svg)](https://gitter.im/ramda/ramda?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
+
 Why Ramda?
 ----------
 
-<img src="http://ramda.jcphillipps.com/logo/ramdaFilled_200x235.png" 
+<img src="https://ramdajs.com/ramdaFilled_200x235.png" 
      width="170" height="190" align="right" hspace="12" />
 
 目前已经存在许多优秀的函数式的库。通常它们作为通用工具包，可以用于多种编程范式。Ramda 的目标更为专注：专门为函数式编程风格而设计，更容易创建函数式 pipeline、且从不改变用户已有数据。
 
 
-What's different?
+
+What's Different?
 -----------------
 
 Ramda 主要特性如下：
@@ -27,9 +29,10 @@ Ramda 主要特性如下：
 
 * Ramda 函数本身都是自动柯里化的。这可以让你在只提供部分参数的情况下，轻松地在已有函数的基础上创建新函数。
 
-* Ramda 函数参数的排列顺序更便于柯里化。通常最后提供要操作的数据。
+* Ramda 函数参数的排列顺序更便于柯里化。要操作的数据通常在最后面。
 
 最后两点一起，使得将多个函数构建为简单的函数序列变得非常容易，每个函数对数据进行变换并将结果传递给下一个函数。Ramda 的设计能很好地支持这种风格的编程。
+
 
 
 简介
@@ -55,6 +58,7 @@ Ramda 基本的数据结构都是原生 JavaScript 对象，我们常用的集�
 我们尽量让实现（编程和 API 实现）简洁、优雅。但 API 为王。为此我们牺牲了大量优雅、简洁的实现。
 
 最后，Ramda 非常注重运行性能。可靠和快速的实现胜过过于强调函数式的纯度。（译者注：[Eweda](https://github.com/CrossEye/eweda) 过于在意实现的函数式纯度，而失去了实用价值）
+
 
 安装
 ------------
@@ -86,15 +90,15 @@ const R = require('ramda');
 或从 CDN 上获取：
 
 ```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.24.1/ramda.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.26.0/ramda.min.js"></script>
 ```
 
 或使用 [jsDelivr](http://jsdelivr.com) 的以下任意链接：
 
 ```html
-<script src="//cdn.jsdelivr.net/ramda/0.24.1/ramda.min.js"></script>
-<script src="//cdn.jsdelivr.net/ramda/0.24/ramda.min.js"></script>
-<script src="//cdn.jsdelivr.net/ramda/latest/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@0.26.0/dist/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@0.26/dist/ramda.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script>
 ```
 
 （注意，使用 `最新` 的版本可能会带来很大的风险，ramda API 的更改可能会对以前代码造成破坏）
@@ -103,23 +107,31 @@ const R = require('ramda');
 
 或者也可以借助 [the bookmarklet](https://github.com/ramda/ramda/blob/master/BOOKMARKLET.md)，将 ramda 注入到几乎任何不安全的网站。
 
-### 构建库
+** 0.25 以上版本注意事项 **
 
-* 在基于 Unix 的平台上，运行 `npm run build` 来更新 __dist/ramda.js__ 和 __dist/ramda.min.js__
-* 在 Windows 上，将 `scripts/build --complete` 的运行结果输出到一个临时文件中，然后将该文件重命名为 __dist/ramda.js__.
+Ramda 在 0.25 以后，不会再提供默认输出（default export）。所以不要再用 `import R from 'ramda'`，而应该使用 `import * as R from 'ramda'` 引入 ramda。或者更好的方式是，通过 `import { functionName } from 'ramda'` 只引入必需的函数。
 
-#### 部分构建库 
+### Build (构建)
 
-可以生成 Ramda 的函数子集来减小库文件大小。Ramda 的构建系统通过命令行标志来支持部分构建。例如，要使用 `R.compose`, `R.reduce`, and `R.filter` ，可以创建一个部分构建库：
+运行 `npm run build` 会生成 `es` 和 `src` 文件夹，并更新 __dist/ramda.js__ 和 __dist/ramda.min.js__
 
-    ./scripts/build -- src/compose.js src/reduce.js src/filter.js > dist/ramda.custom.js
+#### Partial Build (部分构建库 )
 
-上述命令需要安装 Node/io.js。
+若想减小库大小，可以只使用部分函数来构建 Ramda 。Ramda 的构建系统使用命令行参数来支持部分构建。例如，当使用 `R.compose`, `R.reduce`, and `R.filter` 时，可以创建一个部分构建库：
+
+    npm run --silent partial-build compose reduce filter > dist/ramda.custom.js
+
+上述命令需要安装 Node/io.js 和 ramda 的依赖项（只需要在运行部分构建前使用 `npm install` 来安装）。
+
+
 
 文档
 -------------
 
-请查看 [API 文档](http://ramdajs.com/docs/).
+请查看 [API 文档](http://ramda.cn/docs/).
+
+还可以参考 [Cookbook](https://github.com/ramda/ramda/wiki/Cookbook) 中的函数，它们是由 Ramda 函数编写的，并且是大家在实际项目中实践所得，非常有参考价值。
+
 
 关于名字
 --------
@@ -159,12 +171,54 @@ const R = require('ramda');
 如果已安装 _PhantomJS_ ，则可以运行 `testem -l phantomjs` ，以完全无界面方式运行测试。
 
 
+使用
+-----------------
+
+对于 `v0.25` 及更高版本，可以导入整个库，或直接从库中选择 ES 模块：
+
+```js
+import * as R from 'ramda'
+
+const {identity} = R
+R.map(identity, [1, 2, 3])
+```
+
+利用解构导入 ramda 函数可能并不能阻止引入整个库。可以像下面这样手动挑选函数，只会引入 `identity` 运行所需的部分：
+
+```js
+import identity from 'ramda/src/identity'
+
+identity()
+```
+
+但手动引入函数太麻烦。大多数 bundlers (Webpack 和 Rollup 一类的打包器) 都会提供 tree-shaking 方法，用以删除未用到的 Ramda 代码，并减小打出包的体积。但它们的实际效果各异，实际对比可以[参考这里](https://github.com/scabbiaza/ramda-webpack-tree-shaking-examples)。下面列出了一些最佳设置总结：
+
+1. Webpack + Babel - 使用 [`babel-plugin-ramda`](https://github.com/megawac/babel-plugin-ramda) 自动挑选函数。[相关讨论](http://www.andrewsouthpaw.com/2018/01/19/ramda-tree-shaking-not-supported-out-of-the-box/)，[相关实例](https://github.com/AndrewSouthpaw/ramda-webpack-tree-shaking-examples/blob/master/07-webpack-babel-plugin-ramda/package.json)。
+
+2. 仅使用 Webpack - 使用 `UglifyJS` plugin 和 `ModuleConcatenationPlugin` 来进行 tree-shaking。[相关讨论](https://github.com/ramda/ramda/issues/2355)，[相关实例](https://github.com/scabbiaza/ramda-webpack-tree-shaking-examples/blob/master/06-webpack-scope-hoisted/webpack.config.js)。
+
+3. Rollup - 自身对 tree-shaking 支持的很好，不需要其他配置。[相关实例](https://github.com/scabbiaza/ramda-webpack-tree-shaking-examples/blob/master/07-rollup-ramda-tree-shaking/rollup.config.js)。
+
+
+类型系统
+-----------------
+
+- [TypeScript](https://github.com/types/npm-ramda/)
+- [Flow](https://github.com/flowtype/flow-typed/tree/master/definitions/npm/ramda_v0.x.x)
+
+
+翻译
+-----------------
+
+- [Chinese(中文)](http://ramda.cn/)
+- [Ukrainian(Українська)](https://github.com/ivanzusko/ramda)
+- [Russian(Русский)](https://github.com/Guck111/ramda)
+
 
 致谢
 -----------------
 
 感谢 [J. C. Phillipps](http://www.jcphillipps.com) 为 Ramda 设计的标志。 Ramda 标志艺术品 &copy; 2014 J. C. Phillipps 。 创作共享协议 [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)。
-
 
 
 中文翻译
@@ -173,4 +227,9 @@ const R = require('ramda');
 [增迪](https://github.com/adispring)，[聪杰](https://github.com/ZhangCongjie)，[春晓](https://github.com/MissSweety)，[申乾](https://github.com/csqian)，[雪勇](https://github.com/xuelangcxy)。
 
 如果发现翻译不恰当的地方，恳请指正。也欢迎加入我们，一起维护 Ramda 中文网站。
+
+Ramda 企鹅讨论群
+-----------------
+
+114706031
 

@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -11,4 +11,21 @@ describe('prop', function() {
     eq(nm(fred), 'Fred');
   });
 
+  it('shows the same behaviour as path for an undefined object', function() {
+    var propResult, propException, pathResult, pathException;
+    try {
+      propResult = R.prop('name', undefined);
+    } catch (e) {
+      propException = e;
+    }
+
+    try {
+      pathResult = R.path(['name'], undefined);
+    } catch (e) {
+      pathException = e;
+    }
+
+    eq(propResult, pathResult);
+    eq(propException, pathException);
+  });
 });

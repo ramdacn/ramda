@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -30,17 +30,6 @@ describe('merge', function() {
     Cla.prototype.x = 5;
     eq(R.merge(new Cla(), a), {w: 1, x: 2});
     eq(R.merge(a, new Cla()), {w: 1, x: 2});
-  });
-
-  it('is curried', function() {
-    var curried = R.merge({w: 1, x: 2});
-    var b = {y: 3, z: 4};
-    eq(curried(b), {w: 1, x: 2, y: 3, z: 4});
-  });
-
-  it('is curried', function() {
-    var curried = R.merge(R.__, {w: 1, x: 2});
-    eq(curried({x: 3, y: 4}), {w: 1, x: 2, y: 4});
   });
 
 });

@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -24,12 +24,6 @@ describe('uniqWith', function() {
 
   it('returns an empty array for an empty array', function() {
     eq(R.uniqWith(eqI, []), []);
-  });
-
-  it('is curried', function() {
-    eq(typeof R.uniqWith(eqI), 'function');
-    eq(R.uniqWith(eqI)(objs), objs);
-    eq(R.uniqWith(eqI)(objs2), [{x: R.T, i: 0}, {x: R.F, i: 1}, {x: R.T, i: 2}, {x: R.T, i: 3}]);
   });
 
 });

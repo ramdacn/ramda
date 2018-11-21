@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -9,12 +9,6 @@ describe('repeat', function() {
 
   it('can accept any value, including `null`', function() {
     eq(R.repeat(null, 3), [null, null, null]);
-  });
-
-  it('is curried', function() {
-    var makeFoos = R.repeat('foo');
-    eq(makeFoos(0), []);
-    eq(makeFoos(3), ['foo', 'foo', 'foo']);
   });
 
 });

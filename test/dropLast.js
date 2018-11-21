@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -28,12 +28,6 @@ describe('dropLast', function() {
 
   it('can operate on strings', function() {
     eq(R.dropLast(3, 'Ramda'), 'Ra');
-  });
-
-  it('is curried', function() {
-    var dropLast2 = R.dropLast(2);
-    eq(dropLast2(['a', 'b', 'c', 'd', 'e']), ['a', 'b', 'c']);
-    eq(dropLast2(['x', 'y', 'z']), ['x']);
   });
 
   it('can act as a transducer', function() {

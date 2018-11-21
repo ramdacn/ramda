@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -10,11 +10,6 @@ describe('prepend', function() {
 
   it('works on empty list', function() {
     eq(R.prepend(1, []), [1]);
-  });
-
-  it('is curried', function() {
-    eq(typeof R.prepend(4), 'function');
-    eq(R.prepend(4)([3, 2, 1]), [4, 3, 2, 1]);
   });
 
 });

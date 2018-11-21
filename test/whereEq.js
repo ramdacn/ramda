@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -35,12 +35,6 @@ describe('whereEq', function() {
     eq(R.whereEq(spec, test2), false);
     eq(R.whereEq(spec, test3), true);
     eq(R.whereEq(spec, test4), false);
-  });
-
-  it('is curried', function() {
-    var predicate = R.whereEq({x: 1, y: 2});
-    eq(predicate({x: 1, y: 2, z: 3}), true);
-    eq(predicate({x: 3, y: 2, z: 1}), false);
   });
 
   it('is true for an empty spec', function() {

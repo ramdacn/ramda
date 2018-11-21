@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -10,15 +10,6 @@ describe('replace', function() {
 
   it('replaces regex matches of the input string', function() {
     eq(R.replace(/\d+/g, 'num', '1 2 three'), 'num num three');
-  });
-
-  it('is curried up to 3 arguments', function() {
-    eq(R.replace('').constructor, Function);
-    eq(R.replace('', '').constructor, Function);
-
-    var replaceSemicolon = R.replace(';');
-    var removeSemicolon = replaceSemicolon('');
-    eq(removeSemicolon('return 42;'), 'return 42');
   });
 
 });

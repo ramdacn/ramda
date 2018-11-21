@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -24,11 +24,6 @@ describe('identical', function() {
     eq(R.identical(0, new Number(0)), false);
     eq(R.identical(new Number(0), 0), false);
     eq(R.identical(new Number(0), new Number(0)), false);
-  });
-
-  it('is curried', function() {
-    var isA = R.identical(a);
-    eq(isA([]), false);
   });
 
 });

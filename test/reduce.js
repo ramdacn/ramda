@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 describe('reduce', function() {
@@ -20,19 +20,6 @@ describe('reduce', function() {
     eq(R.reduce(add, 0, []), 0);
     eq(R.reduce(mult, 1, []), 1);
     eq(R.reduce(R.concat, [], []), []);
-  });
-
-  it('is curried', function() {
-    var addOrConcat = R.reduce(add);
-    var sum = addOrConcat(0);
-    var cat = addOrConcat('');
-    eq(sum([1, 2, 3, 4]), 10);
-    eq(cat(['1', '2', '3', '4']), '1234');
-  });
-
-  it('correctly reports the arity of curried versions', function() {
-    var sum = R.reduce(add, 0);
-    eq(sum.length, 1);
   });
 
   it('Prefers the use of the iterator of an object over reduce (and handles short-circuits)', function() {
@@ -81,5 +68,11 @@ describe('reduce', function() {
     var list = new Reducible([1, 2, 3, 4, 5, 6]);
 
     eq(R.reduce(rfn, [], list), [1, 2]);
+  });
+
+  it('short circuits with reduced', function() {
+    var addWithMaxOf10 = function(acc, val) {return acc + val > 10 ? R.reduced(acc) : acc + val;};
+    eq(R.reduce(addWithMaxOf10, 0, [1, 2, 3, 4]), 10);
+    eq(R.reduce(addWithMaxOf10, 0, [2, 4, 6, 8]), 6);
   });
 });

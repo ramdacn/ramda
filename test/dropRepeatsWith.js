@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -26,12 +26,6 @@ describe('dropRepeatsWith', function() {
 
   it('returns an empty array for an empty array', function() {
     eq(R.dropRepeatsWith(eqI, []), []);
-  });
-
-  it('is curried', function() {
-    eq(typeof R.dropRepeatsWith(eqI), 'function');
-    eq(R.dropRepeatsWith(eqI)(objs), objs);
-    eq(R.dropRepeatsWith(eqI)(objs2), objs);
   });
 
   it('can act as a transducer', function() {

@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -39,8 +39,10 @@ describe('lensIndex', function() {
       eq(R.view(R.lensIndex(0), R.set(R.lensIndex(0), 0, testList)), 0);
     });
     it('get (set(set s v1) v2) === v2', function() {
-      eq(R.view(R.lensIndex(0), R.set(R.lensIndex(0), 11, R.set(R.lensIndex(0), 10, testList))),
-         11);
+      eq(
+        R.view(R.lensIndex(0), R.set(R.lensIndex(0), 11, R.set(R.lensIndex(0), 10, testList))),
+        11
+      );
     });
   });
 });

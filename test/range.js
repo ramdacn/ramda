@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -14,11 +14,6 @@ describe('range', function() {
   it('returns the empty list if the first parameter is not larger than the second', function() {
     eq(R.range(7, 3), []);
     eq(R.range(5, 5), []);
-  });
-
-  it('is curried', function() {
-    var from10 = R.range(10);
-    eq(from10(15), [10, 11, 12, 13, 14]);
   });
 
   it('returns an empty array if from > to', function() {

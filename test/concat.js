@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -32,18 +32,6 @@ describe('concat', function() {
 
   it('delegates to non-String object with a concat method, as second param', function() {
     eq(R.concat(z1, z2), 'z1 z2');
-  });
-
-  it('is curried', function() {
-    var conc123 = R.concat([1, 2, 3]);
-    eq(conc123([4, 5, 6]), [1, 2, 3, 4, 5, 6]);
-    eq(conc123(['a', 'b', 'c']), [1, 2, 3, 'a', 'b', 'c']);
-  });
-
-  it('is curried like a binary operator, that accepts an initial placeholder', function() {
-    var appendBar = R.concat(R.__, 'bar');
-    eq(typeof appendBar, 'function');
-    eq(appendBar('foo'), 'foobar');
   });
 
   it('throws if attempting to combine an array with a non-array', function() {

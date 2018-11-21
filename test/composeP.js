@@ -1,8 +1,6 @@
 var assert = require('assert');
 
-var Q = require('q');
-
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -14,8 +12,8 @@ describe('composeP', function() {
   });
 
   it('performs right-to-left composition of Promise-returning functions', function(done) {
-    var f = function(a) { return Q.Promise(function(res) { res([a]); }); };
-    var g = function(a, b) { return Q.Promise(function(res) { res([a, b]); }); };
+    var f = function(a) { return new Promise(function(res) { res([a]); }); };
+    var g = function(a, b) { return new Promise(function(res) { res([a, b]); }); };
 
     eq(R.composeP(f).length, 1);
     eq(R.composeP(g).length, 2);

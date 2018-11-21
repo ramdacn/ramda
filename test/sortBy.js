@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -21,14 +21,6 @@ var albums = [
 describe('sortBy', function() {
   it('sorts by a simple property of the objects', function() {
     var sortedAlbums = R.sortBy(R.prop('title'), albums);
-    eq(sortedAlbums.length, albums.length);
-    eq(sortedAlbums[0].title, 'A Farewell to Kings');
-    eq(sortedAlbums[11].title, 'Timeout');
-  });
-
-  it('is curried', function() {
-    var sorter = R.sortBy(R.prop('title'));
-    var sortedAlbums = sorter(albums);
     eq(sortedAlbums.length, albums.length);
     eq(sortedAlbums[0].title, 'A Farewell to Kings');
     eq(sortedAlbums[11].title, 'Timeout');

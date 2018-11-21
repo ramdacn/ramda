@@ -2,3 +2,5 @@
  *
  * `predicate` 需要作为第一个参数传入。
  *
+ * 若在列表位置中给出 transfomer，则用作 transducer 。
+ *

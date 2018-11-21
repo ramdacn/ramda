@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 var jsv = require('jsverify');
 
@@ -15,11 +15,6 @@ describe('add', function() {
     eq(R.add(null, null), 0);
     eq(R.add(undefined, undefined), NaN);
     eq(R.add(new Date(1), new Date(2)), 3);
-  });
-
-  it('is curried', function() {
-    var incr = R.add(1);
-    eq(incr(42), 43);
   });
 
 });

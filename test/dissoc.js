@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -27,10 +27,6 @@ describe('dissoc', function() {
     eq(R.dissoc(42, {a: 1, b: 2, 42: 3}), {a: 1, b: 2});
     eq(R.dissoc(null, {a: 1, b: 2, 'null': 3}), {a: 1, b: 2});
     eq(R.dissoc(undefined, {a: 1, b: 2, undefined: 3}), {a: 1, b: 2});
-  });
-
-  it('is curried', function() {
-    eq(R.dissoc('b')({a: 1, b: 2, c: 3}), {a: 1, c: 3});
   });
 
 });

@@ -1,4 +1,4 @@
-var R = require('..');
+var R = require('../source');
 var eq = require('./shared/eq');
 
 
@@ -12,10 +12,6 @@ describe('intersperse', function() {
   it('dispatches', function() {
     var obj = {intersperse: function(x) { return 'override ' + x; }};
     eq(R.intersperse('x', obj), 'override x');
-  });
-
-  it('is curried', function() {
-    eq(R.intersperse('n')(['ba', 'a', 'a']), ['ba', 'n', 'a', 'n', 'a']);
   });
 
 });

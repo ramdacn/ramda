@@ -2,3 +2,7 @@
  *
  * 若第二个参数存在 `chain` 方法，则调用其自身的 `chain`方法。该参数需符合 [FantasyLand Chain 规范](https://github.com/fantasyland/fantasy-land#chain)。
  *
+ * 如果第二个参数是函数，`chain(f, g)(x)` 等价于 `f(g(x), x)`。
+ *
+ * 若在列表位置中给出 transfomer，则用作 transducer。
+ *
