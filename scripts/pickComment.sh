@@ -32,7 +32,7 @@ echo "Comments picking..."
 for file in $SRC_DIR_FILES
 do
     fname=`basename $file .js`
-    if [ "$fname" != index ];then
+    if [ "$fname" != "index" ];then
         comment=`sed -n -e '/^\/\*\*/,/^ \* \@/{/^\/\*\*/d; /^ \* \@/d; p; }' $file`
         echo "$comment" > "$LANG_DIR/$fname.$LANG"
     fi

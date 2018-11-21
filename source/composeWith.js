@@ -4,10 +4,8 @@ import reverse from './reverse';
 
 
 /**
- * Performs right-to-left function composition using transforming function. The rightmost function may have
- * any arity; the remaining functions must be unary.
- *
- * **Note:** The result of compose is not automatically curried.
+ * 利用转换函数从右往左执行函数组合。最右侧函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。 *
+ * **注意：**compose 输出的函数不会自动进行柯里化。
  *
  * @func
  * @memberOf R

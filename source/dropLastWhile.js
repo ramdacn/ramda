@@ -9,7 +9,7 @@ import _xdropLastWhile from './internal/_xdropLastWhile';
  *
  * `predicate` 需要作为第一个参数传入。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在列表位置中给出 transfomer，则用作 transducer 。
  *
  * @func
  * @memberOf R

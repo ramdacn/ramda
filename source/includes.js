@@ -2,9 +2,9 @@ import _includes from './internal/_includes';
 import _curry2 from './internal/_curry2';
 
 /**
- * Returns `true` if the specified value is equal, in [`R.equals`](#equals)
- * terms, to at least one element of the given list; `false` otherwise.
- * Works also with strings.
+ * 只要列表中有一个元素等于指定值，则返回 `true`；否则返回 `false`。通过 `R.equals` 函数进行相等性判断。
+ *
+ * 也可以判断字符串中是否包含指定值。
  *
  * @func
  * @memberOf R

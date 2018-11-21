@@ -3,9 +3,9 @@ import equals from './equals';
 import takeLast from './takeLast';
 
 /**
- * Checks if a list ends with the provided sublist.
+ * 检查列表是否以指定的子列表结尾。
  *
- * Similarly, checks if a string ends with the provided substring.
+ * 同样的，检查字符串是否以指定的子字符串结尾。
  *
  * @func
  * @memberOf R

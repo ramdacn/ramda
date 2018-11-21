@@ -33,15 +33,17 @@ fi
 echo "Tranlating to $LANG..."
 for file in $SRC_DIR_FILES
 do
-  fname=`basename $file .js`
-  trans_name="$LANG_DIR/$fname.$LANG"
-  if [ -f "$trans_name" ]; then
-    file_transed=`sed '/^\/\*\*/,/^ \* \@/{/^\/\*\*/!{/^ \* \@/!d;};}' $file |\
-      sed "/^\/\*\*/r $trans_name"`
-    echo "$file_transed" > "$file"
-  else
-    echo "No $fname.js related translation: $fname.$LANG, please translate it. ✏️  "
-  fi
+    fname=`basename $file .js`
+    if [ "$fname" != "index" ];then
+        trans_name="$LANG_DIR/$fname.$LANG"
+        if [ -f "$trans_name" ]; then
+          file_transed=`sed '/^\/\*\*/,/^ \* \@/{/^\/\*\*/!{/^ \* \@/!d;};}' $file |\
+            sed "/^\/\*\*/r $trans_name"`
+          echo "$file_transed" > "$file"
+        else
+          echo "No $fname.js related translation: $fname.$LANG, please translate it. ✏️  "
+        fi
+    fi
 done
 echo "Tranlate to $LANG done!"
 

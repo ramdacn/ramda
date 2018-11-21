@@ -4,10 +4,6 @@ import _curry3 from './internal/_curry3';
 /**
  * 替换字符串的子串或正则匹配到的值。
  *
- * The first two parameters correspond to the parameters of the
- * `String.prototype.replace()` function, so the second parameter can also be a
- * function.
- *
  * @func
  * @memberOf R
  * @since v0.7.0

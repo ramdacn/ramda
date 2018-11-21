@@ -4,12 +4,9 @@ import all from './all';
 
 
 /**
- * Returns `true` if no elements of the list match the predicate, `false`
- * otherwise.
+ * 如果列表中的元素都不满足 predicate，返回 `true`；否则返回 `false`。
  *
- * Dispatches to the `all` method of the second argument, if present.
- *
- * Acts as a transducer if a transformer is given in list position.
+ * 若第二个参数自身存在 `none` 方法，则调用自身的 `none` 方法。
  *
  * @func
  * @memberOf R
