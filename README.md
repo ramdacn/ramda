@@ -229,3 +229,6 @@ Ramda 企鹅讨论群
 -----------------
 
 114706031
+
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
