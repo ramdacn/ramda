@@ -17,9 +17,7 @@ function mapValues(fn, obj) {
 }
 
 /**
- * Given a spec object recursively mapping properties to functions, creates a
- * function producing an object of the same structure, by mapping each property
- * to the result of calling its associated function with the supplied arguments.
+ * 接受一个属性值为函数的对象，返回一个能生成相同结构对象的函数。返回的函数使用传入的参数调用对象的每个属性位对应的函数，来生成相应属性的值。
  *
  * @func
  * @memberOf R

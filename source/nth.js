@@ -3,8 +3,7 @@ import _isString from './internal/_isString';
 
 
 /**
- * Returns the nth element of the given list or string. If n is negative the
- * element at index length + n is returned.
+ * 返回列表或字符串的第 n 个元素。如果 n 为负数，则返回索引为 length + n 的元素。
  *
  * @func
  * @memberOf R

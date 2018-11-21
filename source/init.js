@@ -2,7 +2,7 @@ import slice from './slice';
 
 
 /**
- * Returns all but the last element of the given list or string.
+ * 返回 list 或 string 删除最后一个元素后的部分。
  *
  * @func
  * @memberOf R

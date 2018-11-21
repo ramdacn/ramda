@@ -2,8 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Returns `true` if the first argument is greater than or equal to the second;
- * `false` otherwise.
+ * 如果首个参数大于或等于第二个参数，返回 `true`；否则返回 `false`。
  *
  * @func
  * @memberOf R

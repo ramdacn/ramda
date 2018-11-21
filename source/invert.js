@@ -4,8 +4,7 @@ import keys from './keys';
 
 
 /**
- * Same as [`R.invertObj`](#invertObj), however this accounts for objects with
- * duplicate values by putting the values into an array.
+ * 与 [`R.invertObj`](#invertObj) 类似，但会将值放入数组中，来处理一个键对应多个值的情况。
  *
  * @func
  * @memberOf R

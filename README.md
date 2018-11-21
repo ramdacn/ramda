@@ -34,16 +34,15 @@ Ramda 主要特性如下：
 最后两点一起，使得将多个函数构建为简单的函数序列变得非常容易，每个函数对数据进行变换并将结果传递给下一个函数。Ramda 的设计能很好地支持这种风格的编程。
 
 
-
 简介
 -------------
 
-* [Introducing Ramda](http://buzzdecafe.github.io/code/2014/05/16/introducing-ramda) by Buzz de Cafe
-* [Why Ramda?](http://fr.umio.us/why-ramda/) by Scott Sauyet
-* [Favoring Curry](http://fr.umio.us/favoring-curry/) by Scott Sauyet
-* [Why Curry Helps](https://hughfdjackson.com/javascript/why-curry-helps/) by Hugh Jackson
+* [Introducing Ramda](http://buzzdecafe.github.io/code/2014/05/16/introducing-ramda) by Buzz de Cafe [中文](https://adispring.coding.me/2017/06/25/Introducing-Ramda/)
+* [Why Ramda?](http://fr.umio.us/why-ramda/) by Scott Sauyet [中文](https://adispring.coding.me/2017/06/25/Why-Ramda/)
+* [Favoring Curry](http://fr.umio.us/favoring-curry/) by Scott Sauyet [中文](https://adispring.coding.me/2017/06/27/Favoring-Curry/)
+* [Why Curry Helps](https://hughfdjackson.com/javascript/why-curry-helps/) by Hugh Jackson [中文](https://adispring.coding.me/2017/06/28/Why-Curry-Helps/)
 * [Hey Underscore, You're Doing It Wrong!](https://www.youtube.com/watch?v=m3svKOdZijA&app=desktop) by Brian Lonsdorf
-* [Thinking in Ramda](http://randycoulman.com/blog/categories/thinking-in-ramda) by Randy Coulman
+* [Thinking in Ramda](http://randycoulman.com/blog/categories/thinking-in-ramda) by Randy Coulman [中文](https://adispring.coding.me/categories/Thinking-in-Ramda/)
 
 
 理念
@@ -107,7 +106,7 @@ const R = require('ramda');
 
 或者也可以借助 [the bookmarklet](https://github.com/ramda/ramda/blob/master/BOOKMARKLET.md)，将 ramda 注入到几乎任何不安全的网站。
 
-** 0.25 以上版本注意事项 **
+**0.25 及以后版本注意事项**
 
 Ramda 在 0.25 以后，不会再提供默认输出（default export）。所以不要再用 `import R from 'ramda'`，而应该使用 `import * as R from 'ramda'` 引入 ramda。或者更好的方式是，通过 `import { functionName } from 'ramda'` 只引入必需的函数。
 
@@ -121,8 +120,7 @@ Ramda 在 0.25 以后，不会再提供默认输出（default export）。所以
 
     npm run --silent partial-build compose reduce filter > dist/ramda.custom.js
 
-上述命令需要安装 Node/io.js 和 ramda 的依赖项（只需要在运行部分构建前使用 `npm install` 来安装）。
-
+上述命令需要安装 Node/io.js 和 ramda 的依赖（只需在部分构建开始前运行 `npm install`）。
 
 
 文档
@@ -130,13 +128,13 @@ Ramda 在 0.25 以后，不会再提供默认输出（default export）。所以
 
 请查看 [API 文档](http://ramda.cn/docs/).
 
-还可以参考 [Cookbook](https://github.com/ramda/ramda/wiki/Cookbook) 中的函数，它们是由 Ramda 函数编写的，并且是大家在实际项目中实践所得，非常有参考价值。
+也可以使用 [Cookbook](https://github.com/ramda/ramda/wiki/Cookbook) 中的由 Ramda 构建的函数。
 
 
 关于名字
 --------
 
-好吧，因为我们喜欢羊，就是这样。名字要简洁、且未被占用。它可以是 `eweda`，然后我们被迫叫它 _eweda lamb!_ ，但没有人想要这个名字。对于非英语国家的人，lambs 是羔羊，ewes 是母羊，rams 是公羊。所以 ramda 可能是一个成年的 lambda ...，也可能不是。（双关，既代表 lambda 表示式，也代表羔羊。愿 Ramda 发展壮大）
+好吧，因为我们喜欢羊，就是这样。名字要简洁、且未被占用。它可以是 `eweda`，然后我们被迫叫它 _eweda lamb!_ ，但没有人想要这个名字。对于非英语国家的人，lambs 是羔羊，ewes 是母羊，rams 是公羊。所以 ramda 可能是一只成年的 lambda ...，也可能不是。（双关，既代表 lambda 表示式，也代表羔羊。愿 Ramda 发展壮大）
 
 
 
@@ -220,11 +218,10 @@ identity()
 
 感谢 [J. C. Phillipps](http://www.jcphillipps.com) 为 Ramda 设计的标志。 Ramda 标志艺术品 &copy; 2014 J. C. Phillipps 。 创作共享协议 [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)。
 
-
 中文翻译
 -----------------
 
-[增迪](https://github.com/adispring)，[聪杰](https://github.com/ZhangCongjie)，[春晓](https://github.com/MissSweety)，[申乾](https://github.com/csqian)，[雪勇](https://github.com/xuelangcxy)。
+[王增迪](https://adispring.coding.me/)，[张聪杰](https://github.com/ZhangCongjie)，[张春晓](https://github.com/MissSweety)，[陈申乾](https://github.com/csqian)，[陈雪勇](https://github.com/xuelangcxy)。
 
 如果发现翻译不恰当的地方，恳请指正。也欢迎加入我们，一起维护 Ramda 中文网站。
 
@@ -232,4 +229,3 @@ Ramda 企鹅讨论群
 -----------------
 
 114706031
-

@@ -3,9 +3,7 @@ import nAry from './nAry';
 
 
 /**
- * Wraps a function of any arity (including nullary) in a function that accepts
- * exactly 1 parameter. Any extraneous parameters will not be passed to the
- * supplied function.
+ * 将任意元（包括零元）函数封装成一元函数。任何额外的参数都不会传递给被封装的函数。
  *
  * @func
  * @memberOf R

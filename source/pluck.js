@@ -4,12 +4,9 @@ import prop from './prop';
 
 
 /**
- * Returns a new list by plucking the same named property off all objects in
- * the list supplied.
+ * 从列表内的每个对象元素中取出特定名称的属性，组成一个新的列表。
  *
- * `pluck` will work on
- * any [functor](https://github.com/fantasyland/fantasy-land#functor) in
- * addition to arrays, as it is equivalent to `R.map(R.prop(k), f)`.
+ * `pluck` 可以作用于任何 [functor](https://github.com/fantasyland/fantasy-land#functor) ，包括 `Array`，因为它等价于 `R.map(R.prop(k), f)`。
  *
  * @func
  * @memberOf R

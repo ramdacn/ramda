@@ -4,5 +4,5 @@
  *
  * 若第一个参数自身存在 `concat` 方法，则调用自身的 `concat`。
  *
- * 也可以用于连接 [符合 fantasy-land 半群](https://github.com/fantasyland/fantasy-land#semigroup) 类型的两个实例
+ * 也可以用于连接 [符合 fantasy-land 半群](https://github.com/fantasyland/fantasy-land#semigroup) 类型的两个实例。
  *

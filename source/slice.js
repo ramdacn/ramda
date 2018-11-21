@@ -3,10 +3,9 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * Returns the elements of the given list or string (or object with a `slice`
- * method) from `fromIndex` (inclusive) to `toIndex` (exclusive).
+ * 取出给定的列表或字符串（或带有 `slice` 方法的对象）中，从 `fromIndex`（包括）到 `toIndex`（不包括）的元素。
  *
- * Dispatches to the `slice` method of the third argument, if present.
+ * 如果第三个参数自身存在 `slice` 方法，则调用自身的 `slice` 方法。
  *
  * @func
  * @memberOf R

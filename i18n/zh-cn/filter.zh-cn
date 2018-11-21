@@ -1,4 +1,4 @@
- * 使用 `predicate` 遍历传入的 `filterable`，返回满足 `predicate` 的所有元素的新的 `filterable`。新 `filterable` 与原先的类型相同。
+ * 使用 `predicate` 遍历传入的 `Filterable`，返回满足 `predicate` 的所有元素的新的 `Filterable`。新 `Filterable` 与原先的类型相同。Filterable 类型包括 plain object 或者任何带有 filter 方法的类型，如 `Array` 。
  *
  * 若第二个参数自身存在 `filter` 方法，则调用自身的 `filter` 方法。
  *

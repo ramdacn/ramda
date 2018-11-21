@@ -1,2 +1,2 @@
- * 通过 predicate 将列表或 "filterable" （可过滤的）对象分成两部分，分别为满足 predicate 的元素和不满足 predicate 的元素。元素类型保持不变。
+ * 通过 predicate 将列表或 "Filterable" （可过滤的）对象分成两部分，分别为满足 predicate 的元素和不满足 predicate 的元素。元素类型保持不变。Filterable 类型包括 plain object 或者任何带有 filter 方法的类型，如 `Array` 。
  *

@@ -3,8 +3,7 @@ import constructN from './constructN';
 
 
 /**
- * Wraps a constructor function inside a curried function that can be called
- * with the same arguments and returns the same type.
+ * 将构造函数封装进柯里化函数，新函数与原构造函数的传入参数类型及返回值类型相同。
  *
  * @func
  * @memberOf R
