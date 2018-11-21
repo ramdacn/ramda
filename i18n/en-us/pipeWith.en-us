@@ -1,0 +1,5 @@
+ * Performs left-to-right function composition using transforming function. The leftmost function may have
+ * any arity; the remaining functions must be unary.
+ *
+ * **Note:** The result of pipeWith is not automatically curried.
+ *
