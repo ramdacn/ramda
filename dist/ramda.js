@@ -1,6 +1,6 @@
-//  Ramda v0.26.0
+//  Ramda v0.26.1
 //  https://github.com/ramda/ramda
-//  (c) 2013-2018 Scott Sauyet, Michael Hurley, and David Chambers
+//  (c) 2013-2019 Scott Sauyet, Michael Hurley, and David Chambers
 //  Ramda may be freely distributed under the MIT license.
 
 (function (global, factory) {
@@ -2416,8 +2416,8 @@ var pipeWith = _curry2(function pipeWith(xf, list) {
     return identity;
   }
 
-  const headList = head(list);
-  const tailList = tail(list);
+  var headList = head(list);
+  var tailList = tail(list);
 
   return _arity(headList.length, function() {
     return _reduce(
@@ -2447,7 +2447,7 @@ var pipeWith = _curry2(function pipeWith(xf, list) {
  *      const composeWhileNotNil = R.composeWith((f, res) => R.isNil(res) ? res : f(res));
  *
  *      composeWhileNotNil([R.inc, R.prop('age')])({age: 1}) //=> 2
- *      composeWhileNotNil([R.inc, R.prop('age')])({}) //=> null
+ *      composeWhileNotNil([R.inc, R.prop('age')])({}) //=> undefined
  *
  * @symb R.composeWith(f)([g, h, i])(...args) = f(g, f(h, f(i, ...args)))
  */
@@ -6120,7 +6120,10 @@ var median = _curry1(function median(list) {
 });
 
 /**
- * [`R.memoize`](＃memoize) 的可定制版本。`memoizeWith` 需要一个额外的函数，该函数接受一个参数集，用于创建缓存的键值，在该缓存中会存储被缓存函数的结果。注意，生成缓存键值时，要避免可能会错误地覆盖之前已缓存键值对的冲突。 
+ * 创建一个新函数，当调用时，会执行原函数，输出结果；并且缓存本次的输入参数及其对应的结果。
+ * 后续，若用相同的参数对缓存函数进行调用，不会再执行原函数，而是直接返回该参数对应的缓存值。
+ *
+ * `memoizeWith` 接受两个函数，第一个会将输入参数序列化为缓存键值对的“键值”，第二个是需要缓存的函数。
  *
  * @func
  * @memberOf R
@@ -6512,6 +6515,38 @@ var minBy = _curry3(function minBy(f, a, b) {
 var modulo = _curry2(function modulo(a, b) { return a % b; });
 
 /**
+ * 将列表中 `from` 索引处的元素移动到索引 `to` 处。
+ *
+ * @func
+ * @memberOf R
+ * @category List
+ * @sig Number -> Number -> [a] -> [a]
+ * @param {Number} from The source index
+ * @param {Number} to The destination index
+ * @param {Array} list The list which will serve to realise the move
+ * @return {Array} The new list reordered
+ * @example
+ *
+ *      R.move(0, 2, ['a', 'b', 'c', 'd', 'e', 'f']); //=> ['b', 'c', 'a', 'd', 'e', 'f']
+ *      R.move(-1, 0, ['a', 'b', 'c', 'd', 'e', 'f']); //=> ['f', 'a', 'b', 'c', 'd', 'e'] list rotation
+ */
+var move = _curry3(function(from, to, list) {
+  var length = list.length;
+  var result = list.slice();
+  var positiveFrom = from < 0 ? length + from : from;
+  var positiveTo = to < 0 ? length + to : to;
+  var item = result.splice(positiveFrom, 1);
+
+  return positiveFrom < 0 || positiveFrom >= list.length
+      || positiveTo   < 0 || positiveTo   >= list.length
+    ? list
+    : []
+      .concat(result.slice(0, positiveTo))
+      .concat(item)
+      .concat(result.slice(positiveTo, list.length));
+});
+
+/**
  * 两数相乘，等价于柯里化的 `a * b` 。
  *
  * @func
@@ -6571,7 +6606,7 @@ var negate = _curry1(function negate(n) { return -n; });
  *      R.none(isEven, [1, 3, 5, 7, 9, 11]); //=> true
  *      R.none(isOdd, [1, 3, 5, 7, 8, 11]); //=> false
  */
-const none = _curry2(function none(fn, input) {
+var none = _curry2(function none(fn, input) {
   return all(_complement(fn), input);
 });
 
@@ -6742,12 +6777,13 @@ function _assertPromise(name, p) {
  *
  *      //recoverFromFailure :: String -> Promise ({firstName, lastName})
  *      var recoverFromFailure = R.pipe(
- *        failedFetch(12345),
+ *        failedFetch,
  *        R.otherwise(useDefault),
- *        R.then(R.pick(['firstName', 'lastName']))
+ *        R.then(R.pick(['firstName', 'lastName'])),
  *      );
+ *      recoverFromFailure(12345).then(console.log)
  */
-const otherwise = _curry2(function otherwise(f, p) {
+var otherwise = _curry2(function otherwise(f, p) {
   _assertPromise('otherwise', p);
 
   return p.then(null, f);
@@ -8086,7 +8122,7 @@ var test = _curry2(function test(pattern, str) {
  *        R.then(R.pick(['firstName', 'lastName']))
  *      );
  */
-const then = _curry2(function then(f, p) {
+var then = _curry2(function then(f, p) {
   _assertPromise('then', p);
 
   return p.then(f);
@@ -8926,7 +8962,7 @@ var zipWith = _curry3(function zipWith(fn, a, b) {
  */
 var thunkify = _curry1(function thunkify(fn) {
   return curryN(fn.length, function createThunk() {
-    const fnArgs = arguments;
+    var fnArgs = arguments;
     return function invokeThunk() {
       return fn.apply(this, fnArgs);
     };
@@ -9074,6 +9110,7 @@ exports.mergeWithKey = mergeWithKey;
 exports.min = min;
 exports.minBy = minBy;
 exports.modulo = modulo;
+exports.move = move;
 exports.multiply = multiply;
 exports.nAry = nAry;
 exports.negate = negate;
