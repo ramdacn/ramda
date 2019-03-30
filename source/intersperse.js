@@ -3,9 +3,9 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Creates a new list with the separator interposed between elements.
+ * 在列表的元素之间插入分割元素。
  *
- * Dispatches to the `intersperse` method of the second argument, if present.
+ * 若第二个参数自身存在 `intersperse` 方法，则调用自身的 `intersperse` 方法。
  *
  * @func
  * @memberOf R

@@ -5,9 +5,9 @@ import _xdropLast from './internal/_xdropLast';
 
 
 /**
- * Returns a list containing all but the last `n` elements of the given `list`.
+ * 删除 "list" 末尾的 `n` 个元素。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在列表位置中给出 transfomer，则用作 transducer 。
  *
  * @func
  * @memberOf R

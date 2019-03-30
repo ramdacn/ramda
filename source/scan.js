@@ -2,8 +2,7 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * Scan is similar to [`reduce`](#reduce), but returns a list of successively
- * reduced values from the left
+ * Scan 与 [`reduce`](#reduce) 类似，但会将每次迭代计算的累积值记录下来，组成一个列表返回。
  *
  * @func
  * @memberOf R

@@ -2,11 +2,7 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * Replace a substring or regex match in a string with a replacement.
- *
- * The first two parameters correspond to the parameters of the
- * `String.prototype.replace()` function, so the second parameter can also be a
- * function.
+ * 替换字符串的子串或正则匹配到的值。
  *
  * @func
  * @memberOf R

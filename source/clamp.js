@@ -1,9 +1,9 @@
 import _curry3 from './internal/_curry3';
 
 /**
- * Restricts a number to be within a range.
+ * 将数字限制在指定的范围内。
  *
- * Also works for other ordered types such as Strings and Dates.
+ * `clamp` 也可用于其他有序类型，如字符串和日期。
  *
  * @func
  * @memberOf R

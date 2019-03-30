@@ -6,8 +6,7 @@ import uniq from './uniq';
 
 
 /**
- * Combines two lists into a set (i.e. no duplicates) composed of those
- * elements common to both lists.
+ * 取出两个 list 中相同的元素组成的 set （集合：没有重复元素）。
  *
  * @func
  * @memberOf R

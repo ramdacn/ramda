@@ -3,7 +3,7 @@ import mean from './mean';
 
 
 /**
- * Returns the median of the given list of numbers.
+ * 返回给定数字列表的中位数。
  *
  * @func
  * @memberOf R

@@ -7,10 +7,9 @@ import identity from './identity';
 
 
 /**
- * Performs left-to-right function composition using transforming function. The leftmost function may have
- * any arity; the remaining functions must be unary.
+ * 利用转换函数从左往右执行函数组合。最右侧函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
  *
- * **Note:** The result of pipeWith is not automatically curried.
+ * **注意：**pipe 输出的函数不会自动进行柯里化。
  *
  * @func
  * @memberOf R

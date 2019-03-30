@@ -2,8 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Acts as multiple `prop`: array of keys in, array of values out. Preserves
- * order.
+ * 返回 `prop` 的数组：输入为 keys 数组，输出为对应的 values 数组。values 数组的顺序与 keys 的相同。
  *
  * @func
  * @memberOf R

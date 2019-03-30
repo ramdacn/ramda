@@ -5,11 +5,9 @@ import last from './last';
 
 
 /**
- * Returns a new list without any consecutively repeating elements. Equality is
- * determined by applying the supplied predicate to each pair of consecutive elements. The
- * first element in a series of equal elements will be preserved.
+ * 返回一个没有连续重复元素的 list。首个参数提供的 `predicate` 用于检测 list 中相邻的两个元素是否相等。一系列相等元素中的首个元素会被保留。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *
  * @func
  * @memberOf R
