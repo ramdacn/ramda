@@ -3,9 +3,10 @@ import mergeWithKey from './mergeWithKey';
 
 
 /**
- * 使用给定的两个对象自身属性（不包括 prototype 属性）来创建一个新对象。
- *
- * 如果某个 key 在两个对象中都存在，则使用给定的函数对每个对象该 key 对应的 value 进行处理，处理结果作为新对象该 key 对应的值。
+ * Creates a new object with the own properties of the two provided objects. If
+ * a key exists in both objects, the provided function is applied to the values
+ * associated with the key in each object, with the result being used as the
+ * value associated with the key in the returned object.
  *
  * @func
  * @memberOf R

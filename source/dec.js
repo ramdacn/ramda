@@ -2,7 +2,7 @@ import add from './add';
 
 
 /**
- * 减1。
+ * Decrements its argument.
  *
  * @func
  * @memberOf R

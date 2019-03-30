@@ -5,9 +5,13 @@ import where from './where';
 
 
 /**
- * 接受一个测试规范对象和一个待检测对象，如果测试满足规范，则返回 true，否则返回 false。如果对于每一个测试规范对象的属性值，待检测对象中都有一个对应的相同属性值，则 `where` 返回 true，否则返回 false 。
+ * Takes a spec object and a test object; returns true if the test satisfies
+ * the spec, false otherwise. An object satisfies the spec if, for each of the
+ * spec's own properties, accessing that property of the object gives the same
+ * value (in [`R.equals`](#equals) terms) as accessing that property of the
+ * spec.
  *
- * `whereEq` 是 [`where`](#where) 的一种特殊形式。
+ * `whereEq` is a specialization of [`where`](#where).
  *
  * @func
  * @memberOf R

@@ -7,7 +7,12 @@ import reduce from './reduce';
 
 
 /**
- * 接受一个 converging 函数和一个分支函数列表，返回一个新函数。新函数的元数（参数个数）等于最长分支函数的元数。当被调用时，新函数接受参数，并将这些参数转发给每个分支函数；然后将每个分支函数的计算结果作为参数传递给 converging 函数，converging 函数的计算结果即新函数的返回值。
+ * Accepts a converging function and a list of branching functions and returns
+ * a new function. The arity of the new function is the same as the arity of
+ * the longest branching function. When invoked, this new function is applied
+ * to some arguments, and each branching function is applied to those same
+ * arguments. The results of each branching function are passed as arguments
+ * to the converging function to produce the return value.
  *
  * @func
  * @memberOf R

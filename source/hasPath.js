@@ -3,7 +3,8 @@ import _has from './internal/_has';
 
 
 /**
- * 检查对象中是否存在指定的路径。只检查对象自身的属性。
+ * Returns whether or not a path exists in an object. Only the object's
+ * own properties are checked.
  *
  * @func
  * @memberOf R

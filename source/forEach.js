@@ -3,15 +3,20 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * 遍历 `list`，对 list 中的每个元素执行方法 `fn`。
+ * Iterate over an input `list`, calling a provided function `fn` for each
+ * element in the list.
  *
- * `fn` 接收单个参数： *(value)*。
+ * `fn` receives one argument: *(value)*.
  *
- * 注意: `R.forEach` 并不会跳过已删除的或者未赋值的索引（sparse arrays），这一点和原生的 `Array.prototype.forEach` 方法不同. 获取更多相关信息, 请查阅: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Description
+ * Note: `R.forEach` does not skip deleted or unassigned indices (sparse
+ * arrays), unlike the native `Array.prototype.forEach` method. For more
+ * details on this behavior, see:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Description
  *
- * 还要注意, 不同于 `Array.prototype.forEach`，Ramda 的 `forEach` 会将原数组返回。在某些库中，该方法也被称为 `each`.
+ * Also note that, unlike `Array.prototype.forEach`, Ramda's `forEach` returns
+ * the original array. In some libraries this function is named `each`.
  *
- * 若第二个参数自身存在 `forEach` 方法，则调用自身的 `forEach` 方法。
+ * Dispatches to the `forEach` method of the second argument, if present.
  *
  * @func
  * @memberOf R

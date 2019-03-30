@@ -3,7 +3,8 @@ import is from './is';
 
 
 /**
- * 判断指定对象的属性是否为给定的数据类型，是则返回 `true` ；否则返回 `false` 。
+ * Returns `true` if the specified object property is of the given type;
+ * `false` otherwise.
  *
  * @func
  * @memberOf R

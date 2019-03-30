@@ -3,9 +3,11 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * 如果两个参数是完全相同，则返回 `true`，否则返回 `false`。如果它们引用相同的内存，也认为是完全相同的。`NaN` 和 `NaN` 是完全相同的；`0` 和 `-0` 不是完全相同的。
+ * Returns true if its arguments are identical, false otherwise. Values are
+ * identical if they reference the same memory. `NaN` is identical to `NaN`;
+ * `0` and `-0` are not identical.
  *
- * **注意**：这只是 ES6 `Object.is` 的柯里化版本而已。
+ * Note this is merely a curried version of ES6 `Object.is`.
  *
  * @func
  * @memberOf R

@@ -3,9 +3,10 @@ import _curry1 from './internal/_curry1';
 
 
 /**
- * 创建一个只执行一次的函数。
- *
- * 将给定函数 `fn` 封装到新函数`fn'`中，`fn'` 确保 `fn` 只能调用一次。重复调用`fn'` ，只会返回第一次执行时的结果。
+ * Accepts a function `fn` and returns a function that guards invocation of
+ * `fn` such that `fn` can only ever be called once, no matter how many times
+ * the returned function is invoked. The first value calculated is returned in
+ * subsequent invocations.
  *
  * @func
  * @memberOf R

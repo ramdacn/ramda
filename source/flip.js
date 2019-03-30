@@ -3,7 +3,8 @@ import curryN from './curryN';
 
 
 /**
- * 交换函数前两个参数的位置。
+ * Returns a new function much like the supplied one, except that the first two
+ * arguments' order is reversed.
  *
  * @func
  * @memberOf R

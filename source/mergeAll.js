@@ -3,7 +3,7 @@ import _curry1 from './internal/_curry1';
 
 
 /**
- * 将对象类型列表合并为一个对象。
+ * Merges a list of objects together into one object.
  *
  * @func
  * @memberOf R

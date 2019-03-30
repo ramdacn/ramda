@@ -6,9 +6,12 @@ import reduce from './reduce';
 
 
 /**
- * 传入包含多个 predicate 的列表，返回一个 predicate：只要给定的参数满足列表中的一个 predicate ，就返回 `true`。
+ * Takes a list of predicates and returns a predicate that returns true for a
+ * given list of arguments if at least one of the provided predicates is
+ * satisfied by those arguments.
  *
- * 该函数返回一个柯里化的函数，参数个数由列表中参数最多的 predicate 决定。
+ * The function returned is a curried function whose arity matches that of the
+ * highest-arity predicate.
  *
  * @func
  * @memberOf R

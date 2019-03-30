@@ -3,7 +3,7 @@ import converge from './converge';
 
 
 /**
- * `juxt` 将函数列表作用于值列表。
+ * juxt applies a list of functions to a list of values.
  *
  * @func
  * @memberOf R

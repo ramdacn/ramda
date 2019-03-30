@@ -4,7 +4,8 @@ import equals from './equals';
 
 
 /**
- * 检测给定值是否为其所属类型的空值，若是则返回 `true` ；否则返回 `false` 。
+ * Returns `true` if the given value is its type's empty value; `false`
+ * otherwise.
  *
  * @func
  * @memberOf R
