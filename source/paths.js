@@ -3,7 +3,7 @@ import _isInteger from './internal/_isInteger';
 import nth from './nth';
 
 /**
- * 提取对象中指定的路径（paths）上对应的值（values）
+ * 提取对象中指定路径数组（paths）上的对应的值（values）
  *
  * @func
  * @memberOf R
