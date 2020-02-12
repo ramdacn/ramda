@@ -3,7 +3,7 @@ import hasPath from './hasPath';
 
 
 /**
- * 如果对象自身含有指定的属性，则返回 `true`；否则返回 `false`。
+ * Returns whether or not an object has an own property with the specified name
  *
  * @func
  * @memberOf R

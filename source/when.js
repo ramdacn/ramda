@@ -2,7 +2,10 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * 判断输入值是否满足 predicate，若符合，则将输入值传给 `whenTrueFn` 处理，并将处理结果作为返回；若不符合，则将输入值原样返回。
+ * Tests the final argument by passing it to the given predicate function. If
+ * the predicate is satisfied, the function will return the result of calling
+ * the `whenTrueFn` function with the same argument. If the predicate is not
+ * satisfied, the argument is returned as is.
  *
  * @func
  * @memberOf R

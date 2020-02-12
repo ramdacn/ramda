@@ -2,7 +2,7 @@ import _curry1 from './internal/_curry1';
 
 
 /**
- * 取反操作。
+ * Negates its argument.
  *
  * @func
  * @memberOf R

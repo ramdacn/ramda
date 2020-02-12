@@ -3,7 +3,7 @@ import curryN from './curryN';
 
 
 /**
- * 将一个柯里化的函数转换为一个 `n` 元函数。
+ * Returns a function of arity `n` from a (manually) curried function.
  *
  * @func
  * @memberOf R

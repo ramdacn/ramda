@@ -1,7 +1,8 @@
 import _curry3 from './internal/_curry3';
 
 /**
- * 将列表中 `from` 索引处的元素移动到索引 `to` 处。
+ * Move an item, at index `from`, to index `to`, in a list of elements.
+ * A new list will be created containing the new elements order.
  *
  * @func
  * @memberOf R

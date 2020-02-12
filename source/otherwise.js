@@ -3,9 +3,9 @@ import _assertPromise from './internal/_assertPromise';
 
 
 /**
- * 将 onFailure 函数应用于一个失败 Promise 的内部值，并将计算结果放入新的 Promise 中返回。这对于处理函数组合内的 rejected promises 很有用。
- *
- * 相当于 `Promise` 的 `catch`。
+ * Returns the result of applying the onFailure function to the value inside
+ * a failed promise. This is useful for handling rejected promises
+ * inside function compositions.
  *
  * @func
  * @memberOf R

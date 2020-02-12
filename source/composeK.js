@@ -4,9 +4,10 @@ import map from './map';
 
 
 /**
- * 接受一系列函数，返回从右向左的 Kleisli 组合，每个函数必须返回支持 [`chain`](#chain) 操作的值。
+ * Returns the right-to-left Kleisli composition of the provided functions,
+ * each of which must return a value of a type supported by [`chain`](#chain).
  *
- * `R.composeK(h, g, f)` 等同于 `R.compose(R.chain(h)，R.chain(g)，f)`。
+ * `R.composeK(h, g, f)` is equivalent to `R.compose(R.chain(h), R.chain(g), f)`.
  *
  * @func
  * @memberOf R

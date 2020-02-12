@@ -2,7 +2,8 @@ import curryN from './curryN';
 import _curry1 from './internal/_curry1';
 
 /**
- * 创建一个 thunk 版本的函数。 thunk 会延迟计算直到需要其结果，从而实现惰性求值。
+ * Creates a thunk out of a function. A thunk delays a calculation until
+ * its result is needed, providing lazy evaluation of arguments.
  *
  * @func
  * @memberOf R

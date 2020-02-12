@@ -2,11 +2,14 @@ import _curry1 from './internal/_curry1';
 import _reduced from './internal/_reduced';
 
 /**
- * 返回一个封装的值，该值代表 `reduce` 或 `transduce` 操作的最终结果。
+ * Returns a value wrapped to indicate that it is the final value of the reduce
+ * and transduce functions. The returned value should be considered a black
+ * box: the internal structure is not guaranteed to be stable.
  *
- * 返回值是一个黑盒：不保证其内部结构的稳定性。
- *
- * 注意：这个优化不适用于上面未明确列出的函数。例如，现在还不支持 `reduceRight`。
+ * Note: this optimization is only available to the below functions:
+ * - [`reduce`](#reduce)
+ * - [`reduceWhile`](#reduceWhile)
+ * - [`transduce`](#transduce)
  *
  * @func
  * @memberOf R

@@ -3,7 +3,8 @@ import path from './path';
 
 
 /**
- * 取出对象中指定属性的值。如果不存在，则返回 undefined。
+ * Returns a function that when supplied an object returns the indicated
+ * property of that object, if it exists.
  *
  * @func
  * @memberOf R

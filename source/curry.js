@@ -3,16 +3,20 @@ import curryN from './curryN';
 
 
 /**
- * 对函数进行柯里化。柯里化函数与其他语言中的柯里化函数相比，有两个非常好的特性：
- *
- * 1. 参数不需要一次只传入一个。如果 `f` 是三元函数，`g` 是 `R.curry(f)` ，则下列写法是等价的：
+ * Returns a curried equivalent of the provided function. The curried function
+ * has two unusual capabilities. First, its arguments needn't be provided one
+ * at a time. If `f` is a ternary function and `g` is `R.curry(f)`, the
+ * following are equivalent:
  *
  *   - `g(1)(2)(3)`
  *   - `g(1)(2, 3)`
  *   - `g(1, 2)(3)`
  *   - `g(1, 2, 3)`
  *
- * 2. 占位符值 [`R.__`](#__) 可用于标记暂未传入参数的位置。允许部分应用于任何参数组合，而无需关心它们的位置和顺序。假设 `g` 定义如前所示，`_` 代表 [`R.__`](#__) ，则下列写法是等价的：
+ * Secondly, the special placeholder value [`R.__`](#__) may be used to specify
+ * "gaps", allowing partial application of any combination of arguments,
+ * regardless of their positions. If `g` is as above and `_` is [`R.__`](#__),
+ * the following are equivalent:
  *
  *   - `g(1, 2, 3)`
  *   - `g(_, 2, 3)(1)`

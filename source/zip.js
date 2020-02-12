@@ -2,9 +2,10 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * 将两个列表对应位置的元素组合，生成一个新的元素对列表。生成的列表长度取决于较短的输入列表的长度。
- *
- * 注意，`zip` 等价于 `zipWith(function(a, b) { return [a, b] })` 。
+ * Creates a new list out of the two supplied by pairing up equally-positioned
+ * items from both lists. The returned list is truncated to the length of the
+ * shorter of the two input lists.
+ * Note: `zip` is equivalent to `zipWith(function(a, b) { return [a, b] })`.
  *
  * @func
  * @memberOf R

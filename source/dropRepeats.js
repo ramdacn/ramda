@@ -6,9 +6,10 @@ import equals from './equals';
 
 
 /**
- * 返回一个没有连续重复元素的 list。通过 [`R.equals`](#equls) 函数进行相等性判断。
+ * Returns a new list without any consecutively repeating elements.
+ * [`R.equals`](#equals) is used to determine equality.
  *
- * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
+ * Acts as a transducer if a transformer is given in list position.
  *
  * @func
  * @memberOf R

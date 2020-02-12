@@ -5,9 +5,10 @@ import _xaperture from './internal/_xaperture';
 
 
 /**
- * 返回一个新列表，列表中的元素为由原列表相邻元素组成的 n 元组。如果 `n` 大于列表的长度，则返回空列表。
+ * Returns a new list, composed of n-tuples of consecutive elements. If `n` is
+ * greater than the length of the list, an empty list is returned.
  *
- * 若在列表位置中给出 transfomer，则用作 transducer 。
+ * Acts as a transducer if a transformer is given in list position.
  *
  * @func
  * @memberOf R

@@ -6,13 +6,15 @@ import toString from './toString';
 
 
 /**
- * 连接列表或字符串。
+ * Returns the result of concatenating the given lists or strings.
  *
- * 注意：不同于 [`Array.prototype.concat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat), `R.concat` 要求两个参数类型相同。 如果将 Array 与非 Array 连接，将抛出错误。
+ * Note: `R.concat` expects both arguments to be of the same type,
+ * unlike the native `Array.prototype.concat` method. It will throw
+ * an error if you `concat` an Array with a non-Array value.
  *
- * 若第一个参数自身存在 `concat` 方法，则调用自身的 `concat`。
- *
- * 也可以用于连接 [符合 fantasy-land 半群](https://github.com/fantasyland/fantasy-land#semigroup) 类型的两个实例。
+ * Dispatches to the `concat` method of the first argument, if present.
+ * Can also concatenate two members of a [fantasy-land
+ * compatible semigroup](https://github.com/fantasyland/fantasy-land#semigroup).
  *
  * @func
  * @memberOf R

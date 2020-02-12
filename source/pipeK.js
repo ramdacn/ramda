@@ -2,9 +2,10 @@ import composeK from './composeK';
 import reverse from './reverse';
 
 /**
- * 将一系列函数，转换成从左到右的 Kleisli 组合，每个函数必须返回支持[`chain`](#chain)操作的值。
+ * Returns the left-to-right Kleisli composition of the provided functions,
+ * each of which must return a value of a type supported by [`chain`](#chain).
  *
- * `R.pipeK(f, g, h)` 等价于 `R.pipe(f, R.chain(g), R.chain(h))`。
+ * `R.pipeK(f, g, h)` is equivalent to `R.pipe(f, R.chain(g), R.chain(h))`.
  *
  * @func
  * @memberOf R

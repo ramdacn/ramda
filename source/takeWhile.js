@@ -5,11 +5,15 @@ import slice from './slice';
 
 
 /**
- * 从前往后取出列表元素，直到遇到首个不满足 predicate 的元素为止。取出的元素中不包含首个不满足 predicate 的元素。
+ * Returns a new list containing the first `n` elements of a given list,
+ * passing each value to the supplied predicate function, and terminating when
+ * the predicate function returns `false`. Excludes the element that caused the
+ * predicate function to fail. The predicate function is passed one argument:
+ * *(value)*.
  *
- * 若第二个参数自身存在 `takeWhile` 方法，则调用自身的 `takeWhile` 方法
+ * Dispatches to the `takeWhile` method of the second argument, if present.
  *
- * 若在列表位置中给出 transfomer，则用作 transducer 。
+ * Acts as a transducer if a transformer is given in list position.
  *
  * @func
  * @memberOf R

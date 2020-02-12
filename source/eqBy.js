@@ -3,7 +3,8 @@ import equals from './equals';
 
 
 /**
- * 接受一个函数和两个值，通过传入函数对两个值进行相等性判断。如果两个值的计算结果相等，则返回 `true` ；否则返回 `false` 。
+ * Takes a function and two values in its domain and returns `true` if the
+ * values map to the same value in the codomain; `false` otherwise.
  *
  * @func
  * @memberOf R

@@ -1,9 +1,9 @@
 import _curry2 from './internal/_curry2';
 
 /**
- * 通过给定的对比函数，将列表按顺序分割成多组子列表。
- *
- * 对比函数只比较相邻元素。
+ * Takes a list and returns a list of lists where each sublist's elements are
+ * all satisfied pairwise comparison according to the provided function.
+ * Only adjacent elements are passed to the comparison function.
  *
  * @func
  * @memberOf R

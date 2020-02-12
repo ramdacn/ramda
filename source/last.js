@@ -2,7 +2,7 @@ import nth from './nth';
 
 
 /**
- * 返回列表或字符串的最后一个元素。
+ * Returns the last element of the given list or string.
  *
  * @func
  * @memberOf R
