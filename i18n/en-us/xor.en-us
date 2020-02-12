@@ -1,0 +1,4 @@
+ * Exclusive disjunction logical operation.
+ * Returns `true` if one of the arguments is truthy and the other is falsy.
+ * Otherwise, it returns `false`.
+ *

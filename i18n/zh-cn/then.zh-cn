@@ -1,2 +1,0 @@
- * 将 onSuccess 函数应用于一个 resolved Promise 的内部值，并将计算结果放入新的 Promise 中返回。这对于处理函数组合内的 promises 很有用。
- *
