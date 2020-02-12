@@ -210,6 +210,7 @@ identity()
 
 - [Chinese(中文)](http://ramda.cn/)
 - [Ukrainian(Українська)](https://github.com/ivanzusko/ramda)
+- [Portuguese(BR)](https://github.com/renansj/ramda)
 - [Russian(Русский)](https://github.com/Guck111/ramda)
 
 
