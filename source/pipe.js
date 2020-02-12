@@ -5,12 +5,11 @@ import tail from './tail';
 
 
 /**
- * Performs left-to-right function composition. The first argument may have
- * any arity; the remaining arguments must be unary.
+ * 从左往右执行函数组合。第一个函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
  *
- * In some libraries this function is named `sequence`.
+ * 在一些库中，此函数也被称为 `sequence`。
  *
- * **Note:** The result of pipe is not automatically curried.
+ * ** 注意：** `pipe` 函数的结果不是自动柯里化的
  *
  * @func
  * @memberOf R

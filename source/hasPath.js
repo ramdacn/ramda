@@ -5,8 +5,7 @@ import isNil from './isNil';
 
 
 /**
- * Returns whether or not a path exists in an object. Only the object's
- * own properties are checked.
+ * 检查对象中是否存在指定的路径。只检查对象自身的属性。
  *
  * @func
  * @memberOf R

@@ -3,7 +3,7 @@ import _isNumber from './internal/_isNumber';
 
 
 /**
- * Returns a list of numbers from `from` (inclusive) to `to` (exclusive).
+ * 返回从 `from` 到 `to` 之间的所有数的升序列表。左闭右开（包含 `from`，不包含 `to`）。
  *
  * @func
  * @memberOf R

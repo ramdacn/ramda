@@ -2,10 +2,9 @@ import _curry3 from './internal/_curry3';
 
 
 /**
- * Makes a shallow clone of an object, setting or overriding the specified
- * property with the given value. Note that this copies and flattens prototype
- * properties onto the new object as well. All non-primitive properties are
- * copied by reference.
+ * 浅复制对象，然后设置或覆盖对象的指定属性。
+ *
+ * 注意，该函数也会将 prototype 属性复制到新的对象中。所有 `non-primitive` 属性都通过引用复制。
  *
  * @func
  * @memberOf R

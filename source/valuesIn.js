@@ -2,10 +2,7 @@ import _curry1 from './internal/_curry1';
 
 
 /**
- * Returns a list of all the properties, including prototype properties, of the
- * supplied object.
- * Note that the order of the output array is not guaranteed to be consistent
- * across different JS platforms.
+ * 返回对象所有属性的值，包括原型链上的属性。注意：不同 JS 运行环境输出数组的顺序可能不一致。
  *
  * @func
  * @memberOf R

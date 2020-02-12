@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Sorts the list according to the supplied function.
+ * 根据给定的函数对列表进行排序。
  *
  * @func
  * @memberOf R

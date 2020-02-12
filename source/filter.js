@@ -8,14 +8,11 @@ import keys from './keys';
 
 
 /**
- * Takes a predicate and a `Filterable`, and returns a new filterable of the
- * same type containing the members of the given filterable which satisfy the
- * given predicate. Filterable objects include plain objects or any object
- * that has a filter method such as `Array`.
+ * 使用 `predicate` 遍历传入的 `Filterable`，返回满足 `predicate` 的所有元素的新的 `Filterable`。新 `Filterable` 与原先的类型相同。Filterable 类型包括 plain object 或者任何带有 filter 方法的类型，如 `Array` 。
  *
- * Dispatches to the `filter` method of the second argument, if present.
+ * 若第二个参数自身存在 `filter` 方法，则调用自身的 `filter` 方法。
  *
- * Acts as a transducer if a transformer is given in list position.
+ * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
  *
  * @func
  * @memberOf R

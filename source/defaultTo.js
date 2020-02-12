@@ -2,8 +2,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Returns the second argument if it is not `null`, `undefined` or `NaN`;
- * otherwise the first argument is returned.
+ * 如果第二个参数不是 `null`、`undefined` 或 `NaN`，则返回第二个参数，否则返回第一个参数（默认值）。
  *
  * @func
  * @memberOf R

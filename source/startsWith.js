@@ -3,9 +3,7 @@ import equals from './equals';
 import take from './take';
 
 /**
- * Checks if a list starts with the provided sublist.
- *
- * Similarly, checks if a string starts with the provided substring.
+ * 检查列表是否以给定的值开头。
  *
  * @func
  * @memberOf R

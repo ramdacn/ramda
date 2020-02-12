@@ -5,7 +5,7 @@ import toString from './toString';
 
 
 /**
- * Determines whether a given string matches a given regular expression.
+ * 检测字符串是否匹配给定的正则表达式。
  *
  * @func
  * @memberOf R

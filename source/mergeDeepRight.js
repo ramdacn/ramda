@@ -3,10 +3,10 @@ import mergeDeepWithKey from './mergeDeepWithKey';
 
 
 /**
- * Creates a new object with the own properties of the first object merged with
- * the own properties of the second object. If a key exists in both objects:
- * - and both values are objects, the two values will be recursively merged
- * - otherwise the value from the second object will be used.
+ * 合并两个对象的自身属性（不包括 prototype 属性）。如果某个 key 在两个对象中都存在：
+ *
+ * - 并且两个值都是对象，则继续递归合并这两个值。
+ * - 否则，采用第二个对象的值。
  *
  * @func
  * @memberOf R

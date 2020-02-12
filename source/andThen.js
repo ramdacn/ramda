@@ -3,9 +3,7 @@ import _assertPromise from './internal/_assertPromise';
 
 
 /**
- * Returns the result of applying the onSuccess function to the value inside
- * a successfully resolved promise. This is useful for working with promises
- * inside function compositions.
+ * 将 onSuccess 函数应用于一个 fulfilled Promise 的内部值，并将计算结果放入新的 Promise 中返回。这对于处理函数组合内的 promises 很有用。
  *
  * @func
  * @memberOf R

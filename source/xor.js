@@ -1,9 +1,9 @@
 import _curry2 from './internal/_curry2';
 
 /**
- * Exclusive disjunction logical operation.
- * Returns `true` if one of the arguments is truthy and the other is falsy.
- * Otherwise, it returns `false`.
+ * 异或操作。
+ *
+ * 如果其中一个参数为真，另一个参数为假，则返回`true` ；否则返回`false`。
  *
  * @func
  * @memberOf R

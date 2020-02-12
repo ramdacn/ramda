@@ -2,7 +2,7 @@ import _curry2 from './internal/_curry2';
 import paths from './paths';
 
 /**
- * Retrieve the value at a given path.
+ * 取出给定路径上的值。
  *
  * @func
  * @memberOf R

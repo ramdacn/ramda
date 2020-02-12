@@ -1,8 +1,9 @@
 import _curry2 from './internal/_curry2';
 
 /**
- * Returns `true` if one or both of its arguments are `true`. Returns `false`
- * if both arguments are `false`.
+ * 逻辑或运算，
+ *
+ * 只要有一个参数为真（`truth-y`），就返回 `true`；否则返回 `false`。
  *
  * @func
  * @memberOf R

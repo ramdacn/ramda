@@ -5,9 +5,7 @@ import tail from './tail';
 
 
 /**
- * Performs left-to-right composition of one or more Promise-returning
- * functions. The first argument may have any arity; the remaining arguments
- * must be unary.
+ * 从左往右执行返回 Promise 的函数的组合。第一个函数可以是任意元函数（参数个数不限）；其余函数必须是一元函数。
  *
  * @func
  * @memberOf R

@@ -3,9 +3,7 @@ import _curry2 from './internal/_curry2';
 
 
 /**
- * Create a new object with the own properties of the first object merged with
- * the own properties of the second object. If a key exists in both objects,
- * the value from the first object will be used.
+ * 合并两个对象的自身属性（不包括 prototype 属性）。如果某个 key 在两个对象中都存在，使用前一个对象对应的属性值。
  *
  * @func
  * @memberOf R

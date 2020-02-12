@@ -3,7 +3,7 @@ import _isInteger from './internal/_isInteger';
 import nth from './nth';
 
 /**
- * Retrieves the values at given paths of an object.
+ * 提取对象中指定的路径（paths）上对应的值（values）
  *
  * @func
  * @memberOf R
