@@ -1,5 +1,5 @@
-import _curry3 from './internal/_curry3';
-
+import _curry3 from './internal/_curry3.js';
+import prop from './prop.js';
 
 /**
  * 如果指定的对象属性满足 predicate，返回 `true`；否则返回 `false`。可以使用 [`R.where`](#where) 进行多个属性的判断。
@@ -19,6 +19,6 @@ import _curry3 from './internal/_curry3';
  *      R.propSatisfies(x => x > 0, 'x', {x: 1, y: 2}); //=> true
  */
 var propSatisfies = _curry3(function propSatisfies(pred, name, obj) {
-  return pred(obj[name]);
+  return pred(prop(name, obj));
 });
 export default propSatisfies;

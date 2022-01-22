@@ -1,4 +1,5 @@
-import _curry2 from './internal/_curry2';
+import _curry2 from './internal/_curry2.js';
+
 
 /**
  * 逻辑或运算，
@@ -12,8 +13,8 @@ import _curry2 from './internal/_curry2';
  * @sig a -> b -> a | b
  * @param {Any} a
  * @param {Any} b
- * @return {Any} the first argument if truthy, otherwise the second argument.
- * @see R.either, R.xor
+ * @return {Any}
+ * @see R.either, R.and
  * @example
  *
  *      R.or(true, true); //=> true

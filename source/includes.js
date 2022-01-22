@@ -1,5 +1,5 @@
-import _includes from './internal/_includes';
-import _curry2 from './internal/_curry2';
+import _includes from './internal/_includes.js';
+import _curry2 from './internal/_curry2.js';
 
 /**
  * 只要列表中有一个元素等于指定值，则返回 `true`；否则返回 `false`。通过 `R.equals` 函数进行相等性判断。

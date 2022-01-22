@@ -1,6 +1,6 @@
-import _curry2 from './internal/_curry2';
-import equals from './equals';
-import take from './take';
+import _curry2 from './internal/_curry2.js';
+import equals from './equals.js';
+import take from './take.js';
 
 /**
  * 检查列表是否以给定的值开头。

@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2';
+import _curry2 from './internal/_curry2.js';
 
 /**
  * 接受一个值，并将一个函数作用于其上。

@@ -1,10 +1,11 @@
-import _curry3 from './internal/_curry3';
+import _curry3 from './internal/_curry3.js';
 
 /**
  * 将列表中 `from` 索引处的元素移动到索引 `to` 处。
  *
  * @func
  * @memberOf R
+ * @since v0.27.1
  * @category List
  * @sig Number -> Number -> [a] -> [a]
  * @param {Number} from The source index

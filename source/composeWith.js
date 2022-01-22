@@ -1,6 +1,6 @@
-import _curry2 from './internal/_curry2';
-import pipeWith from './pipeWith';
-import reverse from './reverse';
+import _curry2 from './internal/_curry2.js';
+import pipeWith from './pipeWith.js';
+import reverse from './reverse.js';
 
 
 /**
@@ -13,7 +13,8 @@ import reverse from './reverse';
  * @since v0.26.0
  * @category Function
  * @sig ((* -> *), [(y -> z), (x -> y), ..., (o -> p), ((a, b, ..., n) -> o)]) -> ((a, b, ..., n) -> z)
- * @param {...Function} ...functions The functions to compose
+ * @param {Function} transformer The transforming function
+ * @param {Array} functions The functions to compose
  * @return {Function}
  * @see R.compose, R.pipeWith
  * @example

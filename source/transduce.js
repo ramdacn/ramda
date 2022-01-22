@@ -1,6 +1,6 @@
-import _reduce from './internal/_reduce';
-import _xwrap from './internal/_xwrap';
-import curryN from './curryN';
+import _reduce from './internal/_reduce.js';
+import _xwrap from './internal/_xwrap.js';
+import curryN from './curryN.js';
 
 
 /**
@@ -33,7 +33,7 @@ import curryN from './curryN';
  *      const transducer = R.compose(R.map(R.add(1)), R.take(2));
  *      R.transduce(transducer, R.flip(R.append), [], numbers); //=> [2, 3]
  *
- *      const isOdd = (x) => x % 2 === 1;
+ *      const isOdd = (x) => x % 2 !== 0;
  *      const firstOddTransducer = R.compose(R.filter(isOdd), R.take(1));
  *      R.transduce(firstOddTransducer, R.flip(R.append), [], R.range(0, 100)); //=> [1]
  */

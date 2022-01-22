@@ -1,12 +1,16 @@
-import _arity from './internal/_arity';
-import _curry1 from './internal/_curry1';
-import map from './map';
-import max from './max';
-import reduce from './reduce';
+import _arity from './internal/_arity.js';
+import _curry1 from './internal/_curry1.js';
+import map from './map.js';
+import max from './max.js';
+import reduce from './reduce.js';
 
 
 /**
  * 返回一个封装了 `if / else，if / else, ...` 逻辑的函数 `fn`。 `R.cond` 接受列表元素为 [predicate，transformer] 的列表。 `fn` 的所有参数顺次作用于每个 predicate，直到有一个返回 "truthy" 值，此时相应 transformer 对参数处理，并作为 `fn` 的结果返回。 如果没有 predicate 匹配，则 `fn` 返回 undefined。
+ *
+ * **Please note**: This is not a direct substitute for a `switch` statement.
+ * Remember that both elements of every pair passed to `cond` are *functions*,
+ * and `cond` returns a function.
  *
  * @func
  * @memberOf R

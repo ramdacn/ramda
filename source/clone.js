@@ -1,11 +1,15 @@
-import _clone from './internal/_clone';
-import _curry1 from './internal/_curry1';
+import _clone from './internal/_clone.js';
+import _curry1 from './internal/_curry1.js';
 
 
 /**
  * 深复制。其值可能（嵌套）包含 `Array`、`Object`、`Number`、`String`、`Boolean`、`Date` 类型的数据。`Function` 通过引用复制。
  *
  * 若自身存在 `clone` 方法，则调用自身的 `clone` 方法。
+ *
+ * Note that if the source object has multiple nodes that share a reference,
+ * the returned object will have the same structure, but the references will
+ * be pointed to the location within the cloned value.
  *
  * @func
  * @memberOf R

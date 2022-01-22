@@ -1,5 +1,5 @@
-import _curry1 from './internal/_curry1';
-import _reduced from './internal/_reduced';
+import _curry1 from './internal/_curry1.js';
+import _reduced from './internal/_reduced.js';
 
 /**
  * 返回一个封装的值，该值代表 `reduce` 或 `transduce` 操作的最终结果。
@@ -15,7 +15,7 @@ import _reduced from './internal/_reduced';
  * @sig a -> *
  * @param {*} x The final value of the reduce.
  * @return {*} The wrapped value.
- * @see R.reduce, R.reduceWhile, R.transduce
+ * @see R.reduce, R.reduceWhile, R.reduceBy, R.reduceRight, R.transduce
  * @example
  *
  *     R.reduce(

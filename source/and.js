@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2';
+import _curry2 from './internal/_curry2.js';
 
 
 /**
@@ -11,8 +11,8 @@ import _curry2 from './internal/_curry2';
  * @sig a -> b -> a | b
  * @param {Any} a
  * @param {Any} b
- * @return {Any} the first argument if it is falsy, otherwise the second argument.
- * @see R.both, R.xor
+ * @return {Any}
+ * @see R.both, R.or
  * @example
  *
  *      R.and(true, true); //=> true

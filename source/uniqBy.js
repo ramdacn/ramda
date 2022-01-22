@@ -1,9 +1,13 @@
-import _Set from './internal/_Set';
-import _curry2 from './internal/_curry2';
+import _Set from './internal/_Set.js';
+import _curry2 from './internal/_curry2.js';
+import _dispatchable from './internal/_dispatchable.js';
+import _xuniqBy from './internal/_xuniqBy.js';
 
 
 /**
  * 返回无重复元素的列表。元素通过给定的函数的返回值以及 [`R.equals`](#equals) 进行相同性判断。如果给定的函数返回值相同，保留第一个元素。
+ *
+ * Acts as a transducer if a transformer is given in list position.
  *
  * @func
  * @memberOf R
@@ -17,7 +21,7 @@ import _curry2 from './internal/_curry2';
  *
  *      R.uniqBy(Math.abs, [-1, -5, 2, 10, 1, 2]); //=> [-1, -5, 2, 10]
  */
-var uniqBy = _curry2(function uniqBy(fn, list) {
+var uniqBy = _curry2(_dispatchable([], _xuniqBy, function(fn, list) {
   var set = new _Set();
   var result = [];
   var idx = 0;
@@ -32,5 +36,5 @@ var uniqBy = _curry2(function uniqBy(fn, list) {
     idx += 1;
   }
   return result;
-});
+}));
 export default uniqBy;

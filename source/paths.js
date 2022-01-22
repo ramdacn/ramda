@@ -1,14 +1,15 @@
-import _curry2 from './internal/_curry2';
-import _isInteger from './internal/_isInteger';
-import nth from './nth';
+import _curry2 from './internal/_curry2.js';
+import _isInteger from './internal/_isInteger.js';
+import nth from './nth.js';
 
 /**
  * 提取对象中指定路径数组（paths）上的对应的值（values）
  *
  * @func
  * @memberOf R
+ * @since v0.27.1
  * @category Object
- * @typedefn Idx = [String | Int]
+ * @typedefn Idx = [String | Int | Symbol]
  * @sig [Idx] -> {a} -> [a | Undefined]
  * @param {Array} pathsArray The array of paths to be fetched.
  * @param {Object} obj The object to retrieve the nested properties from.

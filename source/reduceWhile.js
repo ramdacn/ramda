@@ -1,6 +1,6 @@
-import _curryN from './internal/_curryN';
-import _reduce from './internal/_reduce';
-import _reduced from './internal/_reduced';
+import _curryN from './internal/_curryN.js';
+import _reduce from './internal/_reduce.js';
+import _reduced from './internal/_reduced.js';
 
 
 /**
@@ -21,7 +21,7 @@ import _reduced from './internal/_reduced';
  * @see R.reduce, R.reduced
  * @example
  *
- *      const isOdd = (acc, x) => x % 2 === 1;
+ *      const isOdd = (acc, x) => x % 2 !== 0;
  *      const xs = [1, 3, 5, 60, 777, 800];
  *      R.reduceWhile(isOdd, R.add, 0, xs); //=> 9
  *

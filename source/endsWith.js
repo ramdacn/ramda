@@ -1,6 +1,6 @@
-import _curry2 from './internal/_curry2';
-import equals from './equals';
-import takeLast from './takeLast';
+import _curry2 from './internal/_curry2.js';
+import equals from './equals.js';
+import takeLast from './takeLast.js';
 
 /**
  * 检查列表是否以指定的子列表结尾。

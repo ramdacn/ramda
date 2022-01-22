@@ -1,5 +1,5 @@
-import curryN from './curryN';
-import _curry1 from './internal/_curry1';
+import curryN from './curryN.js';
+import _curry1 from './internal/_curry1.js';
 
 /**
  * 创建一个 thunk 版本的函数。 thunk 会延迟计算直到需要其结果，从而实现惰性求值。
