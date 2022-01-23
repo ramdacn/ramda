@@ -86,7 +86,6 @@
     "spec": "cross-env BABEL_ENV=cjs mocha --require @babel/register --reporter spec",
     "test": "npm run spec && npm run lint"
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
