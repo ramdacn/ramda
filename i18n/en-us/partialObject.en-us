@@ -1,0 +1,4 @@
+ * Takes a function `f` and an object, and returns a function `g`.
+ * When applied, `g` returns the result of applying `f` to the object
+ * provided initially merged deeply (right) with the object provided as an argument to `g`.
+ *

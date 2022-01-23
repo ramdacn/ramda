@@ -4,3 +4,5 @@
  *
  * Note this is merely a curried version of ES6 `Object.is`.
  *
+ * `identical` does not support the `__` placeholder.
+ *

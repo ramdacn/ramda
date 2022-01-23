@@ -1,19 +1,23 @@
-import _curry1 from './internal/_curry1';
-import apply from './apply';
-import curryN from './curryN';
-import max from './max';
-import pluck from './pluck';
-import reduce from './reduce';
-import keys from './keys';
-import values from './values';
+import _curry1 from './internal/_curry1.js';
+import _isArray from './internal/_isArray.js';
+import apply from './apply.js';
+import curryN from './curryN.js';
+import max from './max.js';
+import pluck from './pluck.js';
+import reduce from './reduce.js';
+import keys from './keys.js';
+import values from './values.js';
+
 
 // Use custom mapValues function to avoid issues with specs that include a "map" key and R.map
 // delegating calls to .map
 function mapValues(fn, obj) {
-  return keys(obj).reduce(function(acc, key) {
-    acc[key] = fn(obj[key]);
-    return acc;
-  }, {});
+  return _isArray(obj)
+    ? obj.map(fn)
+    : keys(obj).reduce(function(acc, key) {
+      acc[key] = fn(obj[key]);
+      return acc;
+    }, {});
 }
 
 /**

@@ -3,9 +3,11 @@ Ramda 中文
 
 一款实用的 JavaScript 函数式编程库。
 
-[![Build Status](https://travis-ci.org/ramda/ramda.svg?branch=master)](https://travis-ci.org/ramda/ramda)
+[![Build Status](https://github.com/ramda/ramda/workflows/Build/badge.svg)](https://github.com/ramda/ramda/actions?query=workflow%3ABuild)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/953a3c5ee423e5301d18/test_coverage)](https://codeclimate.com/github/ramda/ramda/test_coverage)
 [![npm module](https://badge.fury.io/js/ramda.svg)](https://www.npmjs.org/package/ramda)
-[![dependencies](https://david-dm.org/ramda/ramda.svg)](https://david-dm.org/ramda/ramda)
+[![deno land](http://img.shields.io/badge/available%20on-deno.land/x-lightgrey.svg?logo=deno&labelColor=black)](https://deno.land/x/ramda@v0.27.2)
+[![nest badge](https://nest.land/badge.svg)](https://nest.land/package/ramda)
 [![Gitter](https://badges.gitter.im/Join_Chat.svg)](https://gitter.im/ramda/ramda?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
@@ -42,7 +44,8 @@ Ramda 主要特性如下：
 * [Favoring Curry](http://fr.umio.us/favoring-curry/) by Scott Sauyet [中文](https://adispring.coding.me/2017/06/27/Favoring-Curry/)
 * [Why Curry Helps](https://hughfdjackson.com/javascript/why-curry-helps/) by Hugh Jackson [中文](https://adispring.coding.me/2017/06/28/Why-Curry-Helps/)
 * [Hey Underscore, You're Doing It Wrong!](https://www.youtube.com/watch?v=m3svKOdZijA&app=desktop) by Brian Lonsdorf
-* [Thinking in Ramda](http://randycoulman.com/blog/categories/thinking-in-ramda) by Randy Coulman [中文](https://adispring.coding.me/categories/Thinking-in-Ramda/)
+* [Thinking in Ramda](https://randycoulman.com/blog/categories/thinking-in-ramda) by Randy Coulman
+
 
 
 理念
@@ -74,7 +77,17 @@ $ npm install ramda
 const R = require('ramda');
 ```
 
-直接在浏览器中使用：
+To use directly in [Deno](https://deno.land):
+```javascript
+import * as R from "https://deno.land/x/ramda@v0.27.2/mod.ts";
+```
+
+or using Nest.land:
+```javascript
+import * as R from "https://x.nest.land/ramda@0.27.2/mod.ts";
+```
+
+To use directly in the browser:
 
 ```html
 <script src="path/to/yourCopyOf/ramda.js"></script>
@@ -110,6 +123,11 @@ const R = require('ramda');
 
 Ramda 在 0.25 以后，不会再提供默认输出（default export）。所以不要再用 `import R from 'ramda'`，而应该使用 `import * as R from 'ramda'` 引入 ramda。或者更好的方式是，通过 `import { functionName } from 'ramda'` 只引入必需的函数。
 
+
+**ES6 模块和浏览器注意事项**
+
+为了在浏览器中访问 ES6 模块, 必须提供 __es__ 目录内容 (请参考下面的构建说明) 并使用 `import * as R from './node_modules/ramda/es/index.js';`
+
 ### Build (构建)
 
 运行 `npm run build` 会生成 `es` 和 `src` 文件夹，并更新 __dist/ramda.js__ 和 __dist/ramda.min.js__
@@ -121,7 +139,9 @@ Ramda 在 0.25 以后，不会再提供默认输出（default export）。所以
     npm run --silent partial-build compose reduce filter > dist/ramda.custom.js
 
 上述命令需要安装 Node/io.js 和 ramda 的依赖（只需在部分构建开始前运行 `npm install`）。
+### 下载单个的函数
 
+通过 bit [下载单个的函数](https://bitsrc.io/ramda/ramda)，而不需要通过 npm 和 yarn 去下载整个库
 
 文档
 -------------
@@ -201,7 +221,7 @@ identity()
 类型系统
 -----------------
 
-- [TypeScript](https://github.com/types/npm-ramda/)
+- [TypeScript](https://www.npmjs.com/package/@types/ramda)
 - [Flow](https://github.com/flowtype/flow-typed/tree/master/definitions/npm/ramda_v0.x.x)
 
 
@@ -212,7 +232,15 @@ identity()
 - [Ukrainian(Українська)](https://github.com/ivanzusko/ramda)
 - [Portuguese(BR)](https://github.com/renansj/ramda)
 - [Russian(Русский)](https://github.com/Guck111/ramda)
+- [Spanish(ES)](https://github.com/wirecobweb/ramda)
 
+
+
+
+Funding
+-----------------
+
+If you wish to donate to Ramda please see our [Open Collective](https://opencollective.com/ramda) page. Thank you!
 
 致谢
 -----------------
@@ -222,7 +250,7 @@ identity()
 中文翻译
 -----------------
 
-[王增迪](https://adispring.coding.me/)，[张聪杰](https://github.com/ZhangCongjie)，[张春晓](https://github.com/MissSweety)，[陈申乾](https://github.com/csqian)，[陈雪勇](https://github.com/xuelangcxy)。
+[王增迪](https://adispring.coding.me/)，[张聪杰](https://github.com/ZhangCongjie)，[张春晓](https://github.com/MissSweety)，[陈申乾](https://github.com/csqian)，[陈雪勇](https://github.com/xuelangcxy)，[张大尉](https://github.com/yusifeng)。
 
 如果发现翻译不恰当的地方，恳请指正。也欢迎加入我们，一起维护 Ramda 中文网站。
 

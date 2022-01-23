@@ -1,0 +1,8 @@
+ * Takes two functions as pre- and post- processors respectively for a third function,
+ * i.e. `promap(f, g, h)(x) === g(h(f(x)))`.
+ *
+ * Dispatches to the `promap` method of the third argument, if present,
+ * according to the [FantasyLand Profunctor spec](https://github.com/fantasyland/fantasy-land#profunctor).
+ *
+ * Acts as a transducer if a transformer is given in profunctor position.
+ *

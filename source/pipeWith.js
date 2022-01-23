@@ -1,9 +1,9 @@
-import _arity from './internal/_arity';
-import _curry2 from './internal/_curry2';
-import head from './head';
-import _reduce from './internal/_reduce';
-import tail from './tail';
-import identity from './identity';
+import _arity from './internal/_arity.js';
+import _curry2 from './internal/_curry2.js';
+import head from './head.js';
+import _reduce from './internal/_reduce.js';
+import tail from './tail.js';
+import identity from './identity.js';
 
 
 /**
@@ -16,7 +16,8 @@ import identity from './identity';
  * @since v0.26.0
  * @category Function
  * @sig ((* -> *), [((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)]) -> ((a, b, ..., n) -> z)
- * @param {...Function} functions
+ * @param {Function} transformer The transforming function
+ * @param {Array} functions The functions to pipe
  * @return {Function}
  * @see R.composeWith, R.pipe
  * @example

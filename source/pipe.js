@@ -1,7 +1,7 @@
-import _arity from './internal/_arity';
-import _pipe from './internal/_pipe';
-import reduce from './reduce';
-import tail from './tail';
+import _arity from './internal/_arity.js';
+import _pipe from './internal/_pipe.js';
+import reduce from './reduce.js';
+import tail from './tail.js';
 
 
 /**
@@ -9,7 +9,7 @@ import tail from './tail';
  *
  * 在一些库中，此函数也被称为 `sequence`。
  *
- * ** 注意：** `pipe` 函数的结果不是自动柯里化的
+ * ** 注意：** `pipe` 函数的结果不是自动柯里化的。
  *
  * @func
  * @memberOf R
@@ -25,6 +25,7 @@ import tail from './tail';
  *
  *      f(3, 4); // -(3^4) + 1
  * @symb R.pipe(f, g, h)(a, b) = h(g(f(a, b)))
+ * @symb R.pipe(f, g, h)(a)(b) = h(g(f(a)))(b)
  */
 export default function pipe() {
   if (arguments.length === 0) {

@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3';
+import _curry3 from './internal/_curry3.js';
 
 
 /**
@@ -22,7 +22,7 @@ import _curry3 from './internal/_curry3';
  * @param {*} acc The accumulator value.
  * @param {Array} list The list to iterate over.
  * @return {*} The final, accumulated value.
- * @see R.reduce, R.addIndex
+ * @see R.reduce, R.addIndex, R.reduced
  * @example
  *
  *      R.reduceRight(R.subtract, 0, [1, 2, 3, 4]) // => (1 - (2 - (3 - (4 - 0)))) = -2
@@ -42,6 +42,10 @@ var reduceRight = _curry3(function reduceRight(fn, acc, list) {
   var idx = list.length - 1;
   while (idx >= 0) {
     acc = fn(list[idx], acc);
+    if (acc && acc['@@transducer/reduced']) {
+      acc = acc['@@transducer/value'];
+      break;
+    }
     idx -= 1;
   }
   return acc;

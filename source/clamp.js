@@ -1,4 +1,4 @@
-import _curry3 from './internal/_curry3';
+import _curry3 from './internal/_curry3.js';
 
 /**
  * 将数字限制在指定的范围内。

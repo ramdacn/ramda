@@ -1,0 +1,5 @@
+ * Takes a binary function `f`, a unary function `g`, and two values.
+ * Applies `g` to each value, then applies the result of each to `f`.
+ *
+ * Also known as the P combinator.
+ *

@@ -1,4 +1,4 @@
-import _curry2 from './internal/_curry2';
+import _curry2 from './internal/_curry2.js';
 
 /**
  * 通过给定的对比函数，将列表按顺序分割成多组子列表。
@@ -27,6 +27,7 @@ import _curry2 from './internal/_curry2';
  * R.groupWith((a, b) => a % 2 === b % 2, [0, 1, 1, 2, 3, 5, 8, 13, 21])
  * //=> [[0], [1, 1], [2], [3, 5], [8], [13, 21]]
  *
+ * const isVowel = R.test(/^[aeiou]$/i);
  * R.groupWith(R.eqBy(isVowel), 'aestiou')
  * //=> ['ae', 'st', 'iou']
  */

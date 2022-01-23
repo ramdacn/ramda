@@ -1,6 +1,6 @@
-import _concat from './internal/_concat';
-import _curry1 from './internal/_curry1';
-import curryN from './curryN';
+import _concat from './internal/_concat.js';
+import _curry1 from './internal/_curry1.js';
+import curryN from './curryN.js';
 
 
 /**
@@ -8,12 +8,14 @@ import curryN from './curryN';
  *
  * 例如，`addIndex` 可以将 [`R.map`](#map) 转换为类似于 `Array.prototype.map` 的函数。注意，`addIndex` 只适用于迭代回调函数是首个参数、列表是最后一个参数的函数。（如果列表参数没有用到，后一个条件可以忽略）。
  *
+ * `identical` 不支持 `__` 占位符。
+ *
  * @func
  * @memberOf R
  * @since v0.15.0
  * @category Function
  * @category List
- * @sig ((a ... -> b) ... -> [a] -> *) -> ((a ..., Int, [a] -> b) ... -> [a] -> *)
+ * @sig (((a ...) -> b) ... -> [a] -> *) -> (((a ..., Int, [a]) -> b) ... -> [a] -> *)
  * @param {Function} fn A list iteration function that does not pass index or list to its callback
  * @return {Function} An altered list iteration function that passes (item, index, list) to its callback
  * @example

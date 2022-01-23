@@ -1,13 +1,13 @@
-//  Ramda v0.26.1
+//  Ramda v0.28.0
 //  https://github.com/ramda/ramda
-//  (c) 2013-2020 Scott Sauyet, Michael Hurley, and David Chambers
+//  (c) 2013-2022 Scott Sauyet, Michael Hurley, and David Chambers
 //  Ramda may be freely distributed under the MIT license.
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = global || self, factory(global.R = {}));
-}(this, function (exports) { 'use strict';
+}(this, (function (exports) { 'use strict';
 
   /**
    * 恒定返回 `false` 的函数。忽略所有的输入参数。
@@ -24,7 +24,9 @@
    *
    *      R.F(); //=> false
    */
-  var F = function() {return false;};
+  var F = function F() {
+    return false;
+  };
 
   /**
    * 恒定返回 `true` 的函数。忽略所有的输入参数。
@@ -41,7 +43,9 @@
    *
    *      R.T(); //=> true
    */
-  var T = function() {return true;};
+  var T = function T() {
+    return true;
+  };
 
   /**
    * 柯里化函数的参数占位符。允许部分应用于任何位置的参数。
@@ -67,12 +71,22 @@
    *      const greet = R.replace('{name}', R.__, 'Hello, {name}!');
    *      greet('Alice'); //=> 'Hello, Alice!'
    */
-  var __ = {'@@functional/placeholder': true};
+  var __ = {
+    '@@functional/placeholder': true
+  };
+
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+      return typeof obj;
+    } : function (obj) {
+      return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    }, _typeof(obj);
+  }
 
   function _isPlaceholder(a) {
-    return a != null &&
-           typeof a === 'object' &&
-           a['@@functional/placeholder'] === true;
+    return a != null && _typeof(a) === 'object' && a['@@functional/placeholder'] === true;
   }
 
   /**
@@ -83,6 +97,7 @@
    * @param {Function} fn The function to curry.
    * @return {Function} The curried function.
    */
+
   function _curry1(fn) {
     return function f1(a) {
       if (arguments.length === 0 || _isPlaceholder(a)) {
@@ -101,23 +116,24 @@
    * @param {Function} fn The function to curry.
    * @return {Function} The curried function.
    */
+
   function _curry2(fn) {
     return function f2(a, b) {
       switch (arguments.length) {
         case 0:
           return f2;
+
         case 1:
-          return _isPlaceholder(a)
-            ? f2
-            : _curry1(function(_b) { return fn(a, _b); });
+          return _isPlaceholder(a) ? f2 : _curry1(function (_b) {
+            return fn(a, _b);
+          });
+
         default:
-          return _isPlaceholder(a) && _isPlaceholder(b)
-            ? f2
-            : _isPlaceholder(a)
-              ? _curry1(function(_a) { return fn(_a, b); })
-              : _isPlaceholder(b)
-                ? _curry1(function(_b) { return fn(a, _b); })
-                : fn(a, b);
+          return _isPlaceholder(a) && _isPlaceholder(b) ? f2 : _isPlaceholder(a) ? _curry1(function (_a) {
+            return fn(_a, b);
+          }) : _isPlaceholder(b) ? _curry1(function (_b) {
+            return fn(a, _b);
+          }) : fn(a, b);
       }
     };
   }
@@ -139,6 +155,7 @@
    *      R.add(2, 3);       //=>  5
    *      R.add(7)(10);      //=> 17
    */
+
   var add = _curry2(function add(a, b) {
     return Number(a) + Number(b);
   });
@@ -161,35 +178,83 @@
     var len1 = set1.length;
     var len2 = set2.length;
     var result = [];
-
     idx = 0;
+
     while (idx < len1) {
       result[result.length] = set1[idx];
       idx += 1;
     }
+
     idx = 0;
+
     while (idx < len2) {
       result[result.length] = set2[idx];
       idx += 1;
     }
+
     return result;
   }
 
   function _arity(n, fn) {
     /* eslint-disable no-unused-vars */
     switch (n) {
-      case 0: return function() { return fn.apply(this, arguments); };
-      case 1: return function(a0) { return fn.apply(this, arguments); };
-      case 2: return function(a0, a1) { return fn.apply(this, arguments); };
-      case 3: return function(a0, a1, a2) { return fn.apply(this, arguments); };
-      case 4: return function(a0, a1, a2, a3) { return fn.apply(this, arguments); };
-      case 5: return function(a0, a1, a2, a3, a4) { return fn.apply(this, arguments); };
-      case 6: return function(a0, a1, a2, a3, a4, a5) { return fn.apply(this, arguments); };
-      case 7: return function(a0, a1, a2, a3, a4, a5, a6) { return fn.apply(this, arguments); };
-      case 8: return function(a0, a1, a2, a3, a4, a5, a6, a7) { return fn.apply(this, arguments); };
-      case 9: return function(a0, a1, a2, a3, a4, a5, a6, a7, a8) { return fn.apply(this, arguments); };
-      case 10: return function(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) { return fn.apply(this, arguments); };
-      default: throw new Error('First argument to _arity must be a non-negative integer no greater than ten');
+      case 0:
+        return function () {
+          return fn.apply(this, arguments);
+        };
+
+      case 1:
+        return function (a0) {
+          return fn.apply(this, arguments);
+        };
+
+      case 2:
+        return function (a0, a1) {
+          return fn.apply(this, arguments);
+        };
+
+      case 3:
+        return function (a0, a1, a2) {
+          return fn.apply(this, arguments);
+        };
+
+      case 4:
+        return function (a0, a1, a2, a3) {
+          return fn.apply(this, arguments);
+        };
+
+      case 5:
+        return function (a0, a1, a2, a3, a4) {
+          return fn.apply(this, arguments);
+        };
+
+      case 6:
+        return function (a0, a1, a2, a3, a4, a5) {
+          return fn.apply(this, arguments);
+        };
+
+      case 7:
+        return function (a0, a1, a2, a3, a4, a5, a6) {
+          return fn.apply(this, arguments);
+        };
+
+      case 8:
+        return function (a0, a1, a2, a3, a4, a5, a6, a7) {
+          return fn.apply(this, arguments);
+        };
+
+      case 9:
+        return function (a0, a1, a2, a3, a4, a5, a6, a7, a8) {
+          return fn.apply(this, arguments);
+        };
+
+      case 10:
+        return function (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) {
+          return fn.apply(this, arguments);
+        };
+
+      default:
+        throw new Error('First argument to _arity must be a non-negative integer no greater than ten');
     }
   }
 
@@ -203,31 +268,34 @@
    * @param {Function} fn The function to curry.
    * @return {Function} The curried function.
    */
+
   function _curryN(length, received, fn) {
-    return function() {
+    return function () {
       var combined = [];
       var argsIdx = 0;
       var left = length;
       var combinedIdx = 0;
+
       while (combinedIdx < received.length || argsIdx < arguments.length) {
         var result;
-        if (combinedIdx < received.length &&
-            (!_isPlaceholder(received[combinedIdx]) ||
-             argsIdx >= arguments.length)) {
+
+        if (combinedIdx < received.length && (!_isPlaceholder(received[combinedIdx]) || argsIdx >= arguments.length)) {
           result = received[combinedIdx];
         } else {
           result = arguments[argsIdx];
           argsIdx += 1;
         }
+
         combined[combinedIdx] = result;
+
         if (!_isPlaceholder(result)) {
           left -= 1;
         }
+
         combinedIdx += 1;
       }
-      return left <= 0
-        ? fn.apply(this, combined)
-        : _arity(left, _curryN(length, combined, fn));
+
+      return left <= 0 ? fn.apply(this, combined) : _arity(left, _curryN(length, combined, fn));
     };
   }
 
@@ -269,10 +337,12 @@
    *      const g = f(3);
    *      g(4); //=> 10
    */
+
   var curryN = _curry2(function curryN(length, fn) {
     if (length === 1) {
       return _curry1(fn);
     }
+
     return _arity(length, _curryN(length, [], fn));
   });
 
@@ -281,12 +351,14 @@
    *
    * 例如，`addIndex` 可以将 [`R.map`](#map) 转换为类似于 `Array.prototype.map` 的函数。注意，`addIndex` 只适用于迭代回调函数是首个参数、列表是最后一个参数的函数。（如果列表参数没有用到，后一个条件可以忽略）。
    *
+   * `identical` 不支持 `__` 占位符。
+   *
    * @func
    * @memberOf R
    * @since v0.15.0
    * @category Function
    * @category List
-   * @sig ((a ... -> b) ... -> [a] -> *) -> ((a ..., Int, [a] -> b) ... -> [a] -> *)
+   * @sig (((a ...) -> b) ... -> [a] -> *) -> (((a ..., Int, [a]) -> b) ... -> [a] -> *)
    * @param {Function} fn A list iteration function that does not pass index or list to its callback
    * @return {Function} An altered list iteration function that passes (item, index, list) to its callback
    * @example
@@ -295,17 +367,20 @@
    *      mapIndexed((val, idx) => idx + '-' + val, ['f', 'o', 'o', 'b', 'a', 'r']);
    *      //=> ['0-f', '1-o', '2-o', '3-b', '4-a', '5-r']
    */
+
   var addIndex = _curry1(function addIndex(fn) {
-    return curryN(fn.length, function() {
+    return curryN(fn.length, function () {
       var idx = 0;
       var origFn = arguments[0];
       var list = arguments[arguments.length - 1];
       var args = Array.prototype.slice.call(arguments, 0);
-      args[0] = function() {
+
+      args[0] = function () {
         var result = origFn.apply(this, _concat(arguments, [idx, list]));
         idx += 1;
         return result;
       };
+
       return fn.apply(this, args);
     });
   });
@@ -318,39 +393,41 @@
    * @param {Function} fn The function to curry.
    * @return {Function} The curried function.
    */
+
   function _curry3(fn) {
     return function f3(a, b, c) {
       switch (arguments.length) {
         case 0:
           return f3;
+
         case 1:
-          return _isPlaceholder(a)
-            ? f3
-            : _curry2(function(_b, _c) { return fn(a, _b, _c); });
+          return _isPlaceholder(a) ? f3 : _curry2(function (_b, _c) {
+            return fn(a, _b, _c);
+          });
+
         case 2:
-          return _isPlaceholder(a) && _isPlaceholder(b)
-            ? f3
-            : _isPlaceholder(a)
-              ? _curry2(function(_a, _c) { return fn(_a, b, _c); })
-              : _isPlaceholder(b)
-                ? _curry2(function(_b, _c) { return fn(a, _b, _c); })
-                : _curry1(function(_c) { return fn(a, b, _c); });
+          return _isPlaceholder(a) && _isPlaceholder(b) ? f3 : _isPlaceholder(a) ? _curry2(function (_a, _c) {
+            return fn(_a, b, _c);
+          }) : _isPlaceholder(b) ? _curry2(function (_b, _c) {
+            return fn(a, _b, _c);
+          }) : _curry1(function (_c) {
+            return fn(a, b, _c);
+          });
+
         default:
-          return _isPlaceholder(a) && _isPlaceholder(b) && _isPlaceholder(c)
-            ? f3
-            : _isPlaceholder(a) && _isPlaceholder(b)
-              ? _curry2(function(_a, _b) { return fn(_a, _b, c); })
-              : _isPlaceholder(a) && _isPlaceholder(c)
-                ? _curry2(function(_a, _c) { return fn(_a, b, _c); })
-                : _isPlaceholder(b) && _isPlaceholder(c)
-                  ? _curry2(function(_b, _c) { return fn(a, _b, _c); })
-                  : _isPlaceholder(a)
-                    ? _curry1(function(_a) { return fn(_a, b, c); })
-                    : _isPlaceholder(b)
-                      ? _curry1(function(_b) { return fn(a, _b, c); })
-                      : _isPlaceholder(c)
-                        ? _curry1(function(_c) { return fn(a, b, _c); })
-                        : fn(a, b, c);
+          return _isPlaceholder(a) && _isPlaceholder(b) && _isPlaceholder(c) ? f3 : _isPlaceholder(a) && _isPlaceholder(b) ? _curry2(function (_a, _b) {
+            return fn(_a, _b, c);
+          }) : _isPlaceholder(a) && _isPlaceholder(c) ? _curry2(function (_a, _c) {
+            return fn(_a, b, _c);
+          }) : _isPlaceholder(b) && _isPlaceholder(c) ? _curry2(function (_b, _c) {
+            return fn(a, _b, _c);
+          }) : _isPlaceholder(a) ? _curry1(function (_a) {
+            return fn(_a, b, c);
+          }) : _isPlaceholder(b) ? _curry1(function (_b) {
+            return fn(a, _b, c);
+          }) : _isPlaceholder(c) ? _curry1(function (_c) {
+            return fn(a, b, _c);
+          }) : fn(a, b, c);
       }
     };
   }
@@ -378,13 +455,18 @@
    * @symb R.adjust(-1, f, [a, b]) = [a, f(b)]
    * @symb R.adjust(0, f, [a, b]) = [f(a), b]
    */
+
   var adjust = _curry3(function adjust(idx, fn, list) {
-    if (idx >= list.length || idx < -list.length) {
+    var len = list.length;
+
+    if (idx >= len || idx < -len) {
       return list;
     }
-    var start = idx < 0 ? list.length : 0;
-    var _idx = start + idx;
+
+    var _idx = (len + idx) % len;
+
     var _list = _concat(list);
+
     _list[_idx] = fn(list[_idx]);
     return _list;
   });
@@ -402,9 +484,7 @@
    *      _isArray({}); //=> false
    */
   var _isArray = Array.isArray || function _isArray(val) {
-    return (val != null &&
-            val.length >= 0 &&
-            Object.prototype.toString.call(val) === '[object Array]');
+    return val != null && val.length >= 0 && Object.prototype.toString.call(val) === '[object Array]';
   };
 
   function _isTransformer(obj) {
@@ -416,53 +496,59 @@
    * object in list position (last argument). If it is an array, executes [fn].
    * Otherwise, if it has a function with one of the given method names, it will
    * execute that function (functor case). Otherwise, if it is a transformer,
-   * uses transducer [xf] to return a new transformer (transducer case).
+   * uses transducer created by [transducerCreator] to return a new transformer
+   * (transducer case).
    * Otherwise, it will default to executing [fn].
    *
    * @private
    * @param {Array} methodNames properties to check for a custom implementation
-   * @param {Function} xf transducer to initialize if object is transformer
+   * @param {Function} transducerCreator transducer factory if object is transformer
    * @param {Function} fn default ramda implementation
    * @return {Function} A function that dispatches on object in list position
    */
-  function _dispatchable(methodNames, xf, fn) {
-    return function() {
+
+  function _dispatchable(methodNames, transducerCreator, fn) {
+    return function () {
       if (arguments.length === 0) {
         return fn();
       }
-      var args = Array.prototype.slice.call(arguments, 0);
-      var obj = args.pop();
+
+      var obj = arguments[arguments.length - 1];
+
       if (!_isArray(obj)) {
         var idx = 0;
+
         while (idx < methodNames.length) {
           if (typeof obj[methodNames[idx]] === 'function') {
-            return obj[methodNames[idx]].apply(obj, args);
+            return obj[methodNames[idx]].apply(obj, Array.prototype.slice.call(arguments, 0, -1));
           }
+
           idx += 1;
         }
+
         if (_isTransformer(obj)) {
-          var transducer = xf.apply(null, args);
+          var transducer = transducerCreator.apply(null, Array.prototype.slice.call(arguments, 0, -1));
           return transducer(obj);
         }
       }
+
       return fn.apply(this, arguments);
     };
   }
 
   function _reduced(x) {
-    return x && x['@@transducer/reduced'] ? x :
-      {
-        '@@transducer/value': x,
-        '@@transducer/reduced': true
-      };
+    return x && x['@@transducer/reduced'] ? x : {
+      '@@transducer/value': x,
+      '@@transducer/reduced': true
+    };
   }
 
   var _xfBase = {
-    init: function() {
+    init: function init() {
       return this.xf['@@transducer/init']();
     },
-    result: function(result) {
-      return this.xf['@@transducer/result'](result);
+    result: function result(_result) {
+      return this.xf['@@transducer/result'](_result);
     }
   };
 
@@ -471,22 +557,29 @@
     this.f = f;
     this.all = true;
   }
+
   XAll.prototype['@@transducer/init'] = _xfBase.init;
-  XAll.prototype['@@transducer/result'] = function(result) {
+
+  XAll.prototype['@@transducer/result'] = function (result) {
     if (this.all) {
       result = this.xf['@@transducer/step'](result, true);
     }
+
     return this.xf['@@transducer/result'](result);
   };
-  XAll.prototype['@@transducer/step'] = function(result, input) {
+
+  XAll.prototype['@@transducer/step'] = function (result, input) {
     if (!this.f(input)) {
       this.all = false;
       result = _reduced(this.xf['@@transducer/step'](result, false));
     }
+
     return result;
   };
 
-  var _xall = _curry2(function _xall(f, xf) { return new XAll(f, xf); });
+  var _xall = _curry2(function _xall(f, xf) {
+    return new XAll(f, xf);
+  });
 
   /**
    * 如果列表中的所有元素都满足 predicate，则返回 `true`；否则，返回 `false`。
@@ -511,14 +604,18 @@
    *      R.all(equals3)([3, 3, 3, 3]); //=> true
    *      R.all(equals3)([3, 3, 1, 3]); //=> false
    */
+
   var all = _curry2(_dispatchable(['all'], _xall, function all(fn, list) {
     var idx = 0;
+
     while (idx < list.length) {
       if (!fn(list[idx])) {
         return false;
       }
+
       idx += 1;
     }
+
     return true;
   }));
 
@@ -539,16 +636,21 @@
    *      R.max(789, 123); //=> 789
    *      R.max('a', 'b'); //=> 'b'
    */
-  var max = _curry2(function max(a, b) { return b > a ? b : a; });
+
+  var max = _curry2(function max(a, b) {
+    return b > a ? b : a;
+  });
 
   function _map(fn, functor) {
     var idx = 0;
     var len = functor.length;
     var result = Array(len);
+
     while (idx < len) {
       result[idx] = fn(functor[idx]);
       idx += 1;
     }
+
     return result;
   }
 
@@ -572,32 +674,56 @@
    *      _isArrayLike({}); //=> false
    *      _isArrayLike({length: 10}); //=> false
    *      _isArrayLike({0: 'zero', 9: 'nine', length: 10}); //=> true
+   *      _isArrayLike({nodeType: 1, length: 1}) // => false
    */
+
   var _isArrayLike = _curry1(function isArrayLike(x) {
-    if (_isArray(x)) { return true; }
-    if (!x) { return false; }
-    if (typeof x !== 'object') { return false; }
-    if (_isString(x)) { return false; }
-    if (x.nodeType === 1) { return !!x.length; }
-    if (x.length === 0) { return true; }
+    if (_isArray(x)) {
+      return true;
+    }
+
+    if (!x) {
+      return false;
+    }
+
+    if (_typeof(x) !== 'object') {
+      return false;
+    }
+
+    if (_isString(x)) {
+      return false;
+    }
+
+    if (x.length === 0) {
+      return true;
+    }
+
     if (x.length > 0) {
       return x.hasOwnProperty(0) && x.hasOwnProperty(x.length - 1);
     }
+
     return false;
   });
 
   function XWrap(fn) {
     this.f = fn;
   }
-  XWrap.prototype['@@transducer/init'] = function() {
+
+  XWrap.prototype['@@transducer/init'] = function () {
     throw new Error('init not implemented on XWrap');
   };
-  XWrap.prototype['@@transducer/result'] = function(acc) { return acc; };
-  XWrap.prototype['@@transducer/step'] = function(acc, x) {
+
+  XWrap.prototype['@@transducer/result'] = function (acc) {
+    return acc;
+  };
+
+  XWrap.prototype['@@transducer/step'] = function (acc, x) {
     return this.f(acc, x);
   };
 
-  function _xwrap(fn) { return new XWrap(fn); }
+  function _xwrap(fn) {
+    return new XWrap(fn);
+  }
 
   /**
    * 创建一个绑定了上下文的函数。
@@ -621,8 +747,9 @@
    *      // logs {a: 2}
    * @symb R.bind(f, o)(a, b) = f.call(o, a, b)
    */
+
   var bind = _curry2(function bind(fn, thisObj) {
-    return _arity(fn.length, function() {
+    return _arity(fn.length, function () {
       return fn.apply(thisObj, arguments);
     });
   });
@@ -630,27 +757,35 @@
   function _arrayReduce(xf, acc, list) {
     var idx = 0;
     var len = list.length;
+
     while (idx < len) {
       acc = xf['@@transducer/step'](acc, list[idx]);
+
       if (acc && acc['@@transducer/reduced']) {
         acc = acc['@@transducer/value'];
         break;
       }
+
       idx += 1;
     }
+
     return xf['@@transducer/result'](acc);
   }
 
   function _iterableReduce(xf, acc, iter) {
     var step = iter.next();
+
     while (!step.done) {
       acc = xf['@@transducer/step'](acc, step.value);
+
       if (acc && acc['@@transducer/reduced']) {
         acc = acc['@@transducer/value'];
         break;
       }
+
       step = iter.next();
     }
+
     return xf['@@transducer/result'](acc);
   }
 
@@ -658,24 +793,28 @@
     return xf['@@transducer/result'](obj[methodName](bind(xf['@@transducer/step'], xf), acc));
   }
 
-  var symIterator = (typeof Symbol !== 'undefined') ? Symbol.iterator : '@@iterator';
-
+  var symIterator = typeof Symbol !== 'undefined' ? Symbol.iterator : '@@iterator';
   function _reduce(fn, acc, list) {
     if (typeof fn === 'function') {
       fn = _xwrap(fn);
     }
+
     if (_isArrayLike(list)) {
       return _arrayReduce(fn, acc, list);
     }
+
     if (typeof list['fantasy-land/reduce'] === 'function') {
       return _methodReduce(fn, acc, list, 'fantasy-land/reduce');
     }
+
     if (list[symIterator] != null) {
       return _iterableReduce(fn, acc, list[symIterator]());
     }
+
     if (typeof list.next === 'function') {
       return _iterableReduce(fn, acc, list);
     }
+
     if (typeof list.reduce === 'function') {
       return _methodReduce(fn, acc, list, 'reduce');
     }
@@ -687,47 +826,55 @@
     this.xf = xf;
     this.f = f;
   }
+
   XMap.prototype['@@transducer/init'] = _xfBase.init;
   XMap.prototype['@@transducer/result'] = _xfBase.result;
-  XMap.prototype['@@transducer/step'] = function(result, input) {
+
+  XMap.prototype['@@transducer/step'] = function (result, input) {
     return this.xf['@@transducer/step'](result, this.f(input));
   };
 
-  var _xmap = _curry2(function _xmap(f, xf) { return new XMap(f, xf); });
+  var _xmap = _curry2(function _xmap(f, xf) {
+    return new XMap(f, xf);
+  });
 
   function _has(prop, obj) {
     return Object.prototype.hasOwnProperty.call(obj, prop);
   }
 
   var toString = Object.prototype.toString;
-  var _isArguments = (function() {
-    return toString.call(arguments) === '[object Arguments]' ?
-      function _isArguments(x) { return toString.call(x) === '[object Arguments]'; } :
-      function _isArguments(x) { return _has('callee', x); };
-  }());
 
-  // cover IE < 9 keys issues
-  var hasEnumBug = !({toString: null}).propertyIsEnumerable('toString');
-  var nonEnumerableProps = [
-    'constructor', 'valueOf', 'isPrototypeOf', 'toString',
-    'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString'
-  ];
-  // Safari bug
-  var hasArgsEnumBug = (function() {
+  var _isArguments = function () {
+    return toString.call(arguments) === '[object Arguments]' ? function _isArguments(x) {
+      return toString.call(x) === '[object Arguments]';
+    } : function _isArguments(x) {
+      return _has('callee', x);
+    };
+  }();
+
+  var hasEnumBug = !{
+    toString: null
+  }.propertyIsEnumerable('toString');
+  var nonEnumerableProps = ['constructor', 'valueOf', 'isPrototypeOf', 'toString', 'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString']; // Safari bug
+
+  var hasArgsEnumBug = function () {
+
     return arguments.propertyIsEnumerable('length');
-  }());
+  }();
 
   var contains = function contains(list, item) {
     var idx = 0;
+
     while (idx < list.length) {
       if (list[idx] === item) {
         return true;
       }
+
       idx += 1;
     }
+
     return false;
   };
-
   /**
    * 返回给定对象所有可枚举的、自身属性的属性名组成的列表。注意，不同 JS 运行环境输出数组的顺序可能不一致。
    *
@@ -738,39 +885,47 @@
    * @sig {k: v} -> [k]
    * @param {Object} obj The object to extract properties from
    * @return {Array} An array of the object's own properties.
-   * @see R.keysIn, R.values
+   * @see R.keysIn, R.values, R.toPairs
    * @example
    *
    *      R.keys({a: 1, b: 2, c: 3}); //=> ['a', 'b', 'c']
    */
-  var keys = typeof Object.keys === 'function' && !hasArgsEnumBug ?
-    _curry1(function keys(obj) {
-      return Object(obj) !== obj ? [] : Object.keys(obj);
-    }) :
-    _curry1(function keys(obj) {
-      if (Object(obj) !== obj) {
-        return [];
+
+
+  var keys = typeof Object.keys === 'function' && !hasArgsEnumBug ? _curry1(function keys(obj) {
+    return Object(obj) !== obj ? [] : Object.keys(obj);
+  }) : _curry1(function keys(obj) {
+    if (Object(obj) !== obj) {
+      return [];
+    }
+
+    var prop, nIdx;
+    var ks = [];
+
+    var checkArgsLength = hasArgsEnumBug && _isArguments(obj);
+
+    for (prop in obj) {
+      if (_has(prop, obj) && (!checkArgsLength || prop !== 'length')) {
+        ks[ks.length] = prop;
       }
-      var prop, nIdx;
-      var ks = [];
-      var checkArgsLength = hasArgsEnumBug && _isArguments(obj);
-      for (prop in obj) {
-        if (_has(prop, obj) && (!checkArgsLength || prop !== 'length')) {
+    }
+
+    if (hasEnumBug) {
+      nIdx = nonEnumerableProps.length - 1;
+
+      while (nIdx >= 0) {
+        prop = nonEnumerableProps[nIdx];
+
+        if (_has(prop, obj) && !contains(ks, prop)) {
           ks[ks.length] = prop;
         }
+
+        nIdx -= 1;
       }
-      if (hasEnumBug) {
-        nIdx = nonEnumerableProps.length - 1;
-        while (nIdx >= 0) {
-          prop = nonEnumerableProps[nIdx];
-          if (_has(prop, obj) && !contains(ks, prop)) {
-            ks[ks.length] = prop;
-          }
-          nIdx -= 1;
-        }
-      }
-      return ks;
-    });
+    }
+
+    return ks;
+  });
 
   /**
    * 接收一个函数和一个 [functor](https://github.com/fantasyland/fantasy-land#functor), 将该函数应用到 functor 的每个值上，返回一个具有相同形态的 functor。
@@ -791,7 +946,7 @@
    * @param {Function} fn The function to be called on every element of the input `list`.
    * @param {Array} list The list to be iterated over.
    * @return {Array} The new list.
-   * @see R.transduce, R.addIndex
+   * @see R.transduce, R.addIndex, R.pluck, R.project
    * @example
    *
    *      const double = x => x * 2;
@@ -803,17 +958,20 @@
    * @symb R.map(f, { x: a, y: b }) = { x: f(a), y: f(b) }
    * @symb R.map(f, functor_o) = functor_o.map(f)
    */
+
   var map = _curry2(_dispatchable(['fantasy-land/map', 'map'], _xmap, function map(fn, functor) {
     switch (Object.prototype.toString.call(functor)) {
       case '[object Function]':
-        return curryN(functor.length, function() {
+        return curryN(functor.length, function () {
           return fn.call(this, functor.apply(this, arguments));
         });
+
       case '[object Object]':
-        return _reduce(function(acc, key) {
+        return _reduce(function (acc, key) {
           acc[key] = fn(functor[key]);
           return acc;
         }, {}, keys(functor));
+
       default:
         return _map(fn, functor);
     }
@@ -828,7 +986,7 @@
    * @return {Boolean}
    */
   var _isInteger = Number.isInteger || function _isInteger(n) {
-    return (n << 0) === n;
+    return n << 0 === n;
   };
 
   /**
@@ -856,68 +1014,10 @@
    * @symb R.nth(0, [a, b, c]) = a
    * @symb R.nth(1, [a, b, c]) = b
    */
+
   var nth = _curry2(function nth(offset, list) {
     var idx = offset < 0 ? list.length + offset : offset;
     return _isString(list) ? list.charAt(idx) : list[idx];
-  });
-
-  /**
-   * 提取对象中指定路径数组（paths）上的对应的值（values）
-   *
-   * @func
-   * @memberOf R
-   * @category Object
-   * @typedefn Idx = [String | Int]
-   * @sig [Idx] -> {a} -> [a | Undefined]
-   * @param {Array} pathsArray The array of paths to be fetched.
-   * @param {Object} obj The object to retrieve the nested properties from.
-   * @return {Array} A list consisting of values at paths specified by "pathsArray".
-   * @see R.path
-   * @example
-   *
-   *      R.paths([['a', 'b'], ['p', 0, 'q']], {a: {b: 2}, p: [{q: 3}]}); //=> [2, 3]
-   *      R.paths([['a', 'b'], ['p', 'r']], {a: {b: 2}, p: [{q: 3}]}); //=> [2, undefined]
-   */
-  var paths = _curry2(function paths(pathsArray, obj) {
-    return pathsArray.map(function(paths) {
-      var val = obj;
-      var idx = 0;
-      var p;
-      while (idx < paths.length) {
-        if (val == null) {
-          return;
-        }
-        p = paths[idx];
-        val = _isInteger(p) ? nth(p, val) : val[p];
-        idx += 1;
-      }
-      return val;
-    });
-  });
-
-  /**
-   * 取出给定路径上的值。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.2.0
-   * @category Object
-   * @typedefn Idx = String | Int
-   * @sig [Idx] -> {a} -> a | Undefined
-   * @param {Array} path The path to use.
-   * @param {Object} obj The object to retrieve the nested property from.
-   * @return {*} The data at `path`.
-   * @see R.prop, R.nth
-   * @example
-   *
-   *      R.path(['a', 'b'], {a: {b: 2}}); //=> 2
-   *      R.path(['a', 'b'], {c: {b: 2}}); //=> undefined
-   *      R.path(['a', 'b', 0], {a: {b: [1, 2, 3]}}); //=> 1
-   *      R.path(['a', 'b', -2], {a: {b: [1, 2, 3]}}); //=> 2
-   */
-
-  var path = _curry2(function path(pathAr, obj) {
-    return paths([pathAr], obj)[0];
   });
 
   /**
@@ -927,12 +1027,12 @@
    * @memberOf R
    * @since v0.1.0
    * @category Object
-   * @typedefn Idx = String | Int
+   * @typedefn Idx = String | Int | Symbol
    * @sig Idx -> {s: a} -> a | Undefined
    * @param {String|Number} p The property name or array index
    * @param {Object} obj The object to query
    * @return {*} The value at `obj.p`.
-   * @see R.path, R.nth
+   * @see R.path, R.props, R.pluck, R.project, R.nth
    * @example
    *
    *      R.prop('x', {x: 100}); //=> 100
@@ -941,7 +1041,13 @@
    *      R.compose(R.inc, R.prop('x'))({ x: 3 }) //=> 4
    */
 
-  var prop = _curry2(function prop(p, obj) { return path([p], obj); });
+  var prop = _curry2(function prop(p, obj) {
+    if (obj == null) {
+      return;
+    }
+
+    return _isInteger(p) ? nth(p, obj) : obj[p];
+  });
 
   /**
    * 从列表内的每个对象元素中取出特定名称的属性，组成一个新的列表。
@@ -956,7 +1062,7 @@
    * @param {Number|String} key The key name to pluck off of each object.
    * @param {Array} f The array or functor to consider.
    * @return {Array} The list of values for the given key.
-   * @see R.props
+   * @see R.project, R.prop, R.props
    * @example
    *
    *      var getAges = R.pluck('age');
@@ -967,6 +1073,7 @@
    * @symb R.pluck('x', [{x: 1, y: 2}, {x: 3, y: 4}, {x: 5, y: 6}]) = [1, 3, 5]
    * @symb R.pluck(0, [[1, 2], [3, 4], [5, 6]]) = [1, 3, 5]
    */
+
   var pluck = _curry2(function pluck(p, list) {
     return map(prop(p), list);
   });
@@ -1010,6 +1117,7 @@
    *
    * @symb R.reduce(f, a, [b, c, d]) = f(f(f(a, b), c), d)
    */
+
   var reduce = _curry3(_reduce);
 
   /**
@@ -1034,16 +1142,20 @@
    *      isQueenOfSpades({rank: 'Q', suit: '♣︎'}); //=> false
    *      isQueenOfSpades({rank: 'Q', suit: '♠︎'}); //=> true
    */
+
   var allPass = _curry1(function allPass(preds) {
-    return curryN(reduce(max, 0, pluck('length', preds)), function() {
+    return curryN(reduce(max, 0, pluck('length', preds)), function () {
       var idx = 0;
       var len = preds.length;
+
       while (idx < len) {
         if (!preds[idx].apply(this, arguments)) {
           return false;
         }
+
         idx += 1;
       }
+
       return true;
     });
   });
@@ -1065,8 +1177,9 @@
    *      const t = R.always('Tee');
    *      t(); //=> 'Tee'
    */
+
   var always = _curry1(function always(val) {
-    return function() {
+    return function () {
       return val;
     };
   });
@@ -1081,8 +1194,8 @@
    * @sig a -> b -> a | b
    * @param {Any} a
    * @param {Any} b
-   * @return {Any} the first argument if it is falsy, otherwise the second argument.
-   * @see R.both, R.xor
+   * @return {Any}
+   * @see R.both, R.or
    * @example
    *
    *      R.and(true, true); //=> true
@@ -1090,6 +1203,7 @@
    *      R.and(false, true); //=> false
    *      R.and(false, false); //=> false
    */
+
   var and = _curry2(function and(a, b) {
     return a && b;
   });
@@ -1099,22 +1213,29 @@
     this.f = f;
     this.any = false;
   }
+
   XAny.prototype['@@transducer/init'] = _xfBase.init;
-  XAny.prototype['@@transducer/result'] = function(result) {
+
+  XAny.prototype['@@transducer/result'] = function (result) {
     if (!this.any) {
       result = this.xf['@@transducer/step'](result, false);
     }
+
     return this.xf['@@transducer/result'](result);
   };
-  XAny.prototype['@@transducer/step'] = function(result, input) {
+
+  XAny.prototype['@@transducer/step'] = function (result, input) {
     if (this.f(input)) {
       this.any = true;
       result = _reduced(this.xf['@@transducer/step'](result, true));
     }
+
     return result;
   };
 
-  var _xany = _curry2(function _xany(f, xf) { return new XAny(f, xf); });
+  var _xany = _curry2(function _xany(f, xf) {
+    return new XAny(f, xf);
+  });
 
   /**
    * 只要列表中有一个元素满足 predicate，就返回 `true`，否则返回 `false`。
@@ -1140,14 +1261,18 @@
    *      R.any(lessThan0)([1, 2]); //=> false
    *      R.any(lessThan2)([1, 2]); //=> true
    */
+
   var any = _curry2(_dispatchable(['any'], _xany, function any(fn, list) {
     var idx = 0;
+
     while (idx < list.length) {
       if (fn(list[idx])) {
         return true;
       }
+
       idx += 1;
     }
+
     return false;
   }));
 
@@ -1174,16 +1299,20 @@
    *      isBlackCard({rank: 'Q', suit: '♠'}); //=> true
    *      isBlackCard({rank: 'Q', suit: '♦'}); //=> false
    */
+
   var anyPass = _curry1(function anyPass(preds) {
-    return curryN(reduce(max, 0, pluck('length', preds)), function() {
+    return curryN(reduce(max, 0, pluck('length', preds)), function () {
       var idx = 0;
       var len = preds.length;
+
       while (idx < len) {
         if (preds[idx].apply(this, arguments)) {
           return true;
         }
+
         idx += 1;
       }
+
       return false;
     });
   });
@@ -1213,26 +1342,25 @@
    *      R.ap(R.concat, R.toUpper)('Ramda') //=> 'RamdaRAMDA'
    * @symb R.ap([f, g], [a, b]) = [f(a), f(b), g(a), g(b)]
    */
+
   var ap = _curry2(function ap(applyF, applyX) {
-    return (
-      typeof applyX['fantasy-land/ap'] === 'function'
-        ? applyX['fantasy-land/ap'](applyF)
-        : typeof applyF.ap === 'function'
-          ? applyF.ap(applyX)
-          : typeof applyF === 'function'
-            ? function(x) { return applyF(x)(applyX(x)); }
-            : _reduce(function(acc, f) { return _concat(acc, map(f, applyX)); }, [], applyF)
-    );
+    return typeof applyX['fantasy-land/ap'] === 'function' ? applyX['fantasy-land/ap'](applyF) : typeof applyF.ap === 'function' ? applyF.ap(applyX) : typeof applyF === 'function' ? function (x) {
+      return applyF(x)(applyX(x));
+    } : _reduce(function (acc, f) {
+      return _concat(acc, map(f, applyX));
+    }, [], applyF);
   });
 
   function _aperture(n, list) {
     var idx = 0;
     var limit = list.length - (n - 1);
     var acc = new Array(limit >= 0 ? limit : 0);
+
     while (idx < limit) {
       acc[idx] = Array.prototype.slice.call(list, idx, idx + n);
       idx += 1;
     }
+
     return acc;
   }
 
@@ -1242,30 +1370,36 @@
     this.full = false;
     this.acc = new Array(n);
   }
+
   XAperture.prototype['@@transducer/init'] = _xfBase.init;
-  XAperture.prototype['@@transducer/result'] = function(result) {
+
+  XAperture.prototype['@@transducer/result'] = function (result) {
     this.acc = null;
     return this.xf['@@transducer/result'](result);
   };
-  XAperture.prototype['@@transducer/step'] = function(result, input) {
+
+  XAperture.prototype['@@transducer/step'] = function (result, input) {
     this.store(input);
     return this.full ? this.xf['@@transducer/step'](result, this.getCopy()) : result;
   };
-  XAperture.prototype.store = function(input) {
+
+  XAperture.prototype.store = function (input) {
     this.acc[this.pos] = input;
     this.pos += 1;
+
     if (this.pos === this.acc.length) {
       this.pos = 0;
       this.full = true;
     }
   };
-  XAperture.prototype.getCopy = function() {
-    return _concat(Array.prototype.slice.call(this.acc, this.pos),
-      Array.prototype.slice.call(this.acc, 0, this.pos)
-    );
+
+  XAperture.prototype.getCopy = function () {
+    return _concat(Array.prototype.slice.call(this.acc, this.pos), Array.prototype.slice.call(this.acc, 0, this.pos));
   };
 
-  var _xaperture = _curry2(function _xaperture(n, xf) { return new XAperture(n, xf); });
+  var _xaperture = _curry2(function _xaperture(n, xf) {
+    return new XAperture(n, xf);
+  });
 
   /**
    * 返回一个新列表，列表中的元素为由原列表相邻元素组成的 n 元组。如果 `n` 大于列表的长度，则返回空列表。
@@ -1287,6 +1421,7 @@
    *      R.aperture(3, [1, 2, 3, 4, 5]); //=> [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
    *      R.aperture(7, [1, 2, 3, 4, 5]); //=> []
    */
+
   var aperture = _curry2(_dispatchable([], _xaperture, _aperture));
 
   /**
@@ -1308,6 +1443,7 @@
    *      R.append('tests', []); //=> ['tests']
    *      R.append(['tests'], ['write', 'more']); //=> ['write', 'more', ['tests']]
    */
+
   var append = _curry2(function append(el, list) {
     return _concat(list, [el]);
   });
@@ -1330,6 +1466,7 @@
    *      R.apply(Math.max, nums); //=> 42
    * @symb R.apply(f, [a, b, c]) = f(a, b, c)
    */
+
   var apply = _curry2(function apply(fn, args) {
     return fn.apply(this, args);
   });
@@ -1344,32 +1481,34 @@
    * @sig {k: v} -> [v]
    * @param {Object} obj The object to extract values from
    * @return {Array} An array of the values of the object's own properties.
-   * @see R.valuesIn, R.keys
+   * @see R.valuesIn, R.keys, R.toPairs
    * @example
    *
    *      R.values({a: 1, b: 2, c: 3}); //=> [1, 2, 3]
    */
+
   var values = _curry1(function values(obj) {
     var props = keys(obj);
     var len = props.length;
     var vals = [];
     var idx = 0;
+
     while (idx < len) {
       vals[idx] = obj[props[idx]];
       idx += 1;
     }
+
     return vals;
   });
 
-  // Use custom mapValues function to avoid issues with specs that include a "map" key and R.map
   // delegating calls to .map
+
   function mapValues(fn, obj) {
-    return keys(obj).reduce(function(acc, key) {
+    return _isArray(obj) ? obj.map(fn) : keys(obj).reduce(function (acc, key) {
       acc[key] = fn(obj[key]);
       return acc;
     }, {});
   }
-
   /**
    * 接受一个属性值为函数的对象，返回一个能生成相同结构对象的函数。返回的函数使用传入的参数调用对象的每个属性位对应的函数，来生成相应属性的值。
    *
@@ -1393,24 +1532,24 @@
    *      getMetrics(2, 4); // => { sum: 6, nested: { mul: 8 } }
    * @symb R.applySpec({ x: f, y: { z: g } })(a, b) = { x: f(a, b), y: { z: g(a, b) } }
    */
-  var applySpec = _curry1(function applySpec(spec) {
-    spec = mapValues(
-      function(v) { return typeof v == 'function' ? v : applySpec(v); },
-      spec
-    );
 
-    return curryN(
-      reduce(max, 0, pluck('length', values(spec))),
-      function() {
-        var args = arguments;
-        return mapValues(function(f) { return apply(f, args); }, spec);
-      });
+
+  var applySpec = _curry1(function applySpec(spec) {
+    spec = mapValues(function (v) {
+      return typeof v == 'function' ? v : applySpec(v);
+    }, spec);
+    return curryN(reduce(max, 0, pluck('length', values(spec))), function () {
+      var args = arguments;
+      return mapValues(function (f) {
+        return apply(f, args);
+      }, spec);
+    });
   });
 
   /**
    * 接受一个值，并将一个函数作用于其上。
    *
-   * 该函数又被称为 `thrush` combinator.
+   * 该函数又被称为 `thrush` combinator 。
    *
    * @func
    * @memberOf R
@@ -1426,7 +1565,10 @@
    *      t42(R.identity); //=> 42
    *      t42(R.add(1)); //=> 43
    */
-  var applyTo = _curry2(function applyTo(x, f) { return f(x); });
+
+  var applyTo = _curry2(function applyTo(x, f) {
+    return f(x);
+  });
 
   /**
    * 由返回值可与 `<` 和 `>` 比较的函数，创建一个升序比较函数。
@@ -1452,6 +1594,7 @@
    *      const peopleByYoungestFirst = R.sort(byAge, people);
    *        //=> [{ name: 'Mikhail', age: 62 },{ name: 'Emma', age: 70 }, { name: 'Peter', age: 78 }]
    */
+
   var ascend = _curry3(function ascend(fn, a, b) {
     var aa = fn(a);
     var bb = fn(b);
@@ -1459,32 +1602,34 @@
   });
 
   /**
-   * 浅复制对象，然后设置或覆盖对象的指定属性。
+   * Makes a shallow clone of an object, setting or overriding the specified
+   * property with the given value. Note that this copies and flattens prototype
+   * properties onto the new object as well. All non-primitive properties are
+   * copied by reference.
    *
-   * 注意，该函数也会将 prototype 属性复制到新的对象中。所有 `non-primitive` 属性都通过引用复制。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.8.0
-   * @category Object
-   * @sig String -> a -> {k: v} -> {k: v}
-   * @param {String} prop The property name to set
+   * @private
+   * @param {String|Number} prop The property name to set
    * @param {*} val The new value
-   * @param {Object} obj The object to clone
-   * @return {Object} A new object equivalent to the original except for the changed property.
-   * @see R.dissoc, R.pick
-   * @example
-   *
-   *      R.assoc('c', 3, {a: 1, b: 2}); //=> {a: 1, b: 2, c: 3}
+   * @param {Object|Array} obj The object to clone
+   * @return {Object|Array} A new object equivalent to the original except for the changed property.
    */
-  var assoc = _curry3(function assoc(prop, val, obj) {
+
+  function _assoc(prop, val, obj) {
+    if (_isInteger(prop) && _isArray(obj)) {
+      var arr = [].concat(obj);
+      arr[prop] = val;
+      return arr;
+    }
+
     var result = {};
+
     for (var p in obj) {
       result[p] = obj[p];
     }
+
     result[prop] = val;
     return result;
-  });
+  }
 
   /**
    * 检测输入值是否为 `null` 或 `undefined` 。
@@ -1503,7 +1648,10 @@
    *      R.isNil(0); //=> false
    *      R.isNil([]); //=> false
    */
-  var isNil = _curry1(function isNil(x) { return x == null; });
+
+  var isNil = _curry1(function isNil(x) {
+    return x == null;
+  });
 
   /**
    * 浅复制对象，设置或覆盖即将创建的给定路径所需的节点，并将特定值放在该路径的末端。
@@ -1514,7 +1662,7 @@
    * @memberOf R
    * @since v0.8.0
    * @category Object
-   * @typedefn Idx = String | Int
+   * @typedefn Idx = String | Int | Symbol
    * @sig [Idx] -> a -> {a} -> {a}
    * @param {Array} path the path to set
    * @param {*} val The new value
@@ -1528,22 +1676,45 @@
    *      // Any missing or non-object keys in path will be overridden
    *      R.assocPath(['a', 'b', 'c'], 42, {a: 5}); //=> {a: {b: {c: 42}}}
    */
+
   var assocPath = _curry3(function assocPath(path, val, obj) {
     if (path.length === 0) {
       return val;
     }
+
     var idx = path[0];
+
     if (path.length > 1) {
-      var nextObj = (!isNil(obj) && _has(idx, obj)) ? obj[idx] : _isInteger(path[1]) ? [] : {};
+      var nextObj = !isNil(obj) && _has(idx, obj) ? obj[idx] : _isInteger(path[1]) ? [] : {};
       val = assocPath(Array.prototype.slice.call(path, 1), val, nextObj);
     }
-    if (_isInteger(idx) && _isArray(obj)) {
-      var arr = [].concat(obj);
-      arr[idx] = val;
-      return arr;
-    } else {
-      return assoc(idx, val, obj);
-    }
+
+    return _assoc(idx, val, obj);
+  });
+
+  /**
+   * 浅复制对象，然后设置或覆盖对象的指定属性。
+   *
+   * 注意，该函数也会将 prototype 属性复制到新的对象中。所有 `non-primitive` 属性都通过引用复制。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.8.0
+   * @category Object
+   * @typedefn Idx = String | Int
+   * @sig Idx -> a -> {k: v} -> {k: v}
+   * @param {String|Number} prop The property name to set
+   * @param {*} val The new value
+   * @param {Object} obj The object to clone
+   * @return {Object} A new object equivalent to the original except for the changed property.
+   * @see R.dissoc, R.pick
+   * @example
+   *
+   *      R.assoc('c', 3, {a: 1, b: 2}); //=> {a: 1, b: 2, c: 3}
+   */
+
+  var assoc = _curry3(function assoc(prop, val, obj) {
+    return assocPath([prop], val, obj);
   });
 
   /**
@@ -1574,20 +1745,66 @@
    * @symb R.nAry(1, f)(a, b) = f(a)
    * @symb R.nAry(2, f)(a, b) = f(a, b)
    */
+
   var nAry = _curry2(function nAry(n, fn) {
     switch (n) {
-      case 0: return function() {return fn.call(this);};
-      case 1: return function(a0) {return fn.call(this, a0);};
-      case 2: return function(a0, a1) {return fn.call(this, a0, a1);};
-      case 3: return function(a0, a1, a2) {return fn.call(this, a0, a1, a2);};
-      case 4: return function(a0, a1, a2, a3) {return fn.call(this, a0, a1, a2, a3);};
-      case 5: return function(a0, a1, a2, a3, a4) {return fn.call(this, a0, a1, a2, a3, a4);};
-      case 6: return function(a0, a1, a2, a3, a4, a5) {return fn.call(this, a0, a1, a2, a3, a4, a5);};
-      case 7: return function(a0, a1, a2, a3, a4, a5, a6) {return fn.call(this, a0, a1, a2, a3, a4, a5, a6);};
-      case 8: return function(a0, a1, a2, a3, a4, a5, a6, a7) {return fn.call(this, a0, a1, a2, a3, a4, a5, a6, a7);};
-      case 9: return function(a0, a1, a2, a3, a4, a5, a6, a7, a8) {return fn.call(this, a0, a1, a2, a3, a4, a5, a6, a7, a8);};
-      case 10: return function(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) {return fn.call(this, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9);};
-      default: throw new Error('First argument to nAry must be a non-negative integer no greater than ten');
+      case 0:
+        return function () {
+          return fn.call(this);
+        };
+
+      case 1:
+        return function (a0) {
+          return fn.call(this, a0);
+        };
+
+      case 2:
+        return function (a0, a1) {
+          return fn.call(this, a0, a1);
+        };
+
+      case 3:
+        return function (a0, a1, a2) {
+          return fn.call(this, a0, a1, a2);
+        };
+
+      case 4:
+        return function (a0, a1, a2, a3) {
+          return fn.call(this, a0, a1, a2, a3);
+        };
+
+      case 5:
+        return function (a0, a1, a2, a3, a4) {
+          return fn.call(this, a0, a1, a2, a3, a4);
+        };
+
+      case 6:
+        return function (a0, a1, a2, a3, a4, a5) {
+          return fn.call(this, a0, a1, a2, a3, a4, a5);
+        };
+
+      case 7:
+        return function (a0, a1, a2, a3, a4, a5, a6) {
+          return fn.call(this, a0, a1, a2, a3, a4, a5, a6);
+        };
+
+      case 8:
+        return function (a0, a1, a2, a3, a4, a5, a6, a7) {
+          return fn.call(this, a0, a1, a2, a3, a4, a5, a6, a7);
+        };
+
+      case 9:
+        return function (a0, a1, a2, a3, a4, a5, a6, a7, a8) {
+          return fn.call(this, a0, a1, a2, a3, a4, a5, a6, a7, a8);
+        };
+
+      case 10:
+        return function (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) {
+          return fn.call(this, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9);
+        };
+
+      default:
+        throw new Error('First argument to nAry must be a non-negative integer no greater than ten');
     }
   });
 
@@ -1598,7 +1815,7 @@
    * @memberOf R
    * @since v0.2.0
    * @category Function
-   * @sig (* -> c) -> (a, b -> c)
+   * @sig (a -> b -> c -> ... -> z) -> ((a, b) -> z)
    * @param {Function} fn The function to wrap.
    * @return {Function} A new function wrapping `fn`. The new function is guaranteed to be of
    *         arity 2.
@@ -1617,16 +1834,14 @@
    *      takesTwoArgs(1, 2, 3); //=> [1, 2, undefined]
    * @symb R.binary(f)(a, b, c) = f(a, b)
    */
+
   var binary = _curry1(function binary(fn) {
     return nAry(2, fn);
   });
 
   function _isFunction(x) {
     var type = Object.prototype.toString.call(x);
-    return type  === '[object Function]' ||
-      type === '[object AsyncFunction]' ||
-      type === '[object GeneratorFunction]' ||
-      type === '[object AsyncGeneratorFunction]';
+    return type === '[object Function]' || type === '[object AsyncFunction]' || type === '[object GeneratorFunction]' || type === '[object AsyncGeneratorFunction]';
   }
 
   /**
@@ -1645,9 +1860,10 @@
    *      const madd3 = R.liftN(3, (...args) => R.sum(args));
    *      madd3([1,2,3], [1,2,3], [1]); //=> [3, 4, 5, 4, 5, 6, 5, 6, 7]
    */
+
   var liftN = _curry2(function liftN(arity, fn) {
     var lifted = curryN(arity, fn);
-    return curryN(arity, function() {
+    return curryN(arity, function () {
       return _reduce(ap, map(lifted, arguments[0]), Array.prototype.slice.call(arguments, 1));
     });
   });
@@ -1667,12 +1883,13 @@
    *
    *      const madd3 = R.lift((a, b, c) => a + b + c);
    *
-   *      madd3([1,2,3], [1,2,3], [1]); //=> [3, 4, 5, 4, 5, 6, 5, 6, 7]
+   *      madd3([100, 200], [30, 40], [5, 6, 7]); //=> [135, 136, 137, 145, 146, 147, 235, 236, 237, 245, 246, 247]
    *
    *      const madd5 = R.lift((a, b, c, d, e) => a + b + c + d + e);
    *
-   *      madd5([1,2], [3], [4, 5], [6], [7, 8]); //=> [21, 22, 22, 23, 22, 23, 23, 24]
+   *      madd5([10, 20], [1], [2, 3], [4], [100, 200]); //=> [117, 217, 118, 218, 127, 227, 128, 228]
    */
+
   var lift = _curry1(function lift(fn) {
     return liftN(fn.length, fn);
   });
@@ -1690,7 +1907,7 @@
    * @param {Function} f A predicate
    * @param {Function} g Another predicate
    * @return {Function} a function that applies its arguments to `f` and `g` and `&&`s their outputs together.
-   * @see R.and
+   * @see R.either, R.and
    * @example
    *
    *      const gt10 = R.gt(R.__, 10)
@@ -1702,12 +1919,1342 @@
    *      R.both(Maybe.Just(false), Maybe.Just(55)); // => Maybe.Just(false)
    *      R.both([false, false, 'a'], [11]); //=> [false, false, 11]
    */
+
   var both = _curry2(function both(f, g) {
-    return _isFunction(f) ?
-      function _both() {
-        return f.apply(this, arguments) && g.apply(this, arguments);
-      } :
-      lift(and)(f, g);
+    return _isFunction(f) ? function _both() {
+      return f.apply(this, arguments) && g.apply(this, arguments);
+    } : lift(and)(f, g);
+  });
+
+  /**
+   * 提取第一个参数作为函数，其余参数作为刚提取的函数的参数，调用该函数并将结果返回。
+   *
+   * `R.call` 可以用作 [`R.converge`](#converge) 的 convergeing 函数：第一个分支函数生成函数，其余分支函数生成一系列值作为该函数的参数。（`R.converge` 第二个参数为一个分支函数列表）。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.9.0
+   * @category Function
+   * @sig ((*... -> a), *...) -> a
+   * @param {Function} fn The function to apply to the remaining arguments.
+   * @param {...*} args Any number of positional arguments.
+   * @return {*}
+   * @see R.apply
+   * @example
+   *
+   *      R.call(R.add, 1, 2); //=> 3
+   *
+   *      const indentN = R.pipe(
+   *        R.repeat(' '),
+   *        R.join(''),
+   *        R.replace(/^(?!$)/gm)
+   *      );
+   *
+   *      const format = R.converge(
+   *        R.call,
+   *        [
+   *          R.pipe(R.prop('indent'), indentN),
+   *          R.prop('value')
+   *        ]
+   *      );
+   *
+   *      format({indent: 2, value: 'foo\nbar\nbaz\n'}); //=> '  foo\n  bar\n  baz\n'
+   * @symb R.call(f, a, b) = f(a, b)
+   */
+
+  var call = _curry1(function call(fn) {
+    return fn.apply(this, Array.prototype.slice.call(arguments, 1));
+  });
+
+  /**
+   * `_makeFlat` is a helper function that returns a one-level or fully recursive
+   * function based on the flag passed in.
+   *
+   * @private
+   */
+
+  function _makeFlat(recursive) {
+    return function flatt(list) {
+      var value, jlen, j;
+      var result = [];
+      var idx = 0;
+      var ilen = list.length;
+
+      while (idx < ilen) {
+        if (_isArrayLike(list[idx])) {
+          value = recursive ? flatt(list[idx]) : list[idx];
+          j = 0;
+          jlen = value.length;
+
+          while (j < jlen) {
+            result[result.length] = value[j];
+            j += 1;
+          }
+        } else {
+          result[result.length] = list[idx];
+        }
+
+        idx += 1;
+      }
+
+      return result;
+    };
+  }
+
+  function _forceReduced(x) {
+    return {
+      '@@transducer/value': x,
+      '@@transducer/reduced': true
+    };
+  }
+
+  var preservingReduced = function preservingReduced(xf) {
+    return {
+      '@@transducer/init': _xfBase.init,
+      '@@transducer/result': function transducerResult(result) {
+        return xf['@@transducer/result'](result);
+      },
+      '@@transducer/step': function transducerStep(result, input) {
+        var ret = xf['@@transducer/step'](result, input);
+        return ret['@@transducer/reduced'] ? _forceReduced(ret) : ret;
+      }
+    };
+  };
+
+  var _flatCat = function _xcat(xf) {
+    var rxf = preservingReduced(xf);
+    return {
+      '@@transducer/init': _xfBase.init,
+      '@@transducer/result': function transducerResult(result) {
+        return rxf['@@transducer/result'](result);
+      },
+      '@@transducer/step': function transducerStep(result, input) {
+        return !_isArrayLike(input) ? _reduce(rxf, result, [input]) : _reduce(rxf, result, input);
+      }
+    };
+  };
+
+  var _xchain = _curry2(function _xchain(f, xf) {
+    return map(f, _flatCat(xf));
+  });
+
+  /**
+   * `chain` 将函数映射到列表中每个元素，并将结果连接起来。 `chain` 在一些库中也称为 `flatMap`（先 map 再 flatten ）。
+   *
+   * 若第二个参数存在 `chain` 方法，则调用其自身的 `chain`方法。该参数需符合 [FantasyLand Chain 规范](https://github.com/fantasyland/fantasy-land#chain)。
+   *
+   * 如果第二个参数是函数，`chain(f, g)(x)` 等价于 `f(g(x), x)`。
+   *
+   * 若在列表位置中给出 transfomer，则用作 transducer。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.3.0
+   * @category List
+   * @sig Chain m => (a -> m b) -> m a -> m b
+   * @param {Function} fn The function to map with
+   * @param {Array} list The list to map over
+   * @return {Array} The result of flat-mapping `list` with `fn`
+   * @example
+   *
+   *      const duplicate = n => [n, n];
+   *      R.chain(duplicate, [1, 2, 3]); //=> [1, 1, 2, 2, 3, 3]
+   *
+   *      R.chain(R.append, R.head)([1, 2, 3]); //=> [1, 2, 3, 1]
+   */
+
+  var chain = _curry2(_dispatchable(['fantasy-land/chain', 'chain'], _xchain, function chain(fn, monad) {
+    if (typeof monad === 'function') {
+      return function (x) {
+        return fn(monad(x))(x);
+      };
+    }
+
+    return _makeFlat(false)(map(fn, monad));
+  }));
+
+  /**
+   * 将数字限制在指定的范围内。
+   *
+   * `clamp` 也可用于其他有序类型，如字符串和日期。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.20.0
+   * @category Relation
+   * @sig Ord a => a -> a -> a -> a
+   * @param {Number} minimum The lower limit of the clamp (inclusive)
+   * @param {Number} maximum The upper limit of the clamp (inclusive)
+   * @param {Number} value Value to be clamped
+   * @return {Number} Returns `minimum` when `val < minimum`, `maximum` when `val > maximum`, returns `val` otherwise
+   * @example
+   *
+   *      R.clamp(1, 10, -5) // => 1
+   *      R.clamp(1, 10, 15) // => 10
+   *      R.clamp(1, 10, 4)  // => 4
+   */
+
+  var clamp = _curry3(function clamp(min, max, value) {
+    if (min > max) {
+      throw new Error('min must not be greater than max in clamp(min, max, value)');
+    }
+
+    return value < min ? min : value > max ? max : value;
+  });
+
+  function _cloneRegExp(pattern) {
+    return new RegExp(pattern.source, (pattern.global ? 'g' : '') + (pattern.ignoreCase ? 'i' : '') + (pattern.multiline ? 'm' : '') + (pattern.sticky ? 'y' : '') + (pattern.unicode ? 'u' : ''));
+  }
+
+  /**
+   * 用一个单词来描述输入值的（原生）类型，返回诸如 'Object'、'Number'、'Array'、'Null' 之类的结果。不区分用户自定义的类型，统一返回 'Object'。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.8.0
+   * @category Type
+   * @sig (* -> {*}) -> String
+   * @param {*} val The value to test
+   * @return {String}
+   * @example
+   *
+   *      R.type({}); //=> "Object"
+   *      R.type(1); //=> "Number"
+   *      R.type(false); //=> "Boolean"
+   *      R.type('s'); //=> "String"
+   *      R.type(null); //=> "Null"
+   *      R.type([]); //=> "Array"
+   *      R.type(/[A-z]/); //=> "RegExp"
+   *      R.type(() => {}); //=> "Function"
+   *      R.type(undefined); //=> "Undefined"
+   */
+
+  var type = _curry1(function type(val) {
+    return val === null ? 'Null' : val === undefined ? 'Undefined' : Object.prototype.toString.call(val).slice(8, -1);
+  });
+
+  /**
+   * Copies an object.
+   *
+   * @private
+   * @param {*} value The value to be copied
+   * @param {Array} refFrom Array containing the source references
+   * @param {Array} refTo Array containing the copied source references
+   * @param {Boolean} deep Whether or not to perform deep cloning.
+   * @return {*} The copied value.
+   */
+
+  function _clone(value, refFrom, refTo, deep) {
+    var copy = function copy(copiedValue) {
+      var len = refFrom.length;
+      var idx = 0;
+
+      while (idx < len) {
+        if (value === refFrom[idx]) {
+          return refTo[idx];
+        }
+
+        idx += 1;
+      }
+
+      refFrom[idx] = value;
+      refTo[idx] = copiedValue;
+
+      for (var key in value) {
+        if (value.hasOwnProperty(key)) {
+          copiedValue[key] = deep ? _clone(value[key], refFrom, refTo, true) : value[key];
+        }
+      }
+
+      return copiedValue;
+    };
+
+    switch (type(value)) {
+      case 'Object':
+        return copy(Object.create(Object.getPrototypeOf(value)));
+
+      case 'Array':
+        return copy([]);
+
+      case 'Date':
+        return new Date(value.valueOf());
+
+      case 'RegExp':
+        return _cloneRegExp(value);
+
+      case 'Int8Array':
+      case 'Uint8Array':
+      case 'Uint8ClampedArray':
+      case 'Int16Array':
+      case 'Uint16Array':
+      case 'Int32Array':
+      case 'Uint32Array':
+      case 'Float32Array':
+      case 'Float64Array':
+      case 'BigInt64Array':
+      case 'BigUint64Array':
+        return value.slice();
+
+      default:
+        return value;
+    }
+  }
+
+  /**
+   * 深复制。其值可能（嵌套）包含 `Array`、`Object`、`Number`、`String`、`Boolean`、`Date` 类型的数据。`Function` 通过引用复制。
+   *
+   * 若自身存在 `clone` 方法，则调用自身的 `clone` 方法。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category Object
+   * @sig {*} -> {*}
+   * @param {*} value The object or array to clone
+   * @return {*} A deeply cloned copy of `val`
+   * @example
+   *
+   *      const objects = [{}, {}, {}];
+   *      const objectsClone = R.clone(objects);
+   *      objects === objectsClone; //=> false
+   *      objects[0] === objectsClone[0]; //=> false
+   */
+
+  var clone = _curry1(function clone(value) {
+    return value != null && typeof value.clone === 'function' ? value.clone() : _clone(value, [], [], true);
+  });
+
+  /**
+   * 根据列表中每一个元素调用函数的结果是否相等，将一个列表拆分为多个子列表。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.28.0
+   * @category List
+   * @typedefn Idx = String | Int | Symbol
+   * @sig Idx a => (b -> a) -> [b] -> [[b]]
+   * @param {Function} fn Function :: a -> Idx
+   * @param {Array} list The array to group
+   * @return {Array}
+   *    An array of arrays where each sub-array contains items for which
+   *    the String-returning function has returned the same value.
+   * @see R.groupBy, R.partition
+   * @example
+   *      R.collectBy(R.prop('type'), [
+   *        {type: 'breakfast', item: '☕️'},
+   *        {type: 'lunch', item: '🌯'},
+   *        {type: 'dinner', item: '🍝'},
+   *        {type: 'breakfast', item: '🥐'},
+   *        {type: 'lunch', item: '🍕'}
+   *      ]);
+   *
+   *      // [ [ {type: 'breakfast', item: '☕️'},
+   *      //     {type: 'breakfast', item: '🥐'} ],
+   *      //   [ {type: 'lunch', item: '🌯'},
+   *      //     {type: 'lunch', item: '🍕'} ],
+   *      //   [ {type: 'dinner', item: '🍝'} ] ]
+   */
+
+  var collectBy = _curry2(function collectBy(fn, list) {
+    var group = _reduce(function (o, x) {
+      var tag = fn(x);
+
+      if (o[tag] === undefined) {
+        o[tag] = [];
+      }
+
+      o[tag].push(x);
+      return o;
+    }, {}, list);
+
+    var newList = [];
+
+    for (var tag in group) {
+      newList.push(group[tag]);
+    }
+
+    return newList;
+  });
+
+  /**
+   * 由首个参数是否小于第二个参数的判断函数，生成一个比较函数。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category Function
+   * @sig ((a, b) -> Boolean) -> ((a, b) -> Number)
+   * @param {Function} pred A predicate function of arity two which will return `true` if the first argument
+   * is less than the second, `false` otherwise
+   * @return {Function} A Function :: a -> b -> Int that returns `-1` if a < b, `1` if b < a, otherwise `0`
+   * @example
+   *
+   *      const byAge = R.comparator((a, b) => a.age < b.age);
+   *      const people = [
+   *        { name: 'Emma', age: 70 },
+   *        { name: 'Peter', age: 78 },
+   *        { name: 'Mikhail', age: 62 },
+   *      ];
+   *      const peopleByIncreasingAge = R.sort(byAge, people);
+   *        //=> [{ name: 'Mikhail', age: 62 },{ name: 'Emma', age: 70 }, { name: 'Peter', age: 78 }]
+   */
+
+  var comparator = _curry1(function comparator(pred) {
+    return function (a, b) {
+      return pred(a, b) ? -1 : pred(b, a) ? 1 : 0;
+    };
+  });
+
+  /**
+   * 逻辑非运算。
+
+   * 当传入参数为 false-y 值时，返回 `true`；truth-y 值时，返回 `false`。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category Logic
+   * @sig * -> Boolean
+   * @param {*} a any value
+   * @return {Boolean} the logical inverse of passed argument.
+   * @see R.complement
+   * @example
+   *
+   *      R.not(true); //=> false
+   *      R.not(false); //=> true
+   *      R.not(0); //=> true
+   *      R.not(1); //=> false
+   */
+
+  var not = _curry1(function not(a) {
+    return !a;
+  });
+
+  /**
+   * 对函数的返回值取反。接受一个函数 `f`，返回一个新函数 `g`：在输入参数相同的情况下，若 `f` 返回 'true-y' ，则 `g` 返回 `false-y` ，反之亦然。
+   *
+   * `R.complement` 可用于任何 functor。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.12.0
+   * @category Logic
+   * @sig (*... -> *) -> (*... -> Boolean)
+   * @param {Function} f
+   * @return {Function}
+   * @see R.not
+   * @example
+   *
+   *      const isNotNil = R.complement(R.isNil);
+   *      R.isNil(null); //=> true
+   *      isNotNil(null); //=> false
+   *      R.isNil(7); //=> false
+   *      isNotNil(7); //=> true
+   */
+
+  var complement = lift(not);
+
+  function _pipe(f, g) {
+    return function () {
+      return g.call(this, f.apply(this, arguments));
+    };
+  }
+
+  /**
+   * This checks whether a function has a [methodname] function. If it isn't an
+   * array it will execute that function otherwise it will default to the ramda
+   * implementation.
+   *
+   * @private
+   * @param {Function} fn ramda implementation
+   * @param {String} methodname property to check for a custom implementation
+   * @return {Object} Whatever the return value of the method is.
+   */
+
+  function _checkForMethod(methodname, fn) {
+    return function () {
+      var length = arguments.length;
+
+      if (length === 0) {
+        return fn();
+      }
+
+      var obj = arguments[length - 1];
+      return _isArray(obj) || typeof obj[methodname] !== 'function' ? fn.apply(this, arguments) : obj[methodname].apply(obj, Array.prototype.slice.call(arguments, 0, length - 1));
+    };
+  }
+
+  /**
+   * 取出给定的列表或字符串（或带有 `slice` 方法的对象）中，从 `fromIndex`（包括）到 `toIndex`（不包括）的元素。
+   *
+   * 如果第三个参数自身存在 `slice` 方法，则调用自身的 `slice` 方法。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.4
+   * @category List
+   * @sig Number -> Number -> [a] -> [a]
+   * @sig Number -> Number -> String -> String
+   * @param {Number} fromIndex The start index (inclusive).
+   * @param {Number} toIndex The end index (exclusive).
+   * @param {*} list
+   * @return {*}
+   * @example
+   *
+   *      R.slice(1, 3, ['a', 'b', 'c', 'd']);        //=> ['b', 'c']
+   *      R.slice(1, Infinity, ['a', 'b', 'c', 'd']); //=> ['b', 'c', 'd']
+   *      R.slice(0, -1, ['a', 'b', 'c', 'd']);       //=> ['a', 'b', 'c']
+   *      R.slice(-3, -1, ['a', 'b', 'c', 'd']);      //=> ['b', 'c']
+   *      R.slice(0, 3, 'ramda');                     //=> 'ram'
+   */
+
+  var slice = _curry3(_checkForMethod('slice', function slice(fromIndex, toIndex, list) {
+    return Array.prototype.slice.call(list, fromIndex, toIndex);
+  }));
+
+  /**
+   * 删除列表中的首个元素（或者调用对象的 `tail` 方法）。
+   *
+   * 如果第一个参数自身存在 `slice` 方法，则调用自身的 `slice` 方法。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category List
+   * @sig [a] -> [a]
+   * @sig String -> String
+   * @param {*} list
+   * @return {*}
+   * @see R.head, R.init, R.last
+   * @example
+   *
+   *      R.tail([1, 2, 3]);  //=> [2, 3]
+   *      R.tail([1, 2]);     //=> [2]
+   *      R.tail([1]);        //=> []
+   *      R.tail([]);         //=> []
+   *
+   *      R.tail('abc');  //=> 'bc'
+   *      R.tail('ab');   //=> 'b'
+   *      R.tail('a');    //=> ''
+   *      R.tail('');     //=> ''
+   */
+
+  var tail = _curry1(_checkForMethod('tail', slice(1, Infinity)));
+
+  /**
+   * 从左往右执行函数组合。第一个函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
+   *
+   * 在一些库中，此函数也被称为 `sequence`。
+   *
+   * ** 注意：** `pipe` 函数的结果不是自动柯里化的。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category Function
+   * @sig (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> ((a, b, ..., n) -> z)
+   * @param {...Function} functions
+   * @return {Function}
+   * @see R.compose
+   * @example
+   *
+   *      const f = R.pipe(Math.pow, R.negate, R.inc);
+   *
+   *      f(3, 4); // -(3^4) + 1
+   * @symb R.pipe(f, g, h)(a, b) = h(g(f(a, b)))
+   * @symb R.pipe(f, g, h)(a)(b) = h(g(f(a)))(b)
+   */
+
+  function pipe() {
+    if (arguments.length === 0) {
+      throw new Error('pipe requires at least one argument');
+    }
+
+    return _arity(arguments[0].length, reduce(_pipe, arguments[0], tail(arguments)));
+  }
+
+  /**
+   * 对列表或字符串的排列顺序取反。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category List
+   * @sig [a] -> [a]
+   * @sig String -> String
+   * @param {Array|String} list
+   * @return {Array|String}
+   * @example
+   *
+   *      R.reverse([1, 2, 3]);  //=> [3, 2, 1]
+   *      R.reverse([1, 2]);     //=> [2, 1]
+   *      R.reverse([1]);        //=> [1]
+   *      R.reverse([]);         //=> []
+   *
+   *      R.reverse('abc');      //=> 'cba'
+   *      R.reverse('ab');       //=> 'ba'
+   *      R.reverse('a');        //=> 'a'
+   *      R.reverse('');         //=> ''
+   */
+
+  var reverse = _curry1(function reverse(list) {
+    return _isString(list) ? list.split('').reverse().join('') : Array.prototype.slice.call(list, 0).reverse();
+  });
+
+  /**
+   * 从右往左执行函数组合（右侧函数的输出作为左侧函数的输入）。最后一个函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
+   *
+   * **注意：**compose 输出的函数不会自动进行柯里化。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category Function
+   * @sig ((y -> z), (x -> y), ..., (o -> p), ((a, b, ..., n) -> o)) -> ((a, b, ..., n) -> z)
+   * @param {...Function} ...functions The functions to compose
+   * @return {Function}
+   * @see R.pipe
+   * @example
+   *
+   *      const classyGreeting = (firstName, lastName) => "The name's " + lastName + ", " + firstName + " " + lastName
+   *      const yellGreeting = R.compose(R.toUpper, classyGreeting);
+   *      yellGreeting('James', 'Bond'); //=> "THE NAME'S BOND, JAMES BOND"
+   *
+   *      R.compose(Math.abs, R.add(1), R.multiply(2))(-4) //=> 7
+   *
+   * @symb R.compose(f, g, h)(a, b) = f(g(h(a, b)))
+   * @symb R.compose(f, g, h)(a)(b) = f(g(h(a)))(b)
+   */
+
+  function compose() {
+    if (arguments.length === 0) {
+      throw new Error('compose requires at least one argument');
+    }
+
+    return pipe.apply(this, reverse(arguments));
+  }
+
+  /**
+   * 求列表或字符串的首个元素。在某些库中，该函数也被称作 `first`。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category List
+   * @sig [a] -> a | Undefined
+   * @sig String -> String
+   * @param {Array|String} list
+   * @return {*}
+   * @see R.tail, R.init, R.last
+   * @example
+   *
+   *      R.head(['fi', 'fo', 'fum']); //=> 'fi'
+   *      R.head([]); //=> undefined
+   *
+   *      R.head('abc'); //=> 'a'
+   *      R.head(''); //=> ''
+   */
+
+  var head = nth(0);
+
+  function _identity(x) {
+    return x;
+  }
+
+  /**
+   * 将输入值原样返回。适合用作默认或占位函数。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category Function
+   * @sig a -> a
+   * @param {*} x The value to return.
+   * @return {*} The input value, `x`.
+   * @example
+   *
+   *      R.identity(1); //=> 1
+   *
+   *      const obj = {};
+   *      R.identity(obj) === obj; //=> true
+   * @symb R.identity(a) = a
+   */
+
+  var identity = _curry1(_identity);
+
+  /**
+   * 利用转换函数从左往右执行函数组合。第一个函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
+   *
+   * **注意：**pipe 输出的函数不会自动进行柯里化。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.26.0
+   * @category Function
+   * @sig ((* -> *), [((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)]) -> ((a, b, ..., n) -> z)
+   * @param {Function} transformer The transforming function
+   * @param {Array} functions The functions to pipe
+   * @return {Function}
+   * @see R.composeWith, R.pipe
+   * @example
+   *
+   *      const pipeWhileNotNil = R.pipeWith((f, res) => R.isNil(res) ? res : f(res));
+   *      const f = pipeWhileNotNil([Math.pow, R.negate, R.inc])
+   *
+   *      f(3, 4); // -(3^4) + 1
+   * @symb R.pipeWith(f)([g, h, i])(...args) = f(i, f(h, g(...args)))
+   */
+
+  var pipeWith = _curry2(function pipeWith(xf, list) {
+    if (list.length <= 0) {
+      return identity;
+    }
+
+    var headList = head(list);
+    var tailList = tail(list);
+    return _arity(headList.length, function () {
+      return _reduce(function (result, f) {
+        return xf.call(this, f, result);
+      }, headList.apply(this, arguments), tailList);
+    });
+  });
+
+  /**
+   * 利用转换函数从右往左执行函数组合。最后一个函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
+   *
+   * **注意：**composeWith 输出的函数不会自动进行柯里化。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.26.0
+   * @category Function
+   * @sig ((* -> *), [(y -> z), (x -> y), ..., (o -> p), ((a, b, ..., n) -> o)]) -> ((a, b, ..., n) -> z)
+   * @param {Function} transformer The transforming function
+   * @param {Array} functions The functions to compose
+   * @return {Function}
+   * @see R.compose, R.pipeWith
+   * @example
+   *
+   *      const composeWhileNotNil = R.composeWith((f, res) => R.isNil(res) ? res : f(res));
+   *
+   *      composeWhileNotNil([R.inc, R.prop('age')])({age: 1}) //=> 2
+   *      composeWhileNotNil([R.inc, R.prop('age')])({}) //=> undefined
+   *
+   * @symb R.composeWith(f)([g, h, i])(...args) = f(g, f(h, i(...args)))
+   */
+
+  var composeWith = _curry2(function composeWith(xf, list) {
+    return pipeWith.apply(this, [xf, reverse(list)]);
+  });
+
+  function _arrayFromIterator(iter) {
+    var list = [];
+    var next;
+
+    while (!(next = iter.next()).done) {
+      list.push(next.value);
+    }
+
+    return list;
+  }
+
+  function _includesWith(pred, x, list) {
+    var idx = 0;
+    var len = list.length;
+
+    while (idx < len) {
+      if (pred(x, list[idx])) {
+        return true;
+      }
+
+      idx += 1;
+    }
+
+    return false;
+  }
+
+  function _functionName(f) {
+    // String(x => x) evaluates to "x => x", so the pattern may not match.
+    var match = String(f).match(/^function (\w*)/);
+    return match == null ? '' : match[1];
+  }
+
+  // Based on https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+  function _objectIs(a, b) {
+    // SameValue algorithm
+    if (a === b) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return a !== 0 || 1 / a === 1 / b;
+    } else {
+      // Step 6.a: NaN == NaN
+      return a !== a && b !== b;
+    }
+  }
+
+  var _objectIs$1 = typeof Object.is === 'function' ? Object.is : _objectIs;
+
+  /**
+   * private _uniqContentEquals function.
+   * That function is checking equality of 2 iterator contents with 2 assumptions
+   * - iterators lengths are the same
+   * - iterators values are unique
+   *
+   * false-positive result will be returned for comparison of, e.g.
+   * - [1,2,3] and [1,2,3,4]
+   * - [1,1,1] and [1,2,3]
+   * */
+
+  function _uniqContentEquals(aIterator, bIterator, stackA, stackB) {
+    var a = _arrayFromIterator(aIterator);
+
+    var b = _arrayFromIterator(bIterator);
+
+    function eq(_a, _b) {
+      return _equals(_a, _b, stackA.slice(), stackB.slice());
+    } // if *a* array contains any element that is not included in *b*
+
+
+    return !_includesWith(function (b, aItem) {
+      return !_includesWith(eq, aItem, b);
+    }, b, a);
+  }
+
+  function _equals(a, b, stackA, stackB) {
+    if (_objectIs$1(a, b)) {
+      return true;
+    }
+
+    var typeA = type(a);
+
+    if (typeA !== type(b)) {
+      return false;
+    }
+
+    if (typeof a['fantasy-land/equals'] === 'function' || typeof b['fantasy-land/equals'] === 'function') {
+      return typeof a['fantasy-land/equals'] === 'function' && a['fantasy-land/equals'](b) && typeof b['fantasy-land/equals'] === 'function' && b['fantasy-land/equals'](a);
+    }
+
+    if (typeof a.equals === 'function' || typeof b.equals === 'function') {
+      return typeof a.equals === 'function' && a.equals(b) && typeof b.equals === 'function' && b.equals(a);
+    }
+
+    switch (typeA) {
+      case 'Arguments':
+      case 'Array':
+      case 'Object':
+        if (typeof a.constructor === 'function' && _functionName(a.constructor) === 'Promise') {
+          return a === b;
+        }
+
+        break;
+
+      case 'Boolean':
+      case 'Number':
+      case 'String':
+        if (!(_typeof(a) === _typeof(b) && _objectIs$1(a.valueOf(), b.valueOf()))) {
+          return false;
+        }
+
+        break;
+
+      case 'Date':
+        if (!_objectIs$1(a.valueOf(), b.valueOf())) {
+          return false;
+        }
+
+        break;
+
+      case 'Error':
+        return a.name === b.name && a.message === b.message;
+
+      case 'RegExp':
+        if (!(a.source === b.source && a.global === b.global && a.ignoreCase === b.ignoreCase && a.multiline === b.multiline && a.sticky === b.sticky && a.unicode === b.unicode)) {
+          return false;
+        }
+
+        break;
+    }
+
+    var idx = stackA.length - 1;
+
+    while (idx >= 0) {
+      if (stackA[idx] === a) {
+        return stackB[idx] === b;
+      }
+
+      idx -= 1;
+    }
+
+    switch (typeA) {
+      case 'Map':
+        if (a.size !== b.size) {
+          return false;
+        }
+
+        return _uniqContentEquals(a.entries(), b.entries(), stackA.concat([a]), stackB.concat([b]));
+
+      case 'Set':
+        if (a.size !== b.size) {
+          return false;
+        }
+
+        return _uniqContentEquals(a.values(), b.values(), stackA.concat([a]), stackB.concat([b]));
+
+      case 'Arguments':
+      case 'Array':
+      case 'Object':
+      case 'Boolean':
+      case 'Number':
+      case 'String':
+      case 'Date':
+      case 'Error':
+      case 'RegExp':
+      case 'Int8Array':
+      case 'Uint8Array':
+      case 'Uint8ClampedArray':
+      case 'Int16Array':
+      case 'Uint16Array':
+      case 'Int32Array':
+      case 'Uint32Array':
+      case 'Float32Array':
+      case 'Float64Array':
+      case 'ArrayBuffer':
+        break;
+
+      default:
+        // Values of other types are only equal if identical.
+        return false;
+    }
+
+    var keysA = keys(a);
+
+    if (keysA.length !== keys(b).length) {
+      return false;
+    }
+
+    var extendedStackA = stackA.concat([a]);
+    var extendedStackB = stackB.concat([b]);
+    idx = keysA.length - 1;
+
+    while (idx >= 0) {
+      var key = keysA[idx];
+
+      if (!(_has(key, b) && _equals(b[key], a[key], extendedStackA, extendedStackB))) {
+        return false;
+      }
+
+      idx -= 1;
+    }
+
+    return true;
+  }
+
+  /**
+   * 如果传入的参数相等，返回 `true`；否则返回 `false`。可以处理几乎所有 JavaScript 支持的数据结构。
+   *
+   * 若两个参数自身存在 `equals` 方法，则对称地调用自身的 `equals` 方法。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.15.0
+   * @category Relation
+   * @sig a -> b -> Boolean
+   * @param {*} a
+   * @param {*} b
+   * @return {Boolean}
+   * @example
+   *
+   *      R.equals(1, 1); //=> true
+   *      R.equals(1, '1'); //=> false
+   *      R.equals([1, 2, 3], [1, 2, 3]); //=> true
+   *
+   *      const a = {}; a.v = a;
+   *      const b = {}; b.v = b;
+   *      R.equals(a, b); //=> true
+   */
+
+  var equals = _curry2(function equals(a, b) {
+    return _equals(a, b, [], []);
+  });
+
+  function _indexOf(list, a, idx) {
+    var inf, item; // Array.prototype.indexOf doesn't exist below IE9
+
+    if (typeof list.indexOf === 'function') {
+      switch (_typeof(a)) {
+        case 'number':
+          if (a === 0) {
+            // manually crawl the list to distinguish between +0 and -0
+            inf = 1 / a;
+
+            while (idx < list.length) {
+              item = list[idx];
+
+              if (item === 0 && 1 / item === inf) {
+                return idx;
+              }
+
+              idx += 1;
+            }
+
+            return -1;
+          } else if (a !== a) {
+            // NaN
+            while (idx < list.length) {
+              item = list[idx];
+
+              if (typeof item === 'number' && item !== item) {
+                return idx;
+              }
+
+              idx += 1;
+            }
+
+            return -1;
+          } // non-zero numbers can utilise Set
+
+
+          return list.indexOf(a, idx);
+        // all these types can utilise Set
+
+        case 'string':
+        case 'boolean':
+        case 'function':
+        case 'undefined':
+          return list.indexOf(a, idx);
+
+        case 'object':
+          if (a === null) {
+            // null can utilise Set
+            return list.indexOf(a, idx);
+          }
+
+      }
+    } // anything else not covered above, defer to R.equals
+
+
+    while (idx < list.length) {
+      if (equals(list[idx], a)) {
+        return idx;
+      }
+
+      idx += 1;
+    }
+
+    return -1;
+  }
+
+  function _includes(a, list) {
+    return _indexOf(list, a, 0) >= 0;
+  }
+
+  function _quote(s) {
+    var escaped = s.replace(/\\/g, '\\\\').replace(/[\b]/g, '\\b') // \b matches word boundary; [\b] matches backspace
+    .replace(/\f/g, '\\f').replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t').replace(/\v/g, '\\v').replace(/\0/g, '\\0');
+    return '"' + escaped.replace(/"/g, '\\"') + '"';
+  }
+
+  /**
+   * Polyfill from <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString>.
+   */
+  var pad = function pad(n) {
+    return (n < 10 ? '0' : '') + n;
+  };
+
+  var _toISOString = typeof Date.prototype.toISOString === 'function' ? function _toISOString(d) {
+    return d.toISOString();
+  } : function _toISOString(d) {
+    return d.getUTCFullYear() + '-' + pad(d.getUTCMonth() + 1) + '-' + pad(d.getUTCDate()) + 'T' + pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()) + ':' + pad(d.getUTCSeconds()) + '.' + (d.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5) + 'Z';
+  };
+
+  function _complement(f) {
+    return function () {
+      return !f.apply(this, arguments);
+    };
+  }
+
+  function _filter(fn, list) {
+    var idx = 0;
+    var len = list.length;
+    var result = [];
+
+    while (idx < len) {
+      if (fn(list[idx])) {
+        result[result.length] = list[idx];
+      }
+
+      idx += 1;
+    }
+
+    return result;
+  }
+
+  function _isObject(x) {
+    return Object.prototype.toString.call(x) === '[object Object]';
+  }
+
+  function XFilter(f, xf) {
+    this.xf = xf;
+    this.f = f;
+  }
+
+  XFilter.prototype['@@transducer/init'] = _xfBase.init;
+  XFilter.prototype['@@transducer/result'] = _xfBase.result;
+
+  XFilter.prototype['@@transducer/step'] = function (result, input) {
+    return this.f(input) ? this.xf['@@transducer/step'](result, input) : result;
+  };
+
+  var _xfilter = _curry2(function _xfilter(f, xf) {
+    return new XFilter(f, xf);
+  });
+
+  /**
+   * 使用 `predicate` 遍历传入的 `Filterable`，返回满足 `predicate` 的所有元素的新的 `Filterable`。新 `Filterable` 与原先的类型相同。Filterable 类型包括 plain object 或者任何带有 filter 方法的类型，如 `Array` 。
+   *
+   * 若第二个参数自身存在 `filter` 方法，则调用自身的 `filter` 方法。
+   *
+   * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category List
+   * @sig Filterable f => (a -> Boolean) -> f a -> f a
+   * @param {Function} pred
+   * @param {Array} filterable
+   * @return {Array} Filterable
+   * @see R.reject, R.transduce, R.addIndex
+   * @example
+   *
+   *      const isEven = n => n % 2 === 0;
+   *
+   *      R.filter(isEven, [1, 2, 3, 4]); //=> [2, 4]
+   *
+   *      R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, d: 4}
+   */
+
+  var filter = _curry2(_dispatchable(['fantasy-land/filter', 'filter'], _xfilter, function (pred, filterable) {
+    return _isObject(filterable) ? _reduce(function (acc, key) {
+      if (pred(filterable[key])) {
+        acc[key] = filterable[key];
+      }
+
+      return acc;
+    }, {}, keys(filterable)) : // else
+    _filter(pred, filterable);
+  }));
+
+  /**
+   * [`filter`](#filter) 的补操作。返回结果为 [`R.filter`](#filter) 操作结果的补集。
+   *
+   * 若在列表位置给出 transformer，则用作 transducer。Filterable 类型包括 plain object 或者任何带有 filter 方法的类型，如 `Array` 。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category List
+   * @sig Filterable f => (a -> Boolean) -> f a -> f a
+   * @param {Function} pred
+   * @param {Array} filterable
+   * @return {Array}
+   * @see R.filter, R.transduce, R.addIndex
+   * @example
+   *
+   *      const isOdd = (n) => n % 2 !== 0;
+   *
+   *      R.reject(isOdd, [1, 2, 3, 4]); //=> [2, 4]
+   *
+   *      R.reject(isOdd, {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, d: 4}
+   */
+
+  var reject = _curry2(function reject(pred, filterable) {
+    return filter(_complement(pred), filterable);
+  });
+
+  function _toString(x, seen) {
+    var recur = function recur(y) {
+      var xs = seen.concat([x]);
+      return _includes(y, xs) ? '<Circular>' : _toString(y, xs);
+    }; //  mapPairs :: (Object, [String]) -> [String]
+
+
+    var mapPairs = function mapPairs(obj, keys) {
+      return _map(function (k) {
+        return _quote(k) + ': ' + recur(obj[k]);
+      }, keys.slice().sort());
+    };
+
+    switch (Object.prototype.toString.call(x)) {
+      case '[object Arguments]':
+        return '(function() { return arguments; }(' + _map(recur, x).join(', ') + '))';
+
+      case '[object Array]':
+        return '[' + _map(recur, x).concat(mapPairs(x, reject(function (k) {
+          return /^\d+$/.test(k);
+        }, keys(x)))).join(', ') + ']';
+
+      case '[object Boolean]':
+        return _typeof(x) === 'object' ? 'new Boolean(' + recur(x.valueOf()) + ')' : x.toString();
+
+      case '[object Date]':
+        return 'new Date(' + (isNaN(x.valueOf()) ? recur(NaN) : _quote(_toISOString(x))) + ')';
+
+      case '[object Null]':
+        return 'null';
+
+      case '[object Number]':
+        return _typeof(x) === 'object' ? 'new Number(' + recur(x.valueOf()) + ')' : 1 / x === -Infinity ? '-0' : x.toString(10);
+
+      case '[object String]':
+        return _typeof(x) === 'object' ? 'new String(' + recur(x.valueOf()) + ')' : _quote(x);
+
+      case '[object Undefined]':
+        return 'undefined';
+
+      default:
+        if (typeof x.toString === 'function') {
+          var repr = x.toString();
+
+          if (repr !== '[object Object]') {
+            return repr;
+          }
+        }
+
+        return '{' + mapPairs(x, keys(x)).join(', ') + '}';
+    }
+  }
+
+  /**
+   * 返回代表输入元素的字符串。求得的输出结果应该等价于输入的值。许多内建的 `toString` 方法都不满足这一条件。
+   *
+   * 如果输入值是 `[object Object]` 对象，且自身含有 `toString` 方法（不是 `Object.prototype.toString` 方法），那么直接调用这个方法求返回值。这意味着，通过用户自定义的构造函数可以提供合适的 `toString` 方法。例如：
+   *
+   *     function Point(x, y) {
+   *       this.x = x;
+   *       this.y = y;
+   *     }
+   *
+   *     Point.prototype.toString = function() {
+   *       return 'new Point(' + this.x + ', ' + this.y + ')';
+   *     };
+   *
+   *     R.toString(new Point(1, 2)); //=> 'new Point(1, 2)'
+   *
+   * @func
+   * @memberOf R
+   * @since v0.14.0
+   * @category String
+   * @sig * -> String
+   * @param {*} val
+   * @return {String}
+   * @example
+   *
+   *      R.toString(42); //=> '42'
+   *      R.toString('abc'); //=> '"abc"'
+   *      R.toString([1, 2, 3]); //=> '[1, 2, 3]'
+   *      R.toString({foo: 1, bar: 2, baz: 3}); //=> '{"bar": 2, "baz": 3, "foo": 1}'
+   *      R.toString(new Date('2001-02-03T04:05:06Z')); //=> 'new Date("2001-02-03T04:05:06.000Z")'
+   */
+
+  var toString$1 = _curry1(function toString(val) {
+    return _toString(val, []);
+  });
+
+  /**
+   * 连接列表或字符串。
+   *
+   * 注意：不同于 [`Array.prototype.concat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat), `R.concat` 要求两个参数类型相同。 如果将 Array 与非 Array 连接，将抛出错误。
+   *
+   * 若第一个参数自身存在 `concat` 方法，则调用自身的 `concat`。
+   *
+   * 也可以用于连接 [符合 fantasy-land 半群](https://github.com/fantasyland/fantasy-land#semigroup) 类型的两个实例。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.1.0
+   * @category List
+   * @sig [a] -> [a] -> [a]
+   * @sig String -> String -> String
+   * @param {Array|String} firstList The first list
+   * @param {Array|String} secondList The second list
+   * @return {Array|String} A list consisting of the elements of `firstList` followed by the elements of
+   * `secondList`.
+   *
+   * @example
+   *
+   *      R.concat('ABC', 'DEF'); // 'ABCDEF'
+   *      R.concat([4, 5, 6], [1, 2, 3]); //=> [4, 5, 6, 1, 2, 3]
+   *      R.concat([], []); //=> []
+   */
+
+  var concat = _curry2(function concat(a, b) {
+    if (_isArray(a)) {
+      if (_isArray(b)) {
+        return a.concat(b);
+      }
+
+      throw new TypeError(toString$1(b) + ' is not an array');
+    }
+
+    if (_isString(a)) {
+      if (_isString(b)) {
+        return a + b;
+      }
+
+      throw new TypeError(toString$1(b) + ' is not a string');
+    }
+
+    if (a != null && _isFunction(a['fantasy-land/concat'])) {
+      return a['fantasy-land/concat'](b);
+    }
+
+    if (a != null && _isFunction(a.concat)) {
+      return a.concat(b);
+    }
+
+    throw new TypeError(toString$1(a) + ' does not have a method named "concat" or "fantasy-land/concat"');
+  });
+
+  /**
+   * 返回一个封装了 `if / else，if / else, ...` 逻辑的函数 `fn`。 `R.cond` 接受列表元素为 [predicate，transformer] 的列表。 `fn` 的所有参数顺次作用于每个 predicate，直到有一个返回 "truthy" 值，此时相应 transformer 对参数处理，并作为 `fn` 的结果返回。 如果没有 predicate 匹配，则 `fn` 返回 undefined。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.6.0
+   * @category Logic
+   * @sig [[(*... -> Boolean),(*... -> *)]] -> (*... -> *)
+   * @param {Array} pairs A list of [predicate, transformer]
+   * @return {Function}
+   * @see R.ifElse, R.unless, R.when
+   * @example
+   *
+   *      const fn = R.cond([
+   *        [R.equals(0),   R.always('water freezes at 0°C')],
+   *        [R.equals(100), R.always('water boils at 100°C')],
+   *        [R.T,           temp => 'nothing special happens at ' + temp + '°C']
+   *      ]);
+   *      fn(0); //=> 'water freezes at 0°C'
+   *      fn(50); //=> 'nothing special happens at 50°C'
+   *      fn(100); //=> 'water boils at 100°C'
+   */
+
+  var cond = _curry1(function cond(pairs) {
+    var arity = reduce(max, 0, map(function (pair) {
+      return pair[0].length;
+    }, pairs));
+    return _arity(arity, function () {
+      var idx = 0;
+
+      while (idx < pairs.length) {
+        if (pairs[idx][0].apply(this, arguments)) {
+          return pairs[idx][1].apply(this, arguments);
+        }
+
+        idx += 1;
+      }
+    });
   });
 
   /**
@@ -1747,1319 +3294,9 @@
    *      const g = f(3);
    *      g(4); //=> 10
    */
+
   var curry = _curry1(function curry(fn) {
     return curryN(fn.length, fn);
-  });
-
-  /**
-   * 提取第一个参数作为函数，其余参数作为刚提取的函数的参数，调用该函数并将结果返回。
-   *
-   * `R.call` 可以用作 [`R.converge`](#converge) 的 convergeing 函数：第一个分支函数生成函数，其余分支函数生成一系列值作为该函数的参数。（`R.converge` 第二个参数为一个分支函数列表）。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.9.0
-   * @category Function
-   * @sig (*... -> a),*... -> a
-   * @param {Function} fn The function to apply to the remaining arguments.
-   * @param {...*} args Any number of positional arguments.
-   * @return {*}
-   * @see R.apply
-   * @example
-   *
-   *      R.call(R.add, 1, 2); //=> 3
-   *
-   *      const indentN = R.pipe(R.repeat(' '),
-   *                           R.join(''),
-   *                           R.replace(/^(?!$)/gm));
-   *
-   *      const format = R.converge(R.call, [
-   *                                  R.pipe(R.prop('indent'), indentN),
-   *                                  R.prop('value')
-   *                              ]);
-   *
-   *      format({indent: 2, value: 'foo\nbar\nbaz\n'}); //=> '  foo\n  bar\n  baz\n'
-   * @symb R.call(f, a, b) = f(a, b)
-   */
-  var call = curry(function call(fn) {
-    return fn.apply(this, Array.prototype.slice.call(arguments, 1));
-  });
-
-  /**
-   * `_makeFlat` is a helper function that returns a one-level or fully recursive
-   * function based on the flag passed in.
-   *
-   * @private
-   */
-  function _makeFlat(recursive) {
-    return function flatt(list) {
-      var value, jlen, j;
-      var result = [];
-      var idx = 0;
-      var ilen = list.length;
-
-      while (idx < ilen) {
-        if (_isArrayLike(list[idx])) {
-          value = recursive ? flatt(list[idx]) : list[idx];
-          j = 0;
-          jlen = value.length;
-          while (j < jlen) {
-            result[result.length] = value[j];
-            j += 1;
-          }
-        } else {
-          result[result.length] = list[idx];
-        }
-        idx += 1;
-      }
-      return result;
-    };
-  }
-
-  function _forceReduced(x) {
-    return {
-      '@@transducer/value': x,
-      '@@transducer/reduced': true
-    };
-  }
-
-  var preservingReduced = function(xf) {
-    return {
-      '@@transducer/init': _xfBase.init,
-      '@@transducer/result': function(result) {
-        return xf['@@transducer/result'](result);
-      },
-      '@@transducer/step': function(result, input) {
-        var ret = xf['@@transducer/step'](result, input);
-        return ret['@@transducer/reduced'] ? _forceReduced(ret) : ret;
-      }
-    };
-  };
-
-  var _flatCat = function _xcat(xf) {
-    var rxf = preservingReduced(xf);
-    return {
-      '@@transducer/init': _xfBase.init,
-      '@@transducer/result': function(result) {
-        return rxf['@@transducer/result'](result);
-      },
-      '@@transducer/step': function(result, input) {
-        return !_isArrayLike(input) ? _reduce(rxf, result, [input]) : _reduce(rxf, result, input);
-      }
-    };
-  };
-
-  var _xchain = _curry2(function _xchain(f, xf) {
-    return map(f, _flatCat(xf));
-  });
-
-  /**
-   * `chain` 将函数映射到列表中每个元素，并将结果连接起来。 `chain` 在一些库中也称为 `flatMap`（先 map 再 flatten ）。
-   *
-   * 若第二个参数存在 `chain` 方法，则调用其自身的 `chain`方法。该参数需符合 [FantasyLand Chain 规范](https://github.com/fantasyland/fantasy-land#chain)。
-   *
-   * 如果第二个参数是函数，`chain(f, g)(x)` 等价于 `f(g(x), x)`。
-   *
-   * 若在列表位置中给出 transfomer，则用作 transducer。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.3.0
-   * @category List
-   * @sig Chain m => (a -> m b) -> m a -> m b
-   * @param {Function} fn The function to map with
-   * @param {Array} list The list to map over
-   * @return {Array} The result of flat-mapping `list` with `fn`
-   * @example
-   *
-   *      const duplicate = n => [n, n];
-   *      R.chain(duplicate, [1, 2, 3]); //=> [1, 1, 2, 2, 3, 3]
-   *
-   *      R.chain(R.append, R.head)([1, 2, 3]); //=> [1, 2, 3, 1]
-   */
-  var chain = _curry2(_dispatchable(['fantasy-land/chain', 'chain'], _xchain, function chain(fn, monad) {
-    if (typeof monad === 'function') {
-      return function(x) { return fn(monad(x))(x); };
-    }
-    return _makeFlat(false)(map(fn, monad));
-  }));
-
-  /**
-   * 将数字限制在指定的范围内。
-   *
-   * `clamp` 也可用于其他有序类型，如字符串和日期。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.20.0
-   * @category Relation
-   * @sig Ord a => a -> a -> a -> a
-   * @param {Number} minimum The lower limit of the clamp (inclusive)
-   * @param {Number} maximum The upper limit of the clamp (inclusive)
-   * @param {Number} value Value to be clamped
-   * @return {Number} Returns `minimum` when `val < minimum`, `maximum` when `val > maximum`, returns `val` otherwise
-   * @example
-   *
-   *      R.clamp(1, 10, -5) // => 1
-   *      R.clamp(1, 10, 15) // => 10
-   *      R.clamp(1, 10, 4)  // => 4
-   */
-  var clamp = _curry3(function clamp(min, max, value) {
-    if (min > max) {
-      throw new Error('min must not be greater than max in clamp(min, max, value)');
-    }
-    return value < min
-      ? min
-      : value > max
-        ? max
-        : value;
-  });
-
-  function _cloneRegExp(pattern) {
-    return new RegExp(pattern.source, (pattern.global     ? 'g' : '') +
-                                      (pattern.ignoreCase ? 'i' : '') +
-                                      (pattern.multiline  ? 'm' : '') +
-                                      (pattern.sticky     ? 'y' : '') +
-                                      (pattern.unicode    ? 'u' : ''));
-  }
-
-  /**
-   * 用一个单词来描述输入值的（原生）类型，返回诸如 'Object'、'Number'、'Array'、'Null' 之类的结果。不区分用户自定义的类型，统一返回 'Object'。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.8.0
-   * @category Type
-   * @sig (* -> {*}) -> String
-   * @param {*} val The value to test
-   * @return {String}
-   * @example
-   *
-   *      R.type({}); //=> "Object"
-   *      R.type(1); //=> "Number"
-   *      R.type(false); //=> "Boolean"
-   *      R.type('s'); //=> "String"
-   *      R.type(null); //=> "Null"
-   *      R.type([]); //=> "Array"
-   *      R.type(/[A-z]/); //=> "RegExp"
-   *      R.type(() => {}); //=> "Function"
-   *      R.type(undefined); //=> "Undefined"
-   */
-  var type = _curry1(function type(val) {
-    return val === null
-      ? 'Null'
-      : val === undefined
-        ? 'Undefined'
-        : Object.prototype.toString.call(val).slice(8, -1);
-  });
-
-  /**
-   * Copies an object.
-   *
-   * @private
-   * @param {*} value The value to be copied
-   * @param {Array} refFrom Array containing the source references
-   * @param {Array} refTo Array containing the copied source references
-   * @param {Boolean} deep Whether or not to perform deep cloning.
-   * @return {*} The copied value.
-   */
-  function _clone(value, refFrom, refTo, deep) {
-    var copy = function copy(copiedValue) {
-      var len = refFrom.length;
-      var idx = 0;
-      while (idx < len) {
-        if (value === refFrom[idx]) {
-          return refTo[idx];
-        }
-        idx += 1;
-      }
-      refFrom[idx + 1] = value;
-      refTo[idx + 1] = copiedValue;
-      for (var key in value) {
-        copiedValue[key] = deep ?
-          _clone(value[key], refFrom, refTo, true) : value[key];
-      }
-      return copiedValue;
-    };
-    switch (type(value)) {
-      case 'Object':  return copy({});
-      case 'Array':   return copy([]);
-      case 'Date':    return new Date(value.valueOf());
-      case 'RegExp':  return _cloneRegExp(value);
-      default:        return value;
-    }
-  }
-
-  /**
-   * 深复制。其值可能（嵌套）包含 `Array`、`Object`、`Number`、`String`、`Boolean`、`Date` 类型的数据。`Function` 通过引用复制。
-   *
-   * 若自身存在 `clone` 方法，则调用自身的 `clone` 方法。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category Object
-   * @sig {*} -> {*}
-   * @param {*} value The object or array to clone
-   * @return {*} A deeply cloned copy of `val`
-   * @example
-   *
-   *      const objects = [{}, {}, {}];
-   *      const objectsClone = R.clone(objects);
-   *      objects === objectsClone; //=> false
-   *      objects[0] === objectsClone[0]; //=> false
-   */
-  var clone = _curry1(function clone(value) {
-    return value != null && typeof value.clone === 'function' ?
-      value.clone() :
-      _clone(value, [], [], true);
-  });
-
-  /**
-   * 由首个参数是否小于第二个参数的判断函数，生成一个比较函数。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category Function
-   * @sig ((a, b) -> Boolean) -> ((a, b) -> Number)
-   * @param {Function} pred A predicate function of arity two which will return `true` if the first argument
-   * is less than the second, `false` otherwise
-   * @return {Function} A Function :: a -> b -> Int that returns `-1` if a < b, `1` if b < a, otherwise `0`
-   * @example
-   *
-   *      const byAge = R.comparator((a, b) => a.age < b.age);
-   *      const people = [
-   *        { name: 'Emma', age: 70 },
-   *        { name: 'Peter', age: 78 },
-   *        { name: 'Mikhail', age: 62 },
-   *      ];
-   *      const peopleByIncreasingAge = R.sort(byAge, people);
-   *        //=> [{ name: 'Mikhail', age: 62 },{ name: 'Emma', age: 70 }, { name: 'Peter', age: 78 }]
-   */
-  var comparator = _curry1(function comparator(pred) {
-    return function(a, b) {
-      return pred(a, b) ? -1 : pred(b, a) ? 1 : 0;
-    };
-  });
-
-  /**
-   * 逻辑非运算。
-
-   * 当传入参数为 false-y 值时，返回 `true`；truth-y 值时，返回 `false`。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category Logic
-   * @sig * -> Boolean
-   * @param {*} a any value
-   * @return {Boolean} the logical inverse of passed argument.
-   * @see R.complement
-   * @example
-   *
-   *      R.not(true); //=> false
-   *      R.not(false); //=> true
-   *      R.not(0); //=> true
-   *      R.not(1); //=> false
-   */
-  var not = _curry1(function not(a) {
-    return !a;
-  });
-
-  /**
-   * 对函数的返回值取反。接受一个函数 `f`，返回一个新函数 `g`：在输入参数相同的情况下，若 `f` 返回 'true-y' ，则 `g` 返回 `false-y` ，反之亦然。
-   *
-   * `R.complement` 可用于任何 functor。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.12.0
-   * @category Logic
-   * @sig (*... -> *) -> (*... -> Boolean)
-   * @param {Function} f
-   * @return {Function}
-   * @see R.not
-   * @example
-   *
-   *      const isNotNil = R.complement(R.isNil);
-   *      isNil(null); //=> true
-   *      isNotNil(null); //=> false
-   *      isNil(7); //=> false
-   *      isNotNil(7); //=> true
-   */
-  var complement = lift(not);
-
-  function _pipe(f, g) {
-    return function() {
-      return g.call(this, f.apply(this, arguments));
-    };
-  }
-
-  /**
-   * This checks whether a function has a [methodname] function. If it isn't an
-   * array it will execute that function otherwise it will default to the ramda
-   * implementation.
-   *
-   * @private
-   * @param {Function} fn ramda implemtation
-   * @param {String} methodname property to check for a custom implementation
-   * @return {Object} Whatever the return value of the method is.
-   */
-  function _checkForMethod(methodname, fn) {
-    return function() {
-      var length = arguments.length;
-      if (length === 0) {
-        return fn();
-      }
-      var obj = arguments[length - 1];
-      return (_isArray(obj) || typeof obj[methodname] !== 'function') ?
-        fn.apply(this, arguments) :
-        obj[methodname].apply(obj, Array.prototype.slice.call(arguments, 0, length - 1));
-    };
-  }
-
-  /**
-   * 取出给定的列表或字符串（或带有 `slice` 方法的对象）中，从 `fromIndex`（包括）到 `toIndex`（不包括）的元素。
-   *
-   * 如果第三个参数自身存在 `slice` 方法，则调用自身的 `slice` 方法。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.4
-   * @category List
-   * @sig Number -> Number -> [a] -> [a]
-   * @sig Number -> Number -> String -> String
-   * @param {Number} fromIndex The start index (inclusive).
-   * @param {Number} toIndex The end index (exclusive).
-   * @param {*} list
-   * @return {*}
-   * @example
-   *
-   *      R.slice(1, 3, ['a', 'b', 'c', 'd']);        //=> ['b', 'c']
-   *      R.slice(1, Infinity, ['a', 'b', 'c', 'd']); //=> ['b', 'c', 'd']
-   *      R.slice(0, -1, ['a', 'b', 'c', 'd']);       //=> ['a', 'b', 'c']
-   *      R.slice(-3, -1, ['a', 'b', 'c', 'd']);      //=> ['b', 'c']
-   *      R.slice(0, 3, 'ramda');                     //=> 'ram'
-   */
-  var slice = _curry3(_checkForMethod('slice', function slice(fromIndex, toIndex, list) {
-    return Array.prototype.slice.call(list, fromIndex, toIndex);
-  }));
-
-  /**
-   * 删除列表中的首个元素（或者调用对象的 `tail` 方法）。
-   *
-   * 如果第一个参数自身存在 `slice` 方法，则调用自身的 `slice` 方法。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category List
-   * @sig [a] -> [a]
-   * @sig String -> String
-   * @param {*} list
-   * @return {*}
-   * @see R.head, R.init, R.last
-   * @example
-   *
-   *      R.tail([1, 2, 3]);  //=> [2, 3]
-   *      R.tail([1, 2]);     //=> [2]
-   *      R.tail([1]);        //=> []
-   *      R.tail([]);         //=> []
-   *
-   *      R.tail('abc');  //=> 'bc'
-   *      R.tail('ab');   //=> 'b'
-   *      R.tail('a');    //=> ''
-   *      R.tail('');     //=> ''
-   */
-  var tail = _curry1(_checkForMethod('tail', slice(1, Infinity)));
-
-  /**
-   * 从左往右执行函数组合。第一个函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
-   *
-   * 在一些库中，此函数也被称为 `sequence`。
-   *
-   * ** 注意：** `pipe` 函数的结果不是自动柯里化的
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category Function
-   * @sig (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> ((a, b, ..., n) -> z)
-   * @param {...Function} functions
-   * @return {Function}
-   * @see R.compose
-   * @example
-   *
-   *      const f = R.pipe(Math.pow, R.negate, R.inc);
-   *
-   *      f(3, 4); // -(3^4) + 1
-   * @symb R.pipe(f, g, h)(a, b) = h(g(f(a, b)))
-   */
-  function pipe() {
-    if (arguments.length === 0) {
-      throw new Error('pipe requires at least one argument');
-    }
-    return _arity(
-      arguments[0].length,
-      reduce(_pipe, arguments[0], tail(arguments))
-    );
-  }
-
-  /**
-   * 对列表或字符串的排列顺序取反。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category List
-   * @sig [a] -> [a]
-   * @sig String -> String
-   * @param {Array|String} list
-   * @return {Array|String}
-   * @example
-   *
-   *      R.reverse([1, 2, 3]);  //=> [3, 2, 1]
-   *      R.reverse([1, 2]);     //=> [2, 1]
-   *      R.reverse([1]);        //=> [1]
-   *      R.reverse([]);         //=> []
-   *
-   *      R.reverse('abc');      //=> 'cba'
-   *      R.reverse('ab');       //=> 'ba'
-   *      R.reverse('a');        //=> 'a'
-   *      R.reverse('');         //=> ''
-   */
-  var reverse = _curry1(function reverse(list) {
-    return _isString(list)
-      ? list.split('').reverse().join('')
-      : Array.prototype.slice.call(list, 0).reverse();
-  });
-
-  /**
-   * 从右往左执行函数组合（右侧函数的输出作为左侧函数的输入）。最后一个函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
-   *
-   * **注意：**compose 输出的函数不会自动进行柯里化。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category Function
-   * @sig ((y -> z), (x -> y), ..., (o -> p), ((a, b, ..., n) -> o)) -> ((a, b, ..., n) -> z)
-   * @param {...Function} ...functions The functions to compose
-   * @return {Function}
-   * @see R.pipe
-   * @example
-   *
-   *      const classyGreeting = (firstName, lastName) => "The name's " + lastName + ", " + firstName + " " + lastName
-   *      const yellGreeting = R.compose(R.toUpper, classyGreeting);
-   *      yellGreeting('James', 'Bond'); //=> "THE NAME'S BOND, JAMES BOND"
-   *
-   *      R.compose(Math.abs, R.add(1), R.multiply(2))(-4) //=> 7
-   *
-   * @symb R.compose(f, g, h)(a, b) = f(g(h(a, b)))
-   */
-  function compose() {
-    if (arguments.length === 0) {
-      throw new Error('compose requires at least one argument');
-    }
-    return pipe.apply(this, reverse(arguments));
-  }
-
-  /**
-   * 接受一系列函数，返回从右向左的 Kleisli 组合，每个函数必须返回支持 [`chain`](#chain) 操作的值。
-   *
-   * `R.composeK(h, g, f)` 等同于 `R.compose(R.chain(h)，R.chain(g)，f)`。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.16.0
-   * @category Function
-   * @sig Chain m => ((y -> m z), (x -> m y), ..., (a -> m b)) -> (a -> m z)
-   * @param {...Function} ...functions The functions to compose
-   * @return {Function}
-   * @see R.pipeK
-   * @deprecated since v0.26.0
-   * @example
-   *
-   *       //  get :: String -> Object -> Maybe *
-   *       const get = R.curry((propName, obj) => Maybe(obj[propName]))
-   *
-   *       //  getStateCode :: Maybe String -> Maybe String
-   *       const getStateCode = R.composeK(
-   *         R.compose(Maybe.of, R.toUpper),
-   *         get('state'),
-   *         get('address'),
-   *         get('user'),
-   *       );
-   *       getStateCode({"user":{"address":{"state":"ny"}}}); //=> Maybe.Just("NY")
-   *       getStateCode({}); //=> Maybe.Nothing()
-   * @symb R.composeK(f, g, h)(a) = R.chain(f, R.chain(g, h(a)))
-   */
-  function composeK() {
-    if (arguments.length === 0) {
-      throw new Error('composeK requires at least one argument');
-    }
-    var init = Array.prototype.slice.call(arguments);
-    var last = init.pop();
-    return compose(compose.apply(this, map(chain, init)), last);
-  }
-
-  function _pipeP(f, g) {
-    return function() {
-      var ctx = this;
-      return f.apply(ctx, arguments).then(function(x) {
-        return g.call(ctx, x);
-      });
-    };
-  }
-
-  /**
-   * 从左往右执行返回 Promise 的函数的组合。第一个函数可以是任意元函数（参数个数不限）；其余函数必须是一元函数。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.10.0
-   * @category Function
-   * @sig ((a -> Promise b), (b -> Promise c), ..., (y -> Promise z)) -> (a -> Promise z)
-   * @param {...Function} functions
-   * @return {Function}
-   * @see R.composeP
-   * @deprecated since v0.26.0
-   * @example
-   *
-   *      //  followersForUser :: String -> Promise [User]
-   *      const followersForUser = R.pipeP(db.getUserById, db.getFollowers);
-   */
-  function pipeP() {
-    if (arguments.length === 0) {
-      throw new Error('pipeP requires at least one argument');
-    }
-    return _arity(
-      arguments[0].length,
-      reduce(_pipeP, arguments[0], tail(arguments))
-    );
-  }
-
-  /**
-   * 从右向左执行返回 Promise 的函数的组合。最后一个函数可以是任意元函数（参数个数不限）; 其余函数必须是一元函数。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.10.0
-   * @category Function
-   * @sig ((y -> Promise z), (x -> Promise y), ..., (a -> Promise b)) -> (a -> Promise z)
-   * @param {...Function} functions The functions to compose
-   * @return {Function}
-   * @see R.pipeP
-   * @deprecated since v0.26.0
-   * @example
-   *
-   *      const db = {
-   *        users: {
-   *          JOE: {
-   *            name: 'Joe',
-   *            followers: ['STEVE', 'SUZY']
-   *          }
-   *        }
-   *      }
-   *
-   *      // We'll pretend to do a db lookup which returns a promise
-   *      const lookupUser = (userId) => Promise.resolve(db.users[userId])
-   *      const lookupFollowers = (user) => Promise.resolve(user.followers)
-   *      lookupUser('JOE').then(lookupFollowers)
-   *
-   *      //  followersForUser :: String -> Promise [UserId]
-   *      const followersForUser = R.composeP(lookupFollowers, lookupUser);
-   *      followersForUser('JOE').then(followers => console.log('Followers:', followers))
-   *      // Followers: ["STEVE","SUZY"]
-   */
-  function composeP() {
-    if (arguments.length === 0) {
-      throw new Error('composeP requires at least one argument');
-    }
-    return pipeP.apply(this, reverse(arguments));
-  }
-
-  /**
-   * 求列表或字符串的首个元素。在某些库中，该函数也被称作 `first`。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category List
-   * @sig [a] -> a | Undefined
-   * @sig String -> String
-   * @param {Array|String} list
-   * @return {*}
-   * @see R.tail, R.init, R.last
-   * @example
-   *
-   *      R.head(['fi', 'fo', 'fum']); //=> 'fi'
-   *      R.head([]); //=> undefined
-   *
-   *      R.head('abc'); //=> 'a'
-   *      R.head(''); //=> ''
-   */
-  var head = nth(0);
-
-  function _identity(x) { return x; }
-
-  /**
-   * 将输入值原样返回。适合用作默认或占位函数。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category Function
-   * @sig a -> a
-   * @param {*} x The value to return.
-   * @return {*} The input value, `x`.
-   * @example
-   *
-   *      R.identity(1); //=> 1
-   *
-   *      const obj = {};
-   *      R.identity(obj) === obj; //=> true
-   * @symb R.identity(a) = a
-   */
-  var identity = _curry1(_identity);
-
-  /**
-   * 利用转换函数从左往右执行函数组合。第一个函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
-   *
-   * **注意：**pipe 输出的函数不会自动进行柯里化。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.26.0
-   * @category Function
-   * @sig ((* -> *), [((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)]) -> ((a, b, ..., n) -> z)
-   * @param {...Function} functions
-   * @return {Function}
-   * @see R.composeWith, R.pipe
-   * @example
-   *
-   *      const pipeWhileNotNil = R.pipeWith((f, res) => R.isNil(res) ? res : f(res));
-   *      const f = pipeWhileNotNil([Math.pow, R.negate, R.inc])
-   *
-   *      f(3, 4); // -(3^4) + 1
-   * @symb R.pipeWith(f)([g, h, i])(...args) = f(i, f(h, g(...args)))
-   */
-  var pipeWith = _curry2(function pipeWith(xf, list) {
-    if (list.length <= 0) {
-      return identity;
-    }
-
-    var headList = head(list);
-    var tailList = tail(list);
-
-    return _arity(headList.length, function() {
-      return _reduce(
-        function(result, f) {
-          return xf.call(this, f, result);
-        },
-        headList.apply(this, arguments),
-        tailList
-      );
-    });
-  });
-
-  /**
-   * 利用转换函数从右往左执行函数组合。最后一个函数可以是任意元函数（参数个数不限），其余函数必须是一元函数。
-   *
-   * **注意：**composeWith 输出的函数不会自动进行柯里化。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.26.0
-   * @category Function
-   * @sig ((* -> *), [(y -> z), (x -> y), ..., (o -> p), ((a, b, ..., n) -> o)]) -> ((a, b, ..., n) -> z)
-   * @param {...Function} ...functions The functions to compose
-   * @return {Function}
-   * @see R.compose, R.pipeWith
-   * @example
-   *
-   *      const composeWhileNotNil = R.composeWith((f, res) => R.isNil(res) ? res : f(res));
-   *
-   *      composeWhileNotNil([R.inc, R.prop('age')])({age: 1}) //=> 2
-   *      composeWhileNotNil([R.inc, R.prop('age')])({}) //=> undefined
-   *
-   * @symb R.composeWith(f)([g, h, i])(...args) = f(g, f(h, i(...args)))
-   */
-  var composeWith = _curry2(function composeWith(xf, list) {
-    return pipeWith.apply(this, [xf, reverse(list)]);
-  });
-
-  function _arrayFromIterator(iter) {
-    var list = [];
-    var next;
-    while (!(next = iter.next()).done) {
-      list.push(next.value);
-    }
-    return list;
-  }
-
-  function _includesWith(pred, x, list) {
-    var idx = 0;
-    var len = list.length;
-
-    while (idx < len) {
-      if (pred(x, list[idx])) {
-        return true;
-      }
-      idx += 1;
-    }
-    return false;
-  }
-
-  function _functionName(f) {
-    // String(x => x) evaluates to "x => x", so the pattern may not match.
-    var match = String(f).match(/^function (\w*)/);
-    return match == null ? '' : match[1];
-  }
-
-  // Based on https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
-  function _objectIs(a, b) {
-    // SameValue algorithm
-    if (a === b) { // Steps 1-5, 7-10
-      // Steps 6.b-6.e: +0 != -0
-      return a !== 0 || 1 / a === 1 / b;
-    } else {
-      // Step 6.a: NaN == NaN
-      return a !== a && b !== b;
-    }
-  }
-
-  var _objectIs$1 = typeof Object.is === 'function' ? Object.is : _objectIs;
-
-  /**
-   * private _uniqContentEquals function.
-   * That function is checking equality of 2 iterator contents with 2 assumptions
-   * - iterators lengths are the same
-   * - iterators values are unique
-   *
-   * false-positive result will be returned for comparision of, e.g.
-   * - [1,2,3] and [1,2,3,4]
-   * - [1,1,1] and [1,2,3]
-   * */
-
-  function _uniqContentEquals(aIterator, bIterator, stackA, stackB) {
-    var a = _arrayFromIterator(aIterator);
-    var b = _arrayFromIterator(bIterator);
-
-    function eq(_a, _b) {
-      return _equals(_a, _b, stackA.slice(), stackB.slice());
-    }
-
-    // if *a* array contains any element that is not included in *b*
-    return !_includesWith(function(b, aItem) {
-      return !_includesWith(eq, aItem, b);
-    }, b, a);
-  }
-
-  function _equals(a, b, stackA, stackB) {
-    if (_objectIs$1(a, b)) {
-      return true;
-    }
-
-    var typeA = type(a);
-
-    if (typeA !== type(b)) {
-      return false;
-    }
-
-    if (a == null || b == null) {
-      return false;
-    }
-
-    if (typeof a['fantasy-land/equals'] === 'function' || typeof b['fantasy-land/equals'] === 'function') {
-      return typeof a['fantasy-land/equals'] === 'function' && a['fantasy-land/equals'](b) &&
-        typeof b['fantasy-land/equals'] === 'function' && b['fantasy-land/equals'](a);
-    }
-
-    if (typeof a.equals === 'function' || typeof b.equals === 'function') {
-      return typeof a.equals === 'function' && a.equals(b) &&
-        typeof b.equals === 'function' && b.equals(a);
-    }
-
-    switch (typeA) {
-      case 'Arguments':
-      case 'Array':
-      case 'Object':
-        if (typeof a.constructor === 'function' &&
-          _functionName(a.constructor) === 'Promise') {
-          return a === b;
-        }
-        break;
-      case 'Boolean':
-      case 'Number':
-      case 'String':
-        if (!(typeof a === typeof b && _objectIs$1(a.valueOf(), b.valueOf()))) {
-          return false;
-        }
-        break;
-      case 'Date':
-        if (!_objectIs$1(a.valueOf(), b.valueOf())) {
-          return false;
-        }
-        break;
-      case 'Error':
-        return a.name === b.name && a.message === b.message;
-      case 'RegExp':
-        if (!(a.source === b.source &&
-            a.global === b.global &&
-            a.ignoreCase === b.ignoreCase &&
-            a.multiline === b.multiline &&
-            a.sticky === b.sticky &&
-            a.unicode === b.unicode)) {
-          return false;
-        }
-        break;
-    }
-
-    var idx = stackA.length - 1;
-    while (idx >= 0) {
-      if (stackA[idx] === a) {
-        return stackB[idx] === b;
-      }
-      idx -= 1;
-    }
-
-    switch (typeA) {
-      case 'Map':
-        if (a.size !== b.size) {
-          return false;
-        }
-
-        return _uniqContentEquals(a.entries(), b.entries(), stackA.concat([a]), stackB.concat([b]));
-      case 'Set':
-        if (a.size !== b.size) {
-          return false;
-        }
-
-        return _uniqContentEquals(a.values(), b.values(), stackA.concat([a]), stackB.concat([b]));
-      case 'Arguments':
-      case 'Array':
-      case 'Object':
-      case 'Boolean':
-      case 'Number':
-      case 'String':
-      case 'Date':
-      case 'Error':
-      case 'RegExp':
-      case 'Int8Array':
-      case 'Uint8Array':
-      case 'Uint8ClampedArray':
-      case 'Int16Array':
-      case 'Uint16Array':
-      case 'Int32Array':
-      case 'Uint32Array':
-      case 'Float32Array':
-      case 'Float64Array':
-      case 'ArrayBuffer':
-        break;
-      default:
-        // Values of other types are only equal if identical.
-        return false;
-    }
-
-    var keysA = keys(a);
-    if (keysA.length !== keys(b).length) {
-      return false;
-    }
-
-    var extendedStackA = stackA.concat([a]);
-    var extendedStackB = stackB.concat([b]);
-
-    idx = keysA.length - 1;
-    while (idx >= 0) {
-      var key = keysA[idx];
-      if (!(_has(key, b) && _equals(b[key], a[key], extendedStackA, extendedStackB))) {
-        return false;
-      }
-      idx -= 1;
-    }
-    return true;
-  }
-
-  /**
-   * 如果传入的参数相等，返回 `true`；否则返回 `false`。可以处理几乎所有 JavaScript 支持的数据结构。
-   *
-   * 若两个参数自身存在 `equals` 方法，则对称地调用自身的 `equals` 方法。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.15.0
-   * @category Relation
-   * @sig a -> b -> Boolean
-   * @param {*} a
-   * @param {*} b
-   * @return {Boolean}
-   * @example
-   *
-   *      R.equals(1, 1); //=> true
-   *      R.equals(1, '1'); //=> false
-   *      R.equals([1, 2, 3], [1, 2, 3]); //=> true
-   *
-   *      const a = {}; a.v = a;
-   *      const b = {}; b.v = b;
-   *      R.equals(a, b); //=> true
-   */
-  var equals = _curry2(function equals(a, b) {
-    return _equals(a, b, [], []);
-  });
-
-  function _indexOf(list, a, idx) {
-    var inf, item;
-    // Array.prototype.indexOf doesn't exist below IE9
-    if (typeof list.indexOf === 'function') {
-      switch (typeof a) {
-        case 'number':
-          if (a === 0) {
-            // manually crawl the list to distinguish between +0 and -0
-            inf = 1 / a;
-            while (idx < list.length) {
-              item = list[idx];
-              if (item === 0 && 1 / item === inf) {
-                return idx;
-              }
-              idx += 1;
-            }
-            return -1;
-          } else if (a !== a) {
-            // NaN
-            while (idx < list.length) {
-              item = list[idx];
-              if (typeof item === 'number' && item !== item) {
-                return idx;
-              }
-              idx += 1;
-            }
-            return -1;
-          }
-          // non-zero numbers can utilise Set
-          return list.indexOf(a, idx);
-
-        // all these types can utilise Set
-        case 'string':
-        case 'boolean':
-        case 'function':
-        case 'undefined':
-          return list.indexOf(a, idx);
-
-        case 'object':
-          if (a === null) {
-            // null can utilise Set
-            return list.indexOf(a, idx);
-          }
-      }
-    }
-    // anything else not covered above, defer to R.equals
-    while (idx < list.length) {
-      if (equals(list[idx], a)) {
-        return idx;
-      }
-      idx += 1;
-    }
-    return -1;
-  }
-
-  function _includes(a, list) {
-    return _indexOf(list, a, 0) >= 0;
-  }
-
-  function _quote(s) {
-    var escaped = s
-      .replace(/\\/g, '\\\\')
-      .replace(/[\b]/g, '\\b')  // \b matches word boundary; [\b] matches backspace
-      .replace(/\f/g, '\\f')
-      .replace(/\n/g, '\\n')
-      .replace(/\r/g, '\\r')
-      .replace(/\t/g, '\\t')
-      .replace(/\v/g, '\\v')
-      .replace(/\0/g, '\\0');
-
-    return '"' + escaped.replace(/"/g, '\\"') + '"';
-  }
-
-  /**
-   * Polyfill from <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString>.
-   */
-  var pad = function pad(n) { return (n < 10 ? '0' : '') + n; };
-
-  var _toISOString = typeof Date.prototype.toISOString === 'function' ?
-    function _toISOString(d) {
-      return d.toISOString();
-    } :
-    function _toISOString(d) {
-      return (
-        d.getUTCFullYear() + '-' +
-        pad(d.getUTCMonth() + 1) + '-' +
-        pad(d.getUTCDate()) + 'T' +
-        pad(d.getUTCHours()) + ':' +
-        pad(d.getUTCMinutes()) + ':' +
-        pad(d.getUTCSeconds()) + '.' +
-        (d.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5) + 'Z'
-      );
-    };
-
-  function _complement(f) {
-    return function() {
-      return !f.apply(this, arguments);
-    };
-  }
-
-  function _filter(fn, list) {
-    var idx = 0;
-    var len = list.length;
-    var result = [];
-
-    while (idx < len) {
-      if (fn(list[idx])) {
-        result[result.length] = list[idx];
-      }
-      idx += 1;
-    }
-    return result;
-  }
-
-  function _isObject(x) {
-    return Object.prototype.toString.call(x) === '[object Object]';
-  }
-
-  function XFilter(f, xf) {
-    this.xf = xf;
-    this.f = f;
-  }
-  XFilter.prototype['@@transducer/init'] = _xfBase.init;
-  XFilter.prototype['@@transducer/result'] = _xfBase.result;
-  XFilter.prototype['@@transducer/step'] = function(result, input) {
-    return this.f(input) ? this.xf['@@transducer/step'](result, input) : result;
-  };
-
-  var _xfilter = _curry2(function _xfilter(f, xf) { return new XFilter(f, xf); });
-
-  /**
-   * 使用 `predicate` 遍历传入的 `Filterable`，返回满足 `predicate` 的所有元素的新的 `Filterable`。新 `Filterable` 与原先的类型相同。Filterable 类型包括 plain object 或者任何带有 filter 方法的类型，如 `Array` 。
-   *
-   * 若第二个参数自身存在 `filter` 方法，则调用自身的 `filter` 方法。
-   *
-   * 若在 list 位置中给出 `transfomer` ，则用作 `transducer` 。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category List
-   * @sig Filterable f => (a -> Boolean) -> f a -> f a
-   * @param {Function} pred
-   * @param {Array} filterable
-   * @return {Array} Filterable
-   * @see R.reject, R.transduce, R.addIndex
-   * @example
-   *
-   *      const isEven = n => n % 2 === 0;
-   *
-   *      R.filter(isEven, [1, 2, 3, 4]); //=> [2, 4]
-   *
-   *      R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, d: 4}
-   */
-  var filter = _curry2(_dispatchable(['filter'], _xfilter, function(pred, filterable) {
-    return (
-      _isObject(filterable) ?
-        _reduce(function(acc, key) {
-          if (pred(filterable[key])) {
-            acc[key] = filterable[key];
-          }
-          return acc;
-        }, {}, keys(filterable)) :
-      // else
-        _filter(pred, filterable)
-    );
-  }));
-
-  /**
-   * [`filter`](#filter) 的补操作。返回结果为 [`R.filter`](#filter) 操作结果的补集。
-   *
-   * 若在列表位置给出 transformer，则用作 transducer。Filterable 类型包括 plain object 或者任何带有 filter 方法的类型，如 `Array` 。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category List
-   * @sig Filterable f => (a -> Boolean) -> f a -> f a
-   * @param {Function} pred
-   * @param {Array} filterable
-   * @return {Array}
-   * @see R.filter, R.transduce, R.addIndex
-   * @example
-   *
-   *      const isOdd = (n) => n % 2 === 1;
-   *
-   *      R.reject(isOdd, [1, 2, 3, 4]); //=> [2, 4]
-   *
-   *      R.reject(isOdd, {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, d: 4}
-   */
-  var reject = _curry2(function reject(pred, filterable) {
-    return filter(_complement(pred), filterable);
-  });
-
-  function _toString(x, seen) {
-    var recur = function recur(y) {
-      var xs = seen.concat([x]);
-      return _includes(y, xs) ? '<Circular>' : _toString(y, xs);
-    };
-
-    //  mapPairs :: (Object, [String]) -> [String]
-    var mapPairs = function(obj, keys$$1) {
-      return _map(function(k) { return _quote(k) + ': ' + recur(obj[k]); }, keys$$1.slice().sort());
-    };
-
-    switch (Object.prototype.toString.call(x)) {
-      case '[object Arguments]':
-        return '(function() { return arguments; }(' + _map(recur, x).join(', ') + '))';
-      case '[object Array]':
-        return '[' + _map(recur, x).concat(mapPairs(x, reject(function(k) { return /^\d+$/.test(k); }, keys(x)))).join(', ') + ']';
-      case '[object Boolean]':
-        return typeof x === 'object' ? 'new Boolean(' + recur(x.valueOf()) + ')' : x.toString();
-      case '[object Date]':
-        return 'new Date(' + (isNaN(x.valueOf()) ? recur(NaN) : _quote(_toISOString(x))) + ')';
-      case '[object Null]':
-        return 'null';
-      case '[object Number]':
-        return typeof x === 'object' ? 'new Number(' + recur(x.valueOf()) + ')' : 1 / x === -Infinity ? '-0' : x.toString(10);
-      case '[object String]':
-        return typeof x === 'object' ? 'new String(' + recur(x.valueOf()) + ')' : _quote(x);
-      case '[object Undefined]':
-        return 'undefined';
-      default:
-        if (typeof x.toString === 'function') {
-          var repr = x.toString();
-          if (repr !== '[object Object]') {
-            return repr;
-          }
-        }
-        return '{' + mapPairs(x, keys(x)).join(', ') + '}';
-    }
-  }
-
-  /**
-   * 返回代表输入元素的字符串。求得的输出结果应该等价于输入的值。许多内建的 `toString` 方法都不满足这一条件。
-   *
-   * 如果输入值是 `[object Object]` 对象，且自身含有 `toString` 方法（不是 `Object.prototype.toString` 方法），那么直接调用这个方法求返回值。这意味着，通过用户自定义的构造函数可以提供合适的 `toString` 方法。例如：
-   *
-   *     function Point(x, y) {
-   *       this.x = x;
-   *       this.y = y;
-   *     }
-   *
-   *     Point.prototype.toString = function() {
-   *       return 'new Point(' + this.x + ', ' + this.y + ')';
-   *     };
-   *
-   *     R.toString(new Point(1, 2)); //=> 'new Point(1, 2)'
-   *
-   * @func
-   * @memberOf R
-   * @since v0.14.0
-   * @category String
-   * @sig * -> String
-   * @param {*} val
-   * @return {String}
-   * @example
-   *
-   *      R.toString(42); //=> '42'
-   *      R.toString('abc'); //=> '"abc"'
-   *      R.toString([1, 2, 3]); //=> '[1, 2, 3]'
-   *      R.toString({foo: 1, bar: 2, baz: 3}); //=> '{"bar": 2, "baz": 3, "foo": 1}'
-   *      R.toString(new Date('2001-02-03T04:05:06Z')); //=> 'new Date("2001-02-03T04:05:06.000Z")'
-   */
-  var toString$1 = _curry1(function toString(val) { return _toString(val, []); });
-
-  /**
-   * 连接列表或字符串。
-   *
-   * 注意：不同于 [`Array.prototype.concat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat), `R.concat` 要求两个参数类型相同。 如果将 Array 与非 Array 连接，将抛出错误。
-   *
-   * 若第一个参数自身存在 `concat` 方法，则调用自身的 `concat`。
-   *
-   * 也可以用于连接 [符合 fantasy-land 半群](https://github.com/fantasyland/fantasy-land#semigroup) 类型的两个实例。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category List
-   * @sig [a] -> [a] -> [a]
-   * @sig String -> String -> String
-   * @param {Array|String} firstList The first list
-   * @param {Array|String} secondList The second list
-   * @return {Array|String} A list consisting of the elements of `firstList` followed by the elements of
-   * `secondList`.
-   *
-   * @example
-   *
-   *      R.concat('ABC', 'DEF'); // 'ABCDEF'
-   *      R.concat([4, 5, 6], [1, 2, 3]); //=> [4, 5, 6, 1, 2, 3]
-   *      R.concat([], []); //=> []
-   */
-  var concat = _curry2(function concat(a, b) {
-    if (_isArray(a)) {
-      if (_isArray(b)) {
-        return a.concat(b);
-      }
-      throw new TypeError(toString$1(b) + ' is not an array');
-    }
-    if (_isString(a)) {
-      if (_isString(b)) {
-        return a + b;
-      }
-      throw new TypeError(toString$1(b) + ' is not a string');
-    }
-    if (a != null && _isFunction(a['fantasy-land/concat'])) {
-      return a['fantasy-land/concat'](b);
-    }
-    if (a != null && _isFunction(a.concat)) {
-      return a.concat(b);
-    }
-    throw new TypeError(toString$1(a) + ' does not have a method named "concat" or "fantasy-land/concat"');
-  });
-
-  /**
-   * 返回一个封装了 `if / else，if / else, ...` 逻辑的函数 `fn`。 `R.cond` 接受列表元素为 [predicate，transformer] 的列表。 `fn` 的所有参数顺次作用于每个 predicate，直到有一个返回 "truthy" 值，此时相应 transformer 对参数处理，并作为 `fn` 的结果返回。 如果没有 predicate 匹配，则 `fn` 返回 undefined。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.6.0
-   * @category Logic
-   * @sig [[(*... -> Boolean),(*... -> *)]] -> (*... -> *)
-   * @param {Array} pairs A list of [predicate, transformer]
-   * @return {Function}
-   * @see R.ifElse, R.unless, R.when
-   * @example
-   *
-   *      const fn = R.cond([
-   *        [R.equals(0),   R.always('water freezes at 0°C')],
-   *        [R.equals(100), R.always('water boils at 100°C')],
-   *        [R.T,           temp => 'nothing special happens at ' + temp + '°C']
-   *      ]);
-   *      fn(0); //=> 'water freezes at 0°C'
-   *      fn(50); //=> 'nothing special happens at 50°C'
-   *      fn(100); //=> 'water boils at 100°C'
-   */
-  var cond = _curry1(function cond(pairs) {
-    var arity = reduce(
-      max,
-      0,
-      map(function(pair) { return pair[0].length; }, pairs)
-    );
-    return _arity(arity, function() {
-      var idx = 0;
-      while (idx < pairs.length) {
-        if (pairs[idx][0].apply(this, arguments)) {
-          return pairs[idx][1].apply(this, arguments);
-        }
-        idx += 1;
-      }
-    });
   });
 
   /**
@@ -3095,25 +3332,49 @@
    *      // Add a dollop of Potato Chips
    *      // Add a dollop of Ketchup
    */
+
   var constructN = _curry2(function constructN(n, Fn) {
     if (n > 10) {
       throw new Error('Constructor with greater than ten arguments');
     }
+
     if (n === 0) {
-      return function() { return new Fn(); };
+      return function () {
+        return new Fn();
+      };
     }
-    return curry(nAry(n, function($0, $1, $2, $3, $4, $5, $6, $7, $8, $9) {
+
+    return curry(nAry(n, function ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9) {
       switch (arguments.length) {
-        case  1: return new Fn($0);
-        case  2: return new Fn($0, $1);
-        case  3: return new Fn($0, $1, $2);
-        case  4: return new Fn($0, $1, $2, $3);
-        case  5: return new Fn($0, $1, $2, $3, $4);
-        case  6: return new Fn($0, $1, $2, $3, $4, $5);
-        case  7: return new Fn($0, $1, $2, $3, $4, $5, $6);
-        case  8: return new Fn($0, $1, $2, $3, $4, $5, $6, $7);
-        case  9: return new Fn($0, $1, $2, $3, $4, $5, $6, $7, $8);
-        case 10: return new Fn($0, $1, $2, $3, $4, $5, $6, $7, $8, $9);
+        case 1:
+          return new Fn($0);
+
+        case 2:
+          return new Fn($0, $1);
+
+        case 3:
+          return new Fn($0, $1, $2);
+
+        case 4:
+          return new Fn($0, $1, $2, $3);
+
+        case 5:
+          return new Fn($0, $1, $2, $3, $4);
+
+        case 6:
+          return new Fn($0, $1, $2, $3, $4, $5);
+
+        case 7:
+          return new Fn($0, $1, $2, $3, $4, $5, $6);
+
+        case 8:
+          return new Fn($0, $1, $2, $3, $4, $5, $6, $7);
+
+        case 9:
+          return new Fn($0, $1, $2, $3, $4, $5, $6, $7, $8);
+
+        case 10:
+          return new Fn($0, $1, $2, $3, $4, $5, $6, $7, $8, $9);
       }
     }));
   });
@@ -3149,34 +3410,10 @@
    *      const sightNewAnimal = R.compose(animalSighting, AnimalConstructor);
    *      R.map(sightNewAnimal, animalTypes); //=> ["It's a Lion!", "It's a Tiger!", "It's a Bear!"]
    */
+
   var construct = _curry1(function construct(Fn) {
     return constructN(Fn.length, Fn);
   });
-
-  /**
-   * 只要列表中有一个元素等于指定值，则返回 `true`；否则返回 `false`。通过 [`R.equals`](#equals) 函数进行相等性判断。
-   *
-   * 也可以判断字符串中是否包含指定值。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category List
-   * @sig a -> [a] -> Boolean
-   * @param {Object} a The item to compare against.
-   * @param {Array} list The array to consider.
-   * @return {Boolean} `true` if an equivalent item is in the list, `false` otherwise.
-   * @see R.includes
-   * @deprecated since v0.26.0
-   * @example
-   *
-   *      R.contains(3, [1, 2, 3]); //=> true
-   *      R.contains(4, [1, 2, 3]); //=> false
-   *      R.contains({ name: 'Fred' }, [{ name: 'Fred' }]); //=> true
-   *      R.contains([42], [[42]]); //=> true
-   *      R.contains('ba', 'banana'); //=>true
-   */
-  var contains$1 = _curry2(_includes);
 
   /**
    * 接受一个 converging 函数和一个分支函数列表，返回一个新函数。新函数的元数（参数个数）等于最长分支函数的元数。当被调用时，新函数接受参数，并将这些参数转发给每个分支函数；然后将每个分支函数的计算结果作为参数传递给 converging 函数，converging 函数的计算结果即新函数的返回值。
@@ -3201,14 +3438,39 @@
    *
    * @symb R.converge(f, [g, h])(a, b) = f(g(a, b), h(a, b))
    */
+
   var converge = _curry2(function converge(after, fns) {
-    return curryN(reduce(max, 0, pluck('length', fns)), function() {
+    return curryN(reduce(max, 0, pluck('length', fns)), function () {
       var args = arguments;
       var context = this;
-      return after.apply(context, _map(function(fn) {
+      return after.apply(context, _map(function (fn) {
         return fn.apply(context, args);
       }, fns));
     });
+  });
+
+  /**
+   * 返回符合 predicate `f` 的列表的个数。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.28.0
+   * @category List
+   * @sig (a -> Boolean) -> [a] -> Number
+   * @param {Function} predicate to match items against
+   * @return {Array} list of items to count in
+   * @example
+   *
+   *      const even = x => x % 2 == 0;
+   *
+   *      R.count(even, [1, 2, 3, 4, 5]); // => 2
+   *      R.map(R.count(even), [[1, 1, 1], [2, 3, 4, 5], [6]]); // => [0, 2, 1]
+   */
+
+  var count = curry(function (pred, list) {
+    return _reduce(function (a, e) {
+      return pred(e) ? a + 1 : a;
+    }, 0, list);
   });
 
   function XReduceBy(valueFn, valueAcc, keyFn, xf) {
@@ -3218,40 +3480,44 @@
     this.xf = xf;
     this.inputs = {};
   }
+
   XReduceBy.prototype['@@transducer/init'] = _xfBase.init;
-  XReduceBy.prototype['@@transducer/result'] = function(result) {
+
+  XReduceBy.prototype['@@transducer/result'] = function (result) {
     var key;
+
     for (key in this.inputs) {
       if (_has(key, this.inputs)) {
         result = this.xf['@@transducer/step'](result, this.inputs[key]);
+
         if (result['@@transducer/reduced']) {
           result = result['@@transducer/value'];
           break;
         }
       }
     }
+
     this.inputs = null;
     return this.xf['@@transducer/result'](result);
   };
-  XReduceBy.prototype['@@transducer/step'] = function(result, input) {
+
+  XReduceBy.prototype['@@transducer/step'] = function (result, input) {
     var key = this.keyFn(input);
     this.inputs[key] = this.inputs[key] || [key, this.valueAcc];
     this.inputs[key][1] = this.valueFn(this.inputs[key][1], input);
     return result;
   };
 
-  var _xreduceBy = _curryN(4, [],
-    function _xreduceBy(valueFn, valueAcc, keyFn, xf) {
-      return new XReduceBy(valueFn, valueAcc, keyFn, xf);
-    }
-  );
+  var _xreduceBy = _curryN(4, [], function _xreduceBy(valueFn, valueAcc, keyFn, xf) {
+    return new XReduceBy(valueFn, valueAcc, keyFn, xf);
+  });
 
   /**
    * 首先对列表中的每个元素调用函数 `keyFn` ，根据 `keyFn` 返回的字符串对列表元素进行分组。然后调用 reducer 函数 `valueFn`，对组内的元素进行折叠操作。
    *
    * 该函数相当于更通用的 [`groupBy`](#groupBy) 函数。
    *
-   * 若在列表位置给出 transformer，则用做 transducer
+   * 若在列表位置给出 transformer，则用做 transducer 。
    *
    * @func
    * @memberOf R
@@ -3265,7 +3531,7 @@
    * @param {Array} list The array to group.
    * @return {Object} An object with the output of `keyFn` for keys, mapped to the output of
    *         `valueFn` for elements which produced that key when passed to `keyFn`.
-   * @see R.groupBy, R.reduce
+   * @see R.groupBy, R.reduce, R.reduced
    * @example
    *
    *      const groupNames = (acc, {name}) => acc.concat(name)
@@ -3285,14 +3551,20 @@
    *      reduceBy(groupNames, [], toGrade, students)
    *      //=> {"A": ["Dora"], "B": ["Abby", "Curt"], "F": ["Bart"]}
    */
-  var reduceBy = _curryN(4, [], _dispatchable([], _xreduceBy,
-    function reduceBy(valueFn, valueAcc, keyFn, list) {
-      return _reduce(function(acc, elt) {
-        var key = keyFn(elt);
-        acc[key] = valueFn(_has(key, acc) ? acc[key] : _clone(valueAcc, [], [], false), elt);
-        return acc;
-      }, {}, list);
-    }));
+
+  var reduceBy = _curryN(4, [], _dispatchable([], _xreduceBy, function reduceBy(valueFn, valueAcc, keyFn, list) {
+    return _reduce(function (acc, elt) {
+      var key = keyFn(elt);
+      var value = valueFn(_has(key, acc) ? acc[key] : _clone(valueAcc, [], [], false), elt);
+
+      if (value && value['@@transducer/reduced']) {
+        return _reduced(acc);
+      }
+
+      acc[key] = value;
+      return acc;
+    }, {}, list);
+  }));
 
   /**
    * 根据给定函数提供的统计规则对列表中的元素进行分类计数。返回一个对象，其键值对为：`fn` 根据列表元素生成键，列表中通过 `fn` 映射为对应键的元素的个数作为值。注意，由于 JavaScript 对象的实现方式，所有键都被强制转换为字符串。
@@ -3315,7 +3587,10 @@
    *      const letters = ['a', 'b', 'A', 'a', 'B', 'c'];
    *      R.countBy(R.toLower)(letters);   //=> {'a': 3, 'b': 2, 'c': 1}
    */
-  var countBy = reduceBy(function(acc, elem) { return acc + 1; }, 0);
+
+  var countBy = reduceBy(function (acc, elem) {
+    return acc + 1;
+  }, 0);
 
   /**
    * 减1。
@@ -3332,6 +3607,7 @@
    *
    *      R.dec(42); //=> 41
    */
+
   var dec = add(-1);
 
   /**
@@ -3356,6 +3632,7 @@
    *      // parseInt('string') results in NaN
    *      defaultTo42(parseInt('string')); //=> 42
    */
+
   var defaultTo = _curry2(function defaultTo(d, v) {
     return v == null || v !== v ? d : v;
   });
@@ -3384,6 +3661,7 @@
    *      const peopleByOldestFirst = R.sort(byAge, people);
    *        //=> [{ name: 'Peter', age: 78 }, { name: 'Emma', age: 70 }, { name: 'Mikhail', age: 62 }]
    */
+
   var descend = _curry3(function descend(fn, a, b) {
     var aa = fn(a);
     var bb = fn(b);
@@ -3394,25 +3672,23 @@
     /* globals Set */
     this._nativeSet = typeof Set === 'function' ? new Set() : null;
     this._items = {};
-  }
-
-  // until we figure out why jsdoc chokes on this
+  } // until we figure out why jsdoc chokes on this
   // @param item The item to add to the Set
   // @returns {boolean} true if the item did not exist prior, otherwise false
   //
-  _Set.prototype.add = function(item) {
-    return !hasOrAdd(item, true, this);
-  };
 
-  //
+
+  _Set.prototype.add = function (item) {
+    return !hasOrAdd(item, true, this);
+  }; //
   // @param item The item to check for existence in the Set
   // @returns {boolean} true if the item exists in the Set, otherwise false
   //
-  _Set.prototype.has = function(item) {
-    return hasOrAdd(item, false, this);
-  };
 
-  //
+
+  _Set.prototype.has = function (item) {
+    return hasOrAdd(item, false, this);
+  }; //
   // Combines the logic for checking whether an item is a member of the set and
   // for adding a new item to the set.
   //
@@ -3422,9 +3698,13 @@
   // @param set        The set instance to check or add to.
   // @return {boolean} true if the item already existed, otherwise false.
   //
+
+
   function hasOrAdd(item, shouldAdd, set) {
-    var type = typeof item;
+    var type = _typeof(item);
+
     var prevSize, newSize;
+
     switch (type) {
       case 'string':
       case 'number':
@@ -3436,14 +3716,18 @@
             if (shouldAdd) {
               set._items['-0'] = true;
             }
+
             return false;
           }
-        }
-        // these types can all utilise the native Set
+        } // these types can all utilise the native Set
+
+
         if (set._nativeSet !== null) {
           if (shouldAdd) {
             prevSize = set._nativeSet.size;
+
             set._nativeSet.add(item);
+
             newSize = set._nativeSet.size;
             return newSize === prevSize;
           } else {
@@ -3455,6 +3739,7 @@
               set._items[type] = {};
               set._items[type][item] = true;
             }
+
             return false;
           } else if (item in set._items[type]) {
             return true;
@@ -3462,6 +3747,7 @@
             if (shouldAdd) {
               set._items[type][item] = true;
             }
+
             return false;
           }
         }
@@ -3471,18 +3757,21 @@
         // representing [ falseExists, trueExists ]
         if (type in set._items) {
           var bIdx = item ? 1 : 0;
+
           if (set._items[type][bIdx]) {
             return true;
           } else {
             if (shouldAdd) {
               set._items[type][bIdx] = true;
             }
+
             return false;
           }
         } else {
           if (shouldAdd) {
             set._items[type] = item ? [false, true] : [true, false];
           }
+
           return false;
         }
 
@@ -3491,7 +3780,9 @@
         if (set._nativeSet !== null) {
           if (shouldAdd) {
             prevSize = set._nativeSet.size;
+
             set._nativeSet.add(item);
+
             newSize = set._nativeSet.size;
             return newSize === prevSize;
           } else {
@@ -3502,14 +3793,18 @@
             if (shouldAdd) {
               set._items[type] = [item];
             }
+
             return false;
           }
+
           if (!_includes(item, set._items[type])) {
             if (shouldAdd) {
               set._items[type].push(item);
             }
+
             return false;
           }
+
           return true;
         }
 
@@ -3520,6 +3815,7 @@
           if (shouldAdd) {
             set._items[type] = true;
           }
+
           return false;
         }
 
@@ -3529,31 +3825,40 @@
             if (shouldAdd) {
               set._items['null'] = true;
             }
+
             return false;
           }
+
           return true;
         }
+
       /* falls through */
+
       default:
         // reduce the search size of heterogeneous sets by creating buckets
         // for each type.
         type = Object.prototype.toString.call(item);
+
         if (!(type in set._items)) {
           if (shouldAdd) {
             set._items[type] = [item];
           }
+
           return false;
-        }
-        // scan through all previously applied items
+        } // scan through all previously applied items
+
+
         if (!_includes(item, set._items[type])) {
           if (shouldAdd) {
             set._items[type].push(item);
           }
+
           return false;
         }
+
         return true;
     }
-  }
+  } // A simple Set type that honours R.equals semantics
 
   /**
    * 求差集。求第一个列表中，未包含在第二个列表中的任一元素的集合。对象和数组比较数值相等，而非引用相等。
@@ -3573,6 +3878,7 @@
    *      R.difference([7,6,5,4,3], [1,2,3,4]); //=> [7,6,5]
    *      R.difference([{a: 1}, {b: 2}], [{a: 1}, {c: 3}]) //=> [{b: 2}]
    */
+
   var difference = _curry2(function difference(first, second) {
     var out = [];
     var idx = 0;
@@ -3588,8 +3894,10 @@
       if (toFilterOut.add(first[idx])) {
         out[out.length] = first[idx];
       }
+
       idx += 1;
     }
+
     return out;
   });
 
@@ -3613,43 +3921,21 @@
    *      const l2 = [{a: 3}, {a: 4}];
    *      R.differenceWith(cmp, l1, l2); //=> [{a: 1}, {a: 2}]
    */
+
   var differenceWith = _curry3(function differenceWith(pred, first, second) {
     var out = [];
     var idx = 0;
     var firstLen = first.length;
+
     while (idx < firstLen) {
-      if (!_includesWith(pred, first[idx], second) &&
-          !_includesWith(pred, first[idx], out)) {
+      if (!_includesWith(pred, first[idx], second) && !_includesWith(pred, first[idx], out)) {
         out.push(first[idx]);
       }
+
       idx += 1;
     }
-    return out;
-  });
 
-  /**
-   * 删除对象中指定 `prop` 属性。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.10.0
-   * @category Object
-   * @sig String -> {k: v} -> {k: v}
-   * @param {String} prop The name of the property to dissociate
-   * @param {Object} obj The object to clone
-   * @return {Object} A new object equivalent to the original but without the specified property
-   * @see R.assoc, R.omit
-   * @example
-   *
-   *      R.dissoc('b', {a: 1, b: 2, c: 3}); //=> {a: 1, c: 3}
-   */
-  var dissoc = _curry2(function dissoc(prop, obj) {
-    var result = {};
-    for (var p in obj) {
-      result[p] = obj[p];
-    }
-    delete result[prop];
-    return result;
+    return out;
   });
 
   /**
@@ -3669,6 +3955,7 @@
    *
    *      R.remove(2, 3, [1,2,3,4,5,6,7,8]); //=> [1,2,6,7,8]
    */
+
   var remove = _curry3(function remove(start, count, list) {
     var result = Array.prototype.slice.call(list, 0);
     result.splice(start, count);
@@ -3676,30 +3963,57 @@
   });
 
   /**
-   * 替换数组中指定索引处的值。
+   * Returns a new object that does not contain a `prop` property.
    *
-   * @func
-   * @memberOf R
-   * @since v0.14.0
-   * @category List
-   * @sig Number -> a -> [a] -> [a]
-   * @param {Number} idx The index to update.
-   * @param {*} x The value to exist at the given index of the returned array.
-   * @param {Array|Arguments} list The source array-like object to be updated.
-   * @return {Array} A copy of `list` with the value at index `idx` replaced with `x`.
-   * @see R.adjust
-   * @example
-   *
-   *      R.update(1, '_', ['a', 'b', 'c']);      //=> ['a', '_', 'c']
-   *      R.update(-1, '_', ['a', 'b', 'c']);     //=> ['a', 'b', '_']
-   * @symb R.update(-1, a, [b, c]) = [b, a]
-   * @symb R.update(0, a, [b, c]) = [a, c]
-   * @symb R.update(1, a, [b, c]) = [b, a]
+   * @private
+   * @param {String|Number} prop The name of the property to dissociate
+   * @param {Object|Array} obj The object to clone
+   * @return {Object} A new object equivalent to the original but without the specified property
    */
-  var update = _curry3(function update(idx, x, list) {
-    return adjust(idx, always(x), list);
-  });
 
+  function _dissoc(prop, obj) {
+    if (obj == null) {
+      return obj;
+    }
+
+    if (_isInteger(prop) && _isArray(obj)) {
+      return remove(prop, 1, obj);
+    }
+
+    var result = {};
+
+    for (var p in obj) {
+      result[p] = obj[p];
+    }
+
+    delete result[prop];
+    return result;
+  }
+
+  /**
+   * 浅复制对象，删除返回对象中指定路径上的属性。
+   *
+   * 注意，这也会将 prototype 属性复制到新对象上并展开。所有 `non-primitive` 属性都通过引用复制。
+   *
+   * @private
+   * @param {String|Integer} prop The prop operating
+   * @param {Object|Array} obj The object to clone
+   * @return {Object|Array} A new object equivalent to the original.
+   */
+
+  function _shallowCloneObject(prop, obj) {
+    if (_isInteger(prop) && _isArray(obj)) {
+      return [].concat(obj);
+    }
+
+    var result = {};
+
+    for (var p in obj) {
+      result[p] = obj[p];
+    }
+
+    return result;
+  }
   /**
    * 浅复制对象，删除返回对象中指定路径上的属性。
    *
@@ -3709,7 +4023,7 @@
    * @memberOf R
    * @since v0.11.0
    * @category Object
-   * @typedefn Idx = String | Int
+   * @typedefn Idx = String | Int | Symbol
    * @sig [Idx] -> {k: v} -> {k: v}
    * @param {Array} path The path to the value to omit
    * @param {Object} obj The object to clone
@@ -3719,23 +4033,52 @@
    *
    *      R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); //=> {a: {b: {}}}
    */
+
+
   var dissocPath = _curry2(function dissocPath(path, obj) {
+    if (obj == null) {
+      return obj;
+    }
+
     switch (path.length) {
       case 0:
         return obj;
+
       case 1:
-        return _isInteger(path[0]) && _isArray(obj) ? remove(path[0], 1, obj) : dissoc(path[0], obj);
+        return _dissoc(path[0], obj);
+
       default:
         var head = path[0];
         var tail = Array.prototype.slice.call(path, 1);
+
         if (obj[head] == null) {
-          return obj;
-        } else if (_isInteger(head) && _isArray(obj)) {
-          return update(head, dissocPath(tail, obj[head]), obj);
+          return _shallowCloneObject(head, obj);
         } else {
           return assoc(head, dissocPath(tail, obj[head]), obj);
         }
+
     }
+  });
+
+  /**
+   * 删除对象中指定 `prop` 属性。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.10.0
+   * @category Object
+   * @sig String -> {k: v} -> {k: v}
+   * @param {String} prop The name of the property to dissociate
+   * @param {Object} obj The object to clone
+   * @return {Object} A new object equivalent to the original but without the specified property
+   * @see R.assoc, R.omit
+   * @example
+   *
+   *      R.dissoc('b', {a: 1, b: 2, c: 3}); //=> {a: 1, c: 3}
+   */
+
+  var dissoc = _curry2(function dissoc(prop, obj) {
+    return dissocPath([prop], obj);
   });
 
   /**
@@ -3760,23 +4103,31 @@
    *      const reciprocal = R.divide(1);
    *      reciprocal(4);   //=> 0.25
    */
-  var divide = _curry2(function divide(a, b) { return a / b; });
+
+  var divide = _curry2(function divide(a, b) {
+    return a / b;
+  });
 
   function XDrop(n, xf) {
     this.xf = xf;
     this.n = n;
   }
+
   XDrop.prototype['@@transducer/init'] = _xfBase.init;
   XDrop.prototype['@@transducer/result'] = _xfBase.result;
-  XDrop.prototype['@@transducer/step'] = function(result, input) {
+
+  XDrop.prototype['@@transducer/step'] = function (result, input) {
     if (this.n > 0) {
       this.n -= 1;
       return result;
     }
+
     return this.xf['@@transducer/step'](result, input);
   };
 
-  var _xdrop = _curry2(function _xdrop(n, xf) { return new XDrop(n, xf); });
+  var _xdrop = _curry2(function _xdrop(n, xf) {
+    return new XDrop(n, xf);
+  });
 
   /**
    * 删除给定 list，string 或者 transducer/transformer（或者具有 drop 方法的对象）的前 `n` 个元素。
@@ -3803,6 +4154,7 @@
    *      R.drop(4, ['foo', 'bar', 'baz']); //=> []
    *      R.drop(3, 'ramda');               //=> 'da'
    */
+
   var drop = _curry2(_dispatchable(['drop'], _xdrop, function drop(n, xs) {
     return slice(Math.max(0, n), Infinity, xs);
   }));
@@ -3812,15 +4164,19 @@
     this.n = n;
     this.i = 0;
   }
+
   XTake.prototype['@@transducer/init'] = _xfBase.init;
   XTake.prototype['@@transducer/result'] = _xfBase.result;
-  XTake.prototype['@@transducer/step'] = function(result, input) {
+
+  XTake.prototype['@@transducer/step'] = function (result, input) {
     this.i += 1;
     var ret = this.n === 0 ? result : this.xf['@@transducer/step'](result, input);
     return this.n >= 0 && this.i >= this.n ? _reduced(ret) : ret;
   };
 
-  var _xtake = _curry2(function _xtake(n, xf) { return new XTake(n, xf); });
+  var _xtake = _curry2(function _xtake(n, xf) {
+    return new XTake(n, xf);
+  });
 
   /**
    * 返回列表的前 `n` 个元素、字符串的前`n`个字符或者用作 transducer/transform（或者调用对象的 `take` 方法）。
@@ -3864,6 +4220,7 @@
    * @symb R.take(1, [a, b]) = [a]
    * @symb R.take(2, [a, b]) = [a, b]
    */
+
   var take = _curry2(_dispatchable(['take'], _xtake, function take(n, xs) {
     return slice(0, n < 0 ? Infinity : n, xs);
   }));
@@ -3878,28 +4235,36 @@
     this.full = false;
     this.acc = new Array(n);
   }
+
   XDropLast.prototype['@@transducer/init'] = _xfBase.init;
-  XDropLast.prototype['@@transducer/result'] =  function(result) {
+
+  XDropLast.prototype['@@transducer/result'] = function (result) {
     this.acc = null;
     return this.xf['@@transducer/result'](result);
   };
-  XDropLast.prototype['@@transducer/step'] = function(result, input) {
+
+  XDropLast.prototype['@@transducer/step'] = function (result, input) {
     if (this.full) {
       result = this.xf['@@transducer/step'](result, this.acc[this.pos]);
     }
+
     this.store(input);
     return result;
   };
-  XDropLast.prototype.store = function(input) {
+
+  XDropLast.prototype.store = function (input) {
     this.acc[this.pos] = input;
     this.pos += 1;
+
     if (this.pos === this.acc.length) {
       this.pos = 0;
       this.full = true;
     }
   };
 
-  var _xdropLast = _curry2(function _xdropLast(n, xf) { return new XDropLast(n, xf); });
+  var _xdropLast = _curry2(function _xdropLast(n, xf) {
+    return new XDropLast(n, xf);
+  });
 
   /**
    * 删除 "list" 末尾的 `n` 个元素。
@@ -3924,13 +4289,16 @@
    *      R.dropLast(4, ['foo', 'bar', 'baz']); //=> []
    *      R.dropLast(3, 'ramda');               //=> 'ra'
    */
+
   var dropLast$1 = _curry2(_dispatchable([], _xdropLast, dropLast));
 
   function dropLastWhile(pred, xs) {
     var idx = xs.length - 1;
+
     while (idx >= 0 && pred(xs[idx])) {
       idx -= 1;
     }
+
     return slice(0, idx + 1, xs);
   }
 
@@ -3939,31 +4307,32 @@
     this.retained = [];
     this.xf = xf;
   }
+
   XDropLastWhile.prototype['@@transducer/init'] = _xfBase.init;
-  XDropLastWhile.prototype['@@transducer/result'] = function(result) {
+
+  XDropLastWhile.prototype['@@transducer/result'] = function (result) {
     this.retained = null;
     return this.xf['@@transducer/result'](result);
   };
-  XDropLastWhile.prototype['@@transducer/step'] = function(result, input) {
-    return this.f(input)
-      ? this.retain(result, input)
-      : this.flush(result, input);
+
+  XDropLastWhile.prototype['@@transducer/step'] = function (result, input) {
+    return this.f(input) ? this.retain(result, input) : this.flush(result, input);
   };
-  XDropLastWhile.prototype.flush = function(result, input) {
-    result = _reduce(
-      this.xf['@@transducer/step'],
-      result,
-      this.retained
-    );
+
+  XDropLastWhile.prototype.flush = function (result, input) {
+    result = _reduce(this.xf['@@transducer/step'], result, this.retained);
     this.retained = [];
     return this.xf['@@transducer/step'](result, input);
   };
-  XDropLastWhile.prototype.retain = function(result, input) {
+
+  XDropLastWhile.prototype.retain = function (result, input) {
     this.retained.push(input);
     return result;
   };
 
-  var _xdropLastWhile = _curry2(function _xdropLastWhile(fn, xf) { return new XDropLastWhile(fn, xf); });
+  var _xdropLastWhile = _curry2(function _xdropLastWhile(fn, xf) {
+    return new XDropLastWhile(fn, xf);
+  });
 
   /**
    * 对 list 从后向前一直删除满足 `predicate` 的尾部元素，直到遇到第一个 `falsy` 值，此时停止删除操作。
@@ -3990,6 +4359,7 @@
    *
    *      R.dropLastWhile(x => x !== 'd' , 'Ramda'); //=> 'Ramd'
    */
+
   var dropLastWhile$1 = _curry2(_dispatchable([], _xdropLastWhile, dropLastWhile));
 
   function XDropRepeatsWith(pred, xf) {
@@ -4001,18 +4371,23 @@
 
   XDropRepeatsWith.prototype['@@transducer/init'] = _xfBase.init;
   XDropRepeatsWith.prototype['@@transducer/result'] = _xfBase.result;
-  XDropRepeatsWith.prototype['@@transducer/step'] = function(result, input) {
+
+  XDropRepeatsWith.prototype['@@transducer/step'] = function (result, input) {
     var sameAsLast = false;
+
     if (!this.seenFirstValue) {
       this.seenFirstValue = true;
     } else if (this.pred(this.lastValue, input)) {
       sameAsLast = true;
     }
+
     this.lastValue = input;
     return sameAsLast ? result : this.xf['@@transducer/step'](result, input);
   };
 
-  var _xdropRepeatsWith = _curry2(function _xdropRepeatsWith(pred, xf) { return new XDropRepeatsWith(pred, xf); });
+  var _xdropRepeatsWith = _curry2(function _xdropRepeatsWith(pred, xf) {
+    return new XDropRepeatsWith(pred, xf);
+  });
 
   /**
    * 返回列表或字符串的最后一个元素。
@@ -4034,6 +4409,7 @@
    *      R.last('abc'); //=> 'c'
    *      R.last(''); //=> ''
    */
+
   var last = nth(-1);
 
   /**
@@ -4055,19 +4431,24 @@
    *      const l = [1, -1, 1, 3, 4, -4, -4, -5, 5, 3, 3];
    *      R.dropRepeatsWith(R.eqBy(Math.abs), l); //=> [1, 3, 4, -5, 3]
    */
+
   var dropRepeatsWith = _curry2(_dispatchable([], _xdropRepeatsWith, function dropRepeatsWith(pred, list) {
     var result = [];
     var idx = 1;
     var len = list.length;
+
     if (len !== 0) {
       result[0] = list[0];
+
       while (idx < len) {
         if (!pred(last(result), list[idx])) {
           result[result.length] = list[idx];
         }
+
         idx += 1;
       }
     }
+
     return result;
   }));
 
@@ -4088,27 +4469,32 @@
    *
    *     R.dropRepeats([1, 1, 1, 2, 3, 4, 4, 2, 2]); //=> [1, 2, 3, 4, 2]
    */
-  var dropRepeats = _curry1(
-    _dispatchable([], _xdropRepeatsWith(equals), dropRepeatsWith(equals))
-  );
+
+  var dropRepeats = _curry1(_dispatchable([], _xdropRepeatsWith(equals), dropRepeatsWith(equals)));
 
   function XDropWhile(f, xf) {
     this.xf = xf;
     this.f = f;
   }
+
   XDropWhile.prototype['@@transducer/init'] = _xfBase.init;
   XDropWhile.prototype['@@transducer/result'] = _xfBase.result;
-  XDropWhile.prototype['@@transducer/step'] = function(result, input) {
+
+  XDropWhile.prototype['@@transducer/step'] = function (result, input) {
     if (this.f) {
       if (this.f(input)) {
         return result;
       }
+
       this.f = null;
     }
+
     return this.xf['@@transducer/step'](result, input);
   };
 
-  var _xdropWhile = _curry2(function _xdropWhile(f, xf) { return new XDropWhile(f, xf); });
+  var _xdropWhile = _curry2(function _xdropWhile(f, xf) {
+    return new XDropWhile(f, xf);
+  });
 
   /**
    * 对 list 从前向后删除满足 `predicate` 的头部元素，直到遇到第一个 `falsy` 值。
@@ -4137,12 +4523,15 @@
    *
    *      R.dropWhile(x => x !== 'd' , 'Ramda'); //=> 'da'
    */
+
   var dropWhile = _curry2(_dispatchable(['dropWhile'], _xdropWhile, function dropWhile(pred, xs) {
     var idx = 0;
     var len = xs.length;
+
     while (idx < len && pred(xs[idx])) {
       idx += 1;
     }
+
     return slice(idx, Infinity, xs);
   }));
 
@@ -4158,8 +4547,8 @@
    * @sig a -> b -> a | b
    * @param {Any} a
    * @param {Any} b
-   * @return {Any} the first argument if truthy, otherwise the second argument.
-   * @see R.either, R.xor
+   * @return {Any}
+   * @see R.either, R.and
    * @example
    *
    *      R.or(true, true); //=> true
@@ -4167,6 +4556,7 @@
    *      R.or(false, true); //=> true
    *      R.or(false, false); //=> false
    */
+
   var or = _curry2(function or(a, b) {
     return a || b;
   });
@@ -4185,7 +4575,7 @@
    * @param {Function} f a predicate
    * @param {Function} g another predicate
    * @return {Function} a function that applies its arguments to `f` and `g` and `||`s their outputs together.
-   * @see R.or
+   * @see R.both, R.or
    * @example
    *
    *      const gt10 = x => x > 10;
@@ -4197,13 +4587,31 @@
    *      R.either(Maybe.Just(false), Maybe.Just(55)); // => Maybe.Just(55)
    *      R.either([false, false, 'a'], [11]) // => [11, 11, "a"]
    */
+
   var either = _curry2(function either(f, g) {
-    return _isFunction(f) ?
-      function _either() {
-        return f.apply(this, arguments) || g.apply(this, arguments);
-      } :
-      lift(or)(f, g);
+    return _isFunction(f) ? function _either() {
+      return f.apply(this, arguments) || g.apply(this, arguments);
+    } : lift(or)(f, g);
   });
+
+  /**
+   * Tests whether or not an object is a typed array.
+   *
+   * @private
+   * @param {*} val The object to test.
+   * @return {Boolean} `true` if `val` is a typed array, `false` otherwise.
+   * @example
+   *
+   *      _isTypedArray(new Uint8Array([])); //=> true
+   *      _isTypedArray(new Float32Array([])); //=> true
+   *      _isTypedArray([]); //=> false
+   *      _isTypedArray(null); //=> false
+   *      _isTypedArray({}); //=> false
+   */
+  function _isTypedArray(val) {
+    var type = Object.prototype.toString.call(val);
+    return type === '[object Uint8ClampedArray]' || type === '[object Int8Array]' || type === '[object Uint8Array]' || type === '[object Int16Array]' || type === '[object Uint16Array]' || type === '[object Int32Array]' || type === '[object Uint32Array]' || type === '[object Float32Array]' || type === '[object Float64Array]' || type === '[object BigInt64Array]' || type === '[object BigUint64Array]';
+  }
 
   /**
    * 根据传入参数的类型返回其对应的空值。Ramda 定义了各类型的空值如下：Array (`[]`)，Object (`{}`)，String (`''`)，和 Arguments。`empty` 还支持其它定义了 `<Type>.empty` 、`<Type>.prototype.empty` 或 实现了 [FantasyLand Monoid 规范](https://github.com/fantasyland/fantasy-land#monoid) 的类型。
@@ -4219,31 +4627,18 @@
    * @return {*}
    * @example
    *
-   *      R.empty(Just(42));      //=> Nothing()
-   *      R.empty([1, 2, 3]);     //=> []
-   *      R.empty('unicorns');    //=> ''
-   *      R.empty({x: 1, y: 2});  //=> {}
+   *      R.empty(Just(42));               //=> Nothing()
+   *      R.empty([1, 2, 3]);              //=> []
+   *      R.empty('unicorns');             //=> ''
+   *      R.empty({x: 1, y: 2});           //=> {}
+   *      R.empty(Uint8Array.from('123')); //=> Uint8Array []
    */
+
   var empty = _curry1(function empty(x) {
-    return (
-      (x != null && typeof x['fantasy-land/empty'] === 'function')
-        ? x['fantasy-land/empty']()
-        : (x != null && x.constructor != null && typeof x.constructor['fantasy-land/empty'] === 'function')
-          ? x.constructor['fantasy-land/empty']()
-          : (x != null && typeof x.empty === 'function')
-            ? x.empty()
-            : (x != null && x.constructor != null && typeof x.constructor.empty === 'function')
-              ? x.constructor.empty()
-              : _isArray(x)
-                ? []
-                : _isString(x)
-                  ? ''
-                  : _isObject(x)
-                    ? {}
-                    : _isArguments(x)
-                      ? (function() { return arguments; }())
-                      : void 0  // else
-    );
+    return x != null && typeof x['fantasy-land/empty'] === 'function' ? x['fantasy-land/empty']() : x != null && x.constructor != null && typeof x.constructor['fantasy-land/empty'] === 'function' ? x.constructor['fantasy-land/empty']() : x != null && typeof x.empty === 'function' ? x.empty() : x != null && x.constructor != null && typeof x.constructor.empty === 'function' ? x.constructor.empty() : _isArray(x) ? [] : _isString(x) ? '' : _isObject(x) ? {} : _isArguments(x) ? function () {
+      return arguments;
+    }() : _isTypedArray(x) ? x.constructor.from('') : void 0 // else
+    ;
   });
 
   /**
@@ -4267,6 +4662,7 @@
    *      R.takeLast(4, ['foo', 'bar', 'baz']); //=> ['foo', 'bar', 'baz']
    *      R.takeLast(3, 'ramda');               //=> 'mda'
    */
+
   var takeLast = _curry2(function takeLast(n, xs) {
     return drop(n >= 0 ? xs.length - n : 0, xs);
   });
@@ -4293,7 +4689,8 @@
    *      R.endsWith(['c'], ['a', 'b', 'c'])    //=> true
    *      R.endsWith(['b'], ['a', 'b', 'c'])    //=> false
    */
-  var endsWith = _curry2(function(suffix, list) {
+
+  var endsWith = _curry2(function (suffix, list) {
     return equals(takeLast(suffix.length, list), suffix);
   });
 
@@ -4313,6 +4710,7 @@
    *
    *      R.eqBy(Math.abs, 5, -5); //=> true
    */
+
   var eqBy = _curry3(function eqBy(f, x, y) {
     return equals(f(x), f(y));
   });
@@ -4337,6 +4735,7 @@
    *      R.eqProps('a', o1, o2); //=> false
    *      R.eqProps('c', o1, o2); //=> true
    */
+
   var eqProps = _curry3(function eqProps(prop, obj1, obj2) {
     return equals(obj1[prop], obj2[prop]);
   });
@@ -4365,18 +4764,21 @@
    *      };
    *      R.evolve(transformations, tomato); //=> {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id:123}
    */
+
   var evolve = _curry2(function evolve(transformations, object) {
+    if (!_isObject(object) && !_isArray(object)) {
+      return object;
+    }
+
     var result = object instanceof Array ? [] : {};
     var transformation, key, type;
+
     for (key in object) {
       transformation = transformations[key];
-      type = typeof transformation;
-      result[key] = type === 'function'
-        ? transformation(object[key])
-        : transformation && type === 'object'
-          ? evolve(transformation, object[key])
-          : object[key];
+      type = _typeof(transformation);
+      result[key] = type === 'function' ? transformation(object[key]) : transformation && type === 'object' ? evolve(transformation, object[key]) : object[key];
     }
+
     return result;
   });
 
@@ -4385,22 +4787,29 @@
     this.f = f;
     this.found = false;
   }
+
   XFind.prototype['@@transducer/init'] = _xfBase.init;
-  XFind.prototype['@@transducer/result'] = function(result) {
+
+  XFind.prototype['@@transducer/result'] = function (result) {
     if (!this.found) {
       result = this.xf['@@transducer/step'](result, void 0);
     }
+
     return this.xf['@@transducer/result'](result);
   };
-  XFind.prototype['@@transducer/step'] = function(result, input) {
+
+  XFind.prototype['@@transducer/step'] = function (result, input) {
     if (this.f(input)) {
       this.found = true;
       result = _reduced(this.xf['@@transducer/step'](result, input));
     }
+
     return result;
   };
 
-  var _xfind = _curry2(function _xfind(f, xf) { return new XFind(f, xf); });
+  var _xfind = _curry2(function _xfind(f, xf) {
+    return new XFind(f, xf);
+  });
 
   /**
    * 查找并返回 list 中首个满足 `predicate` 的元素；如果未找到满足条件的元素，则返回 `undefined` 。
@@ -4425,13 +4834,16 @@
    *      R.find(R.propEq('a', 2))(xs); //=> {a: 2}
    *      R.find(R.propEq('a', 4))(xs); //=> undefined
    */
+
   var find = _curry2(_dispatchable(['find'], _xfind, function find(fn, list) {
     var idx = 0;
     var len = list.length;
+
     while (idx < len) {
       if (fn(list[idx])) {
         return list[idx];
       }
+
       idx += 1;
     }
   }));
@@ -4442,23 +4854,31 @@
     this.idx = -1;
     this.found = false;
   }
+
   XFindIndex.prototype['@@transducer/init'] = _xfBase.init;
-  XFindIndex.prototype['@@transducer/result'] = function(result) {
+
+  XFindIndex.prototype['@@transducer/result'] = function (result) {
     if (!this.found) {
       result = this.xf['@@transducer/step'](result, -1);
     }
+
     return this.xf['@@transducer/result'](result);
   };
-  XFindIndex.prototype['@@transducer/step'] = function(result, input) {
+
+  XFindIndex.prototype['@@transducer/step'] = function (result, input) {
     this.idx += 1;
+
     if (this.f(input)) {
       this.found = true;
       result = _reduced(this.xf['@@transducer/step'](result, this.idx));
     }
+
     return result;
   };
 
-  var _xfindIndex = _curry2(function _xfindIndex(f, xf) { return new XFindIndex(f, xf); });
+  var _xfindIndex = _curry2(function _xfindIndex(f, xf) {
+    return new XFindIndex(f, xf);
+  });
 
   /**
    * 查找并返回 list 中首个满足 `predicate` 的元素的索引；如果未找到满足条件的元素，则返回 `-1` 。
@@ -4474,22 +4894,26 @@
    * desired one.
    * @param {Array} list The array to consider.
    * @return {Number} The index of the element found, or `-1`.
-   * @see R.transduce
+   * @see R.transduce, R.indexOf
    * @example
    *
    *      const xs = [{a: 1}, {a: 2}, {a: 3}];
    *      R.findIndex(R.propEq('a', 2))(xs); //=> 1
    *      R.findIndex(R.propEq('a', 4))(xs); //=> -1
    */
+
   var findIndex = _curry2(_dispatchable([], _xfindIndex, function findIndex(fn, list) {
     var idx = 0;
     var len = list.length;
+
     while (idx < len) {
       if (fn(list[idx])) {
         return idx;
       }
+
       idx += 1;
     }
+
     return -1;
   }));
 
@@ -4497,18 +4921,24 @@
     this.xf = xf;
     this.f = f;
   }
+
   XFindLast.prototype['@@transducer/init'] = _xfBase.init;
-  XFindLast.prototype['@@transducer/result'] = function(result) {
+
+  XFindLast.prototype['@@transducer/result'] = function (result) {
     return this.xf['@@transducer/result'](this.xf['@@transducer/step'](result, this.last));
   };
-  XFindLast.prototype['@@transducer/step'] = function(result, input) {
+
+  XFindLast.prototype['@@transducer/step'] = function (result, input) {
     if (this.f(input)) {
       this.last = input;
     }
+
     return result;
   };
 
-  var _xfindLast = _curry2(function _xfindLast(f, xf) { return new XFindLast(f, xf); });
+  var _xfindLast = _curry2(function _xfindLast(f, xf) {
+    return new XFindLast(f, xf);
+  });
 
   /**
    * 查找并返回 list 中最后一个满足 `predicate` 的元素；如果未找到满足条件的元素，则返回 `undefined` 。
@@ -4531,12 +4961,15 @@
    *      R.findLast(R.propEq('a', 1))(xs); //=> {a: 1, b: 1}
    *      R.findLast(R.propEq('a', 4))(xs); //=> undefined
    */
+
   var findLast = _curry2(_dispatchable([], _xfindLast, function findLast(fn, list) {
     var idx = list.length - 1;
+
     while (idx >= 0) {
       if (fn(list[idx])) {
         return list[idx];
       }
+
       idx -= 1;
     }
   }));
@@ -4547,19 +4980,26 @@
     this.idx = -1;
     this.lastIdx = -1;
   }
+
   XFindLastIndex.prototype['@@transducer/init'] = _xfBase.init;
-  XFindLastIndex.prototype['@@transducer/result'] = function(result) {
+
+  XFindLastIndex.prototype['@@transducer/result'] = function (result) {
     return this.xf['@@transducer/result'](this.xf['@@transducer/step'](result, this.lastIdx));
   };
-  XFindLastIndex.prototype['@@transducer/step'] = function(result, input) {
+
+  XFindLastIndex.prototype['@@transducer/step'] = function (result, input) {
     this.idx += 1;
+
     if (this.f(input)) {
       this.lastIdx = this.idx;
     }
+
     return result;
   };
 
-  var _xfindLastIndex = _curry2(function _xfindLastIndex(f, xf) { return new XFindLastIndex(f, xf); });
+  var _xfindLastIndex = _curry2(function _xfindLastIndex(f, xf) {
+    return new XFindLastIndex(f, xf);
+  });
 
   /**
    * 查找并返回 list 中最后一个满足 `predicate` 的元素的索引；如果未找到满足条件的元素，则返回 `-1` 。
@@ -4575,21 +5015,25 @@
    * desired one.
    * @param {Array} list The array to consider.
    * @return {Number} The index of the element found, or `-1`.
-   * @see R.transduce
+   * @see R.transduce, R.lastIndexOf
    * @example
    *
    *      const xs = [{a: 1, b: 0}, {a:1, b: 1}];
    *      R.findLastIndex(R.propEq('a', 1))(xs); //=> 1
    *      R.findLastIndex(R.propEq('a', 4))(xs); //=> -1
    */
+
   var findLastIndex = _curry2(_dispatchable([], _xfindLastIndex, function findLastIndex(fn, list) {
     var idx = list.length - 1;
+
     while (idx >= 0) {
       if (fn(list[idx])) {
         return idx;
       }
+
       idx -= 1;
     }
+
     return -1;
   }));
 
@@ -4609,6 +5053,7 @@
    *      R.flatten([1, 2, [3, 4], 5, [6, [7, 8, [9, [10, 11], 12]]]]);
    *      //=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
    */
+
   var flatten = _curry1(_makeFlat(true));
 
   /**
@@ -4630,8 +5075,9 @@
    *      R.flip(mergeThree)(1, 2, 3); //=> [2, 1, 3]
    * @symb R.flip(f)(a, b, c) = f(b, a, c)
    */
+
   var flip = _curry1(function flip(fn) {
-    return curryN(fn.length, function(a, b) {
+    return curryN(fn.length, function (a, b) {
       var args = Array.prototype.slice.call(arguments, 0);
       args[0] = b;
       args[1] = a;
@@ -4668,13 +5114,16 @@
    *      // logs 8
    * @symb R.forEach(f, [a, b, c]) = [a, b, c]
    */
+
   var forEach = _curry2(_checkForMethod('forEach', function forEach(fn, list) {
     var len = list.length;
     var idx = 0;
+
     while (idx < len) {
       fn(list[idx]);
       idx += 1;
     }
+
     return list;
   }));
 
@@ -4699,14 +5148,17 @@
    *      // logs y:2
    * @symb R.forEachObjIndexed(f, {x: a, y: b}) = {x: a, y: b}
    */
+
   var forEachObjIndexed = _curry2(function forEachObjIndexed(fn, obj) {
     var keyList = keys(obj);
     var idx = 0;
+
     while (idx < keyList.length) {
       var key = keyList[idx];
       fn(obj[key], key, obj);
       idx += 1;
     }
+
     return obj;
   });
 
@@ -4725,13 +5177,16 @@
    *
    *      R.fromPairs([['a', 1], ['b', 2], ['c', 3]]); //=> {a: 1, b: 2, c: 3}
    */
+
   var fromPairs = _curry1(function fromPairs(pairs) {
     var result = {};
     var idx = 0;
+
     while (idx < pairs.length) {
       result[pairs[idx][0]] = pairs[idx][1];
       idx += 1;
     }
+
     return result;
   });
 
@@ -4748,12 +5203,13 @@
    * @memberOf R
    * @since v0.1.0
    * @category List
-   * @sig (a -> String) -> [a] -> {String: [a]}
-   * @param {Function} fn Function :: a -> String
+   * @typedefn Idx = String | Int | Symbol
+   * @sig Idx a => (b -> a) -> [b] -> {a: [b]}
+   * @param {Function} fn Function :: a -> Idx
    * @param {Array} list The array to group
    * @return {Object} An object with the output of `fn` for keys, mapped to arrays of elements
    *         that produced that key when passed to `fn`.
-   * @see R.reduceBy, R.transduce
+   * @see R.reduceBy, R.transduce, R.indexBy
    * @example
    *
    *      const byGrade = R.groupBy(function(student) {
@@ -4775,13 +5231,11 @@
    *      //   'F': [{name: 'Eddy', score: 58}]
    *      // }
    */
-  var groupBy = _curry2(_checkForMethod('groupBy', reduceBy(function(acc, item) {
-    if (acc == null) {
-      acc = [];
-    }
+
+  var groupBy = _curry2(_checkForMethod('groupBy', reduceBy(function (acc, item) {
     acc.push(item);
     return acc;
-  }, null)));
+  }, [])));
 
   /**
    * 通过给定的对比函数，将列表按顺序分割成多组子列表。
@@ -4810,21 +5264,27 @@
    * R.groupWith((a, b) => a % 2 === b % 2, [0, 1, 1, 2, 3, 5, 8, 13, 21])
    * //=> [[0], [1, 1], [2], [3, 5], [8], [13, 21]]
    *
+   * const isVowel = R.test(/^[aeiou]$/i);
    * R.groupWith(R.eqBy(isVowel), 'aestiou')
    * //=> ['ae', 'st', 'iou']
    */
-  var groupWith = _curry2(function(fn, list) {
+
+  var groupWith = _curry2(function (fn, list) {
     var res = [];
     var idx = 0;
     var len = list.length;
+
     while (idx < len) {
       var nextidx = idx + 1;
+
       while (nextidx < len && fn(list[nextidx - 1], list[nextidx])) {
         nextidx += 1;
       }
+
       res.push(list.slice(idx, nextidx));
       idx = nextidx;
     }
+
     return res;
   });
 
@@ -4848,7 +5308,10 @@
    *      R.gt('a', 'z'); //=> false
    *      R.gt('z', 'a'); //=> true
    */
-  var gt = _curry2(function gt(a, b) { return a > b; });
+
+  var gt = _curry2(function gt(a, b) {
+    return a > b;
+  });
 
   /**
    * 如果首个参数大于或等于第二个参数，返回 `true`；否则返回 `false`。
@@ -4870,7 +5333,10 @@
    *      R.gte('a', 'z'); //=> false
    *      R.gte('z', 'a'); //=> true
    */
-  var gte = _curry2(function gte(a, b) { return a >= b; });
+
+  var gte = _curry2(function gte(a, b) {
+    return a >= b;
+  });
 
   /**
    * 检查对象中是否存在指定的路径。只检查对象自身的属性。
@@ -4879,7 +5345,7 @@
    * @memberOf R
    * @since v0.26.0
    * @category Object
-   * @typedefn Idx = String | Int
+   * @typedefn Idx = String | Int | Symbol
    * @sig [Idx] -> {a} -> Boolean
    * @param {Array} path The path to use.
    * @param {Object} obj The object to check the path in.
@@ -4892,12 +5358,15 @@
    *      R.hasPath(['a', 'b'], {a: {c: 2}});         // => false
    *      R.hasPath(['a', 'b'], {});                  // => false
    */
+
   var hasPath = _curry2(function hasPath(_path, obj) {
     if (_path.length === 0 || isNil(obj)) {
       return false;
     }
+
     var val = obj;
     var idx = 0;
+
     while (idx < _path.length) {
       if (!isNil(val) && _has(_path[idx], val)) {
         val = val[_path[idx]];
@@ -4906,6 +5375,7 @@
         return false;
       }
     }
+
     return true;
   });
 
@@ -4933,6 +5403,7 @@
    *      pointHas('y');  //=> true
    *      pointHas('z');  //=> false
    */
+
   var has = _curry2(function has(prop, obj) {
     return hasPath([prop], obj);
   });
@@ -4962,7 +5433,12 @@
    *      R.hasIn('width', square);  //=> true
    *      R.hasIn('area', square);  //=> true
    */
+
   var hasIn = _curry2(function hasIn(prop, obj) {
+    if (isNil(obj)) {
+      return false;
+    }
+
     return prop in obj;
   });
 
@@ -4989,7 +5465,29 @@
    *      R.identical(0, -0); //=> false
    *      R.identical(NaN, NaN); //=> true
    */
-  var identical = _curry2(_objectIs$1);
+
+  var identical = function identical(a, b) {
+    switch (arguments.length) {
+      case 0:
+        return identical;
+
+      case 1:
+        return function () {
+          return function unaryIdentical(_b) {
+            switch (arguments.length) {
+              case 0:
+                return unaryIdentical;
+
+              default:
+                return _objectIs$1(a, _b);
+            }
+          };
+        }();
+
+      default:
+        return _objectIs$1(a, b);
+    }
+  }; // In order to support Cross-origin Window objects as arguments to identical,
 
   /**
    * 根据 `condition` predicate 的返回值调用 `onTrue` 或 `onFalse` 函数。
@@ -5012,15 +5510,14 @@
    *        R.over(R.lensProp('count'), R.inc),
    *        R.assoc('count', 1)
    *      );
-   *      incCount({});           //=> { count: 1 }
    *      incCount({ count: 1 }); //=> { count: 2 }
+   *      incCount({});           //=> { count: 1 }
    */
+
   var ifElse = _curry3(function ifElse(condition, onTrue, onFalse) {
-    return curryN(Math.max(condition.length, onTrue.length, onFalse.length),
-      function _ifElse() {
-        return condition.apply(this, arguments) ? onTrue.apply(this, arguments) : onFalse.apply(this, arguments);
-      }
-    );
+    return curryN(Math.max(condition.length, onTrue.length, onFalse.length), function _ifElse() {
+      return condition.apply(this, arguments) ? onTrue.apply(this, arguments) : onFalse.apply(this, arguments);
+    });
   });
 
   /**
@@ -5038,6 +5535,7 @@
    *
    *      R.inc(42); //=> 43
    */
+
   var inc = add(1);
 
   /**
@@ -5062,6 +5560,7 @@
    *      R.includes([42], [[42]]); //=> true
    *      R.includes('ba', 'banana'); //=>true
    */
+
   var includes = _curry2(_includes);
 
   /**
@@ -5073,17 +5572,22 @@
    * @memberOf R
    * @since v0.19.0
    * @category List
-   * @sig (a -> String) -> [{k: v}] -> {k: {k: v}}
-   * @param {Function} fn Function :: a -> String
+   * @typedefn Idx = String | Int | Symbol
+   * @sig Idx a => (b -> a) -> [b] -> {a: b}
+   * @param {Function} fn Function :: a -> Idx
    * @param {Array} array The array of objects to index
    * @return {Object} An object indexing each array element by the given property.
+   * @see R.groupBy
    * @example
    *
    *      const list = [{id: 'xyz', title: 'A'}, {id: 'abc', title: 'B'}];
    *      R.indexBy(R.prop('id'), list);
    *      //=> {abc: {id: 'abc', title: 'B'}, xyz: {id: 'xyz', title: 'A'}}
    */
-  var indexBy = reduceBy(function(acc, elem) { return elem; }, null);
+
+  var indexBy = reduceBy(function (acc, elem) {
+    return elem;
+  }, null);
 
   /**
    * 返回给定元素在数组中首次出现时的索引值，如果数组中没有该元素，则返回 `-1`。通过 [`R.equals`](#equals) 函数进行相等性判断。
@@ -5096,16 +5600,15 @@
    * @param {*} target The item to find.
    * @param {Array} xs The array to search in.
    * @return {Number} the index of the target, or -1 if the target is not found.
-   * @see R.lastIndexOf
+   * @see R.lastIndexOf, R.findIndex
    * @example
    *
    *      R.indexOf(3, [1,2,3,4]); //=> 2
    *      R.indexOf(10, [1,2,3,4]); //=> -1
    */
+
   var indexOf = _curry2(function indexOf(target, xs) {
-    return typeof xs.indexOf === 'function' && !_isArray(xs) ?
-      xs.indexOf(target) :
-      _indexOf(xs, target, 0);
+    return typeof xs.indexOf === 'function' && !_isArray(xs) ? xs.indexOf(target) : _indexOf(xs, target, 0);
   });
 
   /**
@@ -5132,6 +5635,7 @@
    *      R.init('a');    //=> ''
    *      R.init('');     //=> ''
    */
+
   var init = slice(0, -1);
 
   /**
@@ -5164,8 +5668,11 @@
    *      );
    *      //=> [{id: 456, name: 'Stephen Stills'}, {id: 177, name: 'Neil Young'}]
    */
+
   var innerJoin = _curry3(function innerJoin(pred, xs, ys) {
-    return _filter(function(x) { return _includesWith(pred, x, ys); }, xs);
+    return _filter(function (x) {
+      return _includesWith(pred, x, ys);
+    }, xs);
   });
 
   /**
@@ -5184,6 +5691,7 @@
    *
    *      R.insert(2, 'x', [1,2,3,4]); //=> [1,2,'x',3,4]
    */
+
   var insert = _curry3(function insert(idx, elt, list) {
     idx = idx < list.length && idx >= 0 ? idx : list.length;
     var result = Array.prototype.slice.call(list, 0);
@@ -5207,13 +5715,27 @@
    *
    *      R.insertAll(2, ['x','y','z'], [1,2,3,4]); //=> [1,2,'x','y','z',3,4]
    */
+
   var insertAll = _curry3(function insertAll(idx, elts, list) {
     idx = idx < list.length && idx >= 0 ? idx : list.length;
-    return [].concat(
-      Array.prototype.slice.call(list, 0, idx),
-      elts,
-      Array.prototype.slice.call(list, idx)
-    );
+    return [].concat(Array.prototype.slice.call(list, 0, idx), elts, Array.prototype.slice.call(list, idx));
+  });
+
+  function XUniqBy(f, xf) {
+    this.xf = xf;
+    this.f = f;
+    this.set = new _Set();
+  }
+
+  XUniqBy.prototype['@@transducer/init'] = _xfBase.init;
+  XUniqBy.prototype['@@transducer/result'] = _xfBase.result;
+
+  XUniqBy.prototype['@@transducer/step'] = function (result, input) {
+    return this.set.add(this.f(input)) ? this.xf['@@transducer/step'](result, input) : result;
+  };
+
+  var _xuniqBy = _curry2(function _xuniqBy(f, xf) {
+    return new XUniqBy(f, xf);
   });
 
   /**
@@ -5231,7 +5753,8 @@
    *
    *      R.uniqBy(Math.abs, [-1, -5, 2, 10, 1, 2]); //=> [-1, -5, 2, 10]
    */
-  var uniqBy = _curry2(function uniqBy(fn, list) {
+
+  var uniqBy = _curry2(_dispatchable([], _xuniqBy, function (fn, list) {
     var set = new _Set();
     var result = [];
     var idx = 0;
@@ -5240,13 +5763,16 @@
     while (idx < list.length) {
       item = list[idx];
       appliedItem = fn(item);
+
       if (set.add(appliedItem)) {
         result.push(item);
       }
+
       idx += 1;
     }
+
     return result;
-  });
+  }));
 
   /**
    * 列表去重操作。返回无重复元素的列表。通过 [`R.equals`](#equals) 函数进行相等性判断。
@@ -5264,6 +5790,7 @@
    *      R.uniq([1, '1']);     //=> [1, '1']
    *      R.uniq([[42], [42]]); //=> [[42]]
    */
+
   var uniq = uniqBy(identity);
 
   /**
@@ -5282,8 +5809,10 @@
    *
    *      R.intersection([1,2,3,4], [7,6,5,4,3]); //=> [4, 3]
    */
+
   var intersection = _curry2(function intersection(list1, list2) {
     var lookupList, filteredList;
+
     if (list1.length > list2.length) {
       lookupList = list1;
       filteredList = list2;
@@ -5291,6 +5820,7 @@
       lookupList = list2;
       filteredList = list1;
     }
+
     return uniq(_filter(flip(_includes)(lookupList), filteredList));
   });
 
@@ -5311,22 +5841,25 @@
    *
    *      R.intersperse('a', ['b', 'n', 'n', 's']); //=> ['b', 'a', 'n', 'a', 'n', 'a', 's']
    */
+
   var intersperse = _curry2(_checkForMethod('intersperse', function intersperse(separator, list) {
     var out = [];
     var idx = 0;
     var length = list.length;
+
     while (idx < length) {
       if (idx === length - 1) {
         out.push(list[idx]);
       } else {
         out.push(list[idx], separator);
       }
+
       idx += 1;
     }
+
     return out;
   }));
 
-  // Based on https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
   function _objectAssign(target) {
     if (target == null) {
       throw new TypeError('Cannot convert undefined or null to object');
@@ -5335,8 +5868,10 @@
     var output = Object(target);
     var idx = 1;
     var length = arguments.length;
+
     while (idx < length) {
       var source = arguments[idx];
+
       if (source != null) {
         for (var nextKey in source) {
           if (_has(nextKey, source)) {
@@ -5344,8 +5879,10 @@
           }
         }
       }
+
       idx += 1;
     }
+
     return output;
   }
 
@@ -5371,6 +5908,7 @@
    *      );
    *      matchPhrases(['foo', 'bar', 'baz']); //=> {must: [{match_phrase: 'foo'}, {match_phrase: 'bar'}, {match_phrase: 'baz'}]}
    */
+
   var objOf = _curry2(function objOf(key, val) {
     var obj = {};
     obj[key] = val;
@@ -5379,7 +5917,7 @@
 
   var _stepCatArray = {
     '@@transducer/init': Array,
-    '@@transducer/step': function(xs, x) {
+    '@@transducer/step': function transducerStep(xs, x) {
       xs.push(x);
       return xs;
     },
@@ -5387,33 +5925,35 @@
   };
   var _stepCatString = {
     '@@transducer/init': String,
-    '@@transducer/step': function(a, b) { return a + b; },
+    '@@transducer/step': function transducerStep(a, b) {
+      return a + b;
+    },
     '@@transducer/result': _identity
   };
   var _stepCatObject = {
     '@@transducer/init': Object,
-    '@@transducer/step': function(result, input) {
-      return _objectAssign$1(
-        result,
-        _isArrayLike(input) ? objOf(input[0], input[1]) : input
-      );
+    '@@transducer/step': function transducerStep(result, input) {
+      return _objectAssign$1(result, _isArrayLike(input) ? objOf(input[0], input[1]) : input);
     },
     '@@transducer/result': _identity
   };
-
   function _stepCat(obj) {
     if (_isTransformer(obj)) {
       return obj;
     }
+
     if (_isArrayLike(obj)) {
       return _stepCatArray;
     }
+
     if (typeof obj === 'string') {
       return _stepCatString;
     }
-    if (typeof obj === 'object') {
+
+    if (_typeof(obj) === 'object') {
       return _stepCatObject;
     }
+
     throw new Error('Cannot create transformer for ' + obj);
   }
 
@@ -5446,10 +5986,9 @@
    *      const intoArray = R.into([]);
    *      intoArray(transducer, numbers); //=> [2, 3]
    */
+
   var into = _curry3(function into(acc, xf, list) {
-    return _isTransformer(acc) ?
-      _reduce(xf(acc), acc['@@transducer/init'](), list) :
-      _reduce(xf(_stepCat(acc)), _clone(acc, [], [], false), list);
+    return _isTransformer(acc) ? _reduce(xf(acc), acc['@@transducer/init'](), list) : _reduce(xf(_stepCat(acc)), _clone(acc, [], [], false), list);
   });
 
   /**
@@ -5473,6 +6012,7 @@
    *      R.invert(raceResultsByFirstName);
    *      //=> { 'alice': ['first', 'third'], 'jake':['second'] }
    */
+
   var invert = _curry1(function invert(obj) {
     var props = keys(obj);
     var len = props.length;
@@ -5482,10 +6022,11 @@
     while (idx < len) {
       var key = props[idx];
       var val = obj[key];
-      var list = _has(val, out) ? out[val] : (out[val] = []);
+      var list = _has(val, out) ? out[val] : out[val] = [];
       list[list.length] = key;
       idx += 1;
     }
+
     return out;
   });
 
@@ -5514,6 +6055,7 @@
    *      R.invertObj(raceResults);
    *      //=> { 'alice': '0', 'jake':'1' }
    */
+
   var invertObj = _curry1(function invertObj(obj) {
     var props = keys(obj);
     var len = props.length;
@@ -5525,6 +6067,7 @@
       out[obj[key]] = key;
       idx += 1;
     }
+
     return out;
   });
 
@@ -5560,12 +6103,15 @@
    * @symb R.invoker(1, 'method')(a, o) = o['method'](a)
    * @symb R.invoker(2, 'method')(a, b, o) = o['method'](a, b)
    */
+
   var invoker = _curry2(function invoker(arity, method) {
-    return curryN(arity + 1, function() {
+    return curryN(arity + 1, function () {
       var target = arguments[arity];
+
       if (target != null && _isFunction(target[method])) {
         return target[method].apply(target, Array.prototype.slice.call(arguments, 0, arity));
       }
+
       throw new TypeError(toString$1(target) + ' does not have a method named "' + method + '"');
     });
   });
@@ -5592,8 +6138,9 @@
    *      R.is(Object, 's'); //=> false
    *      R.is(Number, {}); //=> false
    */
+
   var is = _curry2(function is(Ctor, val) {
-    return val != null && val.constructor === Ctor || val instanceof Ctor;
+    return val instanceof Ctor || val != null && (val.constructor === Ctor || Ctor.name === 'Object' && _typeof(val) === 'object');
   });
 
   /**
@@ -5609,13 +6156,15 @@
    * @see R.empty
    * @example
    *
-   *      R.isEmpty([1, 2, 3]);   //=> false
-   *      R.isEmpty([]);          //=> true
-   *      R.isEmpty('');          //=> true
-   *      R.isEmpty(null);        //=> false
-   *      R.isEmpty({});          //=> true
-   *      R.isEmpty({length: 0}); //=> false
+   *      R.isEmpty([1, 2, 3]);           //=> false
+   *      R.isEmpty([]);                  //=> true
+   *      R.isEmpty('');                  //=> true
+   *      R.isEmpty(null);                //=> false
+   *      R.isEmpty({});                  //=> true
+   *      R.isEmpty({length: 0});         //=> false
+   *      R.isEmpty(Uint8Array.from('')); //=> true
    */
+
   var isEmpty = _curry1(function isEmpty(x) {
     return x != null && equals(x, empty(x));
   });
@@ -5638,6 +6187,7 @@
    *      spacer(['a', 2, 3.4]);   //=> 'a 2 3.4'
    *      R.join('|', [1, 2, 3]);    //=> '1|2|3'
    */
+
   var join = invoker(1, 'join');
 
   /**
@@ -5657,8 +6207,11 @@
    *      getRange(3, 4, 9, -3); //=> [-3, 9]
    * @symb R.juxt([f, g, h])(a, b) = [f(a, b), g(a, b), h(a, b)]
    */
+
   var juxt = _curry1(function juxt(fns) {
-    return converge(function() { return Array.prototype.slice.call(arguments, 0); }, fns);
+    return converge(function () {
+      return Array.prototype.slice.call(arguments, 0);
+    }, fns);
   });
 
   /**
@@ -5679,12 +6232,15 @@
    *      const f = new F();
    *      R.keysIn(f); //=> ['x', 'y']
    */
+
   var keysIn = _curry1(function keysIn(obj) {
     var prop;
     var ks = [];
+
     for (prop in obj) {
       ks[ks.length] = prop;
     }
+
     return ks;
   });
 
@@ -5699,23 +6255,27 @@
    * @param {*} target The item to find.
    * @param {Array} xs The array to search in.
    * @return {Number} the index of the target, or -1 if the target is not found.
-   * @see R.indexOf
+   * @see R.indexOf, R.findLastIndex
    * @example
    *
    *      R.lastIndexOf(3, [-1,3,3,0,1,2,3,4]); //=> 6
    *      R.lastIndexOf(10, [1,2,3,4]); //=> -1
    */
+
   var lastIndexOf = _curry2(function lastIndexOf(target, xs) {
     if (typeof xs.lastIndexOf === 'function' && !_isArray(xs)) {
       return xs.lastIndexOf(target);
     } else {
       var idx = xs.length - 1;
+
       while (idx >= 0) {
         if (equals(xs[idx], target)) {
           return idx;
         }
+
         idx -= 1;
       }
+
       return -1;
     }
   });
@@ -5739,6 +6299,7 @@
    *      R.length([]); //=> 0
    *      R.length([1, 2, 3]); //=> 3
    */
+
   var length = _curry1(function length(list) {
     return list != null && _isNumber(list.length) ? list.length : NaN;
   });
@@ -5764,17 +6325,41 @@
    *      R.set(xLens, 4, {x: 1, y: 2});          //=> {x: 4, y: 2}
    *      R.over(xLens, R.negate, {x: 1, y: 2});  //=> {x: -1, y: 2}
    */
+
   var lens = _curry2(function lens(getter, setter) {
-    return function(toFunctorFn) {
-      return function(target) {
-        return map(
-          function(focus) {
-            return setter(focus, target);
-          },
-          toFunctorFn(getter(target))
-        );
+    return function (toFunctorFn) {
+      return function (target) {
+        return map(function (focus) {
+          return setter(focus, target);
+        }, toFunctorFn(getter(target)));
       };
     };
+  });
+
+  /**
+   * 替换数组中指定索引处的值。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.14.0
+   * @category List
+   * @sig Number -> a -> [a] -> [a]
+   * @param {Number} idx The index to update.
+   * @param {*} x The value to exist at the given index of the returned array.
+   * @param {Array|Arguments} list The source array-like object to be updated.
+   * @return {Array} A copy of `list` with the value at index `idx` replaced with `x`.
+   * @see R.adjust
+   * @example
+   *
+   *      R.update(1, '_', ['a', 'b', 'c']);      //=> ['a', '_', 'c']
+   *      R.update(-1, '_', ['a', 'b', 'c']);     //=> ['a', 'b', '_']
+   * @symb R.update(-1, a, [b, c]) = [b, a]
+   * @symb R.update(0, a, [b, c]) = [a, c]
+   * @symb R.update(1, a, [b, c]) = [b, a]
+   */
+
+  var update = _curry3(function update(idx, x, list) {
+    return adjust(idx, always(x), list);
   });
 
   /**
@@ -5797,8 +6382,73 @@
    *      R.set(headLens, 'x', ['a', 'b', 'c']);        //=> ['x', 'b', 'c']
    *      R.over(headLens, R.toUpper, ['a', 'b', 'c']); //=> ['A', 'b', 'c']
    */
+
   var lensIndex = _curry1(function lensIndex(n) {
     return lens(nth(n), update(n));
+  });
+
+  /**
+   * 提取对象中指定路径数组（paths）上的对应的值（values）
+   *
+   * @func
+   * @memberOf R
+   * @since v0.27.1
+   * @category Object
+   * @typedefn Idx = [String | Int | Symbol]
+   * @sig [Idx] -> {a} -> [a | Undefined]
+   * @param {Array} pathsArray The array of paths to be fetched.
+   * @param {Object} obj The object to retrieve the nested properties from.
+   * @return {Array} A list consisting of values at paths specified by "pathsArray".
+   * @see R.path
+   * @example
+   *
+   *      R.paths([['a', 'b'], ['p', 0, 'q']], {a: {b: 2}, p: [{q: 3}]}); //=> [2, 3]
+   *      R.paths([['a', 'b'], ['p', 'r']], {a: {b: 2}, p: [{q: 3}]}); //=> [2, undefined]
+   */
+
+  var paths = _curry2(function paths(pathsArray, obj) {
+    return pathsArray.map(function (paths) {
+      var val = obj;
+      var idx = 0;
+      var p;
+
+      while (idx < paths.length) {
+        if (val == null) {
+          return;
+        }
+
+        p = paths[idx];
+        val = _isInteger(p) ? nth(p, val) : val[p];
+        idx += 1;
+      }
+
+      return val;
+    });
+  });
+
+  /**
+   * 取出给定路径上的值。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.2.0
+   * @category Object
+   * @typedefn Idx = String | Int | Symbol
+   * @sig [Idx] -> {a} -> a | Undefined
+   * @param {Array} path The path to use.
+   * @param {Object} obj The object to retrieve the nested property from.
+   * @return {*} The data at `path`.
+   * @see R.prop, R.nth
+   * @example
+   *
+   *      R.path(['a', 'b'], {a: {b: 2}}); //=> 2
+   *      R.path(['a', 'b'], {c: {b: 2}}); //=> undefined
+   *      R.path(['a', 'b', 0], {a: {b: [1, 2, 3]}}); //=> 1
+   *      R.path(['a', 'b', -2], {a: {b: [1, 2, 3]}}); //=> 2
+   */
+
+  var path = _curry2(function path(pathAr, obj) {
+    return paths([pathAr], obj)[0];
   });
 
   /**
@@ -5808,7 +6458,7 @@
    * @memberOf R
    * @since v0.19.0
    * @category Object
-   * @typedefn Idx = String | Int
+   * @typedefn Idx = String | Int | Symbol
    * @typedefn Lens s a = Functor f => (a -> f a) -> s -> f s
    * @sig [Idx] -> Lens s a
    * @param {Array} path The path to use.
@@ -5825,6 +6475,7 @@
    *      R.over(xHeadYLens, R.negate, {x: [{y: 2, z: 3}, {y: 4, z: 5}]});
    *      //=> {x: [{y: -2, z: 3}, {y: 4, z: 5}]}
    */
+
   var lensPath = _curry1(function lensPath(p) {
     return lens(path(p), assocPath(p));
   });
@@ -5849,6 +6500,7 @@
    *      R.set(xLens, 4, {x: 1, y: 2});          //=> {x: 4, y: 2}
    *      R.over(xLens, R.negate, {x: 1, y: 2});  //=> {x: -1, y: 2}
    */
+
   var lensProp = _curry1(function lensProp(k) {
     return lens(prop(k), assoc(k));
   });
@@ -5873,7 +6525,10 @@
    *      R.lt('a', 'z'); //=> true
    *      R.lt('z', 'a'); //=> false
    */
-  var lt = _curry2(function lt(a, b) { return a < b; });
+
+  var lt = _curry2(function lt(a, b) {
+    return a < b;
+  });
 
   /**
    * 如果首个参数小于或等于第二个参数，返回 `true`；否则返回 `false`。
@@ -5895,7 +6550,10 @@
    *      R.lte('a', 'z'); //=> true
    *      R.lte('z', 'a'); //=> false
    */
-  var lte = _curry2(function lte(a, b) { return a <= b; });
+
+  var lte = _curry2(function lte(a, b) {
+    return a <= b;
+  });
 
   /**
    * `mapAccum` 的行为类似于 map 和 reduce 的组合；它将迭代函数作用于列表中的每个元素，从左往右传递经迭代函数计算的累积值，并将最后的累积值和由所有中间的累积值组成的列表一起返回。
@@ -5927,16 +6585,19 @@
    *   ]
    * ]
    */
+
   var mapAccum = _curry3(function mapAccum(fn, acc, list) {
     var idx = 0;
     var len = list.length;
     var result = [];
     var tuple = [acc];
+
     while (idx < len) {
       tuple = fn(tuple[0], list[idx]);
       result[idx] = tuple[1];
       idx += 1;
     }
+
     return [tuple[0], result];
   });
 
@@ -5972,15 +6633,18 @@
    *   ]
    * ]
    */
+
   var mapAccumRight = _curry3(function mapAccumRight(fn, acc, list) {
     var idx = list.length - 1;
     var result = [];
     var tuple = [acc];
+
     while (idx >= 0) {
       tuple = fn(tuple[0], list[idx]);
       result[idx] = tuple[1];
       idx -= 1;
     }
+
     return [tuple[0], result];
   });
 
@@ -6003,8 +6667,9 @@
    *
    *      R.mapObjIndexed(prependKeyAndDouble, xyz); //=> { x: 'x2', y: 'y4', z: 'z6' }
    */
+
   var mapObjIndexed = _curry2(function mapObjIndexed(fn, obj) {
-    return _reduce(function(acc, key) {
+    return _reduce(function (acc, key) {
       acc[key] = fn(obj[key], key, obj);
       return acc;
     }, {}, keys(obj));
@@ -6028,6 +6693,7 @@
    *      R.match(/a/, 'b'); //=> []
    *      R.match(/a/, null); //=> TypeError: null does not have a method named "match"
    */
+
   var match = _curry2(function match(rx, str) {
     return str.match(rx) || [];
   });
@@ -6062,10 +6728,17 @@
    *      seventeenMod(4);  //=> 1
    *      seventeenMod(10); //=> 7
    */
+
   var mathMod = _curry2(function mathMod(m, p) {
-    if (!_isInteger(m)) { return NaN; }
-    if (!_isInteger(p) || p < 1) { return NaN; }
-    return ((m % p) + p) % p;
+    if (!_isInteger(m)) {
+      return NaN;
+    }
+
+    if (!_isInteger(p) || p < 1) {
+      return NaN;
+    }
+
+    return (m % p + p) % p;
   });
 
   /**
@@ -6091,6 +6764,7 @@
    *      R.reduce(R.maxBy(square), 0, [3, -5, 4, 1, -2]); //=> -5
    *      R.reduce(R.maxBy(square), 0, []); //=> 0
    */
+
   var maxBy = _curry3(function maxBy(f, a, b) {
     return f(b) > f(a) ? b : a;
   });
@@ -6110,6 +6784,7 @@
    *
    *      R.sum([2,4,6,8,100,1]); //=> 121
    */
+
   var sum = reduce(add, 0);
 
   /**
@@ -6128,6 +6803,7 @@
    *      R.mean([2, 7, 9]); //=> 6
    *      R.mean([]); //=> NaN
    */
+
   var mean = _curry1(function mean(list) {
     return sum(list) / list.length;
   });
@@ -6149,14 +6825,17 @@
    *      R.median([7, 2, 10, 9]); //=> 8
    *      R.median([]); //=> NaN
    */
+
   var median = _curry1(function median(list) {
     var len = list.length;
+
     if (len === 0) {
       return NaN;
     }
+
     var width = 2 - len % 2;
     var idx = (len - width) / 2;
-    return mean(Array.prototype.slice.call(list, 0).sort(function(a, b) {
+    return mean(Array.prototype.slice.call(list, 0).sort(function (a, b) {
       return a < b ? -1 : a > b ? 1 : 0;
     }).slice(idx, idx + width));
   });
@@ -6178,7 +6857,7 @@
    * @example
    *
    *      let count = 0;
-   *      const factorial = R.memoizeWith(R.identity, n => {
+   *      const factorial = R.memoizeWith(Number, n => {
    *        count += 1;
    *        return R.product(R.range(1, n + 1));
    *      });
@@ -6187,41 +6866,18 @@
    *      factorial(5); //=> 120
    *      count; //=> 1
    */
+
   var memoizeWith = _curry2(function memoizeWith(mFn, fn) {
     var cache = {};
-    return _arity(fn.length, function() {
+    return _arity(fn.length, function () {
       var key = mFn.apply(this, arguments);
+
       if (!_has(key, cache)) {
         cache[key] = fn.apply(this, arguments);
       }
+
       return cache[key];
     });
-  });
-
-  /**
-   * 合并两个对象的自身属性（不包括 prototype 属性）。如果某个 key 在两个对象中都存在，使用后一个对象对应的属性值。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category Object
-   * @sig {k: v} -> {k: v} -> {k: v}
-   * @param {Object} l
-   * @param {Object} r
-   * @return {Object}
-   * @see R.mergeRight, R.mergeDeepRight, R.mergeWith, R.mergeWithKey
-   * @deprecated since v0.26.0
-   * @example
-   *
-   *      R.merge({ 'name': 'fred', 'age': 10 }, { 'age': 40 });
-   *      //=> { 'name': 'fred', 'age': 40 }
-   *
-   *      const withDefaults = R.merge({x: 0, y: 0});
-   *      withDefaults({y: 2}); //=> {x: 0, y: 2}
-   * @symb R.merge(a, b) = {...a, ...b}
-   */
-  var merge = _curry2(function merge(l, r) {
-    return _objectAssign$1({}, l, r);
   });
 
   /**
@@ -6241,6 +6897,7 @@
    *      R.mergeAll([{foo:1},{foo:2},{bar:2}]); //=> {foo:2,bar:2}
    * @symb R.mergeAll([{ x: 1 }, { y: 2 }, { z: 3 }]) = { x: 1, y: 2, z: 3 }
    */
+
   var mergeAll = _curry1(function mergeAll(list) {
     return _objectAssign$1.apply(null, [{}].concat(list));
   });
@@ -6269,9 +6926,12 @@
    *      //=> { a: true, b: true, thing: 'bar', values: [10, 20, 15, 35] }
    * @symb R.mergeWithKey(f, { x: 1, y: 2 }, { y: 5, z: 3 }) = { x: 1, y: f('y', 2, 5), z: 3 }
    */
+
   var mergeWithKey = _curry3(function mergeWithKey(fn, l, r) {
     var result = {};
     var k;
+    l = l || {};
+    r = r || {};
 
     for (k in l) {
       if (_has(k, l)) {
@@ -6280,7 +6940,7 @@
     }
 
     for (k in r) {
-      if (_has(k, r) && !(_has(k, result))) {
+      if (_has(k, r) && !_has(k, result)) {
         result[k] = r[k];
       }
     }
@@ -6314,8 +6974,9 @@
    *                         { b: true, c: { thing: 'bar', values: [15, 35] }});
    *      //=> { a: true, b: true, c: { thing: 'bar', values: [10, 20, 15, 35] }}
    */
+
   var mergeDeepWithKey = _curry3(function mergeDeepWithKey(fn, lObj, rObj) {
-    return mergeWithKey(function(k, lVal, rVal) {
+    return mergeWithKey(function (k, lVal, rVal) {
       if (_isObject(lVal) && _isObject(rVal)) {
         return mergeDeepWithKey(fn, lVal, rVal);
       } else {
@@ -6345,8 +7006,9 @@
    *                      { age: 40, contact: { email: 'baa@example.com' }});
    *      //=> { name: 'fred', age: 10, contact: { email: 'moo@example.com' }}
    */
+
   var mergeDeepLeft = _curry2(function mergeDeepLeft(lObj, rObj) {
-    return mergeDeepWithKey(function(k, lVal, rVal) {
+    return mergeDeepWithKey(function (k, lVal, rVal) {
       return lVal;
     }, lObj, rObj);
   });
@@ -6372,8 +7034,9 @@
    *                       { age: 40, contact: { email: 'baa@example.com' }});
    *      //=> { name: 'fred', age: 40, contact: { email: 'baa@example.com' }}
    */
+
   var mergeDeepRight = _curry2(function mergeDeepRight(lObj, rObj) {
-    return mergeDeepWithKey(function(k, lVal, rVal) {
+    return mergeDeepWithKey(function (k, lVal, rVal) {
       return rVal;
     }, lObj, rObj);
   });
@@ -6403,8 +7066,9 @@
    *                      { b: true, c: { values: [15, 35] }});
    *      //=> { a: true, b: true, c: { values: [10, 20, 15, 35] }}
    */
+
   var mergeDeepWith = _curry3(function mergeDeepWith(fn, lObj, rObj) {
-    return mergeDeepWithKey(function(k, lVal, rVal) {
+    return mergeDeepWithKey(function (k, lVal, rVal) {
       return fn(lVal, rVal);
     }, lObj, rObj);
   });
@@ -6430,6 +7094,7 @@
    *      resetToDefault({x: 5, y: 2}); //=> {x: 0, y: 2}
    * @symb R.mergeLeft(a, b) = {...b, ...a}
    */
+
   var mergeLeft = _curry2(function mergeLeft(l, r) {
     return _objectAssign$1({}, r, l);
   });
@@ -6455,6 +7120,7 @@
    *      withDefaults({y: 2}); //=> {x: 0, y: 2}
    * @symb R.mergeRight(a, b) = {...a, ...b}
    */
+
   var mergeRight = _curry2(function mergeRight(l, r) {
     return _objectAssign$1({}, l, r);
   });
@@ -6481,8 +7147,9 @@
    *                  { b: true, values: [15, 35] });
    *      //=> { a: true, b: true, values: [10, 20, 15, 35] }
    */
+
   var mergeWith = _curry3(function mergeWith(fn, l, r) {
-    return mergeWithKey(function(_, _l, _r) {
+    return mergeWithKey(function (_, _l, _r) {
       return fn(_l, _r);
     }, l, r);
   });
@@ -6504,7 +7171,10 @@
    *      R.min(789, 123); //=> 123
    *      R.min('a', 'b'); //=> 'a'
    */
-  var min = _curry2(function min(a, b) { return b < a ? b : a; });
+
+  var min = _curry2(function min(a, b) {
+    return b < a ? b : a;
+  });
 
   /**
    * 接收一个函数和两个值，返回使给定函数执行结果较小的值。
@@ -6529,8 +7199,114 @@
    *      R.reduce(R.minBy(square), Infinity, [3, -5, 4, 1, -2]); //=> 1
    *      R.reduce(R.minBy(square), Infinity, []); //=> Infinity
    */
+
   var minBy = _curry3(function minBy(f, a, b) {
     return f(b) < f(a) ? b : a;
+  });
+
+  /**
+   * Makes a shallow clone of an object, applying the given fn to the specified
+   * property with the given value. Note that this copies and flattens prototype
+   * properties onto the new object as well. All non-primitive properties are
+   * copied by reference.
+   *
+   * @private
+   * @param {String|Number} prop The property name to set
+   * @param {Function} fn The function to apply to the property
+   * @param {Object|Array} obj The object to clone
+   * @return {Object|Array} A new object equivalent to the original except for the changed property.
+   */
+
+  function _modify(prop, fn, obj) {
+    if (_isInteger(prop) && _isArray(obj)) {
+      var arr = [].concat(obj);
+      arr[prop] = fn(arr[prop]);
+      return arr;
+    }
+
+    var result = {};
+
+    for (var p in obj) {
+      result[p] = obj[p];
+    }
+
+    result[prop] = fn(result[prop]);
+    return result;
+  }
+
+  /**
+   *  将 `fn` 作用于给定 path 的对象，并返回一个新的浅拷贝对象。
+   *
+   * 如果对象上没有对应的属性，那个这个函数不会被调用，且对象不会被改变。
+   * 所以的非基础类型的是通过引用拷贝到新的对象上的。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.28.0
+   * @category Object
+   * @sig [Idx] -> (v -> v) -> {k: v} -> {k: v}
+   * @param {Array} path The path to be modified.
+   * @param {Function} fn The function to apply to the path.
+   * @param {Object} object The object to be transformed.
+   * @return {Object} The transformed object.
+   * @example
+   *
+   *      const person = {name: 'James', address: { zipCode: '90216' }};
+   *      R.modifyPath(['address', 'zipCode'], R.reverse, person); //=> {name: 'James', address: { zipCode: '61209' }}
+   *
+   *      // Can handle arrays too
+   *      const person = {name: 'James', addresses: [{ zipCode: '90216' }]};
+   *      R.modifyPath(['addresses', 0, 'zipCode'], R.reverse, person); //=> {name: 'James', addresses: [{ zipCode: '61209' }]}
+   */
+
+  var modifyPath = _curry3(function modifyPath(path, fn, object) {
+    if (!_isObject(object) && !_isArray(object) || path.length === 0) {
+      return object;
+    }
+
+    var idx = path[0];
+
+    if (!_has(idx, object)) {
+      return object;
+    }
+
+    if (path.length === 1) {
+      return _modify(idx, fn, object);
+    }
+
+    var val = modifyPath(Array.prototype.slice.call(path, 1), fn, object[idx]);
+
+    if (val === object[idx]) {
+      return object;
+    }
+
+    return _assoc(idx, val, object);
+  });
+
+  /**
+   * 将 `fn` 作用于给定 `prop` 的对象，并返回一个拷贝的对象。
+   *
+   * 如果对象上没有对应的属性，那个这个函数不会被调用，且对象不会被改变。
+   * 所以的非基础类型的是通过引用拷贝到新的对象上的。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.28.0
+   * @category Object
+   * @sig Idx -> (v -> v) -> {k: v} -> {k: v}
+   * @param {String|Number} prop The property to be modified.
+   * @param {Function} fn The function to apply to the property.
+   * @param {Object} object The object to be transformed.
+   * @return {Object} The transformed object.
+   * @example
+   *
+   *      const person = {name: 'James', age: 20, pets: ['dog', 'cat']};
+   *      R.modify('age', R.add(1), person); //=> {name: 'James', age: 21, pets: ['dog', 'cat']}
+   *      R.modify('pets', R.append('turtle'), person); //=> {name: 'James', age: 20, pets: ['dog', 'cat', 'turtle']}
+   */
+
+  var modify = _curry3(function modify(prop, fn, object) {
+    return modifyPath([prop], fn, object);
   });
 
   /**
@@ -6556,13 +7332,17 @@
    *      isOdd(42); //=> 0
    *      isOdd(21); //=> 1
    */
-  var modulo = _curry2(function modulo(a, b) { return a % b; });
+
+  var modulo = _curry2(function modulo(a, b) {
+    return a % b;
+  });
 
   /**
    * 将列表中 `from` 索引处的元素移动到索引 `to` 处。
    *
    * @func
    * @memberOf R
+   * @since v0.27.1
    * @category List
    * @sig Number -> Number -> [a] -> [a]
    * @param {Number} from The source index
@@ -6574,20 +7354,14 @@
    *      R.move(0, 2, ['a', 'b', 'c', 'd', 'e', 'f']); //=> ['b', 'c', 'a', 'd', 'e', 'f']
    *      R.move(-1, 0, ['a', 'b', 'c', 'd', 'e', 'f']); //=> ['f', 'a', 'b', 'c', 'd', 'e'] list rotation
    */
-  var move = _curry3(function(from, to, list) {
+
+  var move = _curry3(function (from, to, list) {
     var length = list.length;
     var result = list.slice();
     var positiveFrom = from < 0 ? length + from : from;
     var positiveTo = to < 0 ? length + to : to;
     var item = result.splice(positiveFrom, 1);
-
-    return positiveFrom < 0 || positiveFrom >= list.length
-        || positiveTo   < 0 || positiveTo   >= list.length
-      ? list
-      : []
-        .concat(result.slice(0, positiveTo))
-        .concat(item)
-        .concat(result.slice(positiveTo, list.length));
+    return positiveFrom < 0 || positiveFrom >= list.length || positiveTo < 0 || positiveTo >= list.length ? list : [].concat(result.slice(0, positiveTo)).concat(item).concat(result.slice(positiveTo, list.length));
   });
 
   /**
@@ -6610,7 +7384,44 @@
    *      triple(4);       //=> 12
    *      R.multiply(2, 5);  //=> 10
    */
-  var multiply = _curry2(function multiply(a, b) { return a * b; });
+
+  var multiply = _curry2(function multiply(a, b) {
+    return a * b;
+  });
+
+  var _this = undefined;
+  /**
+   * 接受两个参数：函数 `f` 和对象 `o1`，返回一个函数 `g`。当 `g` 调用，将 `g` 的参数对象 `o2` 和 `o1` 深度合并后传给 `f`，并返回 `f` 的执行结果。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.28.0
+   * @category Function
+   * @sig (({ a, b, c, ..., n }) -> x) -> { a, b, c, ...} -> ({ d, e, f, ..., n } -> x)
+   * @param {Function} f
+   * @param {Object} props
+   * @return {Function}
+   * @see R.partial, R.partialRight, R.curry, R.mergeDeepRight
+   * @example
+   *
+   *      const multiply2 = ({ a, b }) => a * b;
+   *      const double = R.partialObject(multiply2, { a: 2 });
+   *      double({ b: 2 }); //=> 4
+   *
+   *      const greet = ({ salutation, title, firstName, lastName }) =>
+   *        salutation + ', ' + title + ' ' + firstName + ' ' + lastName + '!';
+   *
+   *      const sayHello = R.partialObject(greet, { salutation: 'Hello' });
+   *      const sayHelloToMs = R.partialObject(sayHello, { title: 'Ms.' });
+   *      sayHelloToMs({ firstName: 'Jane', lastName: 'Jones' }); //=> 'Hello, Ms. Jane Jones!'
+   * @symb R.partialObject(f, { a, b })({ c, d }) = f({ a, b, c, d })
+   */
+
+  var partialObject = _curry2(function (f, o) {
+    return function (props) {
+      return f.call(_this, mergeDeepRight(o, props));
+    };
+  });
 
   /**
    * 取反操作。
@@ -6626,7 +7437,10 @@
    *
    *      R.negate(42); //=> -42
    */
-  var negate = _curry1(function negate(n) { return -n; });
+
+  var negate = _curry1(function negate(n) {
+    return -n;
+  });
 
   /**
    * 如果列表中的元素都不满足 predicate，返回 `true`；否则返回 `false`。
@@ -6645,11 +7459,12 @@
    * @example
    *
    *      const isEven = n => n % 2 === 0;
-   *      const isOdd = n => n % 2 === 1;
+   *      const isOdd = n => n % 2 !== 0;
    *
    *      R.none(isEven, [1, 3, 5, 7, 9, 11]); //=> true
    *      R.none(isOdd, [1, 3, 5, 7, 8, 11]); //=> false
    */
+
   var none = _curry2(function none(fn, input) {
     return all(_complement(fn), input);
   });
@@ -6672,9 +7487,10 @@
    * @symb R.nthArg(0)(a, b, c) = a
    * @symb R.nthArg(1)(a, b, c) = b
    */
+
   var nthArg = _curry1(function nthArg(n) {
     var arity = n < 0 ? 1 : n + 1;
-    return curryN(arity, function() {
+    return curryN(arity, function () {
       return nth(n, arguments);
     });
   });
@@ -6703,11 +7519,14 @@
    *
    * @symb R.o(f, g, x) = f(g(x))
    */
+
   var o = _curry3(function o(f, g, x) {
     return f(g(x));
   });
 
-  function _of(x) { return [x]; }
+  function _of(x) {
+    return [x];
+  }
 
   /**
    * 将给定值作为元素，封装成单元素数组。
@@ -6726,6 +7545,7 @@
    *      R.of(null); //=> [null]
    *      R.of([42]); //=> [[42]]
    */
+
   var of = _curry1(_of);
 
   /**
@@ -6744,6 +7564,7 @@
    *
    *      R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
    */
+
   var omit = _curry2(function omit(names, obj) {
     var result = {};
     var index = {};
@@ -6760,7 +7581,37 @@
         result[prop] = obj[prop];
       }
     }
+
     return result;
+  });
+
+  /**
+   * 接收一个二元函数 `f`，一个一元函数 `g` 和两个值。将两个值应用到函数 `g` 上，在把返回的结果应用到函数 `f` 上。
+   *
+   * 也被称为 P combinator。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.28.0
+   * @category Function
+   * @sig ((a, a) -> b) -> (c -> a) -> c -> c -> b
+   * @param {Function} f a binary function
+   * @param {Function} g a unary function
+   * @param {any} a any value
+   * @param {any} b any value
+   * @return {any} The result of `f`
+   * @example
+   *
+   *      const eqBy = R.on((a, b) => a === b);
+   *      eqBy(R.prop('a'), {b:0, a:1}, {a:1}) //=> true;
+   *
+   *      const containsInsensitive = R.on(R.contains, R.toLower);
+   *      containsInsensitive('o', 'FOO'); //=> true
+   * @symb R.on(f, g, a, b) = f(g(a), g(b))
+   */
+
+  var on = _curryN(4, [], function on(f, g, a, b) {
+    return f(g(a), g(b));
   });
 
   /**
@@ -6781,13 +7632,15 @@
    *      addOneOnce(10); //=> 11
    *      addOneOnce(addOneOnce(50)); //=> 11
    */
+
   var once = _curry1(function once(fn) {
     var called = false;
     var result;
-    return _arity(fn.length, function() {
+    return _arity(fn.length, function () {
       if (called) {
         return result;
       }
+
       called = true;
       result = fn.apply(this, arguments);
       return result;
@@ -6814,33 +7667,37 @@
    * @param {Function} onFailure The function to apply. Can return a value or a promise of a value.
    * @param {Promise} p
    * @return {Promise} The result of calling `p.then(null, onFailure)`
-   * @see R.then
+   * @see R.andThen
    * @example
    *
-   *      var failedFetch = (id) => Promise.reject('bad ID');
-   *      var useDefault = () => ({ firstName: 'Bob', lastName: 'Loblaw' })
+   *      const failedFetch = id => Promise.reject('bad ID');
+   *      const useDefault = () => ({ firstName: 'Bob', lastName: 'Loblaw' });
    *
-   *      //recoverFromFailure :: String -> Promise ({firstName, lastName})
-   *      var recoverFromFailure = R.pipe(
+   *      //recoverFromFailure :: String -> Promise ({ firstName, lastName })
+   *      const recoverFromFailure = R.pipe(
    *        failedFetch,
    *        R.otherwise(useDefault),
-   *        R.then(R.pick(['firstName', 'lastName'])),
+   *        R.andThen(R.pick(['firstName', 'lastName'])),
    *      );
-   *      recoverFromFailure(12345).then(console.log)
+   *      recoverFromFailure(12345).then(console.log);
    */
+
   var otherwise = _curry2(function otherwise(f, p) {
     _assertPromise('otherwise', p);
 
     return p.then(null, f);
   });
 
-  // `Identity` is a functor that holds a single value, where `map` simply
   // transforms the held value with the provided function.
-  var Identity = function(x) {
-    return {value: x, map: function(f) { return Identity(f(x)); }};
+
+  var Identity = function Identity(x) {
+    return {
+      value: x,
+      map: function map(f) {
+        return Identity(f(x));
+      }
+    };
   };
-
-
   /**
    * 对数据结构中被 lens 聚焦的部分进行函数变换。
    *
@@ -6854,18 +7711,22 @@
    * @param {*} v
    * @param {*} x
    * @return {*}
-   * @see R.prop, R.lensIndex, R.lensProp
+   * @see R.view, R.set, R.lens, R.lensIndex, R.lensProp, R.lensPath
    * @example
    *
    *      const headLens = R.lensIndex(0);
    *
    *      R.over(headLens, R.toUpper, ['foo', 'bar', 'baz']); //=> ['FOO', 'bar', 'baz']
    */
+
+
   var over = _curry3(function over(lens, f, x) {
     // The value returned by the getter function is first transformed with `f`,
     // then set as the value of an `Identity`. This is then mapped over with the
     // setter function of the lens.
-    return lens(function(y) { return Identity(f(y)); })(x).value;
+    return lens(function (y) {
+      return Identity(f(y));
+    })(x).value;
   });
 
   /**
@@ -6884,11 +7745,14 @@
    *
    *      R.pair('foo', 'bar'); //=> ['foo', 'bar']
    */
-  var pair = _curry2(function pair(fst, snd) { return [fst, snd]; });
+
+  var pair = _curry2(function pair(fst, snd) {
+    return [fst, snd];
+  });
 
   function _createPartialApplicator(concat) {
-    return _curry2(function(fn, args) {
-      return _arity(Math.max(0, fn.length - args.length), function() {
+    return _curry2(function (fn, args) {
+      return _arity(Math.max(0, fn.length - args.length), function () {
         return fn.apply(this, concat(args, arguments));
       });
     });
@@ -6912,7 +7776,7 @@
    *
    *      const multiply2 = (a, b) => a * b;
    *      const double = R.partial(multiply2, [2]);
-   *      double(2); //=> 4
+   *      double(3); //=> 6
    *
    *      const greet = (salutation, title, firstName, lastName) =>
    *        salutation + ', ' + title + ' ' + firstName + ' ' + lastName + '!';
@@ -6922,6 +7786,7 @@
    *      sayHelloToMs('Jane', 'Jones'); //=> 'Hello, Ms. Jane Jones!'
    * @symb R.partial(f, [a, b])(c, d) = f(a, b, c, d)
    */
+
   var partial = _createPartialApplicator(_concat);
 
   /**
@@ -6948,6 +7813,7 @@
    *      greetMsJaneJones('Hello'); //=> 'Hello, Ms. Jane Jones!'
    * @symb R.partialRight(f, [a, b])(c, d) = f(c, d, a, b)
    */
+
   var partialRight = _createPartialApplicator(flip(_concat));
 
   /**
@@ -6971,6 +7837,7 @@
    *      R.partition(R.includes('s'), { a: 'sss', b: 'ttt', foo: 'bars' });
    *      // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' }  ]
    */
+
   var partition = juxt([filter, reject]);
 
   /**
@@ -6980,7 +7847,7 @@
    * @memberOf R
    * @since v0.7.0
    * @category Relation
-   * @typedefn Idx = String | Int
+   * @typedefn Idx = String | Int | Symbol
    * @sig [Idx] -> a -> {a} -> Boolean
    * @param {Array} path The path of the nested property to use
    * @param {*} val The value to compare the nested property with
@@ -6996,6 +7863,7 @@
    *      const isFamous = R.pathEq(['address', 'zipCode'], 90210);
    *      R.filter(isFamous, users); //=> [ user1 ]
    */
+
   var pathEq = _curry3(function pathEq(_path, val, obj) {
     return equals(path(_path, obj), val);
   });
@@ -7007,7 +7875,7 @@
    * @memberOf R
    * @since v0.18.0
    * @category Object
-   * @typedefn Idx = String | Int
+   * @typedefn Idx = String | Int | Symbol
    * @sig a -> [Idx] -> {a} -> a
    * @param {*} d The default value.
    * @param {Array} p The path to use.
@@ -7018,6 +7886,7 @@
    *      R.pathOr('N/A', ['a', 'b'], {a: {b: 2}}); //=> 2
    *      R.pathOr('N/A', ['a', 'b'], {c: {b: 2}}); //=> "N/A"
    */
+
   var pathOr = _curry3(function pathOr(d, p, obj) {
     return defaultTo(d, path(p, obj));
   });
@@ -7029,7 +7898,7 @@
    * @memberOf R
    * @since v0.19.0
    * @category Logic
-   * @typedefn Idx = String | Int
+   * @typedefn Idx = String | Int | Symbol
    * @sig (a -> Boolean) -> [Idx] -> {a} -> Boolean
    * @param {Function} pred
    * @param {Array} propPath
@@ -7041,6 +7910,7 @@
    *      R.pathSatisfies(y => y > 0, ['x', 'y'], {x: {y: 2}}); //=> true
    *      R.pathSatisfies(R.is(Object), [], {x: {y: 2}}); //=> true
    */
+
   var pathSatisfies = _curry3(function pathSatisfies(pred, propPath, obj) {
     return pred(path(propPath, obj));
   });
@@ -7062,15 +7932,19 @@
    *      R.pick(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
    *      R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
    */
+
   var pick = _curry2(function pick(names, obj) {
     var result = {};
     var idx = 0;
+
     while (idx < names.length) {
       if (names[idx] in obj) {
         result[names[idx]] = obj[names[idx]];
       }
+
       idx += 1;
     }
+
     return result;
   });
 
@@ -7091,15 +7965,18 @@
    *      R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
    *      R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
    */
+
   var pickAll = _curry2(function pickAll(names, obj) {
     var result = {};
     var idx = 0;
     var len = names.length;
+
     while (idx < len) {
       var name = names[idx];
       result[name] = obj[name];
       idx += 1;
     }
+
     return result;
   });
 
@@ -7122,56 +7999,18 @@
    *      const isUpperCase = (val, key) => key.toUpperCase() === key;
    *      R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); //=> {A: 3, B: 4}
    */
+
   var pickBy = _curry2(function pickBy(test, obj) {
     var result = {};
+
     for (var prop in obj) {
       if (test(obj[prop], prop, obj)) {
         result[prop] = obj[prop];
       }
     }
+
     return result;
   });
-
-  /**
-   * 将一系列函数，转换成从左到右的 Kleisli 组合，每个函数必须返回支持[`chain`](#chain)操作的值。
-   *
-   * `R.pipeK(f, g, h)` 等价于 `R.pipe(f, R.chain(g), R.chain(h))`。
-   *
-   * @func
-   * @memberOf R
-   * @since v0.16.0
-   * @category Function
-   * @sig Chain m => ((a -> m b), (b -> m c), ..., (y -> m z)) -> (a -> m z)
-   * @param {...Function}
-   * @return {Function}
-   * @see R.composeK
-   * @deprecated since v0.26.0
-   * @example
-   *
-   *      //  parseJson :: String -> Maybe *
-   *      //  get :: String -> Object -> Maybe *
-   *
-   *      //  getStateCode :: Maybe String -> Maybe String
-   *      const getStateCode = R.pipeK(
-   *        parseJson,
-   *        get('user'),
-   *        get('address'),
-   *        get('state'),
-   *        R.compose(Maybe.of, R.toUpper)
-   *      );
-   *
-   *      getStateCode('{"user":{"address":{"state":"ny"}}}');
-   *      //=> Just('NY')
-   *      getStateCode('[Invalid JSON]');
-   *      //=> Nothing()
-   * @symb R.pipeK(f, g, h)(a) = R.chain(h, R.chain(g, f(a)))
-   */
-  function pipeK() {
-    if (arguments.length === 0) {
-      throw new Error('pipeK requires at least one argument');
-    }
-    return composeK.apply(this, reverse(arguments));
-  }
 
   /**
    * 在列表头部之前拼接一个元素。
@@ -7189,6 +8028,7 @@
    *
    *      R.prepend('fee', ['fi', 'fo', 'fum']); //=> ['fee', 'fi', 'fo', 'fum']
    */
+
   var prepend = _curry2(function prepend(el, list) {
     return _concat([el], list);
   });
@@ -7208,6 +8048,7 @@
    *
    *      R.product([2,4,6,8,100,1]); //=> 38400
    */
+
   var product = reduce(multiply, 1);
 
   /**
@@ -7232,14 +8073,17 @@
    *      R.useWith(Math.pow, [R.dec, R.inc])(3)(4); //=> 32
    * @symb R.useWith(f, [g, h])(a, b) = f(g(a), h(b))
    */
+
   var useWith = _curry2(function useWith(fn, transformers) {
-    return curryN(transformers.length, function() {
+    return curryN(transformers.length, function () {
       var args = [];
       var idx = 0;
+
       while (idx < transformers.length) {
         args.push(transformers[idx].call(this, arguments[idx]));
         idx += 1;
       }
+
       return fn.apply(this, args.concat(Array.prototype.slice.call(arguments, transformers.length)));
     });
   });
@@ -7256,6 +8100,7 @@
    * @param {Array} props The property names to project
    * @param {Array} objs The objects to query
    * @return {Array} An array of objects with just the `props` properties.
+   * @see R.pluck, R.props, R.prop
    * @example
    *
    *      const abby = {name: 'Abby', age: 7, hair: 'blond', grade: 2};
@@ -7263,7 +8108,64 @@
    *      const kids = [abby, fred];
    *      R.project(['name', 'grade'], kids); //=> [{name: 'Abby', grade: 2}, {name: 'Fred', grade: 7}]
    */
+
   var project = useWith(_map, [pickAll, identity]); // passing `identity` gives correct arity
+
+  function _promap(f, g, profunctor) {
+    return function (x) {
+      return g(profunctor(f(x)));
+    };
+  }
+
+  function XPromap(f, g, xf) {
+    this.xf = xf;
+    this.f = f;
+    this.g = g;
+  }
+
+  XPromap.prototype['@@transducer/init'] = _xfBase.init;
+  XPromap.prototype['@@transducer/result'] = _xfBase.result;
+
+  XPromap.prototype['@@transducer/step'] = function (result, input) {
+    return this.xf['@@transducer/step'](result, _promap(this.f, this.g, input));
+  };
+
+  var _xpromap = _curry3(function _xpromap(f, g, xf) {
+    return new XPromap(f, g, xf);
+  });
+
+  /**
+   *
+   * 接收两个函数分别在第三个函数执行前和执行后执行，
+   * 例如 `promap(f, g, h)(x) === g(h(f(x)))` 。
+   *
+   * 如果第三个参数有 `promap` 方法， 则执行，
+   * 根据 [FantasyLand Profunctor spec](https://github.com/fantasyland/fantasy-land#profunctor)。
+   * 
+   * 若在 profunctor 位置中给出 transfomer，则用作 transducer 。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.28.0
+   * @category Function
+   * @sig (a -> b) -> (c -> d) -> (b -> c) -> (a -> d)
+   * @sig Profunctor p => (a -> b) -> (c -> d) -> p b c -> p a d
+   * @param {Function} f The preprocessor function, a -> b
+   * @param {Function} g The postprocessor function, c -> d
+   * @param {Profunctor} profunctor The profunctor instance to be promapped, e.g. b -> c
+   * @return {Profunctor} The new profunctor instance, e.g. a -> d
+   * @see R.transduce
+   * @example
+   *
+   *      const decodeChar = R.promap(s => s.charCodeAt(), String.fromCharCode, R.add(-8))
+   *      const decodeString = R.promap(R.split(''), R.join(''), R.map(decodeChar))
+   *      decodeString("ziuli") //=> "ramda"
+   *
+   * @symb R.promap(f, g, h) = x => g(h(f(x)))
+   * @symb R.promap(f, g, profunctor) = profunctor.promap(f, g)
+   */
+
+  var promap = _curry3(_dispatchable(['fantasy-land/promap', 'promap'], _xpromap, _promap));
 
   /**
    * 如果指定对象属性与给定的值相等，则返回 `true` ；否则返回 `false` 。通过 [`R.equals`](#equals) 函数进行相等性判断。可以使用 [`R.whereEq`](#whereEq) 进行多个属性的相等性判断。
@@ -7288,8 +8190,9 @@
    *      const hasBrownHair = R.propEq('hair', 'brown');
    *      R.filter(hasBrownHair, kids); //=> [fred, rusty]
    */
+
   var propEq = _curry3(function propEq(name, val, obj) {
-    return equals(val, obj[name]);
+    return equals(val, prop(name, obj));
   });
 
   /**
@@ -7311,8 +8214,9 @@
    *      R.propIs(Number, 'x', {x: 'foo'});    //=> false
    *      R.propIs(Number, 'x', {});            //=> false
    */
+
   var propIs = _curry3(function propIs(type, name, obj) {
-    return is(type, obj[name]);
+    return is(type, prop(name, obj));
   });
 
   /**
@@ -7339,8 +8243,9 @@
    *      favorite(alice);  //=> undefined
    *      favoriteWithDefault(alice);  //=> 'Ramda'
    */
+
   var propOr = _curry3(function propOr(val, p, obj) {
-    return pathOr(val, [p], obj);
+    return defaultTo(val, prop(p, obj));
   });
 
   /**
@@ -7360,8 +8265,9 @@
    *
    *      R.propSatisfies(x => x > 0, 'x', {x: 1, y: 2}); //=> true
    */
+
   var propSatisfies = _curry3(function propSatisfies(pred, name, obj) {
-    return pred(obj[name]);
+    return pred(prop(name, obj));
   });
 
   /**
@@ -7375,6 +8281,7 @@
    * @param {Array} ps The property names to fetch
    * @param {Object} obj The object to query
    * @return {Array} The corresponding values or partially applied function.
+   * @see R.prop, R.pluck, R.project
    * @example
    *
    *      R.props(['x', 'y'], {x: 1, y: 2}); //=> [1, 2]
@@ -7383,8 +8290,9 @@
    *      const fullName = R.compose(R.join(' '), R.props(['first', 'last']));
    *      fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}); //=> 'Tony Bullet-Tooth'
    */
+
   var props = _curry2(function props(ps, obj) {
-    return  ps.map(function(p) {
+    return ps.map(function (p) {
       return path([p], obj);
     });
   });
@@ -7405,16 +8313,20 @@
    *      R.range(1, 5);    //=> [1, 2, 3, 4]
    *      R.range(50, 53);  //=> [50, 51, 52]
    */
+
   var range = _curry2(function range(from, to) {
     if (!(_isNumber(from) && _isNumber(to))) {
       throw new TypeError('Both arguments to range must be numbers');
     }
+
     var result = [];
     var n = from;
+
     while (n < to) {
       result.push(n);
       n += 1;
     }
+
     return result;
   });
 
@@ -7439,7 +8351,7 @@
    * @param {*} acc The accumulator value.
    * @param {Array} list The list to iterate over.
    * @return {*} The final, accumulated value.
-   * @see R.reduce, R.addIndex
+   * @see R.reduce, R.addIndex, R.reduced
    * @example
    *
    *      R.reduceRight(R.subtract, 0, [1, 2, 3, 4]) // => (1 - (2 - (3 - (4 - 0)))) = -2
@@ -7455,12 +8367,21 @@
    *
    * @symb R.reduceRight(f, a, [b, c, d]) = f(b, f(c, f(d, a)))
    */
+
   var reduceRight = _curry3(function reduceRight(fn, acc, list) {
     var idx = list.length - 1;
+
     while (idx >= 0) {
       acc = fn(list[idx], acc);
+
+      if (acc && acc['@@transducer/reduced']) {
+        acc = acc['@@transducer/value'];
+        break;
+      }
+
       idx -= 1;
     }
+
     return acc;
   });
 
@@ -7482,15 +8403,16 @@
    * @see R.reduce, R.reduced
    * @example
    *
-   *      const isOdd = (acc, x) => x % 2 === 1;
+   *      const isOdd = (acc, x) => x % 2 !== 0;
    *      const xs = [1, 3, 5, 60, 777, 800];
    *      R.reduceWhile(isOdd, R.add, 0, xs); //=> 9
    *
    *      const ys = [2, 4, 6]
    *      R.reduceWhile(isOdd, R.add, 111, ys); //=> 111
    */
+
   var reduceWhile = _curryN(4, [], function _reduceWhile(pred, fn, a, list) {
-    return _reduce(function(acc, x) {
+    return _reduce(function (acc, x) {
       return pred(acc, x) ? fn(acc, x) : _reduced(acc);
     }, a, list);
   });
@@ -7509,7 +8431,7 @@
    * @sig a -> *
    * @param {*} x The final value of the reduce.
    * @return {*} The wrapped value.
-   * @see R.reduce, R.reduceWhile, R.transduce
+   * @see R.reduce, R.reduceWhile, R.reduceBy, R.reduceRight, R.transduce
    * @example
    *
    *     R.reduce(
@@ -7517,6 +8439,7 @@
    *       [],
    *       [1, 2, 3, 4, 5]) // [1, 2, 3]
    */
+
   var reduced = _curry1(_reduced);
 
   /**
@@ -7540,6 +8463,7 @@
    * @symb R.times(f, 1) = [f(0)]
    * @symb R.times(f, 2) = [f(0), f(1)]
    */
+
   var times = _curry2(function times(fn, n) {
     var len = Number(n);
     var idx = 0;
@@ -7548,11 +8472,14 @@
     if (len < 0 || isNaN(len)) {
       throw new RangeError('n must be a non-negative number');
     }
+
     list = new Array(len);
+
     while (idx < len) {
       list[idx] = fn(idx);
       idx += 1;
     }
+
     return list;
   });
 
@@ -7579,6 +8506,7 @@
    * @symb R.repeat(a, 1) = [a]
    * @symb R.repeat(a, 2) = [a, a]
    */
+
   var repeat = _curry2(function repeat(value, n) {
     return times(always(value), n);
   });
@@ -7603,6 +8531,7 @@
    *      // Use the "g" (global) flag to replace all occurrences:
    *      R.replace(/foo/g, 'bar', 'foo foo foo'); //=> 'bar bar bar'
    */
+
   var replace = _curry3(function replace(regex, replacement, str) {
     return str.replace(regex, replacement);
   });
@@ -7627,15 +8556,18 @@
    *      const factorials = R.scan(R.multiply, 1, numbers); //=> [1, 1, 2, 6, 24]
    * @symb R.scan(f, a, [b, c]) = [a, f(a, b), f(f(a, b), c)]
    */
+
   var scan = _curry3(function scan(fn, acc, list) {
     var idx = 0;
     var len = list.length;
     var result = [acc];
+
     while (idx < len) {
       acc = fn(acc, list[idx]);
       result[idx + 1] = acc;
       idx += 1;
     }
+
     return result;
   });
 
@@ -7661,14 +8593,11 @@
    *      R.sequence(R.of, Just([1, 2, 3])); //=> [Just(1), Just(2), Just(3)]
    *      R.sequence(R.of, Nothing());       //=> [Nothing()]
    */
+
   var sequence = _curry2(function sequence(of, traversable) {
-    return typeof traversable.sequence === 'function' ?
-      traversable.sequence(of) :
-      reduceRight(
-        function(x, acc) { return ap(map(prepend, x), acc); },
-        of([]),
-        traversable
-      );
+    return typeof traversable.sequence === 'function' ? traversable.sequence(of) : reduceRight(function (x, acc) {
+      return ap(map(prepend, x), acc);
+    }, of([]), traversable);
   });
 
   /**
@@ -7684,7 +8613,7 @@
    * @param {*} v
    * @param {*} x
    * @return {*}
-   * @see R.prop, R.lensIndex, R.lensProp
+   * @see R.view, R.over, R.lens, R.lensIndex, R.lensProp, R.lensPath
    * @example
    *
    *      const xLens = R.lensProp('x');
@@ -7692,6 +8621,7 @@
    *      R.set(xLens, 4, {x: 1, y: 2});  //=> {x: 4, y: 2}
    *      R.set(xLens, 8, {x: 1, y: 2});  //=> {x: 8, y: 2}
    */
+
   var set = _curry3(function set(lens, v, x) {
     return over(lens, always(v), x);
   });
@@ -7707,11 +8637,13 @@
    * @param {Function} comparator A sorting function :: a -> b -> Int
    * @param {Array} list The list to sort
    * @return {Array} a new array with its elements sorted by the comparator function.
+   * @see R.ascend, R.descend
    * @example
    *
    *      const diff = function(a, b) { return a - b; };
    *      R.sort(diff, [4,2,7,5]); //=> [2, 4, 5, 7]
    */
+
   var sort = _curry2(function sort(comparator, list) {
     return Array.prototype.slice.call(list, 0).sort(comparator);
   });
@@ -7749,8 +8681,9 @@
    *      const people = [clara, bob, alice];
    *      sortByNameCaseInsensitive(people); //=> [alice, bob, clara]
    */
+
   var sortBy = _curry2(function sortBy(fn, list) {
-    return Array.prototype.slice.call(list, 0).sort(function(a, b) {
+    return Array.prototype.slice.call(list, 0).sort(function (a, b) {
       var aa = fn(a);
       var bb = fn(b);
       return aa < bb ? -1 : aa > bb ? 1 : 0;
@@ -7768,6 +8701,7 @@
    * @param {Array} functions A list of comparator functions.
    * @param {Array} list The list to sort.
    * @return {Array} A new list sorted according to the comarator functions.
+   * @see R.ascend, R.descend
    * @example
    *
    *      const alice = {
@@ -7789,14 +8723,17 @@
    *      ]);
    *      ageNameSort(people); //=> [alice, clara, bob]
    */
+
   var sortWith = _curry2(function sortWith(fns, list) {
-    return Array.prototype.slice.call(list, 0).sort(function(a, b) {
+    return Array.prototype.slice.call(list, 0).sort(function (a, b) {
       var result = 0;
       var i = 0;
+
       while (result === 0 && i < fns.length) {
         result = fns[i](a, b);
         i += 1;
       }
+
       return result;
     });
   });
@@ -7820,6 +8757,7 @@
    *
    *      R.split('.', 'a.b.c.xyz.d'); //=> ['a', 'b', 'c', 'xyz', 'd']
    */
+
   var split = invoker(1, 'split');
 
   /**
@@ -7840,6 +8778,7 @@
    *      R.splitAt(5, 'hello world');      //=> ['hello', ' world']
    *      R.splitAt(-1, 'foobar');          //=> ['fooba', 'r']
    */
+
   var splitAt = _curry2(function splitAt(index, array) {
     return [slice(0, index, array), slice(index, length(array), array)];
   });
@@ -7861,15 +8800,19 @@
    *      R.splitEvery(3, [1, 2, 3, 4, 5, 6, 7]); //=> [[1, 2, 3], [4, 5, 6], [7]]
    *      R.splitEvery(3, 'foobarbaz'); //=> ['foo', 'bar', 'baz']
    */
+
   var splitEvery = _curry2(function splitEvery(n, list) {
     if (n <= 0) {
       throw new Error('First argument to splitEvery must be a positive integer');
     }
+
     var result = [];
     var idx = 0;
+
     while (idx < list.length) {
       result.push(slice(idx, idx += n, list));
     }
+
     return result;
   });
 
@@ -7888,6 +8831,7 @@
    *
    *      R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]);   //=> [[1], [2, 3, 1, 2, 3]]
    */
+
   var splitWhen = _curry2(function splitWhen(pred, list) {
     var idx = 0;
     var len = list.length;
@@ -7899,6 +8843,40 @@
     }
 
     return [prefix, Array.prototype.slice.call(list, idx)];
+  });
+
+  /**
+   * 根据列表中每个元素是否满足 predicate 来拆分数组。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.26.1
+   * @category List
+   * @sig (a -> Boolean) -> [a] -> [[a]]
+   * @param {Function} pred The predicate that determines where the array is split.
+   * @param {Array} list The array to be split.
+   * @return {Array}
+   * @example
+   *
+   *      R.splitWhenever(R.equals(2), [1, 2, 3, 2, 4, 5, 2, 6, 7]); //=> [[1], [3], [4, 5], [6, 7]]
+   */
+
+  var splitWhenever = _curryN(2, [], function splitWhenever(pred, list) {
+    var acc = [];
+    var curr = [];
+
+    for (var i = 0; i < list.length; i = i + 1) {
+      if (!pred(list[i])) {
+        curr.push(list[i]);
+      }
+
+      if ((i < list.length - 1 && pred(list[i + 1]) || i === list.length - 1) && curr.length > 0) {
+        acc.push(curr);
+        curr = [];
+      }
+    }
+
+    return acc;
   });
 
   /**
@@ -7921,7 +8899,8 @@
    *      R.startsWith(['a'], ['a', 'b', 'c'])    //=> true
    *      R.startsWith(['b'], ['a', 'b', 'c'])    //=> false
    */
-  var startsWith = _curry2(function(prefix, list) {
+
+  var startsWith = _curry2(function (prefix, list) {
     return equals(take(prefix.length, list), prefix);
   });
 
@@ -7948,6 +8927,7 @@
    *      complementaryAngle(30); //=> 60
    *      complementaryAngle(72); //=> 18
    */
+
   var subtract = _curry2(function subtract(a, b) {
     return Number(a) - Number(b);
   });
@@ -7969,6 +8949,7 @@
    *      R.symmetricDifference([1,2,3,4], [7,6,5,4,3]); //=> [1,2,7,6,5]
    *      R.symmetricDifference([7,6,5,4,3], [1,2,3,4]); //=> [7,6,5,1,2]
    */
+
   var symmetricDifference = _curry2(function symmetricDifference(list1, list2) {
     return concat(difference(list1, list2), difference(list2, list1));
   });
@@ -7993,6 +8974,7 @@
    *      const l2 = [{a: 3}, {a: 4}, {a: 5}, {a: 6}];
    *      R.symmetricDifferenceWith(eqA, l1, l2); //=> [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
    */
+
   var symmetricDifferenceWith = _curry3(function symmetricDifferenceWith(pred, list1, list2) {
     return concat(differenceWith(pred, list1, list2), differenceWith(pred, list2, list1));
   });
@@ -8018,11 +9000,14 @@
    *
    *      R.takeLastWhile(x => x !== 'R' , 'Ramda'); //=> 'amda'
    */
+
   var takeLastWhile = _curry2(function takeLastWhile(fn, xs) {
     var idx = xs.length - 1;
+
     while (idx >= 0 && fn(xs[idx])) {
       idx -= 1;
     }
+
     return slice(idx + 1, Infinity, xs);
   });
 
@@ -8030,13 +9015,17 @@
     this.xf = xf;
     this.f = f;
   }
+
   XTakeWhile.prototype['@@transducer/init'] = _xfBase.init;
   XTakeWhile.prototype['@@transducer/result'] = _xfBase.result;
-  XTakeWhile.prototype['@@transducer/step'] = function(result, input) {
+
+  XTakeWhile.prototype['@@transducer/step'] = function (result, input) {
     return this.f(input) ? this.xf['@@transducer/step'](result, input) : _reduced(result);
   };
 
-  var _xtakeWhile = _curry2(function _xtakeWhile(f, xf) { return new XTakeWhile(f, xf); });
+  var _xtakeWhile = _curry2(function _xtakeWhile(f, xf) {
+    return new XTakeWhile(f, xf);
+  });
 
   /**
    * 从前往后取出列表元素，直到遇到首个不满足 predicate 的元素为止。取出的元素中不包含首个不满足 predicate 的元素。
@@ -8063,12 +9052,15 @@
    *
    *      R.takeWhile(x => x !== 'd' , 'Ramda'); //=> 'Ram'
    */
+
   var takeWhile = _curry2(_dispatchable(['takeWhile'], _xtakeWhile, function takeWhile(fn, xs) {
     var idx = 0;
     var len = xs.length;
+
     while (idx < len && fn(xs[idx])) {
       idx += 1;
     }
+
     return slice(0, idx, xs);
   }));
 
@@ -8076,14 +9068,18 @@
     this.xf = xf;
     this.f = f;
   }
+
   XTap.prototype['@@transducer/init'] = _xfBase.init;
   XTap.prototype['@@transducer/result'] = _xfBase.result;
-  XTap.prototype['@@transducer/step'] = function(result, input) {
+
+  XTap.prototype['@@transducer/step'] = function (result, input) {
     this.f(input);
     return this.xf['@@transducer/step'](result, input);
   };
 
-  var _xtap = _curry2(function _xtap(f, xf) { return new XTap(f, xf); });
+  var _xtap = _curry2(function _xtap(f, xf) {
+    return new XTap(f, xf);
+  });
 
   /**
    * 对输入的值执行给定的函数，然后返回输入的值。
@@ -8105,6 +9101,7 @@
    *      // logs 'x is 100'
    * @symb R.tap(f, a) = a
    */
+
   var tap = _curry2(_dispatchable([], _xtap, function tap(fn, x) {
     fn(x);
     return x;
@@ -8131,10 +9128,12 @@
    *      R.test(/^x/, 'xyz'); //=> true
    *      R.test(/^y/, 'xyz'); //=> false
    */
+
   var test = _curry2(function test(pattern, str) {
     if (!_isRegExp(pattern)) {
       throw new TypeError('‘test’ requires a value of type RegExp as its first argument; received ' + toString$1(pattern));
     }
+
     return _cloneRegExp(pattern).test(str);
   });
 
@@ -8143,6 +9142,7 @@
    *
    * @func
    * @memberOf R
+   * @since v0.27.1
    * @category Function
    * @sig (a -> b) -> (Promise e a) -> (Promise e b)
    * @sig (a -> (Promise e b)) -> (Promise e a) -> (Promise e b)
@@ -8152,15 +9152,20 @@
    * @see R.otherwise
    * @example
    *
-   *      var makeQuery = (email) => ({ query: { email }});
+   *      const makeQuery = email => ({ query: { email }});
+   *      const fetchMember = request =>
+   *        Promise.resolve({ firstName: 'Bob', lastName: 'Loblaw', id: 42 });
    *
-   *      //getMemberName :: String -> Promise ({firstName, lastName})
-   *      var getMemberName = R.pipe(
+   *      //getMemberName :: String -> Promise ({ firstName, lastName })
+   *      const getMemberName = R.pipe(
    *        makeQuery,
    *        fetchMember,
    *        R.andThen(R.pick(['firstName', 'lastName']))
    *      );
+   *
+   *      getMemberName('bob@gmail.com').then(console.log);
    */
+
   var andThen = _curry2(function andThen(f, p) {
     _assertPromise('andThen', p);
 
@@ -8182,6 +9187,7 @@
    *
    *      R.toLower('XYZ'); //=> 'xyz'
    */
+
   var toLower = invoker(0, 'toLowerCase');
 
   /**
@@ -8194,18 +9200,21 @@
    * @sig {String: *} -> [[String,*]]
    * @param {Object} obj The object to extract from
    * @return {Array} An array of key, value arrays from the object's own properties.
-   * @see R.fromPairs
+   * @see R.fromPairs, R.keys, R.values
    * @example
    *
    *      R.toPairs({a: 1, b: 2, c: 3}); //=> [['a', 1], ['b', 2], ['c', 3]]
    */
+
   var toPairs = _curry1(function toPairs(obj) {
     var pairs = [];
+
     for (var prop in obj) {
       if (_has(prop, obj)) {
         pairs[pairs.length] = [prop, obj[prop]];
       }
     }
+
     return pairs;
   });
 
@@ -8227,11 +9236,14 @@
    *      const f = new F();
    *      R.toPairsIn(f); //=> [['x','X'], ['y','Y']]
    */
+
   var toPairsIn = _curry1(function toPairsIn(obj) {
     var pairs = [];
+
     for (var prop in obj) {
       pairs[pairs.length] = [prop, obj[prop]];
     }
+
     return pairs;
   });
 
@@ -8250,6 +9262,7 @@
    *
    *      R.toUpper('abc'); //=> 'ABC'
    */
+
   var toUpper = invoker(0, 'toUpperCase');
 
   /**
@@ -8282,10 +9295,11 @@
    *      const transducer = R.compose(R.map(R.add(1)), R.take(2));
    *      R.transduce(transducer, R.flip(R.append), [], numbers); //=> [2, 3]
    *
-   *      const isOdd = (x) => x % 2 === 1;
+   *      const isOdd = (x) => x % 2 !== 0;
    *      const firstOddTransducer = R.compose(R.filter(isOdd), R.take(1));
    *      R.transduce(firstOddTransducer, R.flip(R.append), [], R.range(0, 100)); //=> [1]
    */
+
   var transduce = curryN(4, function transduce(xf, fn, acc, list) {
     return _reduce(xf(typeof fn === 'function' ? _xwrap(fn) : fn), acc, list);
   });
@@ -8311,21 +9325,27 @@
    * @symb R.transpose([[a, b], [c, d]]) = [[a, c], [b, d]]
    * @symb R.transpose([[a, b], [c]]) = [[a, c], [b]]
    */
+
   var transpose = _curry1(function transpose(outerlist) {
     var i = 0;
     var result = [];
+
     while (i < outerlist.length) {
       var innerlist = outerlist[i];
       var j = 0;
+
       while (j < innerlist.length) {
         if (typeof result[j] === 'undefined') {
           result[j] = [];
         }
+
         result[j].push(innerlist[j]);
         j += 1;
       }
+
       i += 1;
     }
+
     return result;
   });
 
@@ -8352,17 +9372,14 @@
    *      R.traverse(Maybe.of, safeDiv(10), [2, 4, 5]); //=> Maybe.Just([5, 2.5, 2])
    *      R.traverse(Maybe.of, safeDiv(10), [2, 0, 5]); //=> Maybe.Nothing
    */
+
   var traverse = _curry3(function traverse(of, f, traversable) {
-    return typeof traversable['fantasy-land/traverse'] === 'function' ?
-      traversable['fantasy-land/traverse'](f, of) :
-      sequence(of, map(f, traversable));
+    return typeof traversable['fantasy-land/traverse'] === 'function' ? traversable['fantasy-land/traverse'](f, of) : typeof traversable.traverse === 'function' ? traversable.traverse(f, of) : sequence(of, map(f, traversable));
   });
 
-  var ws = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
-           '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028' +
-           '\u2029\uFEFF';
-  var zeroWidth = '\u200b';
-  var hasProtoTrim = (typeof String.prototype.trim === 'function');
+  var ws = "\t\n\x0B\f\r \xA0\u1680\u2000\u2001\u2002\u2003" + "\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028" + "\u2029\uFEFF";
+  var zeroWidth = "\u200B";
+  var hasProtoTrim = typeof String.prototype.trim === 'function';
   /**
    * 删除字符串首、尾两端的空白字符。
    *
@@ -8371,22 +9388,21 @@
    * @since v0.6.0
    * @category String
    * @sig String -> String
-   * @param {String} str 待修剪的字符串
-   * @return {String} 修剪后的`str`
+   * @param {String} str The string to trim.
+   * @return {String} Trimmed version of `str`.
    * @example
    *
    *      R.trim('   xyz  '); //=> 'xyz'
    *      R.map(R.trim, R.split(',', 'x, y, z')); //=> ['x', 'y', 'z']
    */
-  var trim = !hasProtoTrim || (ws.trim() || !zeroWidth.trim()) ?
-    _curry1(function trim(str) {
-      var beginRx = new RegExp('^[' + ws + '][' + ws + ']*');
-      var endRx = new RegExp('[' + ws + '][' + ws + ']*$');
-      return str.replace(beginRx, '').replace(endRx, '');
-    }) :
-    _curry1(function trim(str) {
-      return str.trim();
-    });
+
+  var trim = !hasProtoTrim || ws.trim() || !zeroWidth.trim() ? _curry1(function trim(str) {
+    var beginRx = new RegExp('^[' + ws + '][' + ws + ']*');
+    var endRx = new RegExp('[' + ws + '][' + ws + ']*$');
+    return str.replace(beginRx, '').replace(endRx, '');
+  }) : _curry1(function trim(str) {
+    return str.trim();
+  });
 
   /**
    * `tryCatch` 接受两个函数：`tryer` 和 `catcher`，生成的函数执行 `tryer`，若未抛出异常，则返回执行结果。若抛出异常，则执行 `catcher`，返回 `catcher` 的执行结果。注意，为了有效的组合该函数，`tryer` 和 `catcher` 应返回相同类型的值。
@@ -8398,16 +9414,18 @@
    * @sig (...x -> a) -> ((e, ...x) -> a) -> (...x -> a)
    * @param {Function} tryer The function that may throw.
    * @param {Function} catcher The function that will be evaluated if `tryer` throws.
-   * @return {Function} A new function that will catch exceptions and send then to the catcher.
+   * @return {Function} A new function that will catch exceptions and send them to the catcher.
    * @example
    *
    *      R.tryCatch(R.prop('x'), R.F)({x: true}); //=> true
-   *      R.tryCatch(() => { throw 'foo'}, R.always('catched'))('bar') // => 'catched'
+   *      R.tryCatch(() => { throw 'foo'}, R.always('caught'))('bar') // =>
+   *      'caught'
    *      R.tryCatch(R.times(R.identity), R.always([]))('s') // => []
    *      R.tryCatch(() => { throw 'this is not a valid value'}, (err, value)=>({error : err,  value }))('bar') // => {'error': 'this is not a valid value', 'value': 'bar'}
    */
+
   var tryCatch = _curry2(function _tryCatch(tryer, catcher) {
-    return _arity(tryer.length, function() {
+    return _arity(tryer.length, function () {
       try {
         return tryer.apply(this, arguments);
       } catch (e) {
@@ -8438,8 +9456,9 @@
    *      R.unapply(JSON.stringify)(1, 2, 3); //=> '[1,2,3]'
    * @symb R.unapply(f)(a, b) = f([a, b])
    */
+
   var unapply = _curry1(function unapply(fn) {
-    return function() {
+    return function () {
       return fn(Array.prototype.slice.call(arguments, 0));
     };
   });
@@ -8451,7 +9470,7 @@
    * @memberOf R
    * @since v0.2.0
    * @category Function
-   * @sig (* -> b) -> (a -> b)
+   * @sig (a -> b -> c -> ... -> z) -> (a -> z)
    * @param {Function} fn The function to wrap.
    * @return {Function} A new function wrapping `fn`. The new function is guaranteed to be of
    *         arity 1.
@@ -8470,6 +9489,7 @@
    *      takesOneArg(1, 2); //=> [1, undefined]
    * @symb R.unary(f)(a, b, c) = f(a)
    */
+
   var unary = _curry1(function unary(fn) {
     return nAry(1, fn);
   });
@@ -8481,11 +9501,11 @@
    * @memberOf R
    * @since v0.14.0
    * @category Function
-   * @sig Number -> (a -> b) -> (a -> c)
+   * @sig Number -> (a -> b -> c ... -> z) -> ((a -> b -> c ...) -> z)
    * @param {Number} length The arity for the returned function.
    * @param {Function} fn The function to uncurry.
    * @return {Function} A new function.
-   * @see R.curry
+   * @see R.curry, R.curryN
    * @example
    *
    *      const addFour = a => b => c => d => a + b + c + d;
@@ -8493,18 +9513,21 @@
    *      const uncurriedAddFour = R.uncurryN(4, addFour);
    *      uncurriedAddFour(1, 2, 3, 4); //=> 10
    */
+
   var uncurryN = _curry2(function uncurryN(depth, fn) {
-    return curryN(depth, function() {
+    return curryN(depth, function () {
       var currentDepth = 1;
       var value = fn;
       var idx = 0;
       var endIdx;
+
       while (currentDepth <= depth && typeof value === 'function') {
         endIdx = currentDepth === depth ? arguments.length : idx + value.length;
         value = value.apply(this, Array.prototype.slice.call(arguments, idx, endIdx));
         currentDepth += 1;
         idx = endIdx;
       }
+
       return value;
     });
   });
@@ -8531,13 +9554,16 @@
    *      R.unfold(f, 10); //=> [-10, -20, -30, -40, -50]
    * @symb R.unfold(f, x) = [f(x)[0], f(f(x)[1])[0], f(f(f(x)[1])[1])[0], ...]
    */
+
   var unfold = _curry2(function unfold(fn, seed) {
     var pair = fn(seed);
     var result = [];
+
     while (pair && pair.length) {
       result[result.length] = pair[0];
       pair = fn(pair[1]);
     }
+
     return result;
   });
 
@@ -8557,7 +9583,30 @@
    *
    *      R.union([1, 2, 3], [2, 3, 4]); //=> [1, 2, 3, 4]
    */
+
   var union = _curry2(compose(uniq, _concat));
+
+  function XUniqWith(pred, xf) {
+    this.xf = xf;
+    this.pred = pred;
+    this.items = [];
+  }
+
+  XUniqWith.prototype['@@transducer/init'] = _xfBase.init;
+  XUniqWith.prototype['@@transducer/result'] = _xfBase.result;
+
+  XUniqWith.prototype['@@transducer/step'] = function (result, input) {
+    if (_includesWith(this.pred, input, this.items)) {
+      return result;
+    } else {
+      this.items.push(input);
+      return this.xf['@@transducer/step'](result, input);
+    }
+  };
+
+  var _xuniqWith = _curry2(function _xuniqWith(pred, xf) {
+    return new XUniqWith(pred, xf);
+  });
 
   /**
    * 返回无重复元素的列表。元素通过 predicate 进行相同性判断。如果通过 predicate 判断两元素相同，保留第一个元素。
@@ -8578,20 +9627,25 @@
    *      R.uniqWith(strEq)([1, '1', 1]);    //=> [1]
    *      R.uniqWith(strEq)(['1', 1, 1]);    //=> ['1']
    */
-  var uniqWith = _curry2(function uniqWith(pred, list) {
+
+  var uniqWith = _curry2(_dispatchable([], _xuniqWith, function (pred, list) {
     var idx = 0;
     var len = list.length;
     var result = [];
     var item;
+
     while (idx < len) {
       item = list[idx];
+
       if (!_includesWith(pred, item, result)) {
         result[result.length] = item;
       }
+
       idx += 1;
     }
+
     return result;
-  });
+  }));
 
   /**
    * 集合并运算，合并两个列表为新列表（新列表中无重复元素）。由 predicate 的返回值决定两元素是否重复。
@@ -8613,6 +9667,7 @@
    *      const l2 = [{a: 1}, {a: 4}];
    *      R.unionWith(R.eqBy(R.prop('a')), l1, l2); //=> [{a: 1}, {a: 2}, {a: 4}]
    */
+
   var unionWith = _curry3(function unionWith(pred, list1, list2) {
     return uniqWith(pred, _concat(list1, list2));
   });
@@ -8624,7 +9679,7 @@
    * @memberOf R
    * @since v0.18.0
    * @category Logic
-   * @sig (a -> Boolean) -> (a -> a) -> a -> a
+   * @sig (a -> Boolean) -> (a -> b) -> a -> a | b
    * @param {Function} pred        A predicate function
    * @param {Function} whenFalseFn A function to invoke when the `pred` evaluates
    *                               to a falsy value.
@@ -8638,6 +9693,7 @@
    *      safeInc(null); //=> null
    *      safeInc(1); //=> 2
    */
+
   var unless = _curry3(function unless(pred, whenFalseFn, x) {
     return pred(x) ? x : whenFalseFn(x);
   });
@@ -8658,6 +9714,7 @@
    *      R.unnest([1, [2], [[3]]]); //=> [1, 2, [3]]
    *      R.unnest([[1, 2], [3, 4], [5, 6]]); //=> [1, 2, 3, 4, 5, 6]
    */
+
   var unnest = chain(_identity);
 
   /**
@@ -8676,12 +9733,51 @@
    *
    *      R.until(R.gt(R.__, 100), R.multiply(2))(1) // => 128
    */
+
   var until = _curry3(function until(pred, fn, init) {
     var val = init;
+
     while (!pred(val)) {
       val = fn(val);
     }
+
     return val;
+  });
+
+  /**
+   * 如果指定属性的值为数组，其结果为相同顺序的对象数组，对象里指定属性的值被数组对应元素替换，其余属性和原对象属性一致。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.28.0
+   * @category Object
+   * @sig String -> {k: [v]} -> [{k: v}]
+   * @param {String} key The key to determine which property of the object should be unwind
+   * @param {Object} object The object containing list under property named as key which is to unwind
+   * @return {List} A new list of object containing the value of input key having list replaced by each element in the object.
+   * @example
+   *
+   * R.unwind('hobbies', {
+   *   name: 'alice',
+   *   hobbies: ['Golf', 'Hacking'],
+   *   colors: ['red', 'green'],
+   * });
+   * // [
+   * //   { name: 'alice', hobbies: 'Golf', colors: ['red', 'green'] },
+   * //   { name: 'alice', hobbies: 'Hacking', colors: ['red', 'green'] }
+   * // ]
+   */
+
+  var unwind = _curry2(function (key, object) {
+    // If key is not in object or key is not as a list in object
+    if (!(key in object && _isArray(object[key]))) {
+      return [object];
+    } // Map over object[key] which is a list and assoc each element with key
+
+
+    return _map(function (item) {
+      return _assoc(key, item, object);
+    }, object[key]);
   });
 
   /**
@@ -8702,20 +9798,26 @@
    *      const f = new F();
    *      R.valuesIn(f); //=> ['X', 'Y']
    */
+
   var valuesIn = _curry1(function valuesIn(obj) {
     var prop;
     var vs = [];
+
     for (prop in obj) {
       vs[vs.length] = obj[prop];
     }
+
     return vs;
   });
 
-  // `Const` is a functor that effectively ignores the function given to `map`.
-  var Const = function(x) {
-    return {value: x, 'fantasy-land/map': function() { return this; }};
+  var Const = function Const(x) {
+    return {
+      value: x,
+      'fantasy-land/map': function fantasyLandMap() {
+        return this;
+      }
+    };
   };
-
   /**
    * 返回数据结构中，lens 聚焦的部分。lens 的焦点决定了数据结构中的哪部分是可见的。
    *
@@ -8728,7 +9830,7 @@
    * @param {Lens} lens
    * @param {*} x
    * @return {*}
-   * @see R.prop, R.lensIndex, R.lensProp
+   * @see R.set, R.over, R.lens, R.lensIndex, R.lensProp, R.lensPath
    * @example
    *
    *      const xLens = R.lensProp('x');
@@ -8736,6 +9838,8 @@
    *      R.view(xLens, {x: 1, y: 2});  //=> 1
    *      R.view(xLens, {x: 4, y: 2});  //=> 4
    */
+
+
   var view = _curry2(function view(lens, x) {
     // Using `Const` effectively ignores the setter function of the `lens`,
     // leaving the value returned by the getter function unmodified.
@@ -8749,7 +9853,7 @@
    * @memberOf R
    * @since v0.18.0
    * @category Logic
-   * @sig (a -> Boolean) -> (a -> a) -> a -> a
+   * @sig (a -> Boolean) -> (a -> b) -> a -> a | b
    * @param {Function} pred       A predicate function
    * @param {Function} whenTrueFn A function to invoke when the `condition`
    *                              evaluates to a truthy value.
@@ -8767,6 +9871,7 @@
    *      truncate('12345');         //=> '12345'
    *      truncate('0123456789ABC'); //=> '0123456789…'
    */
+
   var when = _curry3(function when(pred, whenTrueFn, x) {
     return pred(x) ? whenTrueFn(x) : x;
   });
@@ -8801,13 +9906,57 @@
    *      pred({a: 'foo', b: 'xxx', x: 10, y: 19}); //=> false
    *      pred({a: 'foo', b: 'xxx', x: 11, y: 20}); //=> false
    */
+
   var where = _curry2(function where(spec, testObj) {
     for (var prop in spec) {
       if (_has(prop, spec) && !spec[prop](testObj[prop])) {
         return false;
       }
     }
+
     return true;
+  });
+
+  /**
+   * 接受一个测试规范对象和一个待检测对象，测试规范对象的每个属性值都必须是 predicate 。
+   * 每个 predicate 作用于待检测对象对应的属性值，只要有一个 predicate 返回 true，则 `whereAny` 返回 true，否则返回 false 。
+   *
+   * `whereAny` 非常适合于需要声明式表示约束的函数比如 [`filter`](#filter) and [`find`](#find)。
+   *
+   * @func
+   * @memberOf R
+   * @since v0.28.0
+   * @category Object
+   * @sig {String: (* -> Boolean)} -> {String: *} -> Boolean
+   * @param {Object} spec
+   * @param {Object} testObj
+   * @return {Boolean}
+   * @see R.propSatisfies, R.where
+   * @example
+   *
+   *      // pred :: Object -> Boolean
+   *      const pred = R.whereAny({
+   *        a: R.equals('foo'),
+   *        b: R.complement(R.equals('xxx')),
+   *        x: R.gt(R.__, 10),
+   *        y: R.lt(R.__, 20)
+   *      });
+   *
+   *      pred({a: 'foo', b: 'xxx', x: 8, y: 34}); //=> true
+   *      pred({a: 'xxx', b: 'xxx', x: 9, y: 21}); //=> false
+   *      pred({a: 'bar', b: 'xxx', x: 10, y: 20}); //=> false
+   *      pred({a: 'foo', b: 'bar', x: 10, y: 20}); //=> true
+   *      pred({a: 'foo', b: 'xxx', x: 11, y: 20}); //=> true
+   */
+
+  var whereAny = _curry2(function whereAny(spec, testObj) {
+    for (var prop in spec) {
+      if (_has(prop, spec) && spec[prop](testObj[prop])) {
+        return true;
+      }
+    }
+
+    return false;
   });
 
   /**
@@ -8834,6 +9983,7 @@
    *      pred({a: 1, b: 2, c: 3});  //=> true
    *      pred({a: 1, b: 1});        //=> false
    */
+
   var whereEq = _curry2(function whereEq(spec, testObj) {
     return where(map(equals, spec), testObj);
   });
@@ -8856,7 +10006,8 @@
    *
    *      R.without([1, 2], [1, 2, 1, 3, 4]); //=> [3, 4]
    */
-  var without = _curry2(function(xs, list) {
+
+  var without = _curry2(function (xs, list) {
     return reject(flip(_includes)(xs), list);
   });
 
@@ -8867,6 +10018,7 @@
    *
    * @func
    * @memberOf R
+   * @since v0.27.1
    * @category Logic
    * @sig a -> b -> Boolean
    * @param {Any} a
@@ -8880,6 +10032,7 @@
    *      R.xor(false, true); //=> true
    *      R.xor(false, false); //=> false
    */
+
   var xor = _curry2(function xor(a, b) {
     return Boolean(!a ^ !b);
   });
@@ -8901,20 +10054,26 @@
    *      R.xprod([1, 2], ['a', 'b']); //=> [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
    * @symb R.xprod([a, b], [c, d]) = [[a, c], [a, d], [b, c], [b, d]]
    */
-  var xprod = _curry2(function xprod(a, b) { // = xprodWith(prepend); (takes about 3 times as long...)
+
+  var xprod = _curry2(function xprod(a, b) {
+    // = xprodWith(prepend); (takes about 3 times as long...)
     var idx = 0;
     var ilen = a.length;
     var j;
     var jlen = b.length;
     var result = [];
+
     while (idx < ilen) {
       j = 0;
+
       while (j < jlen) {
         result[result.length] = [a[idx], b[j]];
         j += 1;
       }
+
       idx += 1;
     }
+
     return result;
   });
 
@@ -8936,14 +10095,17 @@
    *      R.zip([1, 2, 3], ['a', 'b', 'c']); //=> [[1, 'a'], [2, 'b'], [3, 'c']]
    * @symb R.zip([a, b, c], [d, e, f]) = [[a, d], [b, e], [c, f]]
    */
+
   var zip = _curry2(function zip(a, b) {
     var rv = [];
     var idx = 0;
     var len = Math.min(a.length, b.length);
+
     while (idx < len) {
       rv[idx] = [a[idx], b[idx]];
       idx += 1;
     }
+
     return rv;
   });
 
@@ -8964,14 +10126,17 @@
    *
    *      R.zipObj(['a', 'b', 'c'], [1, 2, 3]); //=> {a: 1, b: 2, c: 3}
    */
+
   var zipObj = _curry2(function zipObj(keys, values) {
     var idx = 0;
     var len = Math.min(keys.length, values.length);
     var out = {};
+
     while (idx < len) {
       out[keys[idx]] = values[idx];
       idx += 1;
     }
+
     return out;
   });
 
@@ -8997,14 +10162,17 @@
    *      //=> [f(1, 'a'), f(2, 'b'), f(3, 'c')]
    * @symb R.zipWith(fn, [a, b, c], [d, e, f]) = [fn(a, d), fn(b, e), fn(c, f)]
    */
+
   var zipWith = _curry3(function zipWith(fn, a, b) {
     var rv = [];
     var idx = 0;
     var len = Math.min(a.length, b.length);
+
     while (idx < len) {
       rv[idx] = fn(a[idx], b[idx]);
       idx += 1;
     }
+
     return rv;
   });
 
@@ -9025,6 +10193,7 @@
    *      R.thunkify(R.identity)(42)(); //=> 42
    *      R.thunkify((a, b) => a + b)(25, 17)(); //=> 42
    */
+
   var thunkify = _curry1(function thunkify(fn) {
     return curryN(fn.length, function createThunk() {
       var fnArgs = arguments;
@@ -9044,6 +10213,7 @@
   exports.allPass = allPass;
   exports.always = always;
   exports.and = and;
+  exports.andThen = andThen;
   exports.any = any;
   exports.anyPass = anyPass;
   exports.ap = ap;
@@ -9062,18 +10232,17 @@
   exports.chain = chain;
   exports.clamp = clamp;
   exports.clone = clone;
+  exports.collectBy = collectBy;
   exports.comparator = comparator;
   exports.complement = complement;
   exports.compose = compose;
-  exports.composeK = composeK;
-  exports.composeP = composeP;
   exports.composeWith = composeWith;
   exports.concat = concat;
   exports.cond = cond;
   exports.construct = construct;
   exports.constructN = constructN;
-  exports.contains = contains$1;
   exports.converge = converge;
+  exports.count = count;
   exports.countBy = countBy;
   exports.curry = curry;
   exports.curryN = curryN;
@@ -9162,7 +10331,6 @@
   exports.mean = mean;
   exports.median = median;
   exports.memoizeWith = memoizeWith;
-  exports.merge = merge;
   exports.mergeAll = mergeAll;
   exports.mergeDeepLeft = mergeDeepLeft;
   exports.mergeDeepRight = mergeDeepRight;
@@ -9174,6 +10342,8 @@
   exports.mergeWithKey = mergeWithKey;
   exports.min = min;
   exports.minBy = minBy;
+  exports.modify = modify;
+  exports.modifyPath = modifyPath;
   exports.modulo = modulo;
   exports.move = move;
   exports.multiply = multiply;
@@ -9187,30 +10357,31 @@
   exports.objOf = objOf;
   exports.of = of;
   exports.omit = omit;
+  exports.on = on;
   exports.once = once;
   exports.or = or;
   exports.otherwise = otherwise;
   exports.over = over;
   exports.pair = pair;
   exports.partial = partial;
+  exports.partialObject = partialObject;
   exports.partialRight = partialRight;
   exports.partition = partition;
   exports.path = path;
-  exports.paths = paths;
   exports.pathEq = pathEq;
   exports.pathOr = pathOr;
   exports.pathSatisfies = pathSatisfies;
+  exports.paths = paths;
   exports.pick = pick;
   exports.pickAll = pickAll;
   exports.pickBy = pickBy;
   exports.pipe = pipe;
-  exports.pipeK = pipeK;
-  exports.pipeP = pipeP;
   exports.pipeWith = pipeWith;
   exports.pluck = pluck;
   exports.prepend = prepend;
   exports.product = product;
   exports.project = project;
+  exports.promap = promap;
   exports.prop = prop;
   exports.propEq = propEq;
   exports.propIs = propIs;
@@ -9239,6 +10410,7 @@
   exports.splitAt = splitAt;
   exports.splitEvery = splitEvery;
   exports.splitWhen = splitWhen;
+  exports.splitWhenever = splitWhenever;
   exports.startsWith = startsWith;
   exports.subtract = subtract;
   exports.sum = sum;
@@ -9251,7 +10423,7 @@
   exports.takeWhile = takeWhile;
   exports.tap = tap;
   exports.test = test;
-  exports.andThen = andThen;
+  exports.thunkify = thunkify;
   exports.times = times;
   exports.toLower = toLower;
   exports.toPairs = toPairs;
@@ -9276,6 +10448,7 @@
   exports.unless = unless;
   exports.unnest = unnest;
   exports.until = until;
+  exports.unwind = unwind;
   exports.update = update;
   exports.useWith = useWith;
   exports.values = values;
@@ -9283,6 +10456,7 @@
   exports.view = view;
   exports.when = when;
   exports.where = where;
+  exports.whereAny = whereAny;
   exports.whereEq = whereEq;
   exports.without = without;
   exports.xor = xor;
@@ -9290,8 +10464,7 @@
   exports.zip = zip;
   exports.zipObj = zipObj;
   exports.zipWith = zipWith;
-  exports.thunkify = thunkify;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

@@ -1,0 +1,8 @@
+ * Takes a spec object and a test object; each of the spec's own properties must be a predicate function.
+ * Each predicate is applied to the value of the corresponding property of the
+ * test object. `whereAny` returns true if at least one of the predicates return true,
+ * false otherwise.
+ *
+ * `whereAny` is well suited to declaratively expressing constraints for other
+ * functions such as [`filter`](#filter) and [`find`](#find).
+ *

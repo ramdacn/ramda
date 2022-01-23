@@ -1,0 +1,7 @@
+ * Creates a shallow clone of the passed object by applying an `fn` function
+ * to the value at the given path.
+ *
+ * The function will not be invoked, and the object will not change
+ * if its corresponding path does not exist in the object.
+ * All non-primitive properties are copied to the new object by reference.
+ *

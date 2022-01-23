@@ -1,8 +1,9 @@
-import _curry1 from './internal/_curry1';
-import _isArguments from './internal/_isArguments';
-import _isArray from './internal/_isArray';
-import _isObject from './internal/_isObject';
-import _isString from './internal/_isString';
+import _curry1 from './internal/_curry1.js';
+import _isArguments from './internal/_isArguments.js';
+import _isArray from './internal/_isArray.js';
+import _isObject from './internal/_isObject.js';
+import _isString from './internal/_isString.js';
+import _isTypedArray from './internal/_isTypedArray.js';
 
 
 /**
@@ -19,10 +20,11 @@ import _isString from './internal/_isString';
  * @return {*}
  * @example
  *
- *      R.empty(Just(42));      //=> Nothing()
- *      R.empty([1, 2, 3]);     //=> []
- *      R.empty('unicorns');    //=> ''
- *      R.empty({x: 1, y: 2});  //=> {}
+ *      R.empty(Just(42));               //=> Nothing()
+ *      R.empty([1, 2, 3]);              //=> []
+ *      R.empty('unicorns');             //=> ''
+ *      R.empty({x: 1, y: 2});           //=> {}
+ *      R.empty(Uint8Array.from('123')); //=> Uint8Array []
  */
 var empty = _curry1(function empty(x) {
   return (
@@ -42,7 +44,9 @@ var empty = _curry1(function empty(x) {
                   ? {}
                   : _isArguments(x)
                     ? (function() { return arguments; }())
-                    : void 0  // else
+                    : _isTypedArray(x)
+                      ? x.constructor.from('')
+                      : void 0  // else
   );
 });
 export default empty;

@@ -1,0 +1,6 @@
+ * Creates a copy of the passed object by applying an `fn` function to the given `prop` property.
+ *
+ * The function will not be invoked, and the object will not change
+ * if its corresponding property does not exist in the object.
+ * All non-primitive properties are copied to the new object by reference.
+ *

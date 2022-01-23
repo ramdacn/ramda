@@ -1,5 +1,5 @@
-import _curry2 from './internal/_curry2';
-
+import _curry2 from './internal/_curry2.js';
+import dissocPath from './dissocPath.js';
 
 /**
  * 删除对象中指定 `prop` 属性。
@@ -17,12 +17,5 @@ import _curry2 from './internal/_curry2';
  *
  *      R.dissoc('b', {a: 1, b: 2, c: 3}); //=> {a: 1, c: 3}
  */
-var dissoc = _curry2(function dissoc(prop, obj) {
-  var result = {};
-  for (var p in obj) {
-    result[p] = obj[p];
-  }
-  delete result[prop];
-  return result;
-});
+var dissoc = _curry2(function dissoc(prop, obj) { return dissocPath([prop], obj); });
 export default dissoc;

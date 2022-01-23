@@ -1,5 +1,5 @@
-import _curry2 from './internal/_curry2';
-import path from './path';
+import _curry2 from './internal/_curry2.js';
+import path from './path.js';
 
 
 /**
@@ -13,6 +13,7 @@ import path from './path';
  * @param {Array} ps The property names to fetch
  * @param {Object} obj The object to query
  * @return {Array} The corresponding values or partially applied function.
+ * @see R.prop, R.pluck, R.project
  * @example
  *
  *      R.props(['x', 'y'], {x: 1, y: 2}); //=> [1, 2]

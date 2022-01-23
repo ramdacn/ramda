@@ -1,9 +1,10 @@
-import _clone from './internal/_clone';
-import _curryN from './internal/_curryN';
-import _dispatchable from './internal/_dispatchable';
-import _has from './internal/_has';
-import _reduce from './internal/_reduce';
-import _xreduceBy from './internal/_xreduceBy';
+import _clone from './internal/_clone.js';
+import _curryN from './internal/_curryN.js';
+import _dispatchable from './internal/_dispatchable.js';
+import _has from './internal/_has.js';
+import _reduce from './internal/_reduce.js';
+import _reduced from './internal/_reduced.js';
+import _xreduceBy from './internal/_xreduceBy.js';
 
 
 /**
@@ -11,7 +12,7 @@ import _xreduceBy from './internal/_xreduceBy';
  *
  * 该函数相当于更通用的 [`groupBy`](#groupBy) 函数。
  *
- * 若在列表位置给出 transformer，则用做 transducer
+ * 若在列表位置给出 transformer，则用做 transducer 。
  *
  * @func
  * @memberOf R
@@ -25,7 +26,7 @@ import _xreduceBy from './internal/_xreduceBy';
  * @param {Array} list The array to group.
  * @return {Object} An object with the output of `keyFn` for keys, mapped to the output of
  *         `valueFn` for elements which produced that key when passed to `keyFn`.
- * @see R.groupBy, R.reduce
+ * @see R.groupBy, R.reduce, R.reduced
  * @example
  *
  *      const groupNames = (acc, {name}) => acc.concat(name)
@@ -49,7 +50,13 @@ var reduceBy = _curryN(4, [], _dispatchable([], _xreduceBy,
   function reduceBy(valueFn, valueAcc, keyFn, list) {
     return _reduce(function(acc, elt) {
       var key = keyFn(elt);
-      acc[key] = valueFn(_has(key, acc) ? acc[key] : _clone(valueAcc, [], [], false), elt);
+      var value = valueFn(_has(key, acc) ? acc[key] : _clone(valueAcc, [], [], false), elt);
+
+      if (value && value['@@transducer/reduced']) {
+        return _reduced(acc);
+      }
+
+      acc[key] = value;
       return acc;
     }, {}, list);
   }));

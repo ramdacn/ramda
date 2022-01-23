@@ -10,5 +10,6 @@
 /dist/gh-pages/
 /tmp-test-bundle.js
 /coverage/
-*.sw[op]
-.tern-port
+/.idea
+/.nyc_output
+.DS_Store
