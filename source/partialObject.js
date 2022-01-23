@@ -2,9 +2,7 @@ import mergeDeepRight from './mergeDeepRight.js';
 import _curry2 from './internal/_curry2.js';
 
 /**
- * Takes a function `f` and an object, and returns a function `g`.
- * When applied, `g` returns the result of applying `f` to the object
- * provided initially merged deeply (right) with the object provided as an argument to `g`.
+ * 接受两个参数：函数 `f` 和对象 `o1`，返回一个函数 `g`。当 `g` 调用，将 `g` 的参数对象 `o2` 和 `o1` 深度合并后传给 `f`，并返回 `f` 的执行结果。
  *
  * @func
  * @memberOf R

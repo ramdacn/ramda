@@ -12,7 +12,7 @@ import _xreduceBy from './internal/_xreduceBy.js';
  *
  * 该函数相当于更通用的 [`groupBy`](#groupBy) 函数。
  *
- * 若在列表位置给出 transformer，则用做 transducer
+ * 若在列表位置给出 transformer，则用做 transducer 。
  *
  * @func
  * @memberOf R

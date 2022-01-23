@@ -1,0 +1,2 @@
+ * Splits an array into slices on every occurrence of a value.
+ *

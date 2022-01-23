@@ -2,10 +2,9 @@ import curryN from './internal/_curryN.js';
 
 
 /**
- * Takes a binary function `f`, a unary function `g`, and two values.
- * Applies `g` to each value, then applies the result of each to `f`.
+ * 接收一个二元函数 `f`，一个一元函数 `g` 和两个值。将两个值应用到函数 `g` 上，在把返回的结果应用到函数 `f` 上。
  *
- * Also known as the P combinator.
+ * 也被称为 P combinator。
  *
  * @func
  * @memberOf R

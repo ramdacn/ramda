@@ -3,7 +3,7 @@ import curry from './curry.js';
 
 
 /**
- * Returns the number of items in a given `list` matching the predicate `f`
+ * 返回符合 predicate `f` 的列表的个数。
  *
  * @func
  * @memberOf R

@@ -2,8 +2,7 @@ import _curry2 from './internal/_curry2.js';
 import _reduce from './internal/_reduce.js';
 
 /**
- * Splits a list into sub-lists, based on the result of calling a key-returning function on each element,
- * and grouping the results according to values returned.
+ * 根据列表中每一个元素调用函数的结果是否相等，将一个列表拆分为多个子列表。
  *
  * @func
  * @memberOf R

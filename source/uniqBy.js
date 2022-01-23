@@ -7,8 +7,6 @@ import _xuniqBy from './internal/_xuniqBy.js';
 /**
  * 返回无重复元素的列表。元素通过给定的函数的返回值以及 [`R.equals`](#equals) 进行相同性判断。如果给定的函数返回值相同，保留第一个元素。
  *
- * Acts as a transducer if a transformer is given in list position.
- *
  * @func
  * @memberOf R
  * @since v0.16.0

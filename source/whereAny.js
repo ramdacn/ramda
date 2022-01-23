@@ -3,13 +3,10 @@ import _has from './internal/_has.js';
 
 
 /**
- * Takes a spec object and a test object; each of the spec's own properties must be a predicate function.
- * Each predicate is applied to the value of the corresponding property of the
- * test object. `whereAny` returns true if at least one of the predicates return true,
- * false otherwise.
+ * 接受一个测试规范对象和一个待检测对象，测试规范对象的每个属性值都必须是 predicate 。
+ * 每个 predicate 作用于待检测对象对应的属性值，只要有一个 predicate 返回 true，则 `whereAny` 返回 true，否则返回 false 。
  *
- * `whereAny` is well suited to declaratively expressing constraints for other
- * functions such as [`filter`](#filter) and [`find`](#find).
+ * `whereAny` 非常适合于需要声明式表示约束的函数比如 [`filter`](#filter) and [`find`](#find)。
  *
  * @func
  * @memberOf R

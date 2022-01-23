@@ -9,7 +9,7 @@ import tail from './tail.js';
  *
  * 在一些库中，此函数也被称为 `sequence`。
  *
- * ** 注意：** `pipe` 函数的结果不是自动柯里化的
+ * ** 注意：** `pipe` 函数的结果不是自动柯里化的。
  *
  * @func
  * @memberOf R

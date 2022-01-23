@@ -14,8 +14,8 @@ var hasProtoTrim = (typeof String.prototype.trim === 'function');
  * @since v0.6.0
  * @category String
  * @sig String -> String
- * @param {String} str 待修剪的字符串
- * @return {String} 修剪后的`str`
+ * @param {String} str The string to trim.
+ * @return {String} Trimmed version of `str`.
  * @example
  *
  *      R.trim('   xyz  '); //=> 'xyz'

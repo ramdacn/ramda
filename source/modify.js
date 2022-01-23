@@ -3,11 +3,10 @@ import modifyPath from './modifyPath.js';
 
 
 /**
- * Creates a copy of the passed object by applying an `fn` function to the given `prop` property.
+ * 将 `fn` 作用于给定 `prop` 的对象，并返回一个拷贝的对象。
  *
- * The function will not be invoked, and the object will not change
- * if its corresponding property does not exist in the object.
- * All non-primitive properties are copied to the new object by reference.
+ * 如果对象上没有对应的属性，那个这个函数不会被调用，且对象不会被改变。
+ * 所以的非基础类型的是通过引用拷贝到新的对象上的。
  *
  * @func
  * @memberOf R

@@ -4,9 +4,7 @@ import _map from './internal/_map.js';
 import _assoc from './internal/_assoc.js';
 
 /**
- *
- * Deconstructs an array field from the input documents to output a document for each element.
- * Each output document is the input document with the value of the array field replaced by the element.
+ * 如果指定属性的值为数组，其结果为相同顺序的对象数组，对象里指定属性的值被数组对应元素替换，其余属性和原对象属性一致。
  *
  * @func
  * @memberOf R

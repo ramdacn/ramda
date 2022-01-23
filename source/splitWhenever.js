@@ -1,6 +1,6 @@
 import _curryN from './internal/_curryN.js';
 /**
- * Splits an array into slices on every occurrence of a value.
+ * 根据列表中每个元素是否满足 predicate 来拆分数组。
  *
  * @func
  * @memberOf R

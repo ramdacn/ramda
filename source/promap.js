@@ -5,13 +5,14 @@ import _xpromap from './internal/_xpromap.js';
 
 
 /**
- * Takes two functions as pre- and post- processors respectively for a third function,
- * i.e. `promap(f, g, h)(x) === g(h(f(x)))`.
  *
- * Dispatches to the `promap` method of the third argument, if present,
- * according to the [FantasyLand Profunctor spec](https://github.com/fantasyland/fantasy-land#profunctor).
+ * 接收两个函数分别在第三个函数执行前和执行后执行，
+ * 例如 `promap(f, g, h)(x) === g(h(f(x)))` 。
  *
- * Acts as a transducer if a transformer is given in profunctor position.
+ * 如果第三个参数有 `promap` 方法， 则执行，
+ * 根据 [FantasyLand Profunctor spec](https://github.com/fantasyland/fantasy-land#profunctor)。
+ * 
+ * 若在 profunctor 位置中给出 transfomer，则用作 transducer 。
  *
  * @func
  * @memberOf R

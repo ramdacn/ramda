@@ -5,9 +5,9 @@ import _isArray from './internal/_isArray.js';
 import assoc from './assoc.js';
 
 /**
- * Makes a shallow clone of an object. Note that this copies and flattens
- * prototype properties onto the new object as well. All non-primitive
- * properties are copied by reference.
+ * 浅复制对象，删除返回对象中指定路径上的属性。
+ *
+ * 注意，这也会将 prototype 属性复制到新对象上并展开。所有 `non-primitive` 属性都通过引用复制。
  *
  * @private
  * @param {String|Integer} prop The prop operating

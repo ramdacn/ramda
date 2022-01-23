@@ -7,8 +7,6 @@ import _xuniqWith from './internal/_xuniqWith.js';
 /**
  * 返回无重复元素的列表。元素通过 predicate 进行相同性判断。如果通过 predicate 判断两元素相同，保留第一个元素。
  *
- * Acts as a transducer if a transformer is given in list position.
- *
  * @func
  * @memberOf R
  * @since v0.2.0
