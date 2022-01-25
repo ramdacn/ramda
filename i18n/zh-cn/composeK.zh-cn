@@ -1,4 +1,0 @@
- * 接受一系列函数，返回从右向左的 Kleisli 组合，每个函数必须返回支持 [`chain`](#chain) 操作的值。
- *
- * `R.composeK(h, g, f)` 等同于 `R.compose(R.chain(h)，R.chain(g)，f)`。
- *

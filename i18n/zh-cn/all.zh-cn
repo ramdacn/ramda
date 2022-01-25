@@ -1,6 +1,6 @@
- * 如果列表中的所有元素都满足 predicate，则返回 `true`；否则，返回 `false`。
+ * 判断列表中的所有元素是否都满足给定的条件，若都满足，则返回 `true`；否则，返回 `false`。
  *
  * 若第二个参数自身存在 `all` 方法，则调用自身的 `all` 方法。
  *
- * 若在列表位置中给出 transfomer，则用作 transducer 。
+ * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
  *

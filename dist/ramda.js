@@ -48,7 +48,7 @@
   };
 
   /**
-   * 柯里化函数的参数占位符。允许部分应用于任何位置的参数。
+   * 参数占位符，可以对任何位置的参数进行占位。
    *
    * 假设 `g` 代表柯里化的三元函数，`_` 代表 `R.__`，则下面几种写法是等价的：
    *
@@ -349,10 +349,11 @@
   /**
    * 通过向列表迭代函数的回调函数添加两个新的参数：当前索引、整个列表，创建新的列表迭代函数。
    *
-   * 例如，`addIndex` 可以将 [`R.map`](#map) 转换为类似于 `Array.prototype.map` 的函数。注意，`addIndex` 只适用于迭代回调函数是首个参数、列表是最后一个参数的函数。（如果列表参数没有用到，后一个条件可以忽略）。
-   *
-   * `identical` 不支持 `__` 占位符。
-   *
+   * 例如，本来 [`R.map`](#map) 的回调函数是单参数函数：`R.map(a => b, list)`，
+   * `addIndex` 可以将 map 的回调函数改造为接受三个参数的函数 R.addIndex(R.map)((a, index, list) => b, list)
+   * 
+   * 注意，`addIndex` 只适用于回调函数是首个参数、列表是最后一个参数的列表迭代函数。（如果列表参数没有用到，后一个条件可以忽略）。
+   * 
    * @func
    * @memberOf R
    * @since v0.15.0
@@ -433,7 +434,7 @@
   }
 
   /**
-   * 将数组中指定索引处的值替换为经函数变换的值。
+   * 对数组中指定索引处的值进行函数转换。
    *
    * @func
    * @memberOf R
@@ -582,11 +583,11 @@
   });
 
   /**
-   * 如果列表中的所有元素都满足 predicate，则返回 `true`；否则，返回 `false`。
+   * 判断列表中的所有元素是否都满足给定的条件，若都满足，则返回 `true`；否则，返回 `false`。
    *
    * 若第二个参数自身存在 `all` 方法，则调用自身的 `all` 方法。
    *
-   * 若在列表位置中给出 transfomer，则用作 transducer 。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
    *
    * @func
    * @memberOf R
@@ -934,7 +935,7 @@
    *
    * 若第二个参数自身存在 `map` 方法，则调用自身的 `map` 方法。
    *
-   * 若在列表位置中给出 transfomer，则用作 transducer 。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
    *
    * 函数也是 functors，`map` 会将它们组合起来（相当于 `R.compose`）。
    *
@@ -1242,7 +1243,7 @@
    *
    * 若第二个参数自身存在 `any` 方法，则调用其自身的 `any`。
    *
-   * 若在列表位置中给出 transfomer，则用作 transducer 。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
    *
    * @func
    * @memberOf R
@@ -1404,7 +1405,7 @@
   /**
    * 返回一个新列表，列表中的元素为由原列表相邻元素组成的 n 元组。如果 `n` 大于列表的长度，则返回空列表。
    *
-   * 若在列表位置中给出 transfomer，则用作 transducer 。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
    *
    * @func
    * @memberOf R
@@ -2045,7 +2046,7 @@
    *
    * 如果第二个参数是函数，`chain(f, g)(x)` 等价于 `f(g(x), x)`。
    *
-   * 若在列表位置中给出 transfomer，则用作 transducer。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装。
    *
    * @func
    * @memberOf R
@@ -3517,7 +3518,7 @@
    *
    * 该函数相当于更通用的 [`groupBy`](#groupBy) 函数。
    *
-   * 若在列表位置给出 transformer，则用做 transducer 。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装。
    *
    * @func
    * @memberOf R
@@ -3569,7 +3570,7 @@
   /**
    * 根据给定函数提供的统计规则对列表中的元素进行分类计数。返回一个对象，其键值对为：`fn` 根据列表元素生成键，列表中通过 `fn` 映射为对应键的元素的个数作为值。注意，由于 JavaScript 对象的实现方式，所有键都被强制转换为字符串。
    *
-   * 若在列表位置中给出 transfomer，则用作 transducer 。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
    *
    * @func
    * @memberOf R
@@ -4269,7 +4270,7 @@
   /**
    * 删除 "list" 末尾的 `n` 个元素。
    *
-   * 若在列表位置中给出 transfomer，则用作 transducer 。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
    *
    * @func
    * @memberOf R
@@ -4339,7 +4340,7 @@
    *
    * `predicate` 需要作为第一个参数传入。
    *
-   * 若在列表位置中给出 transfomer，则用作 transducer 。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
    *
    * @func
    * @memberOf R
@@ -5446,6 +5447,8 @@
    * 如果两个参数是完全相同，则返回 `true`，否则返回 `false`。如果它们引用相同的内存，也认为是完全相同的。`NaN` 和 `NaN` 是完全相同的；`0` 和 `-0` 不是完全相同的。
    *
    * **注意**：这只是 ES6 `Object.is` 的柯里化版本而已。
+   *
+   * `identical` 不支持 `__` 占位符。
    *
    * @func
    * @memberOf R
@@ -7237,8 +7240,8 @@
   /**
    *  使用给定的函数，修改对象中指定路径的值。
    *
-   * 如果对象上没有对应的属性，那个这个函数不会被调用，且对象不会被改变。
-   * 所以的非基础类型的是通过引用拷贝到新的对象上的。
+   * 如果对象上没有对应的属性，那么这个函数不会被调用，且对象不会被改变。
+   * 所有的非基础类型是通过引用拷贝到新的对象上。
    *
    * @func
    * @memberOf R
@@ -7286,8 +7289,8 @@
   /**
    * 使用给定的函数，修改对象中指定属性的值。
    *
-   * 如果对象上没有对应的属性，那个这个函数不会被调用，且对象不会被改变。
-   * 所以的非基础类型的是通过引用拷贝到新的对象上的。
+   * 如果对象上没有对应的属性，那么这个函数不会被调用，且对象不会被改变。
+   * 所有的非基础类型是通过引用拷贝到新的对象上。
    *
    * @func
    * @memberOf R
@@ -9032,7 +9035,7 @@
    *
    * 若第二个参数自身存在 `takeWhile` 方法，则调用自身的 `takeWhile` 方法
    *
-   * 若在列表位置中给出 transfomer，则用作 transducer 。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
    *
    * @func
    * @memberOf R
@@ -9084,7 +9087,7 @@
   /**
    * 对输入的值执行给定的函数，然后返回输入的值。
    *
-   * 若在列表位置给出 transformer，则用做 transducer 。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装。
    *
    * @func
    * @memberOf R
@@ -9991,7 +9994,7 @@
   /**
    * 求第二个列表中，未包含在第一个列表中的任一元素的集合。通过 [`R.equals`](#equals) 函数进行相等性判断。
    *
-   * 若在列表位置中给出 transfomer，则用作 transducer 。
+   * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
    *
    * @func
    * @memberOf R

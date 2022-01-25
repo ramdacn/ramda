@@ -7,7 +7,7 @@ import reject from './reject.js';
 /**
  * 求第二个列表中，未包含在第一个列表中的任一元素的集合。通过 [`R.equals`](#equals) 函数进行相等性判断。
  *
- * 若在列表位置中给出 transfomer，则用作 transducer 。
+ * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
  *
  * @func
  * @memberOf R

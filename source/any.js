@@ -8,7 +8,7 @@ import _xany from './internal/_xany.js';
  *
  * 若第二个参数自身存在 `any` 方法，则调用其自身的 `any`。
  *
- * 若在列表位置中给出 transfomer，则用作 transducer 。
+ * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
  *
  * @func
  * @memberOf R

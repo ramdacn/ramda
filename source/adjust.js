@@ -3,7 +3,7 @@ import _curry3 from './internal/_curry3.js';
 
 
 /**
- * 将数组中指定索引处的值替换为经函数变换的值。
+ * 对数组中指定索引处的值进行函数转换。
  *
  * @func
  * @memberOf R

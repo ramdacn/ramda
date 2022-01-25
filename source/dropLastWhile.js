@@ -9,7 +9,7 @@ import _xdropLastWhile from './internal/_xdropLastWhile.js';
  *
  * `predicate` 需要作为第一个参数传入。
  *
- * 若在列表位置中给出 transfomer，则用作 transducer 。
+ * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
  *
  * @func
  * @memberOf R

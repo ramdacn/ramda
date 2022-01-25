@@ -9,7 +9,7 @@ import slice from './slice.js';
  *
  * 若第二个参数自身存在 `takeWhile` 方法，则调用自身的 `takeWhile` 方法
  *
- * 若在列表位置中给出 transfomer，则用作 transducer 。
+ * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
  *
  * @func
  * @memberOf R

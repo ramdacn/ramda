@@ -14,7 +14,7 @@ import keys from './keys.js';
  *
  * 若第二个参数自身存在 `map` 方法，则调用自身的 `map` 方法。
  *
- * 若在列表位置中给出 transfomer，则用作 transducer 。
+ * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
  *
  * 函数也是 functors，`map` 会将它们组合起来（相当于 `R.compose`）。
  *

@@ -68,6 +68,6 @@
 
 18. Dispatches to the all method of the second argument, if present. 这个句式统一翻译如下：若第二个参数自身存在 `all` 方法，则调用自身的 `all` 方法。
 
-19. Acts as a transducer if a transformer is given in list position. -> 若在列表位置中给出 transfomer，则用作 transducer 。
+19. Acts as a transducer if a transformer is given in list position. -> 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装 。
 
 20. receive / accept -> 接受

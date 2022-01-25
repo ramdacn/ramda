@@ -6,7 +6,7 @@ import _xtap from './internal/_xtap.js';
 /**
  * 对输入的值执行给定的函数，然后返回输入的值。
  *
- * 若在列表位置给出 transformer，则用做 transducer 。
+ * 若传入的是 transfomer，则当前函数用作 transducer，对传入的 transformer 进行封装。
  *
  * @func
  * @memberOf R

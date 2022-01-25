@@ -6,6 +6,8 @@ import _objectIs from './internal/_objectIs.js';
  *
  * **注意**：这只是 ES6 `Object.is` 的柯里化版本而已。
  *
+ * `identical` 不支持 `__` 占位符。
+ *
  * @func
  * @memberOf R
  * @since v0.15.0
